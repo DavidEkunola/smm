@@ -221,8 +221,16 @@
             grid-template-columns: repeat(3, 1fr);
         }
 
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
         @media (max-width: 640px) {
             .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .grid-4 {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -236,6 +244,12 @@
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
         }
 
         .tool-card:active {
@@ -761,6 +775,7 @@
         <!-- Quick Access Navigation -->
         <div class="quick-access">
             <button class="quick-btn active" onclick="showSection('dashboard')">🏠 Dashboard</button>
+            <button class="quick-btn" onclick="showSection('projects')">📁 Projects</button>
             <button class="quick-btn" onclick="showSection('ai-prompts')">⚡ AI Prompts</button>
             <button class="quick-btn" onclick="showSection('content')">📱 Content Studio</button>
             <button class="quick-btn" onclick="showSection('captions')">✍️ Captions</button>
@@ -784,7 +799,7 @@
             <div class="card">
                 <div class="card-title">📊 Your Social Media Dashboard</div>
                 
-                <div class="grid grid-3 mb-2">
+                <div class="grid grid-4 mb-2">
                     <div class="metric">
                         <div class="metric-value" id="totalFollowers">0</div>
                         <div class="metric-label">Total Followers</div>
@@ -797,6 +812,10 @@
                         <div class="metric-value" id="postsToday">0</div>
                         <div class="metric-label">Posts Today</div>
                     </div>
+                    <div class="metric">
+                        <div class="metric-value" id="totalProjects">0</div>
+                        <div class="metric-label">Total Projects</div>
+                    </div>
                 </div>
 
                 <div class="alert alert-info">
@@ -805,6 +824,11 @@
 
                 <div class="card-title mt-2">🚀 Quick Actions</div>
                 <div class="grid grid-2">
+                    <div class="tool-card" onclick="showSection('projects')">
+                        <div class="tool-card-icon">📁</div>
+                        <div class="tool-card-title">My Projects</div>
+                        <div class="tool-card-desc">Manage accounts</div>
+                    </div>
                     <div class="tool-card" onclick="showSection('ai-prompts')">
                         <div class="tool-card-icon">⚡</div>
                         <div class="tool-card-title">AI Prompts</div>
@@ -842,6 +866,117 @@
                     <li class="list-item">Reply to all comments</li>
                     <li class="list-item">DM 5 potential collaborators</li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- PROJECTS SECTION -->
+        <div id="projects" class="section">
+            <!-- Add New Project -->
+            <div class="card">
+                <div class="card-title">📁 Add New Project</div>
+                <div class="card-subtitle">Create and manage your social media accounts with personalized growth strategies</div>
+                
+                <div class="input-group">
+                    <label class="label">Project Name</label>
+                    <input type="text" class="input" id="projectName" placeholder="e.g., My Fashion Brand">
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="input-group">
+                        <label class="label">Platform</label>
+                        <select class="input" id="projectPlatform">
+                            <option value="instagram">📱 Instagram</option>
+                            <option value="tiktok">🎵 TikTok</option>
+                            <option value="twitter">🐦 Twitter/X</option>
+                            <option value="facebook">👥 Facebook</option>
+                            <option value="youtube">▶️ YouTube</option>
+                            <option value="linkedin">💼 LinkedIn</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Social Media Handle</label>
+                        <input type="text" class="input" id="projectHandle" placeholder="@yourhandle">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Niche/Industry</label>
+                    <select class="input" id="projectNiche">
+                        <option value="motivation">💪 Motivation & Mindset</option>
+                        <option value="finance">💰 Finance/Money Making</option>
+                        <option value="relationships">❤️ Relationships/Dating</option>
+                        <option value="business">📈 Business/Marketing</option>
+                        <option value="naija">🇳🇬 Naija Hustle/Local</option>
+                        <option value="health">🏋️ Health & Fitness</option>
+                        <option value="education">📚 Education/Study</option>
+                        <option value="beauty">💄 Beauty/Fashion</option>
+                        <option value="tech">💻 Tech/AI Tools</option>
+                        <option value="lifestyle">✨ Lifestyle/Personal</option>
+                        <option value="food">🍔 Food & Cooking</option>
+                        <option value="travel">✈️ Travel & Adventure</option>
+                        <option value="entertainment">🎬 Entertainment/Media</option>
+                        <option value="sports">⚽ Sports & Gaming</option>
+                        <option value="parenting">👶 Parenting & Family</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="input-group">
+                        <label class="label">Current Followers</label>
+                        <input type="number" class="input" id="projectFollowers" placeholder="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Goal Followers</label>
+                        <input type="number" class="input" id="projectGoal" placeholder="10000">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Target Audience</label>
+                    <input type="text" class="input" id="projectAudience" placeholder="e.g., Young adults 18-25, entrepreneurs, Nigerian youth">
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Content Focus (Optional)</label>
+                    <textarea class="textarea" id="projectFocus" placeholder="What type of content do you want to create? e.g., Reels, carousels, educational posts, entertainment..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" onclick="addProject()">
+                    ✨ CREATE PROJECT
+                </button>
+            </div>
+
+            <!-- View Projects -->
+            <div class="card">
+                <div class="card-title">📊 My Projects</div>
+                <div id="projectsList"></div>
+            </div>
+
+            <!-- Project Details Modal (Hidden by default) -->
+            <div id="projectDetailsModal" style="display: none;">
+                <div class="card" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%); border: 2px solid var(--primary);">
+                    <div class="card-title" id="projectDetailsTitle"></div>
+                    
+                    <div class="grid grid-2 mb-2">
+                        <div class="metric">
+                            <div class="metric-value" id="pdCurrentFollowers">0</div>
+                            <div class="metric-label">Current Followers</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="pdGoalFollowers">0</div>
+                            <div class="metric-label">Goal</div>
+                        </div>
+                    </div>
+
+                    <div id="projectStrategy"></div>
+
+                    <div class="grid grid-2">
+                        <button class="btn btn-secondary" onclick="closeProjectDetails()">❌ Close</button>
+                        <button class="btn btn-danger" onclick="deleteCurrentProject()">🗑️ Delete</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -4478,6 +4613,14 @@
             
             // Set random posts today
             document.getElementById('postsToday').textContent = Math.floor(Math.random() * 3) + 1;
+            
+            // Initialize project counter from localStorage
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            localStorage.setItem('totalProjects', projects.length);
+            document.getElementById('totalProjects').textContent = projects.length;
+            
+            // Load projects list
+            loadProjects();
         };
 
         // ============================================
@@ -5597,9 +5740,704 @@
             document.getElementById('instantContentText').textContent = output;
             document.getElementById('instantContentOutput').classList.add('active');
         }
+        
+        // Increment project counter (legacy - kept for compatibility)
+        function incrementProjectCounter() {
+            // Counter is now based on actual projects, not content generation
+            return;
+        }
+
+        // ============================================
+        // PROJECT MANAGEMENT FUNCTIONS
+        // ============================================
+        
+        let currentProjectId = null;
+
+        // Add New Project
+        function addProject() {
+            const name = document.getElementById('projectName').value;
+            const platform = document.getElementById('projectPlatform').value;
+            const handle = document.getElementById('projectHandle').value;
+            const niche = document.getElementById('projectNiche').value;
+            const followers = document.getElementById('projectFollowers').value;
+            const goal = document.getElementById('projectGoal').value;
+            const audience = document.getElementById('projectAudience').value;
+            const focus = document.getElementById('projectFocus').value;
+
+            if (!name || !handle || !niche) {
+                alert('⚠️ Please fill in Project Name, Handle, and Niche!');
+                return;
+            }
+
+            const project = {
+                id: Date.now(),
+                name,
+                platform,
+                handle,
+                niche,
+                followers: parseInt(followers) || 0,
+                goal: parseInt(goal) || 10000,
+                audience,
+                focus,
+                createdDate: new Date().toLocaleDateString(),
+                lastUpdated: new Date().toLocaleDateString()
+            };
+
+            // Get existing projects
+            let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            projects.push(project);
+            localStorage.setItem('projects', JSON.stringify(projects));
+
+            // Update total projects count
+            localStorage.setItem('totalProjects', projects.length);
+            document.getElementById('totalProjects').textContent = projects.length;
+
+            alert('✅ Project created successfully!');
+            
+            // Clear form
+            document.getElementById('projectName').value = '';
+            document.getElementById('projectHandle').value = '';
+            document.getElementById('projectFollowers').value = '';
+            document.getElementById('projectGoal').value = '';
+            document.getElementById('projectAudience').value = '';
+            document.getElementById('projectFocus').value = '';
+
+            // Refresh projects list
+            loadProjects();
+        }
+
+        // Load and Display Projects
+        function loadProjects() {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const projectsList = document.getElementById('projectsList');
+
+            if (projects.length === 0) {
+                projectsList.innerHTML = '<div class="alert alert-info">📁 No projects yet. Create your first project above!</div>';
+                return;
+            }
+
+            let html = '<div class="grid grid-2">';
+            
+            projects.forEach(project => {
+                const progress = Math.min(100, (project.followers / project.goal) * 100);
+                const platformEmoji = {
+                    instagram: '📱',
+                    tiktok: '🎵',
+                    twitter: '🐦',
+                    facebook: '👥',
+                    youtube: '▶️',
+                    linkedin: '💼'
+                };
+
+                html += `
+                    <div class="tool-card" onclick="viewProjectDetails(${project.id})" style="text-align: left;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <div>
+                                <div class="tool-card-title">${platformEmoji[project.platform]} ${project.name}</div>
+                                <div class="tool-card-desc">${project.handle}</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--gray); margin: 0.5rem 0;">
+                            ${getNicheName(project.niche)}
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 10px; padding: 0.5rem; margin-top: 0.5rem;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                                <span>${project.followers.toLocaleString()}</span>
+                                <span>${project.goal.toLocaleString()}</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden;">
+                                <div style="background: var(--gradient); height: 100%; width: ${progress}%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            projectsList.innerHTML = html;
+        }
+
+        // View Project Details
+        function viewProjectDetails(projectId) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const project = projects.find(p => p.id === projectId);
+
+            if (!project) return;
+
+            currentProjectId = projectId;
+
+            // Update modal content
+            document.getElementById('projectDetailsTitle').textContent = `${project.name} - Growth Strategy`;
+            document.getElementById('pdCurrentFollowers').textContent = project.followers.toLocaleString();
+            document.getElementById('pdGoalFollowers').textContent = project.goal.toLocaleString();
+
+            // Generate personalized strategy
+            const strategy = generateGrowthStrategy(project);
+            document.getElementById('projectStrategy').innerHTML = strategy;
+
+            // Show modal
+            document.getElementById('projectDetailsModal').style.display = 'block';
+            window.scrollTo(0, document.getElementById('projectDetailsModal').offsetTop - 100);
+        }
+
+        // Close Project Details
+        function closeProjectDetails() {
+            document.getElementById('projectDetailsModal').style.display = 'none';
+            currentProjectId = null;
+        }
+
+        // Delete Project
+        function deleteCurrentProject() {
+            if (!currentProjectId) return;
+
+            if (!confirm('Are you sure you want to delete this project?')) return;
+
+            let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            projects = projects.filter(p => p.id !== currentProjectId);
+            localStorage.setItem('projects', JSON.stringify(projects));
+
+            // Update count
+            localStorage.setItem('totalProjects', projects.length);
+            document.getElementById('totalProjects').textContent = projects.length;
+
+            alert('✅ Project deleted!');
+            closeProjectDetails();
+            loadProjects();
+        }
+
+        // Get Niche Name
+        function getNicheName(niche) {
+            const niches = {
+                motivation: '💪 Motivation',
+                finance: '💰 Finance',
+                relationships: '❤️ Relationships',
+                business: '📈 Business',
+                naija: '🇳🇬 Naija Hustle',
+                health: '🏋️ Health',
+                education: '📚 Education',
+                beauty: '💄 Beauty',
+                tech: '💻 Tech',
+                lifestyle: '✨ Lifestyle',
+                food: '🍔 Food',
+                travel: '✈️ Travel',
+                entertainment: '🎬 Entertainment',
+                sports: '⚽ Sports',
+                parenting: '👶 Parenting'
+            };
+            return niches[niche] || niche;
+        }
+
+        // Generate Personalized Growth Strategy
+        function generateGrowthStrategy(project) {
+            const nicheStrategies = {
+                motivation: {
+                    contentTypes: ['Morning routine reels', 'Motivational quotes', 'Success stories', 'Daily affirmations'],
+                    postingTimes: '6-8 AM, 12 PM, 7-9 PM',
+                    hashtags: '#Motivation #Mindset #Success #Growth',
+                    engagement: 'Share transformation stories, ask about goals, create accountability challenges'
+                },
+                finance: {
+                    contentTypes: ['Money tips', 'Investment breakdowns', 'Budgeting hacks', 'Side hustle ideas'],
+                    postingTimes: '7-9 AM, 5-7 PM',
+                    hashtags: '#Finance #Money #Investing #Wealth',
+                    engagement: 'Share savings challenges, discuss investment strategies, poll on money topics'
+                },
+                relationships: {
+                    contentTypes: ['Dating advice', 'Relationship tips', 'Red flag warnings', 'Self-love content'],
+                    postingTimes: '8-10 PM, weekends',
+                    hashtags: '#Relationships #Dating #Love #SelfLove',
+                    engagement: 'Ask relationship questions, share experiences, create polls on dating scenarios'
+                },
+                business: {
+                    contentTypes: ['Business tips', 'Marketing strategies', 'Entrepreneurship', 'Case studies'],
+                    postingTimes: '9-11 AM, 2-4 PM',
+                    hashtags: '#Business #Marketing #Entrepreneur #Growth',
+                    engagement: 'Share business wins/losses, ask for feedback, create networking threads'
+                },
+                naija: {
+                    contentTypes: ['Local hustles', 'Naija economy tips', 'Dollar earning guides', 'Street wisdom'],
+                    postingTimes: '7-9 AM, 6-9 PM',
+                    hashtags: '#NaijaTwitter #Naija #Nigeria #Hustle',
+                    engagement: 'Discuss local issues, share survival tips, create relatable content'
+                },
+                health: {
+                    contentTypes: ['Workout routines', 'Healthy recipes', 'Fitness tips', 'Wellness advice'],
+                    postingTimes: '6-8 AM, 5-7 PM',
+                    hashtags: '#Fitness #Health #Wellness #Workout',
+                    engagement: 'Share progress pics, create challenges, ask about fitness goals'
+                },
+                education: {
+                    contentTypes: ['Study tips', 'Learning hacks', 'Educational content', 'Career advice'],
+                    postingTimes: '8-10 AM, 3-5 PM',
+                    hashtags: '#Education #Learning #Study #Career',
+                    engagement: 'Share study methods, create educational threads, quiz followers'
+                },
+                beauty: {
+                    contentTypes: ['Makeup tutorials', 'Skincare routines', 'Product reviews', 'Beauty trends'],
+                    postingTimes: '10 AM-12 PM, 7-9 PM',
+                    hashtags: '#Beauty #Makeup #Skincare #Fashion',
+                    engagement: 'Share before/afters, ask for product recommendations, create look polls'
+                },
+                tech: {
+                    contentTypes: ['Tech tips', 'AI tools', 'App reviews', 'Coding tutorials'],
+                    postingTimes: '9-11 AM, 3-5 PM',
+                    hashtags: '#Tech #AI #Coding #Innovation',
+                    engagement: 'Share tech discoveries, ask about tools, create tech discussions'
+                },
+                lifestyle: {
+                    contentTypes: ['Daily vlogs', 'Life updates', 'Personal stories', 'Lifestyle tips'],
+                    postingTimes: 'Anytime, consistency is key',
+                    hashtags: '#Lifestyle #Daily #Vlog #Life',
+                    engagement: 'Share personal moments, ask lifestyle questions, create relatable content'
+                }
+            };
+
+            const strategy = nicheStrategies[project.niche] || nicheStrategies.lifestyle;
+            const platformName = project.platform.charAt(0).toUpperCase() + project.platform.slice(1);
+            const daysToGoal = Math.ceil((project.goal - project.followers) / 50); // Assume 50 followers/day
+
+            return `
+                <div class="alert" style="background: var(--gradient); border: none; color: white; margin-bottom: 1rem;">
+                    <strong>🎯 PERSONALIZED GROWTH PLAN FOR ${project.name.toUpperCase()}</strong>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>📊 Platform:</strong> ${platformName}</div>
+                    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>🎯 Goal:</strong> ${project.followers.toLocaleString()} → ${project.goal.toLocaleString()} (${(project.goal - project.followers).toLocaleString()} to go)</div>
+                    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>⏱️ Estimated:</strong> ~${daysToGoal} days at 50 followers/day</div>
+                    <div style="font-size: 0.9rem;"><strong>👥 Audience:</strong> ${project.audience || 'Not specified'}</div>
+                </div>
+
+                <div class="card-title" style="font-size: 1rem; margin: 1.5rem 0 1rem;">📝 CONTENT STRATEGY</div>
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Content Types to Create:</div>
+                    ${strategy.contentTypes.map(type => `<div style="margin: 0.25rem 0;">• ${type}</div>`).join('')}
+                </div>
+
+                <div class="card-title" style="font-size: 1rem; margin: 1.5rem 0 1rem;">⏰ POSTING SCHEDULE</div>
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div><strong>Best Times:</strong> ${strategy.postingTimes}</div>
+                    <div style="margin-top: 0.5rem;"><strong>Frequency:</strong> ${project.platform === 'tiktok' || project.platform === 'instagram' ? '1-3 posts/day' : '3-5 posts/day'}</div>
+                </div>
+
+                <div class="card-title" style="font-size: 1rem; margin: 1.5rem 0 1rem;">#️⃣ HASHTAG STRATEGY</div>
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    ${strategy.hashtags}
+                    <div style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--gray);">Mix of trending, niche, and branded hashtags</div>
+                </div>
+
+                <div class="card-title" style="font-size: 1rem; margin: 1.5rem 0 1rem;">💬 ENGAGEMENT TACTICS</div>
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    ${strategy.engagement}
+                </div>
+
+                <div class="card-title" style="font-size: 1rem; margin: 1.5rem 0 1rem;">📈 WEEKLY ACTION PLAN</div>
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div style="margin: 0.5rem 0;"><strong>Monday:</strong> Plan content for the week</div>
+                    <div style="margin: 0.5rem 0;"><strong>Tuesday-Friday:</strong> Post daily + engage 30min</div>
+                    <div style="margin: 0.5rem 0;"><strong>Saturday:</strong> Analyze performance + adjust strategy</div>
+                    <div style="margin: 0.5rem 0;"><strong>Sunday:</strong> Batch create content for next week</div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>💡 Pro Tips:</strong> Use the tools on this site to generate captions, hashtags, and content ideas specific to your niche. Track your progress weekly and adjust the strategy based on what works!
+                </div>
+
+                <div class="card-title" style="font-size: 1rem; margin: 1.5rem 0 1rem;">🛠️ PROJECT TOOLS</div>
+                <div class="grid grid-2" style="margin-bottom: 1rem;">
+                    <button class="btn btn-primary" onclick="generateProjectCaption(${project.id})">
+                        ✍️ Generate Caption
+                    </button>
+                    <button class="btn btn-primary" onclick="generateProjectHashtags(${project.id})">
+                        #️⃣ Get Hashtags
+                    </button>
+                    <button class="btn btn-primary" onclick="generateProjectContent(${project.id})">
+                        📱 Content Ideas
+                    </button>
+                    <button class="btn btn-primary" onclick="generateProjectSchedule(${project.id})">
+                        📅 Weekly Schedule
+                    </button>
+                    <button class="btn btn-primary" onclick="trackProjectProgress(${project.id})">
+                        📊 Track Progress
+                    </button>
+                    <button class="btn btn-primary" onclick="generateProjectBio(${project.id})">
+                        👤 Update Bio
+                    </button>
+                    <button class="btn btn-success" onclick="updateProjectFollowers(${project.id})">
+                        📈 Update Followers
+                    </button>
+                </div>
+
+                <!-- Tool Output Area -->
+                <div id="projectToolOutput" style="display: none; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; padding: 1rem; margin-top: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div class="card-title" style="margin: 0;" id="projectToolTitle"></div>
+                        <button class="btn btn-sm btn-secondary" onclick="closeProjectTool()" style="width: auto; padding: 0.5rem 1rem;">✕</button>
+                    </div>
+                    <div id="projectToolText" style="color: white; line-height: 1.8; white-space: pre-wrap; font-size: 0.9rem; max-height: 400px; overflow-y: auto;"></div>
+                    <button class="btn btn-success" onclick="copyProjectToolOutput()" style="margin-top: 1rem;">
+                        📋 Copy to Clipboard
+                    </button>
+                </div>
+            `;
+        }
 
         function generateMore() {
             generateInstantContent(); // Simply regenerate with same inputs
+        }
+
+        // ============================================
+        // PROJECT-SPECIFIC TOOL FUNCTIONS
+        // ============================================
+
+        // Generate Caption for Project
+        function generateProjectCaption(projectId) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const captionTemplates = {
+                motivation: [
+                    `Your excuses are just stories you tell yourself. Stop believing them. 💪\n\n[Share your breakthrough moment]\n\nWhat excuse are you letting go of today?`,
+                    `${project.handle} here 🔥\n\nMorning routines aren't just for productivity bros. They're for anyone who wants to take control of their life.\n\nMy non-negotiables:\n• 6 AM wake up\n• 30 min movement\n• Journal + plan\n\nWhat's yours? Drop it below 👇`,
+                    `The gap between who you are and who you want to be? That's just action.\n\nStart today. Not tomorrow. Not Monday.\n\nToday. 🎯`
+                ],
+                finance: [
+                    `${project.handle} | Money Tips 💰\n\nStop saving. Start investing.\n\nHere's what I wish someone told me:\n\n1️⃣ Emergency fund first (3-6 months)\n2️⃣ Then invest consistently\n3️⃣ Time in market > timing market\n\nWho's ready to build wealth? 🚀`,
+                    `Real talk about money in Nigeria 🇳🇬\n\nYour 9-5 salary won't make you rich. But it can fund your side hustle that will.\n\n[Share your side hustle journey]\n\nComment what you're building 👇`,
+                    `Financial freedom blueprint:\n\n❌ Work for money\n✅ Make money work for you\n\nDrop a 💰 if you're on this journey`
+                ],
+                relationships: [
+                    `${project.handle} | Relationship Real Talk ❤️\n\nRed flags you're ignoring:\n\n🚩 They only text after 11 PM\n🚩 Plans always change last minute\n🚩 Never introduces you to friends\n\nStop settling. You deserve better.\n\nWhat red flag did you ignore? (Safe space below)`,
+                    `Dating in 2026 hits different...\n\nEveryone wants love but nobody wants to be vulnerable.\n\nReal connection starts when you stop pretending to be perfect.\n\nAgree or nah? 💬`,
+                    `Self-love isn't selfish.\n\nIt's recognizing that you can't pour from an empty cup.\n\n[Share your self-care routine]\n\nHow are you choosing yourself today? 💕`
+                ],
+                business: [
+                    `${project.handle} | Business Tips 📈\n\nYour business doesn't need:\n❌ Perfect branding\n❌ Huge following\n❌ Viral content\n\nIt needs:\n✅ Solving real problems\n✅ Consistent showing up\n✅ Happy customers\n\nFocus on what matters. 🎯`,
+                    `The content that builds businesses in 2026:\n\n1. Educational (teach what you know)\n2. Behind-the-scenes (build trust)\n3. Results (show proof)\n4. Relatable (be human)\n\nWhich one are you posting today? 👇`,
+                    `Scale faster by doing less.\n\nStop trying to be everywhere. Master one platform first.\n\nWhere are you focusing? Comment below 💬`
+                ],
+                health: [
+                    `${project.handle} | Fitness Journey 🏋️\n\nDay 1 vs Day 90\n\nThe transformation isn't just physical. It's mental, emotional, spiritual.\n\n[Share your progress]\n\nWhere are you in your journey? 💪`,
+                    `Stop waiting for Monday to start.\n\nThat mindset is why you keep restarting.\n\nStart now. Even if it's just:\n• 10 push-ups\n• 5 min walk\n• 1 glass of water\n\nSmall wins compound. 🔥`,
+                    `Workout tip: Consistency > Intensity\n\n3 workouts/week for a year beats 6 workouts/week for a month.\n\nPlay the long game. 🎯`
+                ]
+            };
+
+            const templates = captionTemplates[project.niche] || captionTemplates.motivation;
+            const caption = templates[Math.floor(Math.random() * templates.length)];
+
+            showProjectToolOutput('✍️ Caption Generated', caption);
+        }
+
+        // Generate Hashtags for Project
+        function generateProjectHashtags(projectId) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const nicheHashtags = {
+                motivation: {
+                    viral: '#Motivation #Mindset #Success #Discipline #Goals',
+                    niche: '#PersonalGrowth #SelfImprovement #Productivity #MorningRoutine #Habits',
+                    community: '#MotivationMonday #Hustle #GrowthMindset #Inspiration #BetterYou'
+                },
+                finance: {
+                    viral: '#Money #Finance #Investing #Wealth #FinancialFreedom',
+                    niche: '#PersonalFinance #MoneyTips #PassiveIncome #Budgeting #SideHustle',
+                    community: '#FinanceTok #MoneyMindset #WealthBuilding #InvestSmart #MoneyGoals'
+                },
+                relationships: {
+                    viral: '#Relationships #Dating #Love #RelationshipGoals #RelationshipAdvice',
+                    niche: '#HealthyRelationships #DatingTips #SelfLove #Boundaries #HeartBreak',
+                    community: '#RelationshipTips #LoveYourself #DatingAdvice #RedFlags #SelfCare'
+                },
+                business: {
+                    viral: '#Business #Entrepreneur #Marketing #Growth #Success',
+                    niche: '#BusinessTips #SmallBusiness #Entrepreneurship #DigitalMarketing #ContentStrategy',
+                    community: '#BusinessGrowth #StartupLife #OnlineBusiness #SocialMediaMarketing #BuildInPublic'
+                },
+                health: {
+                    viral: '#Fitness #Health #Workout #FitnessMotivation #HealthyLifestyle',
+                    niche: '#FitnessJourney #GymLife #WorkoutRoutine #HealthTips #Nutrition',
+                    community: '#FitFam #FitnessGoals #TransformationTuesday #HealthyLiving #FitnessAddict'
+                }
+            };
+
+            const platformTags = {
+                instagram: '#Instagram #Reels #InstaDaily #Trending',
+                tiktok: '#TikTok #ForYou #FYP #Viral',
+                twitter: '#TwitterX #Thread',
+                facebook: '#Facebook #SocialMedia',
+                youtube: '#YouTube #YouTubeShorts',
+                linkedin: '#LinkedIn #Professional'
+            };
+
+            const hashtags = nicheHashtags[project.niche] || nicheHashtags.motivation;
+            const platform = platformTags[project.platform] || '';
+
+            const output = `🔥 HASHTAG STRATEGY FOR ${project.name.toUpperCase()}\n\n` +
+                `VIRAL SET:\n${hashtags.viral}\n\n` +
+                `NICHE SET:\n${hashtags.niche}\n\n` +
+                `COMMUNITY SET:\n${hashtags.community}\n\n` +
+                `PLATFORM:\n${platform}\n\n` +
+                `💡 TIP: Mix and match! Use 3-5 viral + 5-8 niche + 2-3 platform tags per post.\n` +
+                `Rotate sets to avoid being flagged as spam!`;
+
+            showProjectToolOutput('#️⃣ Hashtags Generated', output);
+        }
+
+        // Generate Content Ideas for Project
+        function generateProjectContent(projectId) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const contentIdeas = {
+                motivation: [
+                    '5 AM routine that transformed my life',
+                    'Habits that compound over time',
+                    'Overcoming my biggest fear',
+                    'Why discipline beats motivation',
+                    '30-day challenge results',
+                    'Books that changed my mindset',
+                    'Morning vs evening person debate',
+                    'Productivity hacks that actually work',
+                    'Goal setting framework',
+                    'Breaking bad habits for good'
+                ],
+                finance: [
+                    'How I save ₦100k/month',
+                    'Passive income streams explained',
+                    'Investment mistakes to avoid',
+                    'Side hustles for Nigerians',
+                    'Budgeting method that works',
+                    'Crypto vs traditional investing',
+                    'Dollar earning opportunities',
+                    'Building emergency fund',
+                    'Money mindset shifts',
+                    'Financial freedom roadmap'
+                ],
+                relationships: [
+                    'Green flags in healthy relationships',
+                    'How to set boundaries',
+                    'Dealing with breakups',
+                    'Self-love practices',
+                    'Communication tips for couples',
+                    'Dating red flags to watch',
+                    'Healing from past relationships',
+                    'Building trust',
+                    'When to walk away',
+                    'Love language explained'
+                ],
+                business: [
+                    'How I got my first client',
+                    'Content strategy breakdown',
+                    'Marketing on zero budget',
+                    'Scaling to 6 figures',
+                    'Tools I use daily',
+                    'Behind-the-scenes of my business',
+                    'Pricing strategy explained',
+                    'Building an audience',
+                    'Turning followers into customers',
+                    'Business lessons learned'
+                ],
+                health: [
+                    '10-minute full body workout',
+                    'Meal prep for beginners',
+                    'Transformation progress',
+                    'Home workout routine',
+                    'Healthy eating on budget',
+                    'Fitness myths debunked',
+                    'Recovery and rest importance',
+                    'Supplement guide',
+                    'Staying motivated tips',
+                    'Before and after journey'
+                ]
+            };
+
+            const ideas = contentIdeas[project.niche] || contentIdeas.motivation;
+            
+            let output = `📱 CONTENT IDEAS FOR ${project.name.toUpperCase()}\n\n`;
+            output += `Platform: ${project.platform.charAt(0).toUpperCase() + project.platform.slice(1)}\n`;
+            output += `Niche: ${getNicheName(project.niche)}\n\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            output += `🎬 10 CONTENT IDEAS TO POST THIS WEEK:\n\n`;
+            
+            ideas.forEach((idea, index) => {
+                output += `${index + 1}. ${idea}\n`;
+                output += `   Format: ${project.platform === 'tiktok' || project.platform === 'instagram' ? 'Short video/Reel' : 'Post/Thread'}\n\n`;
+            });
+
+            output += `\n💡 PRO TIP: Pick 1-2 ideas, create variations, and batch create content for the week!`;
+
+            showProjectToolOutput('📱 Content Ideas', output);
+        }
+
+        // Generate Weekly Schedule for Project
+        function generateProjectSchedule(projectId) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            let output = `📅 7-DAY CONTENT CALENDAR FOR ${project.name.toUpperCase()}\n\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+            const days = [
+                { day: 'MONDAY', focus: 'Motivational/Educational', time: '7-9 AM' },
+                { day: 'TUESDAY', focus: 'Tutorial/How-To', time: '12-2 PM' },
+                { day: 'WEDNESDAY', focus: 'Behind-the-Scenes', time: '7-9 PM' },
+                { day: 'THURSDAY', focus: 'Trending/Viral Topic', time: '12-2 PM' },
+                { day: 'FRIDAY', focus: 'Entertainment/Fun', time: '6-8 PM' },
+                { day: 'SATURDAY', focus: 'Community Engagement', time: '10 AM-12 PM' },
+                { day: 'SUNDAY', focus: 'Inspiration/Reflection', time: '6-8 PM' }
+            ];
+
+            days.forEach(d => {
+                output += `${d.day}:\n`;
+                output += `• Content Type: ${d.focus}\n`;
+                output += `• Best Time: ${d.time}\n`;
+                output += `• Engage: 20-30 minutes in comments\n`;
+                output += `• Story: Poll or Q&A\n\n`;
+            });
+
+            output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            output += `✅ DAILY CHECKLIST:\n`;
+            output += `□ Create & post 1 main content\n`;
+            output += `□ Share 2-3 stories\n`;
+            output += `□ Engage with 20 accounts in niche\n`;
+            output += `□ Reply to all comments\n`;
+            output += `□ DM 3-5 potential collaborators\n\n`;
+            output += `🎯 Weekly Goal: Consistent posting + genuine engagement = growth`;
+
+            showProjectToolOutput('📅 Weekly Schedule', output);
+        }
+
+        // Track Project Progress
+        function trackProjectProgress(projectId) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const progress = Math.min(100, (project.followers / project.goal) * 100);
+            const remaining = project.goal - project.followers;
+            const daysElapsed = Math.floor((Date.now() - new Date(project.createdDate).getTime()) / (1000 * 60 * 60 * 24));
+            const dailyGrowthNeeded = Math.ceil(remaining / 30); // Assume 30 days to goal
+
+            let output = `📊 PROGRESS TRACKER FOR ${project.name.toUpperCase()}\n\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            output += `📈 CURRENT STATUS:\n`;
+            output += `Current: ${project.followers.toLocaleString()} followers\n`;
+            output += `Goal: ${project.goal.toLocaleString()} followers\n`;
+            output += `Progress: ${progress.toFixed(1)}%\n`;
+            output += `Remaining: ${remaining.toLocaleString()} followers\n\n`;
+            output += `⏱️ TIME TRACKING:\n`;
+            output += `Days since creation: ${daysElapsed}\n`;
+            output += `Daily growth needed: ${dailyGrowthNeeded} followers/day\n\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            output += `✅ UPDATE YOUR FOLLOWERS:\n`;
+            output += `Visit the Projects page and update your current follower count to track your real progress!\n\n`;
+            output += `💡 GROWTH TIPS:\n`;
+            output += `• Post consistently (1-2x daily)\n`;
+            output += `• Engage genuinely with your audience\n`;
+            output += `• Use trending sounds/topics\n`;
+            output += `• Collaborate with similar creators\n`;
+            output += `• Analyze what content performs best\n`;
+            output += `• Double down on winners`;
+
+            showProjectToolOutput('📊 Progress Tracker', output);
+        }
+
+        // Generate Bio for Project
+        function generateProjectBio(projectId) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const bioTemplates = {
+                motivation: [
+                    `🔥 Helping you build discipline & win\n💪 ${project.audience || 'Mindset coach'}\n🎯 [Your unique value]\n📩 DM for collabs`,
+                    `🚀 ${project.followers.toLocaleString()}+ following the journey\n✨ Mindset | Goals | Growth\n📍 [Your location]\n👇 Transform your life`
+                ],
+                finance: [
+                    `💰 Money tips that actually work\n📈 Teaching you to build wealth\n🇳🇬 ${project.audience || 'For Nigerians'}\n💬 DM 'MONEY' for free guide`,
+                    `💵 ${project.followers.toLocaleString()}+ learning to invest\n🎯 Finance | Investing | Side Hustles\n📊 Free resources below 👇`
+                ],
+                relationships: [
+                    `❤️ Relationship & dating advice\n💕 Helping you find & keep love\n✨ ${project.audience || 'For millennials'}\n📩 DM for coaching`,
+                    `💑 ${project.followers.toLocaleString()}+ healing & growing\n🌟 Self-love | Boundaries | Growth\n👇 Join the community`
+                ],
+                business: [
+                    `📈 Teaching you to scale online\n💼 ${project.audience || 'For entrepreneurs'}\n🎯 Marketing | Growth | Strategy\n📩 DM 'GROW' for tips`,
+                    `🚀 ${project.followers.toLocaleString()}+ building businesses\n💡 Content | Marketing | Sales\n👇 Free resources here`
+                ],
+                health: [
+                    `🏋️ Your fitness transformation guide\n💪 ${project.audience || 'Beginner-friendly'}\n🥗 Workouts | Nutrition | Mindset\n📩 DM for programs`,
+                    `🔥 ${project.followers.toLocaleString()}+ getting stronger\n✨ Health | Fitness | Wellness\n👇 Start your journey`
+                ]
+            };
+
+            const templates = bioTemplates[project.niche] || bioTemplates.motivation;
+            let output = `👤 BIO IDEAS FOR ${project.name.toUpperCase()}\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            
+            templates.forEach((bio, index) => {
+                output += `OPTION ${index + 1}:\n${bio}\n\n━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            });
+
+            output += `💡 TIPS:\n`;
+            output += `• Keep it under 150 characters\n`;
+            output += `• Include a clear CTA\n`;
+            output += `• Add your niche keywords\n`;
+            output += `• Use emojis strategically\n`;
+            output += `• Update regularly with follower count`;
+
+            showProjectToolOutput('👤 Bio Generator', output);
+        }
+
+        // Show Project Tool Output
+        function showProjectToolOutput(title, content) {
+            document.getElementById('projectToolTitle').textContent = title;
+            document.getElementById('projectToolText').textContent = content;
+            document.getElementById('projectToolOutput').style.display = 'block';
+            window.scrollTo(0, document.getElementById('projectToolOutput').offsetTop - 100);
+        }
+
+        // Close Project Tool
+        function closeProjectTool() {
+            document.getElementById('projectToolOutput').style.display = 'none';
+        }
+
+        // Copy Project Tool Output
+        function copyProjectToolOutput() {
+            const text = document.getElementById('projectToolText').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Copied to clipboard!');
+            });
+        }
+
+        // Update Project Followers
+        function updateProjectFollowers(projectId) {
+            const newFollowers = prompt('Enter your current follower count:');
+            if (!newFollowers || isNaN(newFollowers)) {
+                alert('⚠️ Please enter a valid number!');
+                return;
+            }
+
+            let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const projectIndex = projects.findIndex(p => p.id === projectId);
+            
+            if (projectIndex === -1) return;
+
+            projects[projectIndex].followers = parseInt(newFollowers);
+            projects[projectIndex].lastUpdated = new Date().toLocaleDateString();
+            localStorage.setItem('projects', JSON.stringify(projects));
+
+            alert('✅ Followers updated successfully!');
+            
+            // Refresh the view
+            closeProjectDetails();
+            loadProjects();
+            viewProjectDetails(projectId);
         }
 
         // VIRAL STRATEGY TEMPLATES
