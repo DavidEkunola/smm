@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -4502,7 +4503,7 @@
             const fullPrompt = prompt + (styleModifiers[style] || '');
 
             document.getElementById('aiPromptText').textContent = `🎨 OPTIMIZED AI PROMPT:\n\n${fullPrompt}\n\n💡 TIPS:\n• Use this prompt in DALL-E, Midjourney, or Stable Diffusion\n• Add aspect ratio: --ar 1:1 (square) or --ar 9:16 (story)\n• For Midjourney, add: --v 5 for latest version\n• Experiment with different keywords!`;
-            document.getElementById('aiPromptOutput').classList.add('show');
+            document.getElementById('aiPromptOutput').classList.add('active');
         }
 
         // Color Palette Extractor
@@ -4695,7 +4696,7 @@
             else if (score >= 40) grade = 'Average';
 
             document.getElementById('headlineScoreText').textContent = `📊 HEADLINE SCORE: ${score}/100\n\nGrade: ${grade}\n\nWord Count: ${words.length} ${words.length >= 6 && words.length <= 12 ? '✅' : '⚠️'}\nCharacter Count: ${headline.length} ${headline.length >= 40 && headline.length <= 60 ? '✅' : '⚠️'}\nPower Words: ${hasPowerWords ? '✅ Yes' : '❌ None detected'}\nNumbers: ${/\d/.test(headline) ? '✅ Yes' : '❌ None'}\nEmotional Appeal: ${hasEmotion ? '✅ Yes' : '⚠️ Could be stronger'}`;
-            document.getElementById('headlineScore').classList.add('show');
+            document.getElementById('headlineScore').classList.add('active');
         }
 
         // Emoji Suggester
@@ -4733,7 +4734,7 @@
                 : '💡 No specific emojis detected. Try using: ✨🌟💫 for general sparkle, or 👉 for call-to-action!';
 
             document.getElementById('emojiText').textContent = result;
-            document.getElementById('emojiOutput').classList.add('show');
+            document.getElementById('emojiOutput').classList.add('active');
         }
 
         // Translation (Mock - would need API in production)
@@ -4745,7 +4746,7 @@
 
             // Mock translation
             document.getElementById('translatedText').textContent = `🌍 TRANSLATED TO ${lang.toUpperCase()}:\n\n[Translation would appear here]\n\n💡 In production, this would connect to Google Translate API or similar service.`;
-            document.getElementById('translateOutput').classList.add('show');
+            document.getElementById('translateOutput').classList.add('active');
         }
 
         // Readability Analyzer
@@ -4766,7 +4767,7 @@
                          score > 50 ? 'Fairly Difficult' : 'Difficult';
 
             document.getElementById('readabilityScore').textContent = `📖 READABILITY SCORE: ${Math.round(score)}/100\n\nLevel: ${level}\n\nWords: ${words}\nSentences: ${sentences}\nAvg Words/Sentence: ${(words/sentences).toFixed(1)}\n\n💡 TIP: Aim for 60-80 for social media content!`;
-            document.getElementById('readabilityOutput').classList.add('show');
+            document.getElementById('readabilityOutput').classList.add('active');
         }
 
         function countSyllables(text) {
@@ -4793,7 +4794,7 @@
             const score = ((posCount - negCount) / (posCount + negCount + 1) * 100).toFixed(0);
 
             document.getElementById('sentimentScore').textContent = `💭 SENTIMENT ANALYSIS:\n\nOverall: ${sentiment}\nScore: ${score}\n\nPositive Words: ${posCount}\nNegative Words: ${negCount}\n\n💡 TIP: Positive content typically performs better!`;
-            document.getElementById('sentimentOutput').classList.add('show');
+            document.getElementById('sentimentOutput').classList.add('active');
         }
 
         // Template System
@@ -4870,7 +4871,7 @@
             const q1 = document.getElementById('quiz1').value || 'Question 1';
 
             document.getElementById('quizText').textContent = `🎯 ${title}\n\nQ1: ${q1}\n\n📊 Create multiple questions and track responses!`;
-            document.getElementById('quizOutput').classList.add('show');
+            document.getElementById('quizOutput').classList.add('active');
         }
 
         function createCountdown() {
@@ -4978,7 +4979,7 @@
             const result = `🔍 HASHTAG STATUS CHECK:\n\n✅ SAFE (${safe.length}):\n${safe.join(' ')}\n\n${banned.length > 0 ? `🚫 BANNED (${banned.length}):\n${banned.join(' ')}\n\n⚠️ Remove banned hashtags to avoid shadow ban!` : '✅ All hashtags are safe!'}`;
 
             document.getElementById('bannedText').textContent = result;
-            document.getElementById('bannedOutput').classList.add('show');
+            document.getElementById('bannedOutput').classList.add('active');
         }
 
         function predictTrends() {
@@ -4997,7 +4998,7 @@
             ];
 
             document.getElementById('trendText').textContent = `🔮 TRENDING HASHTAGS FOR ${niche.toUpperCase()}:\n\n${trends.join('\n')}\n\n💡 These hashtags are predicted to trend in the next 30 days!`;
-            document.getElementById('trendOutput').classList.add('show');
+            document.getElementById('trendOutput').classList.add('active');
         }
 
         function findRelated() {
@@ -5017,7 +5018,7 @@
             ];
 
             document.getElementById('relatedText').textContent = `🔗 RELATED HASHTAGS:\n\n${related.join('\n')}`;
-            document.getElementById('relatedOutput').classList.add('show');
+            document.getElementById('relatedOutput').classList.add('active');
         }
 
         function scoreHashtagDifficulty() {
@@ -5030,7 +5031,7 @@
                              'Hard (High competition)';
 
             document.getElementById('difficultyScore').textContent = `💯 DIFFICULTY SCORE: ${score}/100\n\n${difficulty}\n\n💡 ${score < 30 ? 'Great choice! Easy to rank.' : score < 70 ? 'Good balance of reach and competition.' : 'Very competitive. Consider mix with smaller tags.'}`;
-            document.getElementById('difficultyOutput').classList.add('show');
+            document.getElementById('difficultyOutput').classList.add('active');
         }
 
         function getOptimalCount() {
@@ -5047,7 +5048,7 @@
 
             const optimal = recommendations[platform][size];
             document.getElementById('optimalText').textContent = `🎯 OPTIMAL HASHTAG COUNT:\n\n${platform}: ${optimal} hashtags\n\n💡 Mix 30% big, 50% medium, 20% small tags for best results!`;
-            document.getElementById('optimalOutput').classList.add('show');
+            document.getElementById('optimalOutput').classList.add('active');
         }
 
         function saveRotationSet() {
@@ -5090,7 +5091,7 @@
             ];
 
             document.getElementById('localText').textContent = `📍 LOCAL HASHTAGS:\n\n${local.join('\n')}`;
-            document.getElementById('localOutput').classList.add('show');
+            document.getElementById('localOutput').classList.add('active');
         }
 
         // SEO Tools
@@ -5112,7 +5113,7 @@
             ];
 
             document.getElementById('keywordText').textContent = `🔍 TOP KEYWORDS FOR ${platform}:\n\n${keywords.join('\n')}\n\n💡 Use these in titles, descriptions, and captions!`;
-            document.getElementById('keywordOutput').classList.add('show');
+            document.getElementById('keywordOutput').classList.add('active');
         }
 
         function generateAltText() {
@@ -5121,7 +5122,7 @@
             const altText = `${description}, high quality photo, professional photography, detailed image for social media`;
 
             document.getElementById('altText').textContent = `♿ ALT TEXT:\n\n${altText}\n\n💡 This improves accessibility AND SEO!`;
-            document.getElementById('altOutput').classList.add('show');
+            document.getElementById('altOutput').classList.add('active');
         }
 
         function optimizeYTTitle() {
@@ -5137,7 +5138,7 @@
             ];
 
             document.getElementById('ytTitleText').textContent = `🎯 OPTIMIZED TITLES:\n\n${titles.join('\n\n')}\n\n💡 Include keyword early and keep under 60 characters!`;
-            document.getElementById('ytTitleOutput').classList.add('show');
+            document.getElementById('ytTitleOutput').classList.add('active');
         }
 
         function generateMetaDescription() {
@@ -5147,7 +5148,7 @@
             const meta = content.substring(0, 155) + '... [Learn more]';
 
             document.getElementById('metaText').textContent = `📝 META DESCRIPTION:\n\n${meta}\n\nLength: ${meta.length} characters\n\n💡 Keep under 160 characters for best display!`;
-            document.getElementById('metaOutput').classList.add('show');
+            document.getElementById('metaOutput').classList.add('active');
         }
 
         function spyHashtags() {
@@ -5167,7 +5168,7 @@
             ];
 
             document.getElementById('spyText').textContent = `🕵️ TOP HASHTAGS USED BY ${target}:\n\n${topTags.join('\n')}\n\n💡 Analyze and adapt for your content!`;
-            document.getElementById('spyOutput').classList.add('show');
+            document.getElementById('spyOutput').classList.add('active');
         }
 
         function estimateEngagement() {
@@ -5175,12 +5176,12 @@
             const estimate = Math.floor(avg * (1 + Math.random() * 0.5));
 
             document.getElementById('estimateText').textContent = `🔮 ESTIMATED ENGAGEMENT:\n\n${estimate} interactions\n\n📊 Based on your hashtag set and current average.\n\n💡 This is a ${estimate > avg ? 'positive' : 'neutral'} projection!`;
-            document.getElementById('estimateOutput').classList.add('show');
+            document.getElementById('estimateOutput').classList.add('active');
         }
 
         function optimizeCombo() {
             document.getElementById('comboText').textContent = `🎯 OPTIMIZED HASHTAG COMBO:\n\nAnalyzing your hashtags...\n\nTop 30 combinations generated based on:\n✅ Reach potential\n✅ Competition level\n✅ Relevance score\n\n💡 Use different combinations for each post!`;
-            document.getElementById('comboOutput').classList.add('show');
+            document.getElementById('comboOutput').classList.add('active');
         }
 
         // FUTURE-READY FEATURES
@@ -5202,7 +5203,7 @@
             recognition.onresult = function(event) {
                 const transcript = event.results[0][0].transcript;
                 document.getElementById('voiceText').textContent = transcript;
-                document.getElementById('voiceOutput').classList.add('show');
+                document.getElementById('voiceOutput').classList.add('active');
             };
 
             recognition.onend = function() {
@@ -5221,7 +5222,7 @@
             video.style.display = 'block';
 
             document.getElementById('videoCaptionsText').textContent = '🎬 AUTO-CAPTIONING:\n\nVideo loaded! In production, this would:\n✅ Extract audio\n✅ Convert speech to text\n✅ Generate SRT captions\n✅ Sync with timestamps\n\n💡 Use services like Rev.com or Otter.ai for production!';
-            document.getElementById('videoCaptionsOutput').classList.add('show');
+            document.getElementById('videoCaptionsOutput').classList.add('active');
         }
 
         function findMusic() {
@@ -5236,7 +5237,7 @@
             };
 
             document.getElementById('musicText').textContent = `🎵 MUSIC RECOMMENDATIONS:\n\n${mood}:\n\n${suggestions[mood].join('\n')}\n\n💡 Sources:\n• YouTube Audio Library\n• Epidemic Sound\n• Artlist\n• Uppbeat`;
-            document.getElementById('musicOutput').classList.add('show');
+            document.getElementById('musicOutput').classList.add('active');
         }
 
         function create3DAvatar(event) {
@@ -5263,7 +5264,7 @@
             reader.readAsDataURL(file);
 
             document.getElementById('avatarText').textContent = '🤖 3D AVATAR CREATED!\n\n💡 In production, this would use AI to:\n✅ Remove background\n✅ Apply 3D effects\n✅ Add animations\n✅ Generate variations';
-            document.getElementById('avatarOutput').classList.add('show');
+            document.getElementById('avatarOutput').classList.add('active');
         }
 
         function generateAIVideoScript() {
@@ -5271,7 +5272,7 @@
             const duration = document.getElementById('aiVideoDuration').value;
 
             document.getElementById('aiVideoText').textContent = `🎬 AI VIDEO SCRIPT:\n\nTopic: ${topic}\nDuration: ${duration}\n\n[00:00] HOOK\n"Stop scrolling! This ${topic} tip will change everything..."\n\n[00:05] INTRO\n"Today I'm sharing..."\n\n[00:15] CONTENT\n[Main value delivered]\n\n[00:45] CTA\n"Follow for more!"`;
-            document.getElementById('aiVideoOutput').classList.add('show');
+            document.getElementById('aiVideoOutput').classList.add('active');
         }
 
         function generateVariations() {
@@ -5286,7 +5287,7 @@
             }
 
             document.getElementById('varyText').textContent = `✍️ CAPTION VARIATIONS:\n\n${variations.join('\n')}\n\n💡 Test different versions to see what resonates!`;
-            document.getElementById('varyOutput').classList.add('show');
+            document.getElementById('varyOutput').classList.add('active');
         }
 
         function generateARIdea() {
@@ -5301,7 +5302,7 @@
             };
 
             document.getElementById('arText').textContent = `📱 AR FILTER IDEAS:\n\nGoal: ${goal}\n\n${ideas[goal]}\n\n💡 Use Spark AR or Lens Studio to create!`;
-            document.getElementById('arOutput').classList.add('show');
+            document.getElementById('arOutput').classList.add('active');
         }
 
         function generate3DText() {
@@ -5352,7 +5353,7 @@
             };
 
             document.getElementById('nftText').textContent = `🔗 NFT METADATA:\n\n${JSON.stringify(metadata, null, 2)}\n\n💡 Upload to IPFS and use in your NFT smart contract!`;
-            document.getElementById('nftOutput').classList.add('show');
+            document.getElementById('nftOutput').classList.add('active');
         }
 
         function generateContentHash(event) {
@@ -5367,7 +5368,7 @@
                 const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
                 document.getElementById('hashText').textContent = `📜 CONTENT VERIFICATION HASH:\n\n${hashHex}\n\n💡 This cryptographic hash proves:\n✅ Content ownership\n✅ Timestamp of creation\n✅ Unchanged content\n\nStore this hash on blockchain for permanent proof!`;
-                document.getElementById('hashOutput').classList.add('show');
+                document.getElementById('hashOutput').classList.add('active');
             };
             reader.readAsArrayBuffer(file);
         }
@@ -5395,7 +5396,7 @@
 
             if (platform && explanations[platform]) {
                 document.getElementById('algorithmText').textContent = explanations[platform];
-                document.getElementById('algorithmOutput').classList.add('show');
+                document.getElementById('algorithmOutput').classList.add('active');
             }
         }
 
@@ -5421,7 +5422,7 @@
                        percentage >= 40 ? '📚 Keep Learning' : '💪 Practice More';
 
             document.getElementById('quizScore').textContent = `📊 YOUR SCORE: ${score}/5 (${percentage}%)\n\n${grade}\n\n💡 ${percentage >= 80 ? 'You know your stuff!' : 'Review the best practices section to improve!'}`;
-            document.getElementById('quizResults').classList.add('show');
+            document.getElementById('quizResults').classList.add('active');
         }
 
         function searchGlossary() {
@@ -5552,7 +5553,7 @@
             output += `🚀 READY TO DOMINATE! Copy everything above and start creating!\n`;
 
             document.getElementById('instantContentText').textContent = output;
-            document.getElementById('instantContentOutput').classList.add('show');
+            document.getElementById('instantContentOutput').classList.add('active');
         }
 
         function generateMore() {
@@ -5962,7 +5963,464 @@ Year 2+: $5000-20000+/month
 • Story replies
 • Saves + Shares (most important)
 
-🚀 GOAL: 5-10% engagement rate (amazing!)`
+🚀 GOAL: 5-10% engagement rate (amazing!)`,
+
+                'content-calendar': `📅 90-DAY CONTENT CALENDAR BLUEPRINT
+━━━━━━━━━━━━━━━━━━━━━━
+
+📊 MONTH 1: FOUNDATION & AWARENESS
+Week 1-2: Introduction Phase
+• Day 1-3: Who you are + Your story
+• Day 4-7: Value bombs (tips/tricks)
+• Day 8-10: Behind the scenes
+• Day 11-14: Educational content
+
+Week 3-4: Problem Agitation
+• Day 15-21: Common mistakes in your niche
+• Day 22-28: Pain points + Solutions
+• Day 29-30: Testimonials/Case studies
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+📊 MONTH 2: ENGAGEMENT & TRUST
+Week 5-6: Value Delivery
+• Monday: How-to guides
+• Tuesday: Quick tips
+• Wednesday: Industry insights
+• Thursday: Personal stories
+• Friday: Wins/Results
+• Weekend: Entertainment/Relatable
+
+Week 7-8: Community Building
+• Interactive content (polls, Q&A)
+• User-generated content
+• Collaborations
+• Challenges/Contests
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+📊 MONTH 3: MONETIZATION & SCALE
+Week 9-10: Soft Selling
+• Product teasers
+• Problem → Solution posts
+• Before/After results
+• Limited offers
+
+Week 11-12: Launch & Scale
+• Product launch content
+• Customer success stories
+• FAQ content
+• Repurpose top performers
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 DAILY POSTING SCHEDULE:
+• 1 Main Post/Reel (11AM or 7PM)
+• 3-5 Stories throughout day
+• 1 Carousel (every 3 days)
+• 1 Thread/Long-form (weekly)
+
+💡 CONTENT MIX (80/20 Rule):
+• 80% Value/Educational/Entertainment
+• 20% Promotional/Sales
+
+📊 TRACK WEEKLY:
+✅ What content got most saves
+✅ Which hooks stopped scrolling
+✅ Best posting times for YOUR audience
+✅ Engagement patterns
+
+🚀 BATCH CREATION TIP:
+Create 30 pieces of content in 1 day, schedule for month!`,
+
+                'faceless-empire': `🎭 FACELESS EMPIRE BUILDING GUIDE
+━━━━━━━━━━━━━━━━━━━━━━
+
+📊 WHY FACELESS WORKS IN 2026:
+✅ Privacy protection
+✅ Scale without personal brand limits
+✅ Focus on value, not appearance
+✅ Easier to outsource/automate
+✅ Less burnout
+✅ Multiple niches possible
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🎬 FACELESS CONTENT FORMATS:
+
+1️⃣ TEXT + STOCK FOOTAGE
+• Black screen + animated text
+• Stock video overlays
+• Cinematic b-roll
+• Tools: CapCut, InShot, Canva
+
+2️⃣ SCREEN RECORDINGS
+• Tutorial walkthroughs
+• Software demos
+• Dashboard reviews
+• Tools: OBS, Loom, Screen recorder
+
+3️⃣ AI VOICES
+• Text-to-speech narration
+• Multiple voice options
+• Natural sounding
+• Tools: ElevenLabs, Murf, Play.ht
+
+4️⃣ ANIMATION
+• Animated characters
+• Motion graphics
+• Explainer videos
+• Tools: Animaker, Vyond, Doodly
+
+5️⃣ POV STYLE
+• Hand movements only
+• First-person perspective
+• Body shots (no face)
+• Close-ups of activities
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+💡 WINNING FACELESS NICHES:
+• Motivation/Mindset
+• Finance/Money tips
+• Stoic philosophy
+• Study techniques
+• Life hacks
+• Book summaries
+• Psychology facts
+• Relationship advice
+• Business strategies
+• Productivity tips
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 CONTENT CREATION WORKFLOW:
+
+Step 1: Script (5 min)
+• Hook line
+• 3 main points
+• CTA
+
+Step 2: Visuals (10 min)
+• Find stock footage (Pexels, Pixabay)
+• Or create slides (Canva)
+
+Step 3: Edit (15 min)
+• Add text overlays
+• Background music
+• Transitions
+• Captions
+
+Step 4: Post (2 min)
+• SEO caption
+• 3-5 hashtags
+• Schedule
+
+Total: 30 min per video × 3 = 90 min/day = 21 videos/week
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+💰 MONETIZATION STRATEGIES:
+1. Affiliate links in bio
+2. Digital products (templates, guides)
+3. Courses/Coaching
+4. Ad revenue (YouTube, TikTok)
+5. Sponsorships (brands love faceless!)
+6. License content to brands
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 SCALING TIPS:
+• Outsource editing (Fiverr, Upwork)
+• Use AI for scripts (ChatGPT)
+• Batch create 30 videos/month
+• Repurpose across all platforms
+• Create content templates
+• Automate posting (Later, Buffer)
+
+💎 SUCCESS FORMULA:
+Consistent Value × Hook Mastery × Volume = Faceless Empire`,
+
+                'naija-dollar': `🇳🇬 NAIJA DOLLAR METHOD 2026
+━━━━━━━━━━━━━━━━━━━━━━
+
+💰 TOP 10 DOLLAR-EARNING METHODS FOR NIGERIANS:
+
+1️⃣ FREELANCE WRITING
+✅ Platforms: Upwork, Fiverr, Contently
+✅ Services: Blog posts, copywriting, ghostwriting
+✅ Rate: $20-200/article
+✅ Skills needed: Good English, research
+✅ Start: Build portfolio on Medium first
+
+2️⃣ SOCIAL MEDIA MANAGEMENT
+✅ Manage accounts for US/UK businesses
+✅ Rate: $300-2000/month per client
+✅ Tools: Buffer, Canva, Later (all free tiers)
+✅ Start: Offer free trial to 1 client
+
+3️⃣ VIRTUAL ASSISTANCE
+✅ Platforms: Belay, Time Etc, Fancy Hands
+✅ Tasks: Email, scheduling, admin
+✅ Rate: $5-30/hour
+✅ Easy entry, flexible hours
+
+4️⃣ YOUTUBE FACELESS CHANNELS
+✅ Niches: Finance, Motivation, Facts
+✅ Revenue: AdSense + Affiliates
+✅ Earnings: $200-10000+/month
+✅ No camera needed!
+
+5️⃣ AFFILIATE MARKETING
+✅ Promote: Amazon, ClickBank, Expertnaire
+✅ Method: Blog, YouTube, Instagram
+✅ Earnings: 5-50% commission
+✅ Passive income potential
+
+6️⃣ ONLINE TUTORING
+✅ Platforms: VIPKid, Preply, Cambly
+✅ Teach: English, Math, any skill
+✅ Rate: $10-40/hour
+✅ Flexible schedule
+
+7️⃣ GRAPHIC DESIGN
+✅ Platforms: 99designs, Fiverr, DesignCrowd
+✅ Tools: Canva (free), Adobe (paid)
+✅ Projects: Logos, social media, branding
+✅ Rate: $50-5000/project
+
+8️⃣ DROPSHIPPING/E-COMMERCE
+✅ Sell to US/UK customers
+✅ Use: Shopify + AliExpress
+✅ No inventory needed
+✅ Profit: $500-5000+/month
+
+9️⃣ VOICE OVER WORK
+✅ Platforms: Voices.com, Bunny Studio
+✅ Equipment: Good mic ($50-200)
+✅ Rate: $50-500/project
+✅ High demand for African accents!
+
+🔟 CONTENT CREATION
+✅ UGC (User Generated Content)
+✅ Stock photos/videos
+✅ TikTok creativity program
+✅ Instagram bonuses
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+💳 RECEIVING PAYMENTS IN NIGERIA:
+
+Top Options:
+• Payoneer (lowest fees)
+• Wise (formerly TransferWise)
+• PayPal (now works!)
+• Flutterwave
+• Chipper Cash
+• Grey.co
+• Barter by Flutterwave
+
+💡 Pro Tip: Use Domiciliary account + Payoneer combo
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ FASTEST PATH TO FIRST $1000:
+
+Week 1-2:
+• Pick ONE method above
+• Set up profiles
+• Create portfolio samples
+• Apply to 10 jobs daily
+
+Week 3-4:
+• Land first 1-3 clients
+• Deliver exceptional work
+• Ask for testimonials
+• Reinvest in tools/skills
+
+Month 2-3:
+• Raise rates 50%
+• Streamline process
+• Scale to $1000/month
+• Add second income stream
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 SURVIVAL TIPS FOR NAIJA ECONOMY:
+
+1. Dollar income (protect from naira devaluation)
+2. Multiple income streams (never rely on 1)
+3. Save in dollars (Grey, Domiciliary)
+4. Reinvest profits (skills, tools, marketing)
+5. Network globally (LinkedIn, Twitter)
+6. Keep learning (YouTube University!)
+7. Start TODAY (not tomorrow!)
+
+💰 REALISTIC TIMELINE:
+Month 1: $100-300
+Month 3: $500-1000
+Month 6: $1500-3000
+Year 1: $3000-10000/month
+
+🇳🇬 WE MOVE! 💪`,
+
+                'algorithm-hack': `⚡ ALGORITHM HACK 2026
+━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 HOW SOCIAL MEDIA ALGORITHMS WORK IN 2026:
+
+📊 NEW PRIORITY RANKING:
+1. WATCH TIME / RETENTION (40%)
+2. SAVES (25%)
+3. SHARES (20%)
+4. COMMENTS (10%)
+5. LIKES (5%)
+
+❌ WHAT CHANGED:
+• Likes barely matter now
+• Follower count = vanity metric
+• Reach ≠ Views anymore
+• Hashtags = less powerful
+• Keywords = NEW SEO
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🔥 THE 7 ALGORITHM HACKS:
+
+1️⃣ HOOK IN 0.5 SECONDS
+• Not 3 seconds - HALF A SECOND
+• Pattern interrupt (unexpected visual/text)
+• Number + curiosity gap
+• Movement/Action immediately
+Example: "Wait, what?!" + zoom in
+
+2️⃣ RE-HOOK EVERY 7-10 SECONDS
+• Don't let them scroll away
+• "But wait, there's more..."
+• "The crazy part is..."
+• "Here's what's wild..."
+• Keep them watching!
+
+3️⃣ KEYWORD OPTIMIZATION
+• Captions = search engine now
+• First line = most important
+• Include niche keywords 3-5 times
+• Social search is HUGE in 2026
+Example: "social media growth tips" not just "tips"
+
+4️⃣ POST LENGTH MATTERS
+• Instagram Reels: 7-15 seconds (highest reach)
+• TikTok: 15-45 seconds (sweet spot)
+• YouTube Shorts: 15-60 seconds
+• Longer ≠ better (retention drops)
+
+5️⃣ SAVE-WORTHY CONTENT
+• How-to guides
+• Checklists/Templates
+• Resource lists
+• Screenshots/Notes format
+• CTA: "Save this for later!"
+• Algorithm LOVES saves (25% weight!)
+
+6️⃣ SHARE TRIGGERS
+• Controversial takes (respectful)
+• Relatable memes
+• Shocking statistics
+• "Send this to someone who..."
+• Tag challenges
+• Shares = 20% of algorithm!
+
+7️⃣ COMMENTS STRATEGY
+• Ask specific questions
+• Create debate
+• "Team A or Team B? Comment below"
+• Reply to EVERY comment (first 60 min)
+• Longer replies = more engagement
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+⏰ POSTING TIME HACKS:
+
+Best Times (Nigeria):
+• 6-8 AM (people waking up)
+• 11 AM - 1 PM (lunch break)
+• 7-9 PM (after work)
+• 10 PM - 12 AM (bedtime scroll)
+
+❌ Worst Times:
+• 2-5 AM (low activity)
+• 3-5 PM (work hours)
+
+💡 Pro Tip: Test YOUR audience times!
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+📱 PLATFORM-SPECIFIC HACKS:
+
+INSTAGRAM:
+• Use 3-5 hashtags ONLY (keyword-rich)
+• Location tags = local boost
+• Alt text = SEO opportunity
+• Carousel = highest reach
+• Reels with trending audio = 3x reach
+
+TIKTOK:
+• First frame = everything
+• Trending sounds (but niche-relevant)
+• Duets/Stitches for reach
+• Post 3-5x daily for algorithm love
+• Morning posts perform better
+
+X/TWITTER:
+• Threads = massive reach
+• Reply guys = free visibility
+• Quote tweets > retweets
+• Polls = 2x engagement
+• Tweet every 3-4 hours
+
+YOUTUBE:
+• Thumbnail = 70% of success
+• Title = keyword + curiosity
+• First 30 seconds = watch time
+• End screen = session time
+• Consistency > quality
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 THE ULTIMATE FORMULA:
+
+Viral Content = 
+HOOK (0.5s) + 
+VALUE (clear benefit) + 
+RE-HOOKS (every 10s) + 
+SAVE-WORTHY (practical) + 
+CTA (specific action) + 
+KEYWORDS (SEO) + 
+TIMING (peak hours)
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+💎 BONUS HACKS:
+
+• Delete non-performing posts after 48 hours
+• Repost winners after 30 days
+• Study your analytics weekly
+• Test EVERYTHING (A/B test)
+• Quality thumbnails = 10x views
+• Captions with emojis = more engagement
+• Pin best comment to top
+• Cross-promote on all platforms
+• Engage 30 min before posting
+• Use AI tools (ChatGPT for scripts)
+
+🎯 TRACK THESE METRICS:
+✅ Average watch time
+✅ Save rate
+✅ Share rate
+✅ Comments per view
+✅ Profile visits from posts
+
+⚡ 2026 = RETENTION IS KING!`
             };
 
             if (!strategies[type]) {
@@ -5972,7 +6430,7 @@ Year 2+: $5000-20000+/month
             }
 
             document.getElementById('strategyText').textContent = output;
-            document.getElementById('strategyOutput').classList.add('show');
+            document.getElementById('strategyOutput').classList.add('active');
         }
 
         function expandStrategy() {
@@ -6069,7 +6527,7 @@ Year 2+: $5000-20000+/month
             output += `• Share to story immediately\n`;
 
             document.getElementById('reelText').textContent = output;
-            document.getElementById('reelOutput').classList.add('show');
+            document.getElementById('reelOutput').classList.add('active');
         }
 
         // CAROUSEL CONTENT GENERATOR
@@ -6134,7 +6592,7 @@ Year 2+: $5000-20000+/month
             output += `\n💡 Use Canva for easy design!`;
 
             document.getElementById('carouselContentText').textContent = output;
-            document.getElementById('carouselContentOutput').classList.add('show');
+            document.getElementById('carouselContentOutput').classList.add('active');
         }
 
         // THREAD GENERATOR
@@ -6191,7 +6649,7 @@ Year 2+: $5000-20000+/month
             output += `• Retweet 2-3 days later for new audience\n`;
 
             document.getElementById('threadText').textContent = output;
-            document.getElementById('threadOutput').classList.add('show');
+            document.getElementById('threadOutput').classList.add('active');
         }
 
         // SMART CAPTION GENERATOR
@@ -6237,7 +6695,7 @@ Year 2+: $5000-20000+/month
             }
 
             document.getElementById('smartCaptionText').textContent = output;
-            document.getElementById('smartCaptionOutput').classList.add('show');
+            document.getElementById('smartCaptionOutput').classList.add('active');
         }
 
         function generateCaptionVariations() {
@@ -6278,9 +6736,14 @@ Year 2+: $5000-20000+/month
             document.getElementById(tab + '-tab').classList.remove('hidden');
             
             // Update tab buttons
-            const tabs = document.querySelectorAll('#ai-prompts .tab');
+            const tabs = document.querySelectorAll('#ai-prompts .tabs .tab');
             tabs.forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
+            // Find and activate the clicked tab
+            tabs.forEach(t => {
+                if (t.onclick && t.onclick.toString().includes(`'${tab}'`)) {
+                    t.classList.add('active');
+                }
+            });
         }
 
         function copyPrompt(button, promptName) {
@@ -6316,127 +6779,227 @@ Year 2+: $5000-20000+/month
             const niche = document.getElementById('customNiche').value || 'your niche';
             const goal = document.getElementById('customGoal').value || 'growth';
             
-            const prompts = {
+            const contentResults = {
                 'Instagram': {
-                    'Reels': `Create 30 faceless Instagram Reels for ${niche}. Each Reel should be 15-30 seconds with:
-• Hook in first 3 seconds (number + curiosity gap)
-• Text overlay animations
-• Trending audio suggestions
-• Re-hooks every 10 seconds
-• Strong CTA (Save/Share/Follow)
-Goal: ${goal}
-Format: Black screen + text or stock footage (no faces)
-Include keyword-rich captions for social search.`,
-                    'Carousels': `Generate 20 carousel posts for ${niche} focused on ${goal}. Each carousel:
-• Controversial/hook slide 1
-• 8-10 slides total
-• Mix text + minimal graphics
-• Final slide: Strong CTA
-• SEO-optimized caption
-Design: Clean, modern, high-contrast colors`,
-                    'Threads': `Write 15 X/Twitter threads for ${niche} to achieve ${goal}:
-• Hook tweet (curiosity + benefit)
-• 8-12 tweets per thread
-• Include stats/proof points
-• Engagement questions
-• Thread unroll format
-End with follow CTA`,
-                    'Quotes': `Create 25 motivational quote posts for ${niche}:
-• Short, powerful statements
-• Attributable or original
-• Visual quote cards (text-based)
-• Relevant to ${goal}
-• Shareable format`
+                    'Reels': () => {
+                        let output = `🎬 30 FACELESS INSTAGRAM REELS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        output += `Goal: ${goal}\n\n`;
+                        
+                        for (let i = 1; i <= 30; i++) {
+                            output += `📱 REEL #${i}\n`;
+                            output += `Hook: "${i % 5 === 0 ? 'Stop scrolling!' : i % 3 === 0 ? 'Wait, what?!' : i % 2 === 0 ? 'You need to see this' : 'This changed everything'} [Topic about ${niche}]\"\n`;
+                            output += `Format: ${i % 4 === 0 ? 'Black screen + text' : i % 3 === 0 ? 'Stock footage + overlay' : i % 2 === 0 ? 'POV style' : 'Text animation'}\n`;
+                            output += `Duration: ${i % 2 === 0 ? '15' : '30'} seconds\n`;
+                            output += `CTA: ${i % 3 === 0 ? 'Save this!' : i % 2 === 0 ? 'Follow for more' : 'Share with someone'}\n\n`;
+                        }
+                        return output;
+                    },
+                    'Carousels': () => {
+                        let output = `📊 20 CAROUSEL POSTS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        output += `Goal: ${goal}\n\n`;
+                        
+                        const topics = ['Common Mistakes', 'Tips & Tricks', 'Step-by-Step Guide', 'Before & After', 'Myths Debunked', 'Success Secrets', 'Getting Started', 'Advanced Strategies', 'Case Studies', 'Resources List'];
+                        
+                        for (let i = 1; i <= 20; i++) {
+                            output += `📄 CAROUSEL #${i}: ${topics[(i-1) % topics.length]} in ${niche}\n`;
+                            output += `Slides: 8-10\n`;
+                            output += `Slide 1: "${topics[(i-1) % topics.length]} - Swipe to learn →"\n`;
+                            output += `Slides 2-9: [Break down each point]\n`;
+                            output += `Slide 10: "Save this! Follow @yourhandle for daily ${niche} content"\n\n`;
+                        }
+                        return output;
+                    },
+                    'Threads': () => {
+                        let output = `🧵 15 X/TWITTER THREADS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 15; i++) {
+                            output += `THREAD #${i}:\n`;
+                            output += `Tweet 1: "I spent ${i} ${i === 1 ? 'year' : 'years'} learning ${niche}. Here are the ${5+i} things I wish I knew on day 1 🧵"\n`;
+                            output += `Tweet 2-${8+i}: [Break down each lesson with examples]\n`;
+                            output += `Final: "Found this helpful? Follow @yourhandle for ${niche} tips daily!"\n\n`;
+                        }
+                        return output;
+                    },
+                    'Quotes': () => {
+                        let output = `💬 25 QUOTE POSTS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        const quotes = [
+                            'Success in [field] isn\'t about luck, it\'s about consistency',
+                            'The difference between amateur and pro? Daily action',
+                            'Your [goal] is on the other side of consistent effort',
+                            'Small steps daily > Big plans monthly',
+                            'Don\'t wait for perfect. Start now, improve later'
+                        ];
+                        
+                        for (let i = 1; i <= 25; i++) {
+                            output += `${i}. "${quotes[(i-1) % quotes.length].replace('[field]', niche).replace('[goal]', goal)}"\n`;
+                            output += `   Design: ${i % 2 === 0 ? 'Bold text, gradient bg' : 'Minimal text, solid color'}\n\n`;
+                        }
+                        return output;
+                    }
                 },
                 'TikTok': {
-                    'Reels': `Generate 30 TikTok videos for ${niche} (all faceless):
-• Ultra-hook first 1 second
-• Under 30 seconds each
-• Trending sound integration
-• Text-on-screen storytelling
-• Loop-worthy endings
-Goal: ${goal}
-Use: Stock clips, screen recordings, text animations`,
-                    'Carousels': `Create 20 TikTok photo carousel ideas for ${niche}:
-• 5-10 images per carousel
-• Story arc progression
-• Text overlays
-• Trending audio
-Target: ${goal}`,
-                    'Threads': `Write 15 TikTok caption stories for ${niche}:
-• Long-form captions (storytelling)
-• Emotional hooks
-• Paragraph breaks for readability
-• Hashtag strategy (3-5 tags)
-Purpose: ${goal}`,
-                    'Quotes': `25 viral quote videos for ${niche}:
-• Text animation + music
-• 7-15 seconds each
-• Deep/relatable quotes
-• Black background or stock footage
-Objective: ${goal}`
+                    'Reels': () => {
+                        let output = `🎵 30 TIKTOK VIDEOS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 30; i++) {
+                            output += `VIDEO #${i}\n`;
+                            output += `Hook: "${i % 4 === 0 ? 'POV: You finally understand' : i % 3 === 0 ? 'Nobody talks about this' : i % 2 === 0 ? 'This is crazy' : 'Wait for it'} [${niche} topic]\"\n`;
+                            output += `Length: ${15 + (i % 3) * 10} seconds\n`;
+                            output += `Style: ${i % 3 === 0 ? 'Text on black screen' : i % 2 === 0 ? 'Stock clips' : 'Screen recording'}\n`;
+                            output += `Sound: Trending audio\n\n`;
+                        }
+                        return output;
+                    },
+                    'Carousels': () => {
+                        let output = `📸 20 TIKTOK PHOTO CAROUSELS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 20; i++) {
+                            output += `CAROUSEL #${i}\n`;
+                            output += `Photos: ${5 + (i % 5)}\n`;
+                            output += `Theme: ${i % 3 === 0 ? 'Transformation journey' : i % 2 === 0 ? 'Step-by-step tutorial' : 'Before/After results'}\n`;
+                            output += `Text overlay: Yes\n`;
+                            output += `Music: Trending sound\n\n`;
+                        }
+                        return output;
+                    },
+                    'Threads': () => {
+                        let output = `📝 15 TIKTOK LONG CAPTIONS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 15; i++) {
+                            output += `CAPTION #${i}:\n`;
+                            output += `"Let me tell you about ${niche}...\n\n`;
+                            output += `[300-500 word story about struggle → discovery → transformation]\n\n`;
+                            output += `What's your ${niche} story? Drop it below! 💬"\n\n`;
+                            output += `Hashtags: #${niche.replace(/\s/g, '')} #viral #fyp\n\n`;
+                        }
+                        return output;
+                    },
+                    'Quotes': () => {
+                        let output = `✨ 25 QUOTE VIDEOS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 25; i++) {
+                            output += `${i}. Quote: "Motivational message about ${niche}"\n`;
+                            output += `   Duration: ${7 + (i % 3) * 3} seconds\n`;
+                            output += `   Visual: Text animation + ${i % 2 === 0 ? 'black bg' : 'nature footage'}\n\n`;
+                        }
+                        return output;
+                    }
                 },
                 'X': {
-                    'Reels': `15 video content ideas for X/Twitter in ${niche}:
-• 30-60 second videos
-• Text summaries in video
-• Subtitles included
-• Hook + value + CTA
-Goal: ${goal}`,
-                    'Carousels': `20 image carousels for X in ${niche}:
-• 4 images max per tweet
-• Infographic style
-• Data visualization
-• Shareable insights
-Aim: ${goal}`,
-                    'Threads': `Create 25 X thread templates for ${niche}:
-• Hook tweet formula
-• 5-15 tweets per thread
-• Numbered format (1/X)
-• Call-outs to replies
-• Community building
-Target: ${goal}`,
-                    'Quotes': `30 quote tweets for ${niche}:
-• Stand-alone wisdom
-• RT-worthy
-• 2-3 sentences max
-• Hashtag strategy
-Purpose: ${goal}`
+                    'Reels': () => {
+                        let output = `🎥 15 VIDEO IDEAS FOR X/TWITTER (${niche.toUpperCase()})\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 15; i++) {
+                            output += `VIDEO #${i}: "${niche} tip that will change your perspective"\n`;
+                            output += `Length: ${30 + (i % 3) * 15} seconds\n`;
+                            output += `Include: Captions, hook, value, CTA\n\n`;
+                        }
+                        return output;
+                    },
+                    'Carousels': () => {
+                        let output = `🖼️ 20 IMAGE THREADS FOR X (${niche.toUpperCase()})\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 20; i++) {
+                            output += `THREAD #${i}\n`;
+                            output += `Images: 4 infographic-style images\n`;
+                            output += `Topic: ${niche} insights\n`;
+                            output += `Style: Data visualization + key stats\n\n`;
+                        }
+                        return output;
+                    },
+                    'Threads': () => {
+                        let output = `🧵 25 X THREADS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 25; i++) {
+                            output += `THREAD #${i}\n`;
+                            output += `1/${10+i}: "Here's everything I learned about ${niche} in ${i} ${i === 1 ? 'month' : 'months'} 🧵"\n`;
+                            output += `2-${10+i}: [Break down lessons with examples and data]\n`;
+                            output += `${11+i}/${11+i}: "RT if helpful! Follow @yourhandle for daily ${niche} insights"\n\n`;
+                        }
+                        return output;
+                    },
+                    'Quotes': () => {
+                        let output = `💭 30 STANDALONE TWEETS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 30; i++) {
+                            output += `${i}. "Powerful insight about ${niche} that makes people think"\n`;
+                            output += `   Length: 1-2 sentences\n`;
+                            output += `   Goal: RT-worthy wisdom\n\n`;
+                        }
+                        return output;
+                    }
                 },
                 'Facebook': {
-                    'Reels': `25 Facebook Reels for ${niche}:
-• Longer form OK (60-90s)
-• Value-packed content
-• Community focus
-• Clear CTA
-• Faceless format
-Goal: ${goal}`,
-                    'Carousels': `20 Facebook carousel posts for ${niche}:
-• Up to 10 images
-• Educational content
-• Call to action on last slide
-• Group engagement focus
-Objective: ${goal}`,
-                    'Threads': `15 long-form Facebook posts for ${niche}:
-• 300-500 words
-• Storytelling format
-• Paragraph breaks
-• Emoji for readability
-• Question at end
-Purpose: ${goal}`,
-                    'Quotes': `25 quote graphics for ${niche} Facebook:
-• Inspirational + relevant
-• Share-worthy
-• Group posting strategy
-• Engagement prompts
-Target: ${goal}`
+                    'Reels': () => {
+                        let output = `📹 25 FACEBOOK REELS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 25; i++) {
+                            output += `REEL #${i}\n`;
+                            output += `Topic: ${niche} tips and value\n`;
+                            output += `Length: ${60 + (i % 3) * 15} seconds\n`;
+                            output += `Style: Educational, community-focused\n`;
+                            output += `CTA: "Share if this helped!"\n\n`;
+                        }
+                        return output;
+                    },
+                    'Carousels': () => {
+                        let output = `📊 20 FACEBOOK CAROUSELS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 20; i++) {
+                            output += `CAROUSEL #${i}\n`;
+                            output += `Slides: ${8 + (i % 3)}\n`;
+                            output += `Theme: Educational content about ${niche}\n`;
+                            output += `Last slide: Strong CTA for ${goal}\n\n`;
+                        }
+                        return output;
+                    },
+                    'Threads': () => {
+                        let output = `📝 15 LONG-FORM POSTS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 15; i++) {
+                            output += `POST #${i}\n`;
+                            output += `Opening: Hook about ${niche}\n`;
+                            output += `Body: 300-500 words storytelling\n`;
+                            output += `Closing: Question to spark discussion\n`;
+                            output += `Engagement: "What's your experience with ${niche}?"\n\n`;
+                        }
+                        return output;
+                    },
+                    'Quotes': () => {
+                        let output = `💬 25 QUOTE GRAPHICS FOR ${niche.toUpperCase()}\n`;
+                        output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                        
+                        for (let i = 1; i <= 25; i++) {
+                            output += `${i}. "Inspirational quote relevant to ${niche}"\n`;
+                            output += `   Design: Visual quote card\n`;
+                            output += `   Share-worthy: Yes\n`;
+                            output += `   Prompt: Tag someone who needs this\n\n`;
+                        }
+                        return output;
+                    }
                 }
             };
 
-            const generatedPrompt = prompts[selectedCustomPlatform][selectedCustomType];
+            const generatedContent = contentResults[selectedCustomPlatform][selectedCustomType]();
             
-            document.getElementById('customPromptText').textContent = `⚡ YOUR CUSTOM PROMPT:\n\n${generatedPrompt}\n\n💡 TIP: Copy this prompt and use it with ChatGPT, Claude, or any AI tool to generate your content!`;
-            document.getElementById('customPromptOutput').classList.add('show');
+            document.getElementById('customPromptText').textContent = `${generatedContent}\n━━━━━━━━━━━━━━━━━━━━━━\n\n✅ CONTENT IDEAS GENERATED!\n💡 Use these as inspiration and customize for your brand!\n🚀 Start creating and dominating ${selectedCustomPlatform}!`;
+            document.getElementById('customPromptOutput').classList.add('active');
         }
 
     </script>
