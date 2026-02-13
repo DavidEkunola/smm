@@ -2,90 +2,2612 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aegis Open Health | Free Medical Oracle</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Social Media Command Center | Everything You Need</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .medical-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        .result-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .loading-pulse { animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Gradient Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            animation: gradientMove 20s ease infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .header-content {
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            white-space: nowrap;
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Quick Access Bar */
+        .quick-access {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .quick-access::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        .quick-access::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .quick-access::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .quick-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quick-btn.active {
+            background: var(--gradient);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Section */
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card */
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1fr;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 640px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tool Card */
+        .tool-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .tool-card:active {
+            transform: scale(0.98);
+        }
+
+        .tool-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .tool-card-desc {
+            font-size: 0.75rem;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+
+        /* Input */
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .input, .textarea, .select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .input:focus, .textarea:focus, .select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Button */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
+
+        /* Tag */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            padding: 0.4rem 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tag.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* Output Box */
+        .output {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .output.active {
+            display: block;
+        }
+
+        .output-text {
+            color: white;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+        }
+
+        /* Alert Box */
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .alert-info {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--primary);
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success);
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: var(--warning);
+        }
+
+        /* List */
+        .list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-item {
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .list-item::before {
+            content: '✓';
+            background: var(--success);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Metric Card */
+        .metric {
+            background: var(--gradient);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Progress Bar */
+        .progress {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            background: var(--gradient);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        /* Table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .table th {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.75rem 0.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .table td {
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: var(--light);
+        }
+
+        .tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* Canvas Preview */
+        canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 1rem;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion.active .accordion-body {
+            max-height: 2000px;
+        }
+
+        .accordion-content {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Range Slider */
+        .range-group {
+            margin: 1rem 0;
+        }
+
+        .range-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .range {
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Color Picker */
+        .color-picker {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .color-option.active {
+            border-color: white;
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--dark-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--gradient);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .fab:active {
+            transform: scale(0.95);
+        }
+
+        /* Copy Button Effect */
+        .copied {
+            background: var(--success) !important;
+        }
+
+        /* Loading */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .text-success { color: var(--success); }
+        .text-danger { color: var(--danger); }
+        .text-white { color: white; }
+        .text-sm { font-size: 0.85rem; }
+        .text-xs { font-size: 0.75rem; }
+        .font-bold { font-weight: 700; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .hidden { display: none; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen">
-
-    <nav class="p-6 bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2 font-black text-2xl text-blue-600 tracking-tighter">
-                <i class="fa-solid fa-staff-snake"></i> AEGIS <span class="text-slate-400 font-light text-sm ml-2 tracking-normal">OPEN SOURCE</span>
-            </div>
-            <div class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 uppercase">
-                <i class="fa-solid fa-check-circle"></i> Direct Medical Link Active
-            </div>
-        </div>
-    </nav>
-
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <div class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">The Universal Health Map</h1>
-            <p class="text-slate-500 text-lg">Instant clinical wisdom powered by the world's largest open medical database.</p>
-        </div>
-
-        <div class="relative group mb-12">
-            <input id="healthSearch" type="text" 
-                placeholder="Search an illness, symptom, or medication (e.g., Type 2 Diabetes)..." 
-                class="w-full p-6 pl-14 rounded-3xl border-2 border-slate-200 shadow-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-xl outline-none">
-            <i class="fa-solid fa-magnifying-glass absolute left-6 top-7 text-slate-400 text-xl"></i>
-            <button onclick="fetchWisdom()" class="absolute right-3 top-3 bottom-3 bg-blue-600 text-white px-8 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg active:scale-95">
-                CONSULT
-            </button>
-        </div>
-
-        <div id="loader" class="hidden text-center py-10">
-            <i class="fa-solid fa-dna fa-spin text-4xl text-blue-500"></i>
-            <p class="mt-4 text-slate-500 font-medium loading-pulse">Accessing Global Medical Repository...</p>
-        </div>
-
-        <div id="outputArea" class="space-y-8">
-            </div>
-
-        <div id="welcomeGrid" class="grid md:grid-cols-2 gap-6 mt-12">
-            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm border-b-4 border-b-blue-500">
-                <h3 class="font-bold text-lg mb-2"><i class="fa-solid fa-user-doctor text-blue-500 mr-2"></i> Symptom Guidance</h3>
-                <p class="text-slate-500 text-sm italic leading-relaxed">Describe a physical feeling to find clinical patterns and triage categories.</p>
-            </div>
-            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm border-b-4 border-b-emerald-500">
-                <h3 class="font-bold text-lg mb-2"><i class="fa-solid fa-pills text-emerald-500 mr-2"></i> Medication Library</h3>
-                <p class="text-slate-500 text-sm italic leading-relaxed">Understand how drugs work, side effects, and standard dosage warnings.</p>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">⚡ SMM COMMAND CENTER</div>
+            <div class="header-stats">
+                <div class="stat">50+ Tools</div>
+                <div class="stat">100% Free</div>
             </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Quick Access Navigation -->
+        <div class="quick-access">
+            <button class="quick-btn active" onclick="showSection('dashboard')">🏠 Dashboard</button>
+            <button class="quick-btn" onclick="showSection('content')">📱 Content Studio</button>
+            <button class="quick-btn" onclick="showSection('captions')">✍️ Captions</button>
+            <button class="quick-btn" onclick="showSection('hashtags')"># Hashtags</button>
+            <button class="quick-btn" onclick="showSection('bio')">👤 Bio Generator</button>
+            <button class="quick-btn" onclick="showSection('analytics')">📊 Analytics</button>
+            <button class="quick-btn" onclick="showSection('growth')">📈 Growth</button>
+            <button class="quick-btn" onclick="showSection('engagement')">💬 Engagement</button>
+            <button class="quick-btn" onclick="showSection('scheduler')">📅 Scheduler</button>
+            <button class="quick-btn" onclick="showSection('ideas')">💡 Ideas</button>
+            <button class="quick-btn" onclick="showSection('monetize')">💰 Monetize</button>
+            <button class="quick-btn" onclick="showSection('tools')">🛠️ Tools</button>
+        </div>
+
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboard" class="section active">
+            <div class="card">
+                <div class="card-title">📊 Your Social Media Dashboard</div>
+                
+                <div class="grid grid-3 mb-2">
+                    <div class="metric">
+                        <div class="metric-value" id="totalFollowers">0</div>
+                        <div class="metric-label">Total Followers</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="engagementRate">0%</div>
+                        <div class="metric-label">Engagement</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="postsToday">0</div>
+                        <div class="metric-label">Posts Today</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    💡 <strong>Quick Tip:</strong> Post at 11 AM and 7 PM for maximum engagement!
+                </div>
+
+                <div class="card-title mt-2">🚀 Quick Actions</div>
+                <div class="grid grid-2">
+                    <div class="tool-card" onclick="showSection('content')">
+                        <div class="tool-card-icon">📱</div>
+                        <div class="tool-card-title">Create Content</div>
+                        <div class="tool-card-desc">Design posts instantly</div>
+                    </div>
+                    <div class="tool-card" onclick="showSection('captions')">
+                        <div class="tool-card-icon">✍️</div>
+                        <div class="tool-card-title">Write Caption</div>
+                        <div class="tool-card-desc">AI-powered captions</div>
+                    </div>
+                    <div class="tool-card" onclick="showSection('hashtags')">
+                        <div class="tool-card-icon">#️⃣</div>
+                        <div class="tool-card-title">Get Hashtags</div>
+                        <div class="tool-card-desc">Trending tags</div>
+                    </div>
+                    <div class="tool-card" onclick="showSection('analytics')">
+                        <div class="tool-card-icon">📊</div>
+                        <div class="tool-card-title">Track Growth</div>
+                        <div class="tool-card-desc">Monitor metrics</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📋 Today's Growth Checklist</div>
+                <ul class="list">
+                    <li class="list-item">Post your main content piece</li>
+                    <li class="list-item">Share 3 Stories with stickers</li>
+                    <li class="list-item">Engage with 30 posts in your niche</li>
+                    <li class="list-item">Reply to all comments</li>
+                    <li class="list-item">DM 5 potential collaborators</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTENT STUDIO SECTION -->
+        <div id="content" class="section">
+            <div class="card">
+                <div class="card-title">📱 Content Studio</div>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchContentTab('carousel')">Carousel</div>
+                    <div class="tab" onclick="switchContentTab('quote')">Quote</div>
+                    <div class="tab" onclick="switchContentTab('story')">Story</div>
+                    <div class="tab" onclick="switchContentTab('reel')">Reel Script</div>
+                </div>
+
+                <!-- Carousel Creator -->
+                <div id="carousel-tab" class="content-tab">
+                    <div class="input-group">
+                        <label class="label">Slide Title</label>
+                        <input type="text" class="input" id="carouselTitle" placeholder="Enter title...">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Content</label>
+                        <textarea class="textarea" id="carouselContent" placeholder="Enter content..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Color Scheme</label>
+                        <div class="color-picker">
+                            <div class="color-option active" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" onclick="selectColor(this, 'gradient1')"></div>
+                            <div class="color-option" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" onclick="selectColor(this, 'gradient2')"></div>
+                            <div class="color-option" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" onclick="selectColor(this, 'gradient3')"></div>
+                            <div class="color-option" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" onclick="selectColor(this, 'gradient4')"></div>
+                            <div class="color-option" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" onclick="selectColor(this, 'gradient5')"></div>
+                            <div class="color-option" style="background: #1e293b;" onclick="selectColor(this, 'dark')"></div>
+                            <div class="color-option" style="background: #ffffff;" onclick="selectColor(this, 'light')"></div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="generateCarousel()">✨ Generate Carousel</button>
+                    
+                    <canvas id="carouselCanvas" width="1080" height="1080" style="display:none;"></canvas>
+                </div>
+
+                <!-- Quote Generator -->
+                <div id="quote-tab" class="content-tab hidden">
+                    <div class="input-group">
+                        <label class="label">Quote Text</label>
+                        <textarea class="textarea" id="quoteText" placeholder="Enter your quote..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Author (optional)</label>
+                        <input type="text" class="input" id="quoteAuthor" placeholder="Your name">
+                    </div>
+
+                    <button class="btn btn-primary" onclick="generateQuote()">✨ Create Quote Post</button>
+                    
+                    <canvas id="quoteCanvas" width="1080" height="1080" style="display:none;"></canvas>
+                </div>
+
+                <!-- Story Template -->
+                <div id="story-tab" class="content-tab hidden">
+                    <div class="alert alert-info">
+                        Quick Story Templates - Copy & Edit!
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Poll Stories</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p><strong>This or That:</strong></p>
+                                <p>• Coffee vs Tea ☕🍵</p>
+                                <p>• Early Bird vs Night Owl 🌅🌙</p>
+                                <p>• Beach vs Mountains 🏖️⛰️</p>
+                                <button class="btn btn-secondary btn-sm mt-1" onclick="copyText('This or That poll ideas')">Copy Template</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Question Stickers</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>• "Ask me anything about..."</p>
+                                <p>• "What's your biggest challenge with..."</p>
+                                <p>• "Tell me what you want to see more of!"</p>
+                                <button class="btn btn-secondary btn-sm mt-1" onclick="copyText('Question sticker templates')">Copy Templates</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Quiz Stories</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>• "Guess what happens next..."</p>
+                                <p>• "True or False: [statement]"</p>
+                                <p>• "Can you spot the difference?"</p>
+                                <button class="btn btn-secondary btn-sm mt-1" onclick="copyText('Quiz story ideas')">Copy Ideas</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reel Script -->
+                <div id="reel-tab" class="content-tab hidden">
+                    <div class="input-group">
+                        <label class="label">Reel Topic</label>
+                        <input type="text" class="input" id="reelTopic" placeholder="e.g., productivity tips">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Reel Type</label>
+                        <select class="select" id="reelType">
+                            <option value="hook">Hook & Value</option>
+                            <option value="tutorial">Tutorial</option>
+                            <option value="story">Storytime</option>
+                            <option value="list">List/Tips</option>
+                            <option value="transformation">Before/After</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="generateReelScript()">🎬 Generate Script</button>
+
+                    <div class="output" id="reelOutput">
+                        <div class="output-text" id="reelScript"></div>
+                        <button class="btn btn-success mt-1" onclick="copyOutputText('reelScript')">📋 Copy Script</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAPTIONS SECTION -->
+        <div id="captions" class="section">
+            <div class="card">
+                <div class="card-title">✍️ Viral Caption Generator</div>
+
+                <div class="input-group">
+                    <label class="label">Topic/Niche</label>
+                    <input type="text" class="input" id="captionTopic" placeholder="e.g., self-care, fitness, business">
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Caption Style</label>
+                    <div class="tags">
+                        <div class="tag active" onclick="selectStyle(this, 'hook')">🎣 Hook</div>
+                        <div class="tag" onclick="selectStyle(this, 'story')">📖 Story</div>
+                        <div class="tag" onclick="selectStyle(this, 'list')">📝 List</div>
+                        <div class="tag" onclick="selectStyle(this, 'question')">❓ Question</div>
+                        <div class="tag" onclick="selectStyle(this, 'controversial')">🔥 Hot Take</div>
+                        <div class="tag" onclick="selectStyle(this, 'motivational')">💪 Motivational</div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Length</label>
+                    <div class="tags">
+                        <div class="tag active" onclick="selectLength(this, 'short')">Short</div>
+                        <div class="tag" onclick="selectLength(this, 'medium')">Medium</div>
+                        <div class="tag" onclick="selectLength(this, 'long')">Long</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="generateCaption()">🚀 Generate Caption</button>
+
+                <div class="output" id="captionOutput">
+                    <div class="output-text" id="captionText"></div>
+                    <button class="btn btn-success mt-1" onclick="copyOutputText('captionText')">📋 Copy Caption</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🔥 Caption Templates Library</div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Engagement Boosters</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1">✓ "Tag someone who needs to see this 👇"</p>
+                            <p class="mb-1">✓ "Double tap if you agree 💙"</p>
+                            <p class="mb-1">✓ "Save this for later!"</p>
+                            <p class="mb-1">✓ "Comment your thoughts below 👇"</p>
+                            <p class="mb-1">✓ "Share this to your story if it helped"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Hook Formulas</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1">🎯 "Stop doing [X] if you want [Y]"</p>
+                            <p class="mb-1">🎯 "The [number] secrets to [result]"</p>
+                            <p class="mb-1">🎯 "What nobody tells you about [topic]"</p>
+                            <p class="mb-1">🎯 "I used to [struggle] until I discovered..."</p>
+                            <p class="mb-1">🎯 "Unpopular opinion: [controversial take]"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HASHTAGS SECTION -->
+        <div id="hashtags" class="section">
+            <div class="card">
+                <div class="card-title"># Smart Hashtag Generator</div>
+
+                <div class="alert alert-info">
+                    💡 Mix 3-5 big hashtags + 5-10 medium + 5-10 niche for best reach!
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Your Niche</label>
+                    <input type="text" class="input" id="hashtagNiche" placeholder="e.g., fitness, beauty, business">
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Platform</label>
+                    <select class="select" id="hashtagPlatform">
+                        <option value="instagram">Instagram</option>
+                        <option value="tiktok">TikTok</option>
+                        <option value="twitter">Twitter/X</option>
+                        <option value="linkedin">LinkedIn</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Category Mix</label>
+                    <div class="tags">
+                        <div class="tag" onclick="toggleHashtagCategory(this, 'trending')">🔥 Trending</div>
+                        <div class="tag" onclick="toggleHashtagCategory(this, 'niche')">🎯 Niche</div>
+                        <div class="tag" onclick="toggleHashtagCategory(this, 'branded')">🏷️ Branded</div>
+                        <div class="tag" onclick="toggleHashtagCategory(this, 'location')">📍 Location</div>
+                        <div class="tag" onclick="toggleHashtagCategory(this, 'community')">👥 Community</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="generateHashtags()"># Generate</button>
+
+                <div class="output" id="hashtagOutput">
+                    <div class="output-text" id="hashtagText"></div>
+                    <button class="btn btn-success mt-1" onclick="copyOutputText('hashtagText')">📋 Copy All</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📊 Hashtag Strategy Guide</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Posts</th>
+                            <th>Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Big</td>
+                            <td>1M+</td>
+                            <td>3-5 tags</td>
+                        </tr>
+                        <tr>
+                            <td>Medium</td>
+                            <td>100K-1M</td>
+                            <td>5-10 tags</td>
+                        </tr>
+                        <tr>
+                            <td>Small</td>
+                            <td>&lt;100K</td>
+                            <td>5-10 tags</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- BIO GENERATOR SECTION -->
+        <div id="bio" class="section">
+            <div class="card">
+                <div class="card-title">👤 Bio Generator</div>
+
+                <div class="input-group">
+                    <label class="label">Your Niche/Industry</label>
+                    <input type="text" class="input" id="bioNiche" placeholder="e.g., fitness coach, beauty creator">
+                </div>
+
+                <div class="input-group">
+                    <label class="label">What You Offer</label>
+                    <input type="text" class="input" id="bioOffer" placeholder="e.g., help women get fit">
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Call to Action</label>
+                    <select class="select" id="bioCTA">
+                        <option value="link">Click link below</option>
+                        <option value="dm">DM for details</option>
+                        <option value="email">Email for inquiries</option>
+                        <option value="shop">Shop my products</option>
+                        <option value="free">Free guide in bio</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Bio Style</label>
+                    <div class="tags">
+                        <div class="tag active" onclick="selectBioStyle(this, 'professional')">💼 Professional</div>
+                        <div class="tag" onclick="selectBioStyle(this, 'casual')">😊 Casual</div>
+                        <div class="tag" onclick="selectBioStyle(this, 'fun')">🎉 Fun</div>
+                        <div class="tag" onclick="selectBioStyle(this, 'minimal')">✨ Minimal</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="generateBio()">✨ Generate Bio</button>
+
+                <div class="output" id="bioOutput">
+                    <div class="output-text" id="bioText"></div>
+                    <button class="btn btn-success mt-1" onclick="copyOutputText('bioText')">📋 Copy Bio</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">💡 Bio Best Practices</div>
+                <ul class="list">
+                    <li class="list-item">Keep it under 150 characters</li>
+                    <li class="list-item">Include relevant keywords</li>
+                    <li class="list-item">Add clear call-to-action</li>
+                    <li class="list-item">Use emojis sparingly (2-4 max)</li>
+                    <li class="list-item">Update seasonally</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ANALYTICS SECTION -->
+        <div id="analytics" class="section">
+            <div class="card">
+                <div class="card-title">📊 Analytics Tracker</div>
+
+                <div class="grid grid-2 mb-2">
+                    <div>
+                        <div class="label">Followers</div>
+                        <input type="number" class="input" id="followerInput" placeholder="0">
+                        <button class="btn btn-secondary btn-sm mt-1" onclick="updateMetric('followers')">Update</button>
+                    </div>
+                    <div>
+                        <div class="label">Engagement %</div>
+                        <input type="number" class="input" id="engagementInput" placeholder="0" step="0.1">
+                        <button class="btn btn-secondary btn-sm mt-1" onclick="updateMetric('engagement')">Update</button>
+                    </div>
+                </div>
+
+                <div class="card-title mt-2">📈 Growth Progress</div>
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                <p class="text-sm text-center mt-1">Next milestone: <span id="milestone" class="text-primary font-bold">1,000</span> followers</p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📋 Key Metrics to Track</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Good Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Engagement</td>
+                            <td>3-6%</td>
+                        </tr>
+                        <tr>
+                            <td>Reach/Followers</td>
+                            <td>20-50%</td>
+                        </tr>
+                        <tr>
+                            <td>Saves/Likes</td>
+                            <td>5-10%</td>
+                        </tr>
+                        <tr>
+                            <td>Profile Visits</td>
+                            <td>10-15%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🎯 A/B Testing Tool</div>
+                <p class="card-subtitle">Compare two post versions</p>
+
+                <div class="grid grid-2 mb-2">
+                    <div>
+                        <div class="label">Post A - Likes</div>
+                        <input type="number" class="input" id="postALikes" placeholder="0">
+                    </div>
+                    <div>
+                        <div class="label">Post B - Likes</div>
+                        <input type="number" class="input" id="postBLikes" placeholder="0">
+                    </div>
+                    <div>
+                        <div class="label">Post A - Comments</div>
+                        <input type="number" class="input" id="postAComments" placeholder="0">
+                    </div>
+                    <div>
+                        <div class="label">Post B - Comments</div>
+                        <input type="number" class="input" id="postBComments" placeholder="0">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="compareAB()">📊 Compare</button>
+
+                <div class="output" id="abOutput">
+                    <div class="output-text" id="abResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROWTH SECTION -->
+        <div id="growth" class="section">
+            <div class="card">
+                <div class="card-title">📈 Growth Strategy Generator</div>
+
+                <div class="input-group">
+                    <label class="label">Current Followers</label>
+                    <select class="select" id="growthStage">
+                        <option value="0-1k">0 - 1,000</option>
+                        <option value="1k-10k">1,000 - 10,000</option>
+                        <option value="10k-50k">10,000 - 50,000</option>
+                        <option value="50k+">50,000+</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Growth Goal</label>
+                    <select class="select" id="growthGoal">
+                        <option value="followers">More Followers</option>
+                        <option value="engagement">Higher Engagement</option>
+                        <option value="viral">Go Viral</option>
+                        <option value="sales">Drive Sales</option>
+                        <option value="community">Build Community</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" onclick="generateGrowthPlan()">🚀 Get Strategy</button>
+
+                <div class="output" id="growthOutput">
+                    <div class="output-text" id="growthPlan"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">⚡ Quick Growth Hacks</div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Collaboration Strategy</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1"><strong>Find Partners:</strong> Search hashtags in your niche, filter by 5K-50K followers</p>
+                            <p class="mb-1"><strong>DM Template:</strong> "Hey! Love your content on [topic]. Want to collaborate on [idea]?"</p>
+                            <p class="mb-1"><strong>Collab Ideas:</strong> Joint lives, takeovers, shoutouts, duets, challenges</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Viral Content Formula</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1">1. <strong>Hook:</strong> Stop scroll in 1 sec</p>
+                            <p class="mb-1">2. <strong>Value:</strong> Teach something useful</p>
+                            <p class="mb-1">3. <strong>Emotion:</strong> Make them feel</p>
+                            <p class="mb-1">4. <strong>CTA:</strong> Drive engagement</p>
+                            <p class="mb-1">5. <strong>Trending:</strong> Use popular sounds/formats</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Engagement Pod Guide</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1"><strong>What:</strong> Group of creators who support each other's posts</p>
+                            <p class="mb-1"><strong>Size:</strong> 10-20 members ideal</p>
+                            <p class="mb-1"><strong>Rules:</strong> Engage within 1 hour, quality comments only</p>
+                            <p class="mb-1"><strong>Find:</strong> Facebook groups, Telegram, Discord</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENGAGEMENT SECTION -->
+        <div id="engagement" class="section">
+            <div class="card">
+                <div class="card-title">💬 Engagement Tools</div>
+
+                <div class="tabs">
+                    <div class="tab active" onclick="switchEngagementTab('cta')">CTAs</div>
+                    <div class="tab" onclick="switchEngagementTab('dm')">DM Scripts</div>
+                    <div class="tab" onclick="switchEngagementTab('comments')">Comments</div>
+                    <div class="tab" onclick="switchEngagementTab('replies')">Replies</div>
+                </div>
+
+                <!-- CTA Generator -->
+                <div id="cta-tab" class="engagement-tab">
+                    <div class="input-group">
+                        <label class="label">CTA Type</label>
+                        <div class="tags">
+                            <div class="tag active" onclick="selectCTAType(this, 'comment')">💬 Comment</div>
+                            <div class="tag" onclick="selectCTAType(this, 'save')">💾 Save</div>
+                            <div class="tag" onclick="selectCTAType(this, 'share')">↗️ Share</div>
+                            <div class="tag" onclick="selectCTAType(this, 'tag')">👥 Tag</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="generateCTA()">✨ Generate CTA</button>
+
+                    <div class="output" id="ctaOutput">
+                        <div class="output-text" id="ctaText"></div>
+                        <button class="btn btn-success mt-1" onclick="copyOutputText('ctaText')">📋 Copy</button>
+                    </div>
+                </div>
+
+                <!-- DM Templates -->
+                <div id="dm-tab" class="engagement-tab hidden">
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Collaboration Request</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>"Hey [Name]! I love your content on [topic]. I'm also creating content about [your niche] and think our audiences would love a collab. Would you be interested in [specific idea]? 🤝"</p>
+                                <button class="btn btn-secondary btn-sm mt-1" onclick="copyAccordionText(this)">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Brand Partnership</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>"Hi [Brand]! I'm a content creator in the [niche] space with [followers] engaged followers. I'd love to collaborate! My engagement rate is [%] and I can offer [deliverable]. Are you open to partnerships?"</p>
+                                <button class="btn btn-secondary btn-sm mt-1" onclick="copyAccordionText(this)">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Network Building</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p>"Your post about [topic] was so valuable! I've been implementing [specific thing] and seeing great results. Thanks for sharing your knowledge! 💙"</p>
+                                <button class="btn btn-secondary btn-sm mt-1" onclick="copyAccordionText(this)">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment Templates -->
+                <div id="comments-tab" class="engagement-tab hidden">
+                    <div class="alert alert-info">
+                        💡 Quality comments get noticed! Use these templates to engage authentically.
+                    </div>
+
+                    <p class="text-sm mb-1"><strong>Value-Add Comments:</strong></p>
+                    <p class="text-sm mb-1">• "This is so valuable! I especially love the part about [specific detail]"</p>
+                    <p class="text-sm mb-1">• "I've been doing this for [time] and can confirm it works!"</p>
+                    <p class="text-sm mb-1">• "Adding to this: [related tip/insight]"</p>
+
+                    <p class="text-sm mb-1 mt-2"><strong>Conversation Starters:</strong></p>
+                    <p class="text-sm mb-1">• "Have you tried [related thing]? Game changer!"</p>
+                    <p class="text-sm mb-1">• "What's your take on [related topic]?"</p>
+                    <p class="text-sm mb-1">• "This reminds me of [story/experience]"</p>
+                </div>
+
+                <!-- Reply Templates -->
+                <div id="replies-tab" class="engagement-tab hidden">
+                    <div class="alert alert-info">
+                        Reply to comments within 1 hour for algorithm boost!
+                    </div>
+
+                    <p class="text-sm mb-1"><strong>Positive Comments:</strong></p>
+                    <p class="text-sm mb-1">• "Thank you so much! 💙 Means the world!"</p>
+                    <p class="text-sm mb-1">• "So glad this resonated with you! 🙌"</p>
+                    <p class="text-sm mb-1">• "You're amazing! Thanks for being here 💕"</p>
+
+                    <p class="text-sm mb-1 mt-2"><strong>Questions:</strong></p>
+                    <p class="text-sm mb-1">• "Great question! Here's what I've found: [answer]"</p>
+                    <p class="text-sm mb-1">• "I'll create a full post on this! Stay tuned 👀"</p>
+                    <p class="text-sm mb-1">• "DM me and I'll share more details!"</p>
+
+                    <p class="text-sm mb-1 mt-2"><strong>Negative/Trolls:</strong></p>
+                    <p class="text-sm mb-1">• "Thanks for your perspective! Everyone's journey is different 💙"</p>
+                    <p class="text-sm mb-1">• "Appreciate the feedback!"</p>
+                    <p class="text-sm mb-1">• [Delete/hide if spam or offensive]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCHEDULER SECTION -->
+        <div id="scheduler" class="section">
+            <div class="card">
+                <div class="card-title">📅 Posting Schedule Generator</div>
+
+                <div class="input-group">
+                    <label class="label">Platform</label>
+                    <select class="select" id="schedulePlatform">
+                        <option value="instagram">Instagram</option>
+                        <option value="tiktok">TikTok</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="twitter">Twitter/X</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="pinterest">Pinterest</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Your Timezone</label>
+                    <select class="select" id="timezone">
+                        <option value="est">EST (New York)</option>
+                        <option value="cst">CST (Chicago)</option>
+                        <option value="mst">MST (Denver)</option>
+                        <option value="pst">PST (Los Angeles)</option>
+                        <option value="gmt">GMT (London)</option>
+                        <option value="cet">CET (Paris)</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" onclick="generateSchedule()">📊 Generate Schedule</button>
+
+                <div class="output" id="scheduleOutput">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Best Times</th>
+                                <th>Engagement</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📋 Content Calendar</div>
+                <p class="card-subtitle">Plan your week ahead</p>
+
+                <div class="grid">
+                    <div class="input-group">
+                        <label class="label">Monday</label>
+                        <input type="text" class="input" id="mon" placeholder="Post idea...">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Tuesday</label>
+                        <input type="text" class="input" id="tue" placeholder="Post idea...">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Wednesday</label>
+                        <input type="text" class="input" id="wed" placeholder="Post idea...">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Thursday</label>
+                        <input type="text" class="input" id="thu" placeholder="Post idea...">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Friday</label>
+                        <input type="text" class="input" id="fri" placeholder="Post idea...">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Saturday</label>
+                        <input type="text" class="input" id="sat" placeholder="Post idea...">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Sunday</label>
+                        <input type="text" class="input" id="sun" placeholder="Post idea...">
+                    </div>
+                </div>
+
+                <button class="btn btn-success" onclick="saveCalendar()">💾 Save Calendar</button>
+            </div>
+        </div>
+
+        <!-- IDEAS SECTION -->
+        <div id="ideas" class="section">
+            <div class="card">
+                <div class="card-title">💡 Content Ideas Generator</div>
+
+                <div class="input-group">
+                    <label class="label">Your Niche</label>
+                    <select class="select" id="ideaNiche">
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="business">Business</option>
+                        <option value="beauty">Beauty</option>
+                        <option value="food">Food</option>
+                        <option value="tech">Tech</option>
+                        <option value="education">Education</option>
+                        <option value="parenting">Parenting</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Content Format</label>
+                    <div class="tags">
+                        <div class="tag active" onclick="selectFormat(this, 'carousel')">📱 Carousel</div>
+                        <div class="tag" onclick="selectFormat(this, 'reel')">🎬 Reel</div>
+                        <div class="tag" onclick="selectFormat(this, 'story')">📸 Story</div>
+                        <div class="tag" onclick="selectFormat(this, 'static')">🖼️ Static</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="generateIdeas()">💡 Generate 10 Ideas</button>
+
+                <div class="output" id="ideasOutput">
+                    <div class="output-text" id="ideasText"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🔥 Trending Content Formats</div>
+                
+                <div class="grid">
+                    <div class="tool-card">
+                        <div class="tool-card-icon">🎯</div>
+                        <div class="tool-card-title">Get Ready With Me</div>
+                        <div class="tool-card-desc">Behind-scenes + tips</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">📖</div>
+                        <div class="tool-card-title">Storytime + Lesson</div>
+                        <div class="tool-card-desc">Drama + insight</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">🔄</div>
+                        <div class="tool-card-title">Before & After</div>
+                        <div class="tool-card-desc">Transformation content</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">❌</div>
+                        <div class="tool-card-title">Stop Doing This</div>
+                        <div class="tool-card-desc">Call out mistakes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MONETIZATION SECTION -->
+        <div id="monetize" class="section">
+            <div class="card">
+                <div class="card-title">💰 Monetization Calculator</div>
+
+                <div class="input-group">
+                    <label class="label">Your Followers</label>
+                    <input type="number" class="input" id="monetizeFollowers" placeholder="0">
+                </div>
+
+                <div class="input-group">
+                    <label class="label">Engagement Rate %</label>
+                    <input type="number" class="input" id="monetizeEngagement" placeholder="0" step="0.1">
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateEarnings()">💵 Calculate Potential</button>
+
+                <div class="output" id="earningsOutput">
+                    <div class="output-text" id="earningsText"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">💎 Revenue Streams</div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>1. Sponsored Posts</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1"><strong>Pricing:</strong></p>
+                            <p class="text-sm mb-1">• 1K-10K: $50-300/post</p>
+                            <p class="text-sm mb-1">• 10K-50K: $300-1,000/post</p>
+                            <p class="text-sm mb-1">• 50K-100K: $1,000-5,000/post</p>
+                            <p class="mt-1"><strong>Where to find brands:</strong></p>
+                            <p class="text-sm">AspireIQ, Grin, direct DM outreach</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>2. Affiliate Marketing</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1"><strong>Top Programs:</strong></p>
+                            <p class="text-sm mb-1">• Amazon Associates (3-10%)</p>
+                            <p class="text-sm mb-1">• ShareASale (varies)</p>
+                            <p class="text-sm mb-1">• ClickBank (up to 75%)</p>
+                            <p class="text-sm mb-1">• RewardStyle/LTK (fashion)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>3. Digital Products</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1"><strong>What to sell:</strong></p>
+                            <p class="text-sm mb-1">• Templates ($7-47)</p>
+                            <p class="text-sm mb-1">• E-books ($17-97)</p>
+                            <p class="text-sm mb-1">• Presets ($9-49)</p>
+                            <p class="text-sm mb-1">• Courses ($97-997)</p>
+                            <p class="mt-1"><strong>Where:</strong> Gumroad, Stan Store, Etsy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>4. Coaching/Consulting</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="text-sm mb-1">• 1-on-1 calls: $100-500/hr</p>
+                            <p class="text-sm mb-1">• Group coaching: $500-2,000/person</p>
+                            <p class="text-sm mb-1">• Strategy sessions: $150-300</p>
+                            <p class="text-sm mb-1">• VIP days: $1,000-5,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📋 30-Day Money Plan</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Join 3 affiliate programs, create bio link</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Share affiliate links, engage daily</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Pitch 10 brands, create media kit</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Launch first digital product</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TOOLS SECTION -->
+        <div id="tools" class="section">
+            <div class="card">
+                <div class="card-title">🛠️ Essential Free Tools</div>
+
+                <div class="grid">
+                    <div class="tool-card">
+                        <div class="tool-card-icon">📸</div>
+                        <div class="tool-card-title">Canva</div>
+                        <div class="tool-card-desc">Design everything</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">✂️</div>
+                        <div class="tool-card-title">CapCut</div>
+                        <div class="tool-card-desc">Video editing</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">📊</div>
+                        <div class="tool-card-title">Notion</div>
+                        <div class="tool-card-desc">Content planning</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">🎨</div>
+                        <div class="tool-card-title">Unsplash</div>
+                        <div class="tool-card-desc">Free photos</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">🔗</div>
+                        <div class="tool-card-title">Linktree</div>
+                        <div class="tool-card-desc">Bio links</div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-card-icon">📈</div>
+                        <div class="tool-card-title">Metricool</div>
+                        <div class="tool-card-desc">Analytics</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">⚡ Productivity Hacks</div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Batch Content Creation</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
+                            <ul class="list">
+                                <li class="list-item">Pick 7 content ideas</li>
+                                <li class="list-item">Write all captions</li>
+                                <li class="list-item">Film all videos</li>
+                                <li class="list-item">Edit everything</li>
+                                <li class="list-item">Schedule for the week</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>15-Minute Daily Routine</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
+                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
+                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
+                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Content Swipe File</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="text-sm mb-1">1. Create Collections by topic</p>
+                            <p class="text-sm mb-1">2. Save high-performing posts</p>
+                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
+                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
+                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🚀 Quick Wins Checklist</div>
+                <ul class="list">
+                    <li class="list-item">Optimize bio with clear CTA</li>
+                    <li class="list-item">Create 3 highlight covers</li>
+                    <li class="list-item">Plan tomorrow's post</li>
+                    <li class="list-item">Engage 15 minutes today</li>
+                    <li class="list-item">Save 10 content ideas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script>
-        async function fetchWisdom() {
-            const query = document.getElementById('healthSearch').value.trim();
-            const output = document.getElementById('outputArea');
-            const loader = document.getElementById('loader');
-            const welcome = document.getElementById('welcomeGrid');
+        // Global Variables
+        let selectedCaptionStyle = 'hook';
+        let selectedCaptionLength = 'short';
+        let selectedBioStyle = 'professional';
+        let selectedCTAType = 'comment';
+        let selectedContentFormat = 'carousel';
+        let selectedHashtagCategories = [];
+        let currentColorScheme = 'gradient1';
 
-            if (!query) return;
+        // Section Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            // UI Setup
-            welcome.classList.add('hidden');
-            output.innerHTML = '';
-            loader.classList.remove('hidden');
+        // Content Tabs
+        function switchContentTab(tab) {
+            document.querySelectorAll('.content-tab').forEach(t => t.classList.add('hidden'));
+            document.getElementById(tab + '-tab').classList.remove('hidden');
+            
+            document.querySelectorAll('#content .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
 
-            try {
-                // Wikipedia API - Open Search to get the most relevant medical title
-                const searchRes = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&format=json&origin=*`);
-                const searchData = await searchRes.json();
+        // Engagement Tabs
+        function switchEngagementTab(tab) {
+            document.querySelectorAll('.engagement-tab').forEach(t => t.classList.add('hidden'));
+            document.getElementById(tab + '-tab').classList.remove('hidden');
+            
+            document.querySelectorAll('#engagement .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
 
-                if (searchData.query.search.length === 0) {
-                    throw new Error("Condition not found in current medical maps.");
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const accordion = header.parentElement;
+            const wasActive = accordion.classList.contains('active');
+            
+            document.querySelectorAll('.accordion').forEach(a => a.classList.remove('active'));
+            
+            if (!wasActive) {
+                accordion.classList.add('active');
+            }
+        }
+
+        // Tag Selection Functions
+        function selectStyle(tag, style) {
+            document.querySelectorAll('#captions .tags .tag').forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            selectedCaptionStyle = style;
+        }
+
+        function selectLength(tag, length) {
+            const tags = tag.parentElement.querySelectorAll('.tag');
+            tags.forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            selectedCaptionLength = length;
+        }
+
+        function selectBioStyle(tag, style) {
+            document.querySelectorAll('#bio .tags .tag').forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            selectedBioStyle = style;
+        }
+
+        function selectCTAType(tag, type) {
+            document.querySelectorAll('#engagement .tags .tag').forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            selectedCTAType = type;
+        }
+
+        function selectFormat(tag, format) {
+            document.querySelectorAll('#ideas .tags .tag').forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            selectedContentFormat = format;
+        }
+
+        function toggleHashtagCategory(tag, category) {
+            tag.classList.toggle('active');
+            if (selectedHashtagCategories.includes(category)) {
+                selectedHashtagCategories = selectedHashtagCategories.filter(c => c !== category);
+            } else {
+                selectedHashtagCategories.push(category);
+            }
+        }
+
+        function selectColor(element, scheme) {
+            document.querySelectorAll('.color-option').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+            currentColorScheme = scheme;
+        }
+
+        // Caption Generator
+        function generateCaption() {
+            const topic = document.getElementById('captionTopic').value;
+            if (!topic) {
+                alert('Please enter a topic!');
+                return;
+            }
+
+            const templates = {
+                hook: {
+                    short: `${topic} hits different when you understand this 🧠\n\nMost people miss [key insight]\n\nHere's what actually works:\n[Quick tip]\n\nSave this! 💾`,
+                    medium: `${topic} changed everything for me...\n\nHere's what I wish I knew earlier:\n\n✨ [Point 1]\n✨ [Point 2]\n✨ [Point 3]\n\nWhich one resonates? Comment below 👇\n\nP.S. More tips in bio!`,
+                    long: `Let's talk about ${topic}... 🔥\n\nI spent years doing this wrong. Then I discovered [insight] and everything changed.\n\nHere's the exact framework I use now:\n\n1️⃣ [Step 1 with detail]\n2️⃣ [Step 2 with detail]\n3️⃣ [Step 3 with detail]\n\nThe results? [Your transformation]\n\nTry this and let me know how it goes! Comment your experience below 👇\n\nWant the full breakdown? Link in bio 🔗`
+                },
+                story: {
+                    short: `Story time about ${topic}... 📖\n\nLast year: [struggle]\nNow: [success]\n\nWhat changed? [Key insight]\n\nComment YES for the full story 💬`,
+                    medium: `Real talk about ${topic}:\n\nI used to struggle with this HARD.\n\nThen I tried [solution] and wow.\n\nThe difference:\n\nBEFORE: [old situation]\nAFTER: [new situation]\n\nHere's exactly what I did:\n[3 quick steps]\n\nWho else needs this? Tag them! 👇`,
+                    long: `${topic} transformation thread 🧵\n\nA year ago, I was [detailed struggle]. I felt [emotions]. Nothing was working.\n\nThen someone told me about [insight] and I decided to try it.\n\nWeek 1: [what happened]\nWeek 2: [progress]\nMonth 1: [results]\n\nNow? [current state and detailed benefits]\n\nHere's my exact process:\n\n1. [Detailed step 1]\n2. [Detailed step 2]\n3. [Detailed step 3]\n4. [Detailed step 4]\n\nThe biggest lesson? [Key takeaway]\n\nIf you're where I was, start with step 1. You got this! 💪\n\nQuestions? Drop them below! 👇`
+                },
+                list: {
+                    short: `3 things about ${topic} nobody talks about:\n\n1️⃣ [Truth 1]\n2️⃣ [Truth 2]\n3️⃣ [Truth 3]\n\nWhich one surprised you? Comment the number 👇`,
+                    medium: `5 ${topic} tips that actually work:\n\n1. [Tip with brief explanation]\n2. [Tip with brief explanation]\n3. [Tip with brief explanation]\n4. [Tip with brief explanation]\n5. [Tip with brief explanation]\n\nSave this for later! 💾\n\nWhich will you try first?`,
+                    long: `The ULTIMATE ${topic} guide (save this!) 📌\n\n1️⃣ [Tip 1 - detailed explanation with example]\n\n2️⃣ [Tip 2 - detailed explanation with example]\n\n3️⃣ [Tip 3 - detailed explanation with example]\n\n4️⃣ [Tip 4 - detailed explanation with example]\n\n5️⃣ [Tip 5 - detailed explanation with example]\n\nBONUS: [Extra tip]\n\nI've been doing this for [time] and these are the exact strategies that work.\n\nWhich tip will you implement today? Let me know! 👇\n\nWant more? Check bio for my full guide 🔗`
+                },
+                question: {
+                    short: `Ever wonder about ${topic}? 🤔\n\nThe answer: [surprising truth]\n\nMind blown? Drop a 🤯`,
+                    medium: `Real question: Why does ${topic} matter?\n\nHere's the truth most people don't know:\n\n[Explanation with 2-3 key points]\n\nChange your perspective on this and everything shifts.\n\nThoughts? 👇`,
+                    long: `Let's talk about something important: ${topic}\n\nMost people think [common belief].\n\nBut here's what research actually shows: [truth]\n\nWhy this matters:\n\n• [Implication 1]\n• [Implication 2]\n• [Implication 3]\n\nWhat you can do about it:\n\n1. [Action step 1]\n2. [Action step 2]\n3. [Action step 3]\n\nThis changed how I approach [related area] completely.\n\nHave you experienced this? Share your story below! 👇`
+                },
+                controversial: {
+                    short: `Unpopular opinion about ${topic}:\n\n[Controversial take]\n\nAgree or disagree? Comment below 👇`,
+                    medium: `Hot take on ${topic} 🔥\n\nEveryone says [common advice].\n\nBut I think [your take].\n\nHere's why:\n[2-3 quick reasons]\n\nChange my mind 💬`,
+                    long: `Controversial opinion incoming... 🚨\n\nEveryone in the ${topic} space says you should [common advice].\n\nI completely disagree. Here's why:\n\n1. [Reason 1 with detailed explanation]\n2. [Reason 2 with detailed explanation]\n3. [Reason 3 with detailed explanation]\n\nWhat I do instead:\n[Your alternative approach with specifics]\n\nThe results speak for themselves: [Your results]\n\nI know this goes against what everyone teaches, but sometimes the conventional wisdom is just... wrong.\n\nAm I crazy? Let's debate in the comments 👇\n\nP.S. If this resonated, save it and tag someone who needs to hear this!`
+                },
+                motivational: {
+                    short: `You are capable of amazing things with ${topic}. 💪\n\nStop doubting. Start doing.\n\nToday is the day. 🔥`,
+                    medium: `${topic} reminder you needed today:\n\nYou don't need:\n❌ To be perfect\n❌ To know everything\n❌ To wait for the right time\n\nYou just need:\n✅ To start\n✅ To be consistent\n✅ To believe in yourself\n\nYou got this 💙`,
+                    long: `If no one told you this today, here it is:\n\nYou are MORE than capable of mastering ${topic}. 💪\n\nStop waiting for:\n❌ The perfect moment (it doesn't exist)\n❌ More confidence (it comes from doing)\n❌ Someone's permission (you don't need it)\n❌ All the answers (you'll figure it out)\n\nStart doing:\n✅ [Action 1] - even if it's messy\n✅ [Action 2] - even if you're scared\n✅ [Action 3] - even if you don't feel ready\n\nA year from now, you'll wish you started today.\n\nYour future self is counting on you. Don't let them down. 🙏\n\nWho's ready to level up? Drop a 🔥 below!`
                 }
+            };
 
-                const bestMatch = searchData.query.search[0].title;
+            const caption = templates[selectedCaptionStyle][selectedCaptionLength];
+            document.getElementById('captionText').textContent = caption;
+            document.getElementById('captionOutput').classList.add('active');
+        }
 
-                // Fetch the actual clinical summary
-                const contentRes = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encode
+        // Hashtag Generator
+        function generateHashtags() {
+            const niche = document.getElementById('hashtagNiche').value;
+            const platform = document.getElementById('hashtagPlatform').value;
+
+            if (!niche || selectedHashtagCategories.length === 0) {
+                alert('Please enter a niche and select categories!');
+                return;
+            }
+
+            const platformTags = {
+                instagram: '#Instagram #Insta #InstaDaily #IGDaily',
+                tiktok: '#TikTok #ForYou #FYP #Viral',
+                twitter: '#TwitterX #Tweet',
+                linkedin: '#LinkedIn #Professional #Career'
+            };
+
+            const categoryTags = {
+                trending: '#Trending #Viral #ForYou #Explore #ExplorePage',
+                niche: `#${niche} #${niche}Life #${niche}Community #${niche}Lover #${niche}Daily`,
+                branded: `#YourBrand #${niche}Expert #${niche}Coach`,
+                location: '#YourCity #Local #YourCountry',
+                community: '#Community #Support #SmallBusiness #Creator'
+            };
+
+            let tags = [platformTags[platform]];
+            selectedHashtagCategories.forEach(cat => {
+                if (categoryTags[cat]) tags.push(categoryTags[cat]);
+            });
+
+            const output = `🔥 YOUR HASHTAG SET:\n\n${tags.join(' ')}\n\n💡 TIP: Rotate these! Don't use the exact same set every time.`;
+            
+            document.getElementById('hashtagText').textContent = output;
+            document.getElementById('hashtagOutput').classList.add('active');
+        }
+
+        // Bio Generator
+        function generateBio() {
+            const niche = document.getElementById('bioNiche').value;
+            const offer = document.getElementById('bioOffer').value;
+            const cta = document.getElementById('bioCTA').value;
+
+            if (!niche || !offer) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            const styles = {
+                professional: `${niche} | Helping you ${offer}\n📍 [Your Location]\n🎯 [Your unique value]\n👇 ${cta}`,
+                casual: `Hey! I'm a ${niche} 😊\nI ${offer}\nLet's connect! 💙\n👇 ${cta}`,
+                fun: `${niche} with a twist! ✨\n${offer} (and having fun doing it 🎉)\n💫 [Your vibe]\n👇 ${cta}`,
+                minimal: `${niche}\n${offer}\n👇 ${cta}`
+            };
+
+            const bio = styles[selectedBioStyle];
+            document.getElementById('bioText').textContent = bio;
+            document.getElementById('bioOutput').classList.add('active');
+        }
+
+        // Reel Script Generator
+        function generateReelScript() {
+            const topic = document.getElementById('reelTopic').value;
+            const type = document.getElementById('reelType').value;
+
+            if (!topic) {
+                alert('Please enter a topic!');
+                return;
+            }
+
+            const scripts = {
+                hook: `[SCENE 1 - 1 sec]\nStop scrolling! 🛑\n\n[SCENE 2 - 3 sec]\n${topic} isn't what you think...\n\n[SCENE 3 - 5 sec]\nHere's what actually works:\n[Show tip visually]\n\n[SCENE 4 - 3 sec]\nTry this and thank me later! 💙\n\nCALL TO ACTION:\nSave + follow for more!`,
+                tutorial: `[INTRO - 2 sec]\nHow to ${topic} in 3 steps:\n\n[STEP 1 - 5 sec]\n1️⃣ [First step]\n[Show action]\n\n[STEP 2 - 5 sec]\n2️⃣ [Second step]\n[Show action]\n\n[STEP 3 - 5 sec]\n3️⃣ [Third step]\n[Show action]\n\n[OUTRO - 2 sec]\nThat's it! Save this for later 💾`,
+                story: `[HOOK - 2 sec]\nStory time about ${topic}...\n\n[SETUP - 5 sec]\nSo last week, [situation]...\n\n[CONFLICT - 5 sec]\nThen this happened: [problem]\n\n[RESOLUTION - 5 sec]\nBut here's what I did: [solution]\n\n[LESSON - 2 sec]\nLesson learned: [takeaway]\n\nHas this happened to you? Comment! 👇`,
+                list: `[HOOK - 1 sec]\n3 ${topic} tips you NEED to know:\n\n[TIP 1 - 4 sec]\n1️⃣ [First tip]\n\n[TIP 2 - 4 sec]\n2️⃣ [Second tip]\n\n[TIP 3 - 4 sec]\n3️⃣ [Third tip]\n\n[CTA - 2 sec]\nWhich will you try? Comment 1, 2, or 3! 👇`,
+                transformation: `[BEFORE - 3 sec]\nThis was me before ${topic}:\n[Show before state]\n\n[JOURNEY - 6 sec]\nThen I started:\n• [Change 1]\n• [Change 2]\n• [Change 3]\n\n[AFTER - 4 sec]\nNow look:\n[Show after state]\n\n[CTA - 2 sec]\nYour turn! Start today 💪`
+            };
+
+            document.getElementById('reelScript').textContent = scripts[type];
+            document.getElementById('reelOutput').classList.add('active');
+        }
+
+        // CTA Generator
+        function generateCTA() {
+            const ctas = {
+                comment: [
+                    "Drop a 💙 if you agree!",
+                    "Comment your thoughts below 👇",
+                    "Tag someone who needs this!",
+                    "What's your take? Let me know!",
+                    "Answer this: [question]",
+                    "Which one are you? A, B, or C?"
+                ],
+                save: [
+                    "Save this for later! 💾",
+                    "Bookmark this before you forget!",
+                    "Save + share with your bestie",
+                    "You'll want to come back to this!",
+                    "Save this if it helped you!"
+                ],
+                share: [
+                    "Share this to your story!",
+                    "Send this to someone who needs it",
+                    "Tag 3 friends who relate",
+                    "Share if this resonated with you",
+                    "Repost if you agree!"
+                ],
+                tag: [
+                    "Tag your accountability partner!",
+                    "Tag someone who inspires you",
+                    "Tag 3 people who need to see this",
+                    "Tag your bestie who relates",
+                    "Tag someone who gets it"
+                ]
+            };
+
+            const randomCTA = ctas[selectedCTAType][Math.floor(Math.random() * ctas[selectedCTAType].length)];
+            document.getElementById('ctaText').textContent = randomCTA;
+            document.getElementById('ctaOutput').classList.add('active');
+        }
+
+        // Content Ideas Generator
+        function generateIdeas() {
+            const niche = document.getElementById('ideaNiche').value;
+            
+            const ideas = {
+                lifestyle: [
+                    "Morning routine that changed my life",
+                    "5 habits of successful people",
+                    "How I romanticize my daily life",
+                    "That girl aesthetic tips",
+                    "Self-care Sunday ideas",
+                    "Productive day in my life",
+                    "Glow up journey transformation",
+                    "Minimalist lifestyle benefits",
+                    "Mindfulness practices that work",
+                    "Vision board creation guide"
+                ],
+                fitness: [
+                    "Form check: Common mistakes",
+                    "What I eat in a day (realistic)",
+                    "Home workout no equipment",
+                    "Meal prep Sunday routine",
+                    "Fitness myths debunked",
+                    "Transformation timeline",
+                    "Gym bag essentials",
+                    "Post-workout recovery tips",
+                    "Beginner's guide to [exercise]",
+                    "Supplement recommendations"
+                ],
+                business: [
+                    "Income report transparency",
+                    "Mistakes that cost me $$$",
+                    "Day in the life of entrepreneur",
+                    "Side hustle ideas 2025",
+                    "How I scaled to 6 figures",
+                    "Productivity tools I use",
+                    "Behind the scenes reality",
+                    "Client success story",
+                    "Marketing strategies that work",
+                    "Starting with $0 guide"
+                ],
+                beauty: [
+                    "Makeup routine breakdown",
+                    "Skincare that actually works",
+                    "Get ready with me",
+                    "Drugstore vs luxury products",
+                    "Before and after glow up",
+                    "Skin concern solutions",
+                    "Product review honest opinion",
+                    "Night routine for clear skin",
+                    "Makeup hacks you need",
+                    "My holy grail products"
+                ],
+                food: [
+                    "Easy meal prep ideas",
+                    "Budget-friendly recipes",
+                    "5-ingredient meals",
+                    "What I cook weekly",
+                    "Recipe fails and wins",
+                    "Cooking tips for beginners",
+                    "Restaurant recipe recreation",
+                    "Meal planning guide",
+                    "Kitchen must-haves",
+                    "Healthy alternatives swaps"
+                ],
+                tech: [
+                    "App recommendations 2025",
+                    "Tech setup tour",
+                    "Productivity tools review",
+                    "Coding tutorial basics",
+                    "Tech news explained simply",
+                    "Gadgets worth buying",
+                    "Software comparison",
+                    "Problem-solving tips",
+                    "Industry trends analysis",
+                    "Tool tutorials walkthrough"
+                ],
+                education: [
+                    "Study tips that work",
+                    "Note-taking methods",
+                    "How I passed [exam]",
+                    "Learning resource recommendations",
+                    "Time management for students",
+                    "Concept explained simply",
+                    "Assignment help strategies",
+                    "Productivity for studying",
+                    "Online learning tips",
+                    "Exam preparation guide"
+                ],
+                parenting: [
+                    "Real mom life moments",
+                    "Kid activity ideas",
+                    "Parenting wins and fails",
+                    "Product recommendations",
+                    "Meal ideas for picky eaters",
+                    "Daily routine with kids",
+                    "Honest parenting reality",
+                    "Budget family activities",
+                    "Developmental milestone tips",
+                    "Self-care for parents"
+                ]
+            };
+
+            const nicheIdeas = ideas[niche];
+            let output = `💡 10 ${selectedContentFormat.toUpperCase()} IDEAS FOR ${niche.toUpperCase()}:\n\n`;
+            
+            nicheIdeas.forEach((idea, index) => {
+                output += `${index + 1}. ${idea}\n`;
+            });
+
+            output += `\n🎯 Pick one and create it today!`;
+
+            document.getElementById('ideasText').textContent = output;
+            document.getElementById('ideasOutput').classList.add('active');
+        }
+
+        // Schedule Generator
+        function generateSchedule() {
+            const platform = document.getElementById('schedulePlatform').value;
+            
+            const schedules = {
+                instagram: [
+                    { day: 'Mon', times: '11 AM, 7 PM', level: 'High' },
+                    { day: 'Tue', times: '11 AM, 8 PM', level: 'High' },
+                    { day: 'Wed', times: '11 AM, 7 PM', level: 'Very High' },
+                    { day: 'Thu', times: '12 PM, 7 PM', level: 'High' },
+                    { day: 'Fri', times: '11 AM, 5 PM', level: 'Very High' },
+                    { day: 'Sat', times: '10 AM, 6 PM', level: 'Medium' },
+                    { day: 'Sun', times: '10 AM, 5 PM', level: 'Medium' }
+                ],
+                tiktok: [
+                    { day: 'Mon', times: '6 AM, 8 PM', level: 'High' },
+                    { day: 'Tue', times: '6 AM, 9 PM', level: 'Very High' },
+                    { day: 'Wed', times: '7 AM, 8 PM', level: 'High' },
+                    { day: 'Thu', times: '6 AM, 8 PM', level: 'Very High' },
+                    { day: 'Fri', times: '7 AM, 9 PM', level: 'Very High' },
+                    { day: 'Sat', times: '9 AM, 7 PM', level: 'High' },
+                    { day: 'Sun', times: '9 AM, 6 PM', level: 'Medium' }
+                ]
+            };
+
+            const schedule = schedules[platform] || schedules.instagram;
+            let tableHTML = '';
+            
+            schedule.forEach(row => {
+                const color = row.level === 'Very High' ? 'var(--success)' : row.level === 'High' ? 'var(--primary)' : 'var(--gray)';
+                tableHTML += `
+                    <tr>
+                        <td>${row.day}</td>
+                        <td>${row.times}</td>
+                        <td><span style="color: ${color}">${row.level}</span></td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('scheduleTable').innerHTML = tableHTML;
+            document.getElementById('scheduleOutput').classList.add('active');
+        }
+
+        // Growth Plan Generator
+        function generateGrowthPlan() {
+            const stage = document.getElementById('growthStage').value;
+            const goal = document.getElementById('growthGoal').value;
+
+            const plans = {
+                '0-1k': {
+                    followers: "🌱 0-1K GROWTH PLAN:\n\n✓ Follow 50 accounts daily in your niche\n✓ Comment on 30 posts authentically\n✓ Post 1x daily consistently\n✓ Use Stories with engagement stickers 3x daily\n✓ Join 3 engagement pods\n✓ DM 10 people daily (genuine compliments)\n✓ Optimize bio with clear value prop\n\nTimeline: 60-90 days to 1K",
+                    engagement: "💬 ENGAGEMENT BOOST (0-1K):\n\n✓ Reply to ALL comments within 1 hour\n✓ Ask questions in every caption\n✓ Use polls in Stories daily\n✓ Create shareable carousel content\n✓ End posts with strong CTAs\n✓ Use 3-5 hashtags max (high engagement, not big)\n\nGoal: 5-10% engagement rate",
+                    viral: "🔥 VIRAL STRATEGY (0-1K):\n\n✓ Jump on trending sounds EARLY\n✓ Use controversial/polarizing takes\n✓ Create relatable memes in your niche\n✓ Hook in first 1 second is CRITICAL\n✓ Study top performers, recreate with twist\n✓ Post at peak times (11 AM, 7 PM)\n\nPost 2-3 Reels daily for best odds"
+                },
+                '1k-10k': {
+                    followers: "🚀 1K-10K SCALE PLAN:\n\n✓ Post 2-3 Reels daily minimum\n✓ Collaborate with 2-3 creators weekly\n✓ Do Instagram Lives 2x weekly\n✓ Focus 80% educational content\n✓ Engage 60 minutes daily\n✓ Create content series (binge-worthy)\n✓ Every piece needs strong hook\n\nTimeline: 3-6 months",
+                    engagement: "💎 ENGAGEMENT SCALE (1K-10K):\n\n✓ Carousel posts for max saves\n✓ Create 'save-worthy' content\n✓ Build engagement pod of 10-20 people\n✓ Use Stories to drive feed engagement\n✓ Create challenges your audience joins\n✓ Respond to DMs within hours\n\nGoal: Maintain 4-6% rate",
+                    viral: "⚡ VIRAL ACCELERATION (1K-10K):\n\n✓ 1 viral attempt per week minimum\n✓ Pattern interrupt hooks\n✓ Emotional triggers (inspire/anger/joy)\n✓ Trending formats adapted to niche\n✓ Collab with bigger accounts\n✓ Cross-post to TikTok, YT Shorts\n\nOne viral hit = 5-10K new followers"
+                }
+            };
+
+            const plan = plans[stage]?.[goal] || "Select your stage and goal to get a custom plan!";
+            document.getElementById('growthPlan').textContent = plan;
+            document.getElementById('growthOutput').classList.add('active');
+        }
+
+        // A/B Testing
+        function compareAB() {
+            const aLikes = parseInt(document.getElementById('postALikes').value) || 0;
+            const aComments = parseInt(document.getElementById('postAComments').value) || 0;
+            const bLikes = parseInt(document.getElementById('postBLikes').value) || 0;
+            const bComments = parseInt(document.getElementById('postBComments').value) || 0;
+
+            const aTotal = aLikes + (aComments * 3); // Comments worth 3x
+            const bTotal = bLikes + (bComments * 3);
+
+            let result = "📊 A/B TEST RESULTS:\n\n";
+            result += `Post A Score: ${aTotal}\n`;
+            result += `Post B Score: ${bTotal}\n\n`;
+
+            if (aTotal > bTotal) {
+                const diff = ((aTotal - bTotal) / bTotal * 100).toFixed(1);
+                result += `🏆 POST A WINS by ${diff}%\n\n`;
+                result += "Replicate Post A's strategy:\n";
+                result += "• Same hook style\n• Similar format\n• Same posting time\n• Repeat what worked!";
+            } else if (bTotal > aTotal) {
+                const diff = ((bTotal - aTotal) / aTotal * 100).toFixed(1);
+                result += `🏆 POST B WINS by ${diff}%\n\n`;
+                result += "Replicate Post B's strategy:\n";
+                result += "• Same hook style\n• Similar format\n• Same posting time\n• Repeat what worked!";
+            } else {
+                result += "🤝 IT'S A TIE!\n\nBoth performed equally. Test different variables.";
+            }
+
+            document.getElementById('abResult').textContent = result;
+            document.getElementById('abOutput').classList.add('active');
+        }
+
+        // Monetization Calculator
+        function calculateEarnings() {
+            const followers = parseInt(document.getElementById('monetizeFollowers').value) || 0;
+            const engagement = parseFloat(document.getElementById('monetizeEngagement').value) || 0;
+
+            if (followers === 0) {
+                alert('Please enter your follower count!');
+                return;
+            }
+
+            // Engagement multiplier
+            const engagementMultiplier = engagement > 5 ? 1.5 : engagement > 3 ? 1.2 : 1;
+
+            // Sponsored post pricing
+            let sponsoredMin, sponsoredMax;
+            if (followers < 10000) {
+                sponsoredMin = Math.floor(followers * 0.01);
+                sponsoredMax = Math.floor(followers * 0.03);
+            } else if (followers < 50000) {
+                sponsoredMin = Math.floor(followers * 0.03);
+                sponsoredMax = Math.floor(followers * 0.10);
+            } else {
+                sponsoredMin = Math.floor(followers * 0.05);
+                sponsoredMax = Math.floor(followers * 0.15);
+            }
+
+            sponsoredMin = Math.floor(sponsoredMin * engagementMultiplier);
+            sponsoredMax = Math.floor(sponsoredMax * engagementMultiplier);
+
+            // Monthly estimates
+            const monthlyMin = sponsoredMin * 4; // 4 sponsored posts
+            const monthlyMax = sponsoredMax * 8; // 8 sponsored posts
+
+            // Affiliate estimate (conservative)
+            const affiliateMonthly = Math.floor(followers * 0.1); // $0.10 per follower
+
+            // Digital product estimate
+            const productMonthly = followers > 5000 ? Math.floor(followers * 0.5) : 0;
+
+            const totalMin = monthlyMin + affiliateMonthly + productMonthly;
+            const totalMax = monthlyMax + affiliateMonthly + productMonthly;
+
+            let result = `💰 EARNINGS POTENTIAL:\n\n`;
+            result += `📊 Based on ${followers.toLocaleString()} followers @ ${engagement}% engagement\n\n`;
+            result += `SPONSORED POSTS:\n`;
+            result += `• Per post: $${sponsoredMin}-$${sponsoredMax}\n`;
+            result += `• Monthly (4-8 posts): $${monthlyMin.toLocaleString()}-$${monthlyMax.toLocaleString()}\n\n`;
+            result += `AFFILIATE MARKETING:\n`;
+            result += `• Monthly estimate: $${affiliateMonthly.toLocaleString()}\n\n`;
+            if (productMonthly > 0) {
+                result += `DIGITAL PRODUCTS:\n`;
+                result += `• Monthly potential: $${productMonthly.toLocaleString()}\n\n`;
+            }
+            result += `📈 TOTAL MONTHLY RANGE:\n`;
+            result += `$${totalMin.toLocaleString()} - $${totalMax.toLocaleString()}\n\n`;
+            result += `💡 Higher engagement = charge more!\n`;
+            result += `🎯 Focus on building engaged audience, not just followers.`;
+
+            document.getElementById('earningsText').textContent = result;
+            document.getElementById('earningsOutput').classList.add('active');
+        }
+
+        // Update Metrics
+        function updateMetric(type) {
+            if (type === 'followers') {
+                const value = parseInt(document.getElementById('followerInput').value);
+                if (value) {
+                    document.getElementById('totalFollowers').textContent = value.toLocaleString();
+                    updateProgress(value);
+                }
+            } else if (type === 'engagement') {
+                const value = parseFloat(document.getElementById('engagementInput').value);
+                if (value) {
+                    document.getElementById('engagementRate').textContent = value + '%';
+                }
+            }
+        }
+
+        function updateProgress(followers) {
+            const milestones = [100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
+            let nextMilestone = milestones.find(m => m > followers) || 1000000;
+            let prevMilestone = [...milestones].reverse().find(m => m < followers) || 0;
+            
+            let progress = ((followers - prevMilestone) / (nextMilestone - prevMilestone)) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('milestone').textContent = nextMilestone.toLocaleString();
+        }
+
+        // Save Calendar
+        function saveCalendar() {
+            const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+            let calendar = {};
+            
+            days.forEach(day => {
+                calendar[day] = document.getElementById(day).value;
+            });
+            
+            localStorage.setItem('contentCalendar', JSON.stringify(calendar));
+            alert('✅ Calendar saved!');
+        }
+
+        // Load Calendar
+        function loadCalendar() {
+            const saved = localStorage.getItem('contentCalendar');
+            if (saved) {
+                const calendar = JSON.parse(saved);
+                Object.keys(calendar).forEach(day => {
+                    const input = document.getElementById(day);
+                    if (input) input.value = calendar[day];
+                });
+            }
+        }
+
+        // Generate Carousel
+        function generateCarousel() {
+            const title = document.getElementById('carouselTitle').value;
+            const content = document.getElementById('carouselContent').value;
+
+            if (!title) {
+                alert('Please enter a title!');
+                return;
+            }
+
+            const canvas = document.getElementById('carouselCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Clear
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background
+            const gradients = {
+                gradient1: ['#667eea', '#764ba2'],
+                gradient2: ['#f093fb', '#f5576c'],
+                gradient3: ['#4facfe', '#00f2fe'],
+                gradient4: ['#43e97b', '#38f9d7'],
+                gradient5: ['#fa709a', '#fee140'],
+                dark: ['#0f172a', '#1e293b'],
+                light: ['#ffffff', '#f1f5f9']
+            };
+
+            const colors = gradients[currentColorScheme];
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, colors[0]);
+            gradient.addColorStop(1, colors[1]);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Title
+            ctx.fillStyle = currentColorScheme === 'light' ? '#0f172a' : '#ffffff';
+            ctx.font = 'bold 80px Inter';
+            ctx.textAlign = 'center';
+            
+            // Word wrap
+            const words = title.split(' ');
+            let line = '';
+            let y = 400;
+            
+            words.forEach(word => {
+                const testLine = line + word + ' ';
+                const metrics = ctx.measureText(testLine);
+                if (metrics.width > 900) {
+                    ctx.fillText(line, 540, y);
+                    line = word + ' ';
+                    y += 100;
+                } else {
+                    line = testLine;
+                }
+            });
+            ctx.fillText(line, 540, y);
+
+            // Content
+            if (content) {
+                ctx.font = '40px Inter';
+                ctx.fillText(content.substring(0, 80), 540, y + 150);
+            }
+
+            canvas.style.display = 'block';
+            
+            // Download
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.download = 'carousel-slide.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            }, 500);
+        }
+
+        // Generate Quote
+        function generateQuote() {
+            const quote = document.getElementById('quoteText').value;
+            const author = document.getElementById('quoteAuthor').value;
+
+            if (!quote) {
+                alert('Please enter a quote!');
+                return;
+            }
+
+            const canvas = document.getElementById('quoteCanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Quote
+            ctx.fillStyle = 'white';
+            ctx.font = 'italic 60px Inter';
+            ctx.textAlign = 'center';
+            
+            const words = quote.split(' ');
+            let line = '';
+            let y = 400;
+            
+            words.forEach(word => {
+                const testLine = line + word + ' ';
+                const metrics = ctx.measureText(testLine);
+                if (metrics.width > 900) {
+                    ctx.fillText(line, 540, y);
+                    line = word + ' ';
+                    y += 80;
+                } else {
+                    line = testLine;
+                }
+            });
+            ctx.fillText(line, 540, y);
+
+            // Author
+            if (author) {
+                ctx.font = '40px Inter';
+                ctx.fillText('- ' + author, 540, y + 100);
+            }
+
+            canvas.style.display = 'block';
+            
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.download = 'quote-post.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            }, 500);
+        }
+
+        // Copy Functions
+        function copyOutputText(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text);
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            btn.classList.add('copied');
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            alert('✅ Copied to clipboard!');
+        }
+
+        function copyAccordionText(btn) {
+            const content = btn.parentElement.textContent.replace('Copy', '').trim();
+            navigator.clipboard.writeText(content);
+            
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            btn.classList.add('copied');
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Initialize
+        window.onload = function() {
+            loadCalendar();
+            
+            // Set random posts today
+            document.getElementById('postsToday').textContent = Math.floor(Math.random() * 3) + 1;
+        };
+    </script>
+</body>
+</html>
