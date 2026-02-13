@@ -56,56 +56,82 @@
         .header {
             position: sticky;
             top: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(99, 102, 241, 0.2);
             z-index: 1000;
-            padding: 1rem;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
+            flex-wrap: wrap;
         }
         .logo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1rem;
+            }
         }
         .header-stats {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             flex-wrap: wrap;
+            justify-content: flex-end;
         }
         .stat {
-            background: rgba(99, 102, 241, 0.1);
-            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.15);
+            padding: 0.35rem 0.65rem;
             border-radius: 20px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             color: var(--primary);
             border: 1px solid rgba(99, 102, 241, 0.3);
             white-space: nowrap;
         }
+        @media (max-width: 480px) {
+            .stat {
+                font-size: 0.6rem;
+                padding: 0.3rem 0.55rem;
+            }
+        }
         .container {
             position: relative;
             z-index: 1;
-            padding: 1rem;
+            padding: 0.75rem;
+            padding-bottom: 2rem;
+            max-width: 100%;
+        }
+        @media (min-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
         }
         .quick-access {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             overflow-x: auto;
-            padding-bottom: 0.5rem;
+            padding: 0.5rem 0;
             -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
         }
         .quick-access::-webkit-scrollbar {
-            height: 3px;
+            height: 4px;
         }
         .quick-access::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.05);
@@ -116,59 +142,94 @@
             border-radius: 10px;
         }
         .quick-btn {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
+            padding: 0.65rem 1.1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
             color: var(--light);
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .quick-btn:active {
+            transform: scale(0.96);
         }
         .quick-btn.active {
             background: var(--gradient);
             border-color: transparent;
             color: white;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+            transform: scale(1.02);
+        }
+        @media (max-width: 480px) {
+            .quick-btn {
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+            }
         }
         .section {
-            display: none;
-            animation: fadeIn 0.3s ease;
+            display: none !important;
+            animation: fadeIn 0.4s ease;
         }
         .section.active {
-            display: block;
+            display: block !important;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .card {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
             padding: 1.25rem;
             margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 480px) {
+            .card {
+                padding: 1rem;
+                border-radius: 16px;
+            }
         }
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: white;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            line-height: 1.3;
+        }
+        @media (max-width: 480px) {
+            .card-title {
+                font-size: 1.15rem;
+            }
         }
         .card-subtitle {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gray);
             margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        @media (max-width: 480px) {
+            .card-subtitle {
+                font-size: 0.85rem;
+            }
         }
         .grid {
             display: grid;
-            gap: 1rem;
+            gap: 0.85rem;
             grid-template-columns: 1fr;
         }
         .grid-2 {
@@ -180,99 +241,186 @@
         @media (max-width: 640px) {
             .grid-3 {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+        @media (max-width: 380px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
             }
         }
         .tool-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 12px;
-            padding: 1rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(99, 102, 241, 0.25);
+            border-radius: 16px;
+            padding: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tool-card:hover::before {
+            opacity: 1;
         }
         .tool-card:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
+        }
+        @media (max-width: 480px) {
+            .tool-card {
+                padding: 0.9rem;
+                min-height: 100px;
+                border-radius: 14px;
+            }
         }
         .tool-card-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 480px) {
+            .tool-card-icon {
+                font-size: 1.9rem;
+            }
         }
         .tool-card-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: white;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.3rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.3;
+        }
+        @media (max-width: 480px) {
+            .tool-card-title {
+                font-size: 0.88rem;
+            }
         }
         .tool-card-desc {
             font-size: 0.75rem;
             color: var(--gray);
             line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 480px) {
+            .tool-card-desc {
+                font-size: 0.7rem;
+            }
         }
         .input-group {
             margin-bottom: 1rem;
         }
         .label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--light);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+        @media (max-width: 480px) {
+            .label {
+                font-size: 0.85rem;
+            }
         }
         .input, .textarea, .select {
             width: 100%;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            padding: 0.85rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
             color: white;
             font-family: inherit;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: all 0.3s;
+            min-height: 44px;
         }
         .input:focus, .textarea:focus, .select:focus {
             outline: none;
             border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.09);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        @media (max-width: 480px) {
+            .input, .textarea, .select {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
         }
         .textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 120px;
+            line-height: 1.6;
         }
         .btn {
-            padding: 0.75rem 1.5rem;
+            padding: 0.85rem 1.5rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             width: 100%;
+            min-height: 48px;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        @media (max-width: 480px) {
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.3rem;
+            }
         }
         .btn-primary {
             background: var(--gradient);
             color: white;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
         }
-        .btn-primary:active {
-            transform: translateY(1px);
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
         }
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
             color: var(--light);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
         }
         .btn-success {
             background: var(--success);
             color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
         .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            min-height: 40px;
+        }
+        @media (max-width: 480px) {
+            .btn-sm {
+                font-size: 0.8rem;
+                padding: 0.55rem 0.9rem;
+            }
         }
         .tags {
             display: flex;
@@ -281,41 +429,111 @@
             margin: 1rem 0;
         }
         .tag {
-            padding: 0.4rem 0.8rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 0.55rem 0.95rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 25px;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .tag:active {
+            transform: scale(0.96);
         }
         .tag.active {
             background: var(--primary);
             border-color: var(--primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        @media (max-width: 480px) {
+            .tag {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.85rem;
+            }
         }
         .output {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1.5px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+            padding: 1.25rem;
             margin-top: 1rem;
             display: none;
         }
+        @media (max-width: 480px) {
+            .output {
+                padding: 1rem;
+            }
+        }
         .output.active {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
         .output-text {
             color: white;
             line-height: 1.8;
             white-space: pre-wrap;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 480px) {
+            .output-text {
+                font-size: 0.9rem;
+            }
         }
         .alert {
             padding: 1rem;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 1rem;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        @media (max-width: 480px) {
+            .alert {
+                padding: 0.85rem;
+                font-size: 0.85rem;
+            }
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0 0.25rem;
+        }
+        .back-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 0.65rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+            font-size: 1.2rem;
+        }
+        .back-btn:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.15rem;
+            }
         }
         .alert-info {
             background: rgba(99, 102, 241, 0.1);
@@ -411,26 +629,44 @@
             margin-bottom: 1rem;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            padding: 0.25rem 0;
+            scroll-behavior: smooth;
         }
         .tabs::-webkit-scrollbar {
             display: none;
         }
         .tab {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 0.65rem 1.1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
             color: var(--light);
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .tab:active {
+            transform: scale(0.96);
         }
         .tab.active {
             background: var(--primary);
             border-color: var(--primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+        @media (max-width: 480px) {
+            .tab {
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+            }
         }
         canvas {
             max-width: 100%;
@@ -440,51 +676,82 @@
             margin-top: 1rem;
         }
         .accordion {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin-bottom: 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            margin-bottom: 0.85rem;
             overflow: hidden;
         }
         .accordion-header {
-            padding: 1rem;
+            padding: 1.1rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            min-height: 56px;
+            transition: background 0.3s;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .accordion-header:active {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        @media (max-width: 480px) {
+            .accordion-header {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
         }
         .accordion-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .accordion.active .accordion-body {
-            max-height: 2000px;
+            max-height: 2500px;
         }
         .accordion-content {
-            padding: 1rem;
+            padding: 1.1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        @media (max-width: 480px) {
+            .accordion-content {
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
         }
         .color-picker {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.65rem;
             flex-wrap: wrap;
             margin: 1rem 0;
         }
         .color-option {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
             cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s;
+            border: 3px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .color-option:active {
+            transform: scale(0.95);
         }
         .color-option.active {
             border-color: white;
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
+        }
+        @media (max-width: 480px) {
+            .color-option {
+                width: 44px;
+                height: 44px;
+            }
         }
         .upload-area {
             border: 2px dashed rgba(255, 255, 255, 0.3);
@@ -513,9 +780,10 @@
         .mt-2 { margin-top: 1rem; }
         .mb-1 { margin-bottom: 0.5rem; }
         .mb-2 { margin-bottom: 1rem; }
-        .hidden { display: none; }
+        .hidden { display: none !important; }
         .copied {
             background: var(--success) !important;
+            color: white !important;
         }
         .loading {
             display: inline-block;
@@ -528,6 +796,67 @@
         }
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            body {
+                font-size: 15px;
+            }
+            .metric-value {
+                font-size: 1.5rem;
+            }
+            .list-item {
+                padding: 0.65rem;
+                font-size: 0.85rem;
+            }
+            .table {
+                font-size: 0.8rem;
+            }
+            .table th, .table td {
+                padding: 0.6rem 0.4rem;
+            }
+        }
+        
+        /* Smooth scrolling for better UX */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Better touch feedback */
+        button, .tool-card, .tag, .tab, .quick-btn {
+            -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Floating quick menu for mobile */
+        .floating-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--gradient);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .floating-btn:active {
+            transform: scale(0.95);
+        }
+        @media (min-width: 768px) {
+            .floating-menu {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -544,18 +873,18 @@
 
     <div class="container">
         <div class="quick-access">
-            <button class="quick-btn active" onclick="showSection('dashboard')">🏠 Dashboard</button>
-            <button class="quick-btn" onclick="showSection('contentPlan')">📅 Today's Plan</button>
-            <button class="quick-btn" onclick="showSection('captions')">✍️ Captions</button>
-            <button class="quick-btn" onclick="showSection('hashtags')"># Hashtags</button>
-            <button class="quick-btn" onclick="showSection('content')">📱 Content</button>
-            <button class="quick-btn" onclick="showSection('growth')">📈 Growth</button>
-            <button class="quick-btn" onclick="showSection('analytics')">📊 Analytics</button>
-            <button class="quick-btn" onclick="showSection('engagement')">💬 Engage</button>
-            <button class="quick-btn" onclick="showSection('scheduler')">📅 Schedule</button>
-            <button class="quick-btn" onclick="showSection('monetize')">💰 Monetize</button>
-            <button class="quick-btn" onclick="showSection('advanced')">🎨 Advanced</button>
-            <button class="quick-btn" onclick="showSection('elite')">👑 Elite</button>
+            <button class="quick-btn active" onclick="showSection('dashboard', event)">🏠 Dashboard</button>
+            <button class="quick-btn" onclick="showSection('contentPlan', event)">📅 Today's Plan</button>
+            <button class="quick-btn" onclick="showSection('captions', event)">✍️ Captions</button>
+            <button class="quick-btn" onclick="showSection('hashtags', event)"># Hashtags</button>
+            <button class="quick-btn" onclick="showSection('content', event)">📱 Content</button>
+            <button class="quick-btn" onclick="showSection('growth', event)">📈 Growth</button>
+            <button class="quick-btn" onclick="showSection('analytics', event)">📊 Analytics</button>
+            <button class="quick-btn" onclick="showSection('engagement', event)">💬 Engage</button>
+            <button class="quick-btn" onclick="showSection('scheduler', event)">📅 Schedule</button>
+            <button class="quick-btn" onclick="showSection('monetize', event)">💰 Monetize</button>
+            <button class="quick-btn" onclick="showSection('advanced', event)">🎨 Advanced</button>
+            <button class="quick-btn" onclick="showSection('elite', event)">👑 Elite</button>
         </div>
 
         <!-- DASHBOARD -->
@@ -619,8 +948,11 @@
 
         <!-- TODAY'S CONTENT PLAN -->
         <div id="contentPlan" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection('dashboard', event)">←</button>
+                <h2 class="section-title">📅 Today's Plan</h2>
+            </div>
             <div class="card">
-                <div class="card-title">📅 Today's Content Plan</div>
                 <div class="card-subtitle">Your complete roadmap to 100 followers in 30 days!</div>
                 
                 <div class="alert alert-success">
@@ -792,8 +1124,12 @@
         </div>
 
         <div id="captions" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection('dashboard', event)">←</button>
+                <h2 class="section-title">✍️ Captions</h2>
+            </div>
             <div class="card">
-                <div class="card-title">✍️ Viral Caption Generator</div>
+                <div class="card-subtitle">Generate viral captions for any platform</div>
                 <div class="input-group">
                     <label class="label">Topic/Niche</label>
                     <input type="text" class="input" id="captionTopic" placeholder="e.g., fitness, business">
@@ -827,8 +1163,12 @@
 
         <!-- HASHTAGS SECTION -->
         <div id="hashtags" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title"># Hashtags</h2>
+            </div>
             <div class="card">
-                <div class="card-title"># Smart Hashtag Generator</div>
+                <div class="card-subtitle">Generate trending hashtags</div>
                 <div class="alert alert-info">
                     💡 Mix 3-5 big + 5-10 medium + 5-10 niche hashtags!
                 </div>
@@ -854,19 +1194,23 @@
 
         <!-- CONTENT SECTION -->
         <div id="content" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">📱 Content</h2>
+            </div>
             <div class="card">
-                <div class="card-title">🎨 GOD-TIER Content Creation Studio</div>
+                <div class="card-subtitle">Create viral content ideas</div>
                 <div class="card-subtitle">200+ Viral Content Templates • AI-Optimized • Platform-Specific • Algo-Friendly</div>
                 
                 <div class="tabs" style="overflow-x: auto; display: flex; flex-wrap: nowrap;">
-                    <div class="tab active" onclick="switchTab('viralformula', 'content')">🔥 Viral Formula</div>
-                    <div class="tab" onclick="switchTab('hooklab', 'content')">🎯 Hook Lab</div>
-                    <div class="tab" onclick="switchTab('scriptai', 'content')">📝 Script AI</div>
-                    <div class="tab" onclick="switchTab('thumbnailhack', 'content')">🖼️ Thumbnail</div>
-                    <div class="tab" onclick="switchTab('captiongenius', 'content')">✍️ Caption</div>
-                    <div class="tab" onclick="switchTab('hashtagpro', 'content')"># Hashtag Pro</div>
-                    <div class="tab" onclick="switchTab('contentmixer', 'content')">🎭 Content Mix</div>
-                    <div class="tab" onclick="switchTab('trendpredict', 'content')">🔮 Trend AI</div>
+                    <div class="tab active" onclick="switchTab('viralformula', 'content', event)">🔥 Viral Formula</div>
+                    <div class="tab" onclick="switchTab('hooklab', 'content', event)">🎯 Hook Lab</div>
+                    <div class="tab" onclick="switchTab('scriptai', 'content', event)">📝 Script AI</div>
+                    <div class="tab" onclick="switchTab('thumbnailhack', 'content', event)">🖼️ Thumbnail</div>
+                    <div class="tab" onclick="switchTab('captiongenius', 'content', event)">✍️ Caption</div>
+                    <div class="tab" onclick="switchTab('hashtagpro', 'content', event)"># Hashtag Pro</div>
+                    <div class="tab" onclick="switchTab('contentmixer', 'content', event)">🎭 Content Mix</div>
+                    <div class="tab" onclick="switchTab('trendpredict', 'content', event)">🔮 Trend AI</div>
                 </div>
                 
                 <!-- VIRAL FORMULA GENERATOR -->
@@ -1232,8 +1576,12 @@
 
         <!-- GROWTH SECTION -->
         <div id="growth" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">📈 Growth</h2>
+            </div>
             <div class="card">
-                <div class="card-title">📈 Growth Strategy Generator</div>
+                <div class="card-subtitle">Growth strategies & tactics</div>
                 <div class="input-group">
                     <label class="label">Current Followers</label>
                     <select class="select" id="growthStage">
@@ -1260,8 +1608,12 @@
 
         <!-- ANALYTICS SECTION -->
         <div id="analytics" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">📊 Analytics</h2>
+            </div>
             <div class="card">
-                <div class="card-title">📊 Analytics Tracker</div>
+                <div class="card-subtitle">Track your performance</div>
                 <div class="grid grid-2">
                     <div>
                         <label class="label">Followers</label>
@@ -1284,8 +1636,12 @@
 
         <!-- ENGAGEMENT SECTION -->
         <div id="engagement" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">💬 Engage</h2>
+            </div>
             <div class="card">
-                <div class="card-title">💬 Engagement Tools</div>
+                <div class="card-subtitle">Boost your engagement</div>
                 <div class="input-group">
                     <label class="label">CTA Type</label>
                     <div class="tags">
@@ -1304,8 +1660,12 @@
 
         <!-- SCHEDULER SECTION -->
         <div id="scheduler" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">📅 Schedule</h2>
+            </div>
             <div class="card">
-                <div class="card-title">📅 Best Posting Times</div>
+                <div class="card-subtitle">Plan & schedule posts</div>
                 <div class="input-group">
                     <label class="label">Platform</label>
                     <select class="select" id="schedulePlatform">
@@ -1332,8 +1692,12 @@
 
         <!-- MONETIZE SECTION -->
         <div id="monetize" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">💰 Monetize</h2>
+            </div>
             <div class="card">
-                <div class="card-title">💰 Monetization Calculator</div>
+                <div class="card-subtitle">Monetization strategies</div>
                 <div class="input-group">
                     <label class="label">Followers</label>
                     <input type="number" class="input" id="monetizeFollowers" placeholder="0">
@@ -1351,12 +1715,16 @@
 
         <!-- ADVANCED SECTION -->
         <div id="advanced" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">🎨 Advanced</h2>
+            </div>
             <div class="card">
-                <div class="card-title">🎨 Advanced Tools</div>
+                <div class="card-subtitle">Advanced tools & features</div>
                 <div class="tabs">
-                    <div class="tab active" onclick="switchTab('headline', 'advanced')">Headlines</div>
-                    <div class="tab" onclick="switchTab('emoji', 'advanced')">Emojis</div>
-                    <div class="tab" onclick="switchTab('bio', 'advanced')">Bio</div>
+                    <div class="tab active" onclick="switchTab('headline', 'advanced', event)">Headlines</div>
+                    <div class="tab" onclick="switchTab('emoji', 'advanced', event)">Emojis</div>
+                    <div class="tab" onclick="switchTab('bio', 'advanced', event)">Bio</div>
                 </div>
                 
                 <!-- Headline Scorer -->
@@ -1404,16 +1772,20 @@
 
         <!-- 👑 ELITE SECTION (30 NEW FEATURES) -->
         <div id="elite" class="section">
+            <div class="section-header">
+                <button class="back-btn" onclick="showSection(\'dashboard\', event)">←</button>
+                <h2 class="section-title">👑 Elite</h2>
+            </div>
             <div class="card">
-                <div class="card-title">👑 Elite Growth Tools</div>
+                <div class="card-subtitle">Elite growth hacks</div>
                 <p class="card-subtitle">Professional-grade features for maximum growth</p>
                 
                 <div class="tabs">
-                    <div class="tab active" onclick="switchTab('viral', 'elite')">Viral</div>
-                    <div class="tab" onclick="switchTab('competitor', 'elite')">Spy</div>
-                    <div class="tab" onclick="switchTab('audit', 'elite')">Audit</div>
-                    <div class="tab" onclick="switchTab('ai', 'elite')">AI Pro</div>
-                    <div class="tab" onclick="switchTab('master', 'elite')">Master</div>
+                    <div class="tab active" onclick="switchTab('viral', 'elite', event)">Viral</div>
+                    <div class="tab" onclick="switchTab('competitor', 'elite', event)">Spy</div>
+                    <div class="tab" onclick="switchTab('audit', 'elite', event)">Audit</div>
+                    <div class="tab" onclick="switchTab('ai', 'elite', event)">AI Pro</div>
+                    <div class="tab" onclick="switchTab('master', 'elite', event)">Master</div>
                 </div>
                 
                 <!-- Viral Predictor -->
@@ -1656,22 +2028,89 @@
         let selectedCTAType = 'comment';
         let currentSection = 'dashboard';
 
+        // Ensure proper initialization on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            
+            // Make sure dashboard is visible on load
+            const dashboard = document.getElementById('dashboard');
+            if (dashboard) {
+                dashboard.classList.add('active');
+                console.log('Dashboard initialized');
+            }
+            
+            // Make sure first button is active
+            const firstBtn = document.querySelector('.quick-btn');
+            if (firstBtn) {
+                firstBtn.classList.add('active');
+                console.log('First button initialized');
+            }
+            
+            // Log all sections
+            const sections = document.querySelectorAll('.section');
+            console.log('Total sections found:', sections.length);
+            sections.forEach(s => {
+                console.log('Section:', s.id, 'Active:', s.classList.contains('active'));
+            });
+        });
+
         // Navigation
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
-            currentSection = sectionId;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function showSection(sectionId, evt) {
+            console.log('showSection called with:', sectionId);
+            
+            try {
+                // Remove active class from all sections
+                const allSections = document.querySelectorAll('.section');
+                console.log('Found sections:', allSections.length);
+                allSections.forEach(s => {
+                    s.classList.remove('active');
+                    s.style.display = 'none';
+                });
+                
+                // Remove active class from all buttons
+                const allButtons = document.querySelectorAll('.quick-btn');
+                console.log('Found buttons:', allButtons.length);
+                allButtons.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to target section
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    targetSection.style.display = 'block';
+                    console.log('Section activated:', sectionId);
+                } else {
+                    console.error('Section not found:', sectionId);
+                    return;
+                }
+                
+                // Add active class to clicked button
+                if (evt && evt.target) {
+                    evt.target.classList.add('active');
+                    console.log('Button activated');
+                } else {
+                    console.warn('Event or target not provided');
+                }
+                
+                currentSection = sectionId;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (error) {
+                console.error('Error in showSection:', error);
+            }
         }
 
         // Tab switching
-        function switchTab(tabId, parent) {
+        function switchTab(tabId, parent, evt) {
             document.querySelectorAll(`#${parent} .tab-content`).forEach(t => t.classList.add('hidden'));
             document.querySelectorAll(`#${parent} .tab`).forEach(t => t.classList.remove('active'));
-            document.getElementById(`${tabId}-${parent}`).classList.remove('hidden');
-            event.target.classList.add('active');
+            
+            const targetContent = document.getElementById(`${tabId}-${parent}`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+            
+            if (evt && evt.target) {
+                evt.target.classList.add('active');
+            }
         }
 
         // Accordion
@@ -4207,7 +4646,30 @@ Based on current patterns and seasonality:
             document.getElementById('trendPredictText').textContent = prediction;
             document.getElementById('trendPredictOutput').classList.add('active');
         }
+        
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Show/hide scroll to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            const floatingBtn = document.getElementById('scrollTopBtn');
+            if (floatingBtn) {
+                if (window.pageYOffset > 300) {
+                    floatingBtn.style.display = 'flex';
+                } else {
+                    floatingBtn.style.display = 'none';
+                }
+            }
+        });
 
     </script>
+    
+    <!-- Floating scroll to top button -->
+    <div class="floating-menu">
+        <button id="scrollTopBtn" class="floating-btn" onclick="scrollToTop()" style="display: none;">↑</button>
+    </div>
+    
 </body>
 </html>
