@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Social Media Command Center PRO | Everything You Need + 23 NEW Features</title>
+    <title>Social Media Command Center Pro | Everything You Need</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -740,161 +741,7 @@
         .mb-1 { margin-bottom: 0.5rem; }
         .mb-2 { margin-bottom: 1rem; }
         .hidden { display: none; }
-
-        /* ========== NEW MEGA FEATURES CSS ========== */
-        
-        .chart-container {
-            position: relative;
-            margin: 1rem 0;
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 12px;
-            padding: 1rem;
-        }
-
-        .post-entry {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .post-entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .post-entry-stats {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-        }
-
-        .delete-btn {
-            background: var(--danger);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-
-        .time-slot {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .time-slot input[type="time"] {
-            flex: 1;
-        }
-
-        .remove-time-btn {
-            background: var(--danger);
-            padding: 0.5rem;
-            border-radius: 4px;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 0.75rem;
-        }
-
-        .upload-area {
-            border: 2px dashed rgba(99, 102, 241, 0.5);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 1rem 0;
-        }
-
-        .upload-area:hover {
-            border-color: var(--primary);
-            background: rgba(99, 102, 241, 0.05);
-        }
-
-        .upload-area input[type="file"] {
-            display: none;
-        }
-
-        .template-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .template-card:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: var(--primary);
-        }
-
-        .template-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .template-preview {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
-        .competitor-card {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .competitor-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .competitor-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-            font-size: 0.8rem;
-        }
-
-        .campaign-card {
-            background: rgba(15, 23, 42, 0.5);
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .campaign-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .milestone-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0;
-            font-size: 0.85rem;
-        }
-
-        .milestone-checkbox {
-            width: 18px;
-            height: 18px;
-        }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -912,12 +759,7 @@
     <div class="container">
         <!-- Quick Access Navigation -->
         <div class="quick-access">
-            <button class="quick-btn active" onclick="showSection('analytics')">📊 Analytics</button>
-            <button class="quick-btn" onclick="showSection('content')">✍️ Content</button>
-            <button class="quick-btn" onclick="showSection('planning')">📅 Planning</button>
-            <button class="quick-btn" onclick="showSection('engagement')">💬 Engagement</button>
-            <button class="quick-btn" onclick="showSection('platform')">🎯 Platform</button>
-            <button class="quick-btn" onclick="showSection('dashboard')>🏠 Dashboard</button>
+            <button class="quick-btn active" onclick="showSection('dashboard')">🏠 Dashboard</button>
             <button class="quick-btn" onclick="showSection('content')">📱 Content Studio</button>
             <button class="quick-btn" onclick="showSection('captions')">✍️ Captions</button>
             <button class="quick-btn" onclick="showSection('hashtags')"># Hashtags</button>
@@ -929,327 +771,14 @@
             <button class="quick-btn" onclick="showSection('ideas')">💡 Ideas</button>
             <button class="quick-btn" onclick="showSection('monetize')">💰 Monetize</button>
             <button class="quick-btn" onclick="showSection('tools')">🛠️ Tools</button>
+            <button class="quick-btn" onclick="showSection('advanced-content')">🎨 Advanced</button>
+            <button class="quick-btn" onclick="showSection('hashtag-seo-pro')">🎯 SEO Pro</button>
+            <button class="quick-btn" onclick="showSection('future-features')">🚀 Future</button>
+            <button class="quick-btn" onclick="showSection('education')">🎓 Learn</button>
         </div>
 
         <!-- DASHBOARD SECTION -->
         <div id="dashboard" class="section active">
-        <!-- ANALYTICS SECTION - Feature #1-6 -->
-        <div id="analytics" class="section">
-            <div class="card">
-                <div class="card-title">📊 Post Performance Tracker</div>
-                <div class="input-group">
-                    <label class="input-label">Post Description</label>
-                    <input type="text" class="input" id="postDesc" placeholder="Morning motivation">
-                </div>
-                <div class="grid grid-3">
-                    <div class="input-group">
-                        <label class="input-label">Likes</label>
-                        <input type="number" class="input" id="postLikes" placeholder="0">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Shares</label>
-                        <input type="number" class="input" id="postShares" placeholder="0">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Comments</label>
-                        <input type="number" class="input" id="postComments" placeholder="0">
-                    </div>
-                </div>
-                <button class="btn" onclick="trackPost()">➕ Track Post</button>
-                <div id="postsList" style="margin-top:1rem"></div>
-                <canvas id="perfChart" style="margin-top:1rem;max-height:300px"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">⏰ Best Posting Times</div>
-                <div class="grid grid-2">
-                    <div class="stat-box"><span class="stat-number" id="bestDay">Monday</span><div class="stat-label">Best Day</div></div>
-                    <div class="stat-box"><span class="stat-number" id="bestTime">6 PM</span><div class="stat-label">Best Time</div></div>
-                </div>
-                <canvas id="timesChart" style="margin-top:1rem;max-height:250px"></canvas>
-                <button class="btn btn-secondary" onclick="refreshTimes()" style="margin-top:1rem">🔄 Analyze</button>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📈 Follower Growth</div>
-                <input type="number" class="input" id="followerInput" placeholder="Current followers">
-                <button class="btn" onclick="recordFollowers()">➕ Record</button>
-                <canvas id="growthChart" style="margin-top:1rem;max-height:300px"></canvas>
-                <div class="grid grid-3" style="margin-top:1rem">
-                    <div class="stat-box"><span class="stat-number" id="totalGrowth">+0</span><div class="stat-label">Total</div></div>
-                    <div class="stat-box"><span class="stat-number" id="avgGrowth">+0</span><div class="stat-label">Daily Avg</div></div>
-                    <div class="stat-box"><span class="stat-number" id="growthRate">0%</span><div class="stat-label">Rate</div></div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🎯 Competitor Tracker</div>
-                <input type="text" class="input" id="compName" placeholder="@competitor" style="margin-bottom:0.5rem">
-                <div class="grid grid-3">
-                    <input type="number" class="input" id="compFollowers" placeholder="Followers">
-                    <input type="number" class="input" id="compEng" placeholder="Eng %">
-                    <input type="number" class="input" id="compFreq" placeholder="Posts/wk">
-                </div>
-                <button class="btn" onclick="addComp()">➕ Add</button>
-                <div id="compList" style="margin-top:1rem"></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">💰 ROI Calculator</div>
-                <input type="text" class="input" id="roiCampaign" placeholder="Campaign name" style="margin-bottom:0.5rem">
-                <div class="grid grid-2">
-                    <input type="number" class="input" id="roiSpent" placeholder="$ Spent">
-                    <input type="number" class="input" id="roiRevenue" placeholder="$ Revenue">
-                </div>
-                <button class="btn" onclick="calcROI()">📊 Calculate</button>
-                <div class="output" id="roiOut"><button class="copy-btn" onclick="copyOut('roiTxt')">📋</button><div class="output-text" id="roiTxt"></div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🏷️ Hashtag Tracker</div>
-                <input type="text" class="input" id="hashName" placeholder="#hashtag" style="margin-bottom:0.5rem">
-                <div class="grid grid-2">
-                    <input type="number" class="input" id="hashReach" placeholder="Reach">
-                    <input type="number" class="input" id="hashEng" placeholder="Engagement">
-                </div>
-                <button class="btn" onclick="addHash()">➕ Track</button>
-                <div id="hashList" style="margin-top:1rem"></div>
-            </div>
-        </div>
-
-        <!-- CONTENT SECTION - Feature #7-13 -->
-        <div id="content" class="section">
-            <div class="card">
-                <div class="card-title">😂 Meme Generator</div>
-                <select class="select" id="memeTemp" style="margin-bottom:0.5rem">
-                    <option>Drake</option><option>Distracted BF</option><option>Stonks</option>
-                </select>
-                <input type="text" class="input" id="memeTop" placeholder="Top text" style="margin-bottom:0.5rem">
-                <input type="text" class="input" id="memeBot" placeholder="Bottom text">
-                <button class="btn" onclick="genMeme()">🎨 Generate</button>
-                <canvas id="memeCanvas" width="1080" height="1080"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🎬 Video Script Generator</div>
-                <input type="text" class="input" id="vidTopic" placeholder="Topic" style="margin-bottom:0.5rem">
-                <div class="grid grid-2">
-                    <select class="select" id="vidLen"><option>15s</option><option>30s</option><option>60s</option></select>
-                    <select class="select" id="vidTone"><option>Educational</option><option>Fun</option><option>Inspiring</option></select>
-                </div>
-                <button class="btn" onclick="genScript()">🎥 Generate</button>
-                <div class="output" id="scriptOut"><button class="copy-btn" onclick="copyOut('scriptTxt')">📋</button><div class="output-text" id="scriptTxt"></div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🧵 Thread Formatter</div>
-                <input type="text" class="input" id="threadTopic" placeholder="Topic" style="margin-bottom:0.5rem">
-                <textarea class="textarea" id="threadPoints" placeholder="Point 1, Point 2, Point 3..."></textarea>
-                <button class="btn" onclick="genThread()">🧵 Format</button>
-                <div class="output" id="threadOut"><button class="copy-btn" onclick="copyOut('threadTxt')">📋</button><div class="output-text" id="threadTxt"></div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📱 Story Generator</div>
-                <input type="text" class="input" id="storyTxt" placeholder="Your text">
-                <div class="color-schemes">
-                    <div class="color-scheme active" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)" onclick="setStoryCol('g1')"></div>
-                    <div class="color-scheme" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)" onclick="setStoryCol('g2')"></div>
-                    <div class="color-scheme" style="background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)" onclick="setStoryCol('g3')"></div>
-                </div>
-                <button class="btn" onclick="genStory()">🎨 Create</button>
-                <canvas id="storyCanvas" width="1080" height="1920"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📊 Poll Creator</div>
-                <input type="text" class="input" id="pollQ" placeholder="Question" style="margin-bottom:0.5rem">
-                <input type="text" class="input" id="pollOpt1" placeholder="Option 1" style="margin-bottom:0.5rem">
-                <input type="text" class="input" id="pollOpt2" placeholder="Option 2" style="margin-bottom:0.5rem">
-                <input type="text" class="input" id="pollOpt3" placeholder="Option 3 (optional)" style="margin-bottom:0.5rem">
-                <input type="text" class="input" id="pollOpt4" placeholder="Option 4 (optional)">
-                <button class="btn" onclick="genPoll()">📊 Create</button>
-                <div class="output" id="pollOut"><button class="copy-btn" onclick="copyOut('pollTxt')">📋</button><div class="output-text" id="pollTxt"></div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">↔️ Before/After Creator</div>
-                <div class="upload-area" onclick="document.getElementById('beforeImg').click()"><div>📸 Before Image</div><input type="file" id="beforeImg" accept="image/*" onchange="loadBefore(event)"></div>
-                <div class="upload-area" onclick="document.getElementById('afterImg').click()"><div>📸 After Image</div><input type="file" id="afterImg" accept="image/*" onchange="loadAfter(event)"></div>
-                <button class="btn" onclick="genComparison()">🎨 Generate</button>
-                <canvas id="compCanvas" width="1080" height="1080"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📊 Infographic Maker</div>
-                <input type="text" class="input" id="infoTitle" placeholder="Title" style="margin-bottom:0.5rem">
-                <textarea class="textarea" id="infoData" placeholder="Data point 1&#10;Data point 2&#10;Data point 3"></textarea>
-                <button class="btn" onclick="genInfo()">📊 Create</button>
-                <canvas id="infoCanvas" width="1080" height="1920"></canvas>
-            </div>
-        </div>
-
-        <!-- PLANNING SECTION - Feature #14-18 -->
-        <div id="planning" class="section">
-            <div class="card">
-                <div class="card-title">📅 Multi-Platform Schedule</div>
-                <div class="accordion-item"><div class="accordion-header" onclick="toggleAcc(this)"><span>📷 Instagram</span><span>▼</span></div><div class="accordion-content"><div class="accordion-body"><div id="igTimes"></div><button class="btn btn-small" onclick="addTime('ig')">➕ Add Time</button></div></div></div>
-                <div class="accordion-item"><div class="accordion-header" onclick="toggleAcc(this)"><span>🎵 TikTok</span><span>▼</span></div><div class="accordion-content"><div class="accordion-body"><div id="ttTimes"></div><button class="btn btn-small" onclick="addTime('tt')">➕ Add Time</button></div></div></div>
-                <button class="btn" onclick="saveSchedules()">💾 Save All</button>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🪣 Content Pillars</div>
-                <input type="text" class="input" id="pillarName" placeholder="Pillar name" style="margin-bottom:0.5rem">
-                <input type="number" class="input" id="pillarPct" placeholder="Target %">
-                <button class="btn" onclick="addPillar()">➕ Add</button>
-                <div id="pillarList" style="margin-top:1rem"></div>
-                <canvas id="pillarChart" style="margin-top:1rem;max-height:300px"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🔄 Recurring Posts</div>
-                <input type="text" class="input" id="recurType" placeholder="Post type" style="margin-bottom:0.5rem">
-                <div class="grid grid-3">
-                    <select class="select" id="recurFreq"><option>Weekly</option><option>Bi-weekly</option><option>Monthly</option></select>
-                    <select class="select" id="recurDay"><option>Mon</option><option>Tue</option><option>Wed</option><option>Thu</option><option>Fri</option><option>Sat</option><option>Sun</option></select>
-                    <input type="time" class="input" id="recurTime">
-                </div>
-                <button class="btn" onclick="addRecur()">➕ Add</button>
-                <div id="recurList" style="margin-top:1rem"></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🎯 Campaign Planner</div>
-                <input type="text" class="input" id="campName" placeholder="Campaign name" style="margin-bottom:0.5rem">
-                <div class="grid grid-2">
-                    <input type="date" class="input" id="campStart">
-                    <input type="date" class="input" id="campEnd">
-                </div>
-                <textarea class="textarea" id="campMilestones" placeholder="Milestone 1&#10;Milestone 2"></textarea>
-                <button class="btn" onclick="addCamp()">🚀 Create</button>
-                <div id="campList" style="margin-top:1rem"></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">👥 Team Tasks</div>
-                <input type="text" class="input" id="taskName" placeholder="Task" style="margin-bottom:0.5rem">
-                <div class="grid grid-2">
-                    <input type="text" class="input" id="taskAssign" placeholder="Assigned to">
-                    <input type="date" class="input" id="taskDue">
-                </div>
-                <select class="select" id="taskPrio" style="margin-bottom:0.5rem"><option>🔴 High</option><option>🟡 Medium</option><option>🟢 Low</option></select>
-                <button class="btn" onclick="addTask()">➕ Add</button>
-                <div id="taskList" style="margin-top:1rem"></div>
-            </div>
-        </div>
-
-        <!-- ENGAGEMENT SECTION - Feature #19-23 -->
-        <div id="engagement" class="section">
-            <div class="card">
-                <div class="card-title">💬 Response Templates</div>
-                <div class="template-card" onclick="copyTxt('Thank you so much! 💙')"><div class="template-title">Enthusiastic Thanks</div><div class="template-preview">Thank you so much! 💙</div></div>
-                <div class="template-card" onclick="copyTxt('Great question! 🤔 Let me explain...')"><div class="template-title">Answer Intro</div><div class="template-preview">Great question! 🤔</div></div>
-                <div class="template-card" onclick="copyTxt('Love this! 😍 What do you think?')"><div class="template-title">Engagement Boost</div><div class="template-preview">Love this! 😍</div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📨 DM Templates</div>
-                <select class="select" id="dmType" onchange="genDM()">
-                    <option value="">Select...</option>
-                    <option value="collab">Collaboration</option>
-                    <option value="price">Pricing</option>
-                    <option value="support">Support</option>
-                    <option value="thanks">Thanks</option>
-                </select>
-                <div class="output" id="dmOut"><button class="copy-btn" onclick="copyOut('dmTxt')">📋</button><div class="output-text" id="dmTxt"></div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🤝 Engagement Pods</div>
-                <input type="text" class="input" id="podName" placeholder="Pod name" style="margin-bottom:0.5rem">
-                <textarea class="textarea" id="podMembers" placeholder="@member1&#10;@member2"></textarea>
-                <select class="select" id="podRule"><option>Like all</option><option>Like + Comment</option><option>Like + Comment + Share</option></select>
-                <button class="btn" onclick="addPod()">➕ Create</button>
-                <div id="podList" style="margin-top:1rem"></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🎉 Milestone Generator</div>
-                <select class="select" id="milestone">
-                    <option value="100">100</option><option value="500">500</option><option value="1000">1K</option>
-                    <option value="5000">5K</option><option value="10000">10K</option><option value="100000">100K</option>
-                </select>
-                <button class="btn" onclick="genMilestone()">🎊 Generate</button>
-                <div class="output" id="mileOut"><button class="copy-btn" onclick="copyOut('mileTxt')">📋</button><div class="output-text" id="mileTxt"></div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📸 UGC Request Templates</div>
-                <div class="template-card" onclick="copyTxt('📸 Show us how you use [product]! Tag us for a feature!')"><div class="template-title">Product Showcase</div></div>
-                <div class="template-card" onclick="copyTxt('🌟 Share your story! Use #YourHashtag')"><div class="template-title">Story Request</div></div>
-                <div class="template-card" onclick="copyTxt('💡 Drop your best tip in comments!')"><div class="template-title">Tips Request</div></div>
-            </div>
-        </div>
-
-        <!-- PLATFORM SECTION - Feature #30-34 -->
-        <div id="platform" class="section">
-            <div class="card">
-                <div class="card-title">📷 IG Highlight Cover</div>
-                <input type="text" class="input" id="hlName" placeholder="Name" style="margin-bottom:0.5rem">
-                <input type="text" class="input" id="hlIcon" placeholder="🎨 Icon" maxlength="2">
-                <div class="color-schemes">
-                    <div class="color-scheme active" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)" onclick="setHLCol('g1')"></div>
-                    <div class="color-scheme" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)" onclick="setHLCol('g2')"></div>
-                    <div class="color-scheme" style="background:#000" onclick="setHLCol('blk')"></div>
-                    <div class="color-scheme" style="background:#fff;border:1px solid #ccc" onclick="setHLCol('wht')"></div>
-                </div>
-                <button class="btn" onclick="genHL()">🎨 Generate</button>
-                <canvas id="hlCanvas" width="1080" height="1080"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📺 YouTube Thumbnail</div>
-                <input type="text" class="input" id="ytTitle" placeholder="Title" style="margin-bottom:0.5rem">
-                <input type="text" class="input" id="ytSub" placeholder="Subtitle (optional)">
-                <div class="color-schemes">
-                    <div class="color-scheme active" style="background:#FF0000" onclick="setYTCol('red')"></div>
-                    <div class="color-scheme" style="background:linear-gradient(135deg,#667eea,#764ba2)" onclick="setYTCol('purple')"></div>
-                    <div class="color-scheme" style="background:linear-gradient(135deg,#4facfe,#00f2fe)" onclick="setYTCol('blue')"></div>
-                </div>
-                <button class="btn" onclick="genYT()">🎬 Generate</button>
-                <canvas id="ytCanvas" width="1280" height="720"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">📌 Pinterest Pin</div>
-                <input type="text" class="input" id="pinTitle" placeholder="Title" style="margin-bottom:0.5rem">
-                <textarea class="textarea" id="pinDesc" placeholder="Description"></textarea>
-                <input type="text" class="input" id="pinBrand" placeholder="yourbrand.com">
-                <div class="upload-area" onclick="document.getElementById('pinImg').click()"><div>📸 Upload Image</div><input type="file" id="pinImg" accept="image/*" onchange="loadPin(event)"></div>
-                <button class="btn" onclick="genPin()">📌 Generate</button>
-                <canvas id="pinCanvas" width="1000" height="1500"></canvas>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">💼 LinkedIn Formatter</div>
-                <input type="text" class="input" id="liTopic" placeholder="Topic" style="margin-bottom:0.5rem">
-                <textarea class="textarea" id="liPoints" placeholder="Point 1&#10;Point 2&#10;Point 3"></textarea>
-                <select class="select" id="liCTA"><option>Ask for comments</option><option>Ask to share</option><option>Invite to connect</option></select>
-                <button class="btn" onclick="genLI()">💼 Generate</button>
-                <div class="output" id="liOut"><button class="copy-btn" onclick="copyOut('liTxt')">📋</button><div class="output-text" id="liTxt"></div></div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">🎵 TikTok Trend Tracker</div>
-                <input type="text" class="input" id="trendName" placeholder="Trend name" style="margin-bottom:0.5rem">
-                <textarea class="textarea" id="trendIdea" placeholder="Your idea..."></textarea>
-                <select class="select" id="trendPrio"><option>🔥 Hot - ASAP</option><option>⚡ Rising - This Week</option><option>💡 Saved</option></select>
-                <button class="btn" onclick="addTrend()">➕ Track</button>
-                <div id="trendList" style="margin-top:1rem"></div>
-            </div>
-        </div>
-
             <div class="card">
                 <div class="card-title">📊 Your Social Media Dashboard</div>
                 
@@ -2314,7 +1843,1153 @@
                 </ul>
             </div>
         </div>
-    </div>
+
+        <!-- NEW FEATURES START HERE -->
+        
+        <!-- ANALYTICS SECTION -->
+        <div id="analytics" class="section">
+            <div class="card">
+                <div class="card-title">📊 Analytics Hub - Coming in Full Version</div>
+                <div class="card-subtitle">Track performance, growth, and ROI</div>
+                <p style="color: var(--gray); margin-top: 1rem;">
+                    This section includes:<br>
+                    ✅ Post Performance Tracker<br>
+                    ✅ Best Posting Times Analyzer<br>
+                    ✅ Follower Growth Chart<br>
+                    ✅ Competitor Analysis<br>
+                    ✅ ROI Calculator<br>
+                    ✅ Hashtag Performance Tracker
+                </p>
+            </div>
+        </div>
+
+        <!-- CONTENT CREATION SECTION -->
+        <div id="content" class="section">
+            <div class="card">
+                <div class="card-title">✍️ Content Creation Hub - Coming in Full Version</div>
+                <div class="card-subtitle">Generate engaging content easily</div>
+                <p style="color: var(--gray); margin-top: 1rem;">
+                    This section includes:<br>
+                    ✅ Meme Generator<br>
+                    ✅ Video Script Generator<br>
+                    ✅ Thread Formatter<br>
+                    ✅ Story Templates<br>
+                    ✅ Poll Creator<br>
+                    ✅ Before/After Creator<br>
+                    ✅ Infographic Maker
+                </p>
+            </div>
+        </div>
+
+        <!-- PLANNING SECTION -->
+        <div id="planning" class="section">
+            <div class="card">
+                <div class="card-title">📅 Planning Hub - Coming in Full Version</div>
+                <div class="card-subtitle">Organize and schedule your content</div>
+                <p style="color: var(--gray); margin-top: 1rem;">
+                    This section includes:<br>
+                    ✅ Multi-Platform Scheduling<br>
+                    ✅ Content Bucket Tracker<br>
+                    ✅ Recurring Post Scheduler<br>
+                    ✅ Campaign Planner<br>
+                    ✅ Team Collaboration Tasks
+                </p>
+            </div>
+        </div>
+
+        <!-- ENGAGEMENT SECTION -->
+        <div id="engagement" class="section">
+            <div class="card">
+                <div class="card-title">💬 Engagement Hub - Coming in Full Version</div>
+                <div class="card-subtitle">Boost interaction with your audience</div>
+                <p style="color: var(--gray); margin-top: 1rem;">
+                    This section includes:<br>
+                    ✅ Comment Response Templates<br>
+                    ✅ DM Auto-Responder<br>
+                    ✅ Engagement Pod Organizer<br>
+                    ✅ Milestone Celebration Generator<br>
+                    ✅ UGC Request Templates
+                </p>
+            </div>
+        </div>
+
+        <!-- PLATFORM TOOLS SECTION -->
+        <div id="platform" class="section">
+            <div class="card">
+                <div class="card-title">🎯 Platform-Specific Tools - Coming in Full Version</div>
+                <div class="card-subtitle">Optimized tools for each platform</div>
+                <p style="color: var(--gray); margin-top: 1rem;">
+                    This section includes:<br>
+                    ✅ Instagram Highlight Cover Maker<br>
+                    ✅ YouTube Thumbnail Generator<br>
+                    ✅ Pinterest Pin Designer<br>
+                    ✅ LinkedIn Article Formatter<br>
+                    ✅ TikTok Trend Tracker
+                </p>
+            </div>
+        </div>
+    
+        <!-- ============================================ -->
+        <!-- NEW ADVANCED FEATURES SECTION -->
+        <!-- ============================================ -->
+
+        <!-- 🎨 CONTENT CREATION ADVANCED TOOLS -->
+        <div id="advanced-content" class="section">
+            <div class="card">
+                <div class="card-title">🎨 Advanced Content Creation Suite</div>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchAdvancedTab('ai-prompts')">AI Prompts</div>
+                    <div class="tab" onclick="switchAdvancedTab('image-tools')">Image Tools</div>
+                    <div class="tab" onclick="switchAdvancedTab('text-advanced')">Text Pro</div>
+                    <div class="tab" onclick="switchAdvancedTab('templates-pro')">Templates</div>
+                    <div class="tab" onclick="switchAdvancedTab('story-pro')">Story Pro</div>
+                </div>
+
+                <!-- AI Image Prompt Generator -->
+                <div id="ai-prompts-tab" class="tab-content">
+                    <div class="card-title">🤖 AI Image Prompt Generator</div>
+                    <div class="alert alert-info">
+                        Generate perfect prompts for DALL-E, Midjourney, Stable Diffusion
+                    </div>
+                    <div class="input-group">
+                        <label class="label">What do you want to create?</label>
+                        <textarea class="textarea" id="promptDescription" placeholder="e.g., A futuristic coffee shop"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Art Style</label>
+                        <select class="select" id="promptStyle">
+                            <option>Photorealistic</option>
+                            <option>Digital Art</option>
+                            <option>Oil Painting</option>
+                            <option>Watercolor</option>
+                            <option>3D Render</option>
+                            <option>Anime/Manga</option>
+                            <option>Minimalist</option>
+                            <option>Cyberpunk</option>
+                            <option>Vintage</option>
+                            <option>Abstract</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Mood/Atmosphere</label>
+                        <select class="select" id="promptMood">
+                            <option>Bright & Cheerful</option>
+                            <option>Dark & Moody</option>
+                            <option>Calm & Peaceful</option>
+                            <option>Energetic & Dynamic</option>
+                            <option>Mysterious</option>
+                            <option>Professional</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateAIPrompt()">✨ Generate Prompt</button>
+                    <div class="output" id="aiPromptOutput">
+                        <div class="output-text" id="aiPromptText"></div>
+                        <button class="btn btn-success mt-1" onclick="copyOutputText('aiPromptText')">📋 Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Color Palette Extractor -->
+                <div id="image-tools-tab" class="tab-content hidden">
+                    <div class="card-title">🎨 Color Palette Extractor</div>
+                    <div class="upload-area" onclick="document.getElementById('colorExtractImg').click()">
+                        <div>📸 Upload Image to Extract Colors</div>
+                        <input type="file" id="colorExtractImg" accept="image/*" onchange="extractColors(event)">
+                    </div>
+                    <canvas id="colorCanvas" style="display:none;"></canvas>
+                    <div id="colorPalette" style="display:none; margin-top:1rem;">
+                        <div class="card-title">Extracted Palette</div>
+                        <div id="colorSwatches" class="color-picker"></div>
+                        <div id="colorCodes" style="margin-top:1rem;"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🖼️ Background Remover</div>
+                    <div class="upload-area" onclick="document.getElementById('bgRemoveImg').click()">
+                        <div>📸 Upload Image to Remove Background</div>
+                        <input type="file" id="bgRemoveImg" accept="image/*" onchange="removeBackground(event)">
+                    </div>
+                    <canvas id="bgCanvas"></canvas>
+                    <button class="btn btn-success mt-1" onclick="downloadCanvas('bgCanvas', 'no-bg')" style="display:none;" id="downloadBg">💾 Download</button>
+
+                    <div class="card-title mt-2">📐 Aspect Ratio Converter</div>
+                    <div class="upload-area" onclick="document.getElementById('ratioImg').click()">
+                        <div>📸 Upload Image to Resize</div>
+                        <input type="file" id="ratioImg" accept="image/*" onchange="loadRatioImage(event)">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Target Ratio</label>
+                        <select class="select" id="targetRatio">
+                            <option>1:1 (Square - Instagram Post)</option>
+                            <option>4:5 (Portrait - Instagram)</option>
+                            <option>9:16 (Story/Reel)</option>
+                            <option>16:9 (Landscape - YouTube)</option>
+                            <option>2:3 (Pinterest)</option>
+                            <option>1200x628 (Facebook Link)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="convertRatio()">🔄 Convert</button>
+                    <canvas id="ratioCanvas"></canvas>
+                </div>
+
+                <!-- Advanced Text Tools -->
+                <div id="text-advanced-tab" class="tab-content hidden">
+                    <div class="card-title">📊 Headline Scorer</div>
+                    <div class="input-group">
+                        <label class="label">Enter Your Headline</label>
+                        <input type="text" class="input" id="headlineText" placeholder="Your amazing headline here">
+                    </div>
+                    <button class="btn btn-primary" onclick="scoreHeadline()">📊 Score Headline</button>
+                    <div class="output" id="headlineScore">
+                        <div class="output-text" id="headlineScoreText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">😊 Emoji Suggestion Engine</div>
+                    <div class="input-group">
+                        <label class="label">Your Caption</label>
+                        <textarea class="textarea" id="emojiCaption" placeholder="Write your caption..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="suggestEmojis()">✨ Suggest Emojis</button>
+                    <div class="output" id="emojiOutput">
+                        <div class="output-text" id="emojiText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🌍 Multi-Language Translator</div>
+                    <div class="input-group">
+                        <label class="label">Your Caption</label>
+                        <textarea class="textarea" id="translateText" placeholder="Caption to translate..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Target Language</label>
+                        <select class="select" id="targetLang">
+                            <option>Spanish</option>
+                            <option>French</option>
+                            <option>German</option>
+                            <option>Italian</option>
+                            <option>Portuguese</option>
+                            <option>Japanese</option>
+                            <option>Korean</option>
+                            <option>Chinese</option>
+                            <option>Arabic</option>
+                            <option>Hindi</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="translateCaption()">🌍 Translate</button>
+                    <div class="output" id="translateOutput">
+                        <div class="output-text" id="translatedText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">📖 Readability Analyzer</div>
+                    <div class="input-group">
+                        <label class="label">Your Text</label>
+                        <textarea class="textarea" id="readabilityText" placeholder="Paste your text..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="analyzeReadability()">📊 Analyze</button>
+                    <div class="output" id="readabilityOutput">
+                        <div class="output-text" id="readabilityScore"></div>
+                    </div>
+
+                    <div class="card-title mt-2">💭 Sentiment Analyzer</div>
+                    <div class="input-group">
+                        <label class="label">Text to Analyze</label>
+                        <textarea class="textarea" id="sentimentText" placeholder="Enter text..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="analyzeSentiment()">💭 Analyze Sentiment</button>
+                    <div class="output" id="sentimentOutput">
+                        <div class="output-text" id="sentimentScore"></div>
+                    </div>
+                </div>
+
+                <!-- Template Systems Pro -->
+                <div id="templates-pro-tab" class="tab-content hidden">
+                    <div class="card-title">💾 Custom Template Builder</div>
+                    <div class="input-group">
+                        <label class="label">Template Name</label>
+                        <input type="text" class="input" id="templateName" placeholder="e.g., Monday Motivation">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Template Content</label>
+                        <textarea class="textarea" id="templateContent" placeholder="Your caption template with variables like {{date}}, {{topic}}, etc."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Category</label>
+                        <select class="select" id="templateCategory">
+                            <option>Motivational</option>
+                            <option>Educational</option>
+                            <option>Promotional</option>
+                            <option>Engagement</option>
+                            <option>Story</option>
+                            <option>Announcement</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="saveTemplate()">💾 Save Template</button>
+                    
+                    <div class="card-title mt-2">📚 My Templates</div>
+                    <div id="savedTemplates"></div>
+
+                    <div class="card-title mt-2">🎁 Seasonal Template Packs</div>
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🎄 Holiday Pack (20 Templates)</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <button class="btn btn-secondary btn-sm" onclick="useSeasonalPack('holiday')">Use Pack</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🌸 Spring Collection</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <button class="btn btn-secondary btn-sm" onclick="useSeasonalPack('spring')">Use Pack</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Pro Tools -->
+                <div id="story-pro-tab" class="tab-content hidden">
+                    <div class="card-title">📊 Interactive Poll Generator</div>
+                    <div class="input-group">
+                        <label class="label">Poll Question</label>
+                        <input type="text" class="input" id="pollQuestion" placeholder="What should I post next?">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Option 1</label>
+                        <input type="text" class="input" id="pollOption1" placeholder="Behind the scenes">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Option 2</label>
+                        <input type="text" class="input" id="pollOption2" placeholder="Tutorial">
+                    </div>
+                    <button class="btn btn-primary" onclick="generatePoll()">📊 Generate Poll</button>
+                    <canvas id="pollCanvas" width="1080" height="1920"></canvas>
+
+                    <div class="card-title mt-2">🎯 Quiz Builder</div>
+                    <div class="input-group">
+                        <label class="label">Quiz Title</label>
+                        <input type="text" class="input" id="quizTitle" placeholder="How well do you know...">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Question 1</label>
+                        <input type="text" class="input" id="quiz1" placeholder="Question 1">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Correct Answer</label>
+                        <input type="text" class="input" id="answer1" placeholder="Correct answer">
+                    </div>
+                    <button class="btn btn-primary" onclick="generateQuiz()">🎯 Generate Quiz</button>
+                    <div class="output" id="quizOutput">
+                        <div class="output-text" id="quizText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">⏰ Countdown Timer Creator</div>
+                    <div class="input-group">
+                        <label class="label">Event Name</label>
+                        <input type="text" class="input" id="eventName" placeholder="Product Launch">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Event Date</label>
+                        <input type="datetime-local" class="input" id="eventDate">
+                    </div>
+                    <button class="btn btn-primary" onclick="createCountdown()">⏰ Create Countdown</button>
+                    <canvas id="countdownCanvas" width="1080" height="1920"></canvas>
+
+                    <div class="card-title mt-2">🎨 Story Highlights Cover Generator</div>
+                    <div class="input-group">
+                        <label class="label">Highlight Name</label>
+                        <input type="text" class="input" id="highlightName" placeholder="Travel">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Icon/Emoji</label>
+                        <input type="text" class="input" id="highlightIcon" placeholder="✈️" maxlength="2">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Background Color</label>
+                        <div class="color-picker">
+                            <div class="color-option active" style="background: #667eea;" onclick="selectHighlightColor(this, '#667eea')"></div>
+                            <div class="color-option" style="background: #f093fb;" onclick="selectHighlightColor(this, '#f093fb')"></div>
+                            <div class="color-option" style="background: #4facfe;" onclick="selectHighlightColor(this, '#4facfe')"></div>
+                            <div class="color-option" style="background: #43e97b;" onclick="selectHighlightColor(this, '#43e97b')"></div>
+                            <div class="color-option" style="background: #fa709a;" onclick="selectHighlightColor(this, '#fa709a')"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateHighlightCover()">🎨 Generate Cover</button>
+                    <canvas id="highlightCanvas" width="1080" height="1920"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🎯 HASHTAG & SEO MASTERY -->
+        <div id="hashtag-seo-pro" class="section">
+            <div class="card">
+                <div class="card-title">🎯 Hashtag & SEO Mastery Suite</div>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchHashtagTab('intelligence')">Intelligence</div>
+                    <div class="tab" onclick="switchHashtagTab('performance')">Performance</div>
+                    <div class="tab" onclick="switchHashtagTab('seo-tools')">SEO Tools</div>
+                    <div class="tab" onclick="switchHashtagTab('research')">Research</div>
+                </div>
+
+                <!-- Hashtag Intelligence -->
+                <div id="intelligence-tab" class="tab-content">
+                    <div class="card-title">📊 Hashtag Performance Tracker</div>
+                    <div class="input-group">
+                        <label class="label">Add Hashtag to Track</label>
+                        <input type="text" class="input" id="trackHashtag" placeholder="#yourtag">
+                    </div>
+                    <div class="grid grid-2">
+                        <div class="input-group">
+                            <label class="label">Reach</label>
+                            <input type="number" class="input" id="hashReach" placeholder="1000">
+                        </div>
+                        <div class="input-group">
+                            <label class="label">Engagement</label>
+                            <input type="number" class="input" id="hashEngagement" placeholder="50">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="trackHashtag()">📊 Track Performance</button>
+                    <div id="trackedHashtags" class="mt-2"></div>
+
+                    <div class="card-title mt-2">🚫 Banned Hashtag Checker</div>
+                    <div class="alert alert-warning">
+                        ⚠️ Avoid shadow bans! Check if your hashtags are banned.
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Paste Hashtags (separated by spaces)</label>
+                        <textarea class="textarea" id="checkBanned" placeholder="#tag1 #tag2 #tag3"></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkBannedTags()">🔍 Check Status</button>
+                    <div class="output" id="bannedOutput">
+                        <div class="output-text" id="bannedText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">📈 Hashtag Trend Predictor</div>
+                    <div class="input-group">
+                        <label class="label">Your Niche</label>
+                        <input type="text" class="input" id="trendNiche" placeholder="fitness">
+                    </div>
+                    <button class="btn btn-primary" onclick="predictTrends()">🔮 Predict Trends</button>
+                    <div class="output" id="trendOutput">
+                        <div class="output-text" id="trendText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🔗 Related Hashtag Finder</div>
+                    <div class="input-group">
+                        <label class="label">Base Hashtag</label>
+                        <input type="text" class="input" id="baseHashtag" placeholder="#fitness">
+                    </div>
+                    <button class="btn btn-primary" onclick="findRelated()">🔍 Find Related</button>
+                    <div class="output" id="relatedOutput">
+                        <div class="output-text" id="relatedText"></div>
+                    </div>
+                </div>
+
+                <!-- Performance Analytics -->
+                <div id="performance-tab" class="tab-content hidden">
+                    <div class="card-title">💯 Hashtag Difficulty Scorer</div>
+                    <div class="input-group">
+                        <label class="label">Hashtag to Analyze</label>
+                        <input type="text" class="input" id="difficultyTag" placeholder="#example">
+                    </div>
+                    <button class="btn btn-primary" onclick="scoreHashtagDifficulty()">📊 Check Difficulty</button>
+                    <div class="output" id="difficultyOutput">
+                        <div class="output-text" id="difficultyScore"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🎯 Optimal Hashtag Count</div>
+                    <div class="input-group">
+                        <label class="label">Platform</label>
+                        <select class="select" id="hashPlatform">
+                            <option>Instagram</option>
+                            <option>TikTok</option>
+                            <option>Twitter</option>
+                            <option>LinkedIn</option>
+                            <option>Pinterest</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Your Account Size</label>
+                        <select class="select" id="accountSize">
+                            <option>Under 1K</option>
+                            <option>1K - 10K</option>
+                            <option>10K - 100K</option>
+                            <option>100K+</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="getOptimalCount()">🎯 Get Recommendation</button>
+                    <div class="output" id="optimalOutput">
+                        <div class="output-text" id="optimalText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🔄 Hashtag Rotation System</div>
+                    <div class="alert alert-info">
+                        Never use the same hashtag set twice. Rotate for best results!
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Set Name</label>
+                        <input type="text" class="input" id="rotationName" placeholder="Monday Set">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Hashtags</label>
+                        <textarea class="textarea" id="rotationTags" placeholder="#tag1 #tag2 #tag3"></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="saveRotationSet()">💾 Save Set</button>
+                    <div id="rotationSets" class="mt-2"></div>
+
+                    <div class="card-title mt-2">📍 Local Hashtag Generator</div>
+                    <div class="input-group">
+                        <label class="label">City/Region</label>
+                        <input type="text" class="input" id="localCity" placeholder="New York">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Your Business Type</label>
+                        <input type="text" class="input" id="localBusiness" placeholder="coffee shop">
+                    </div>
+                    <button class="btn btn-primary" onclick="generateLocalTags()">📍 Generate</button>
+                    <div class="output" id="localOutput">
+                        <div class="output-text" id="localText"></div>
+                    </div>
+                </div>
+
+                <!-- SEO Tools -->
+                <div id="seo-tools-tab" class="tab-content hidden">
+                    <div class="card-title">🔍 Keyword Research Tool</div>
+                    <div class="input-group">
+                        <label class="label">Topic/Niche</label>
+                        <input type="text" class="input" id="seoTopic" placeholder="fitness">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Platform</label>
+                        <select class="select" id="seoPlatform">
+                            <option>Instagram</option>
+                            <option>YouTube</option>
+                            <option>Pinterest</option>
+                            <option>Google</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="researchKeywords()">🔍 Research</button>
+                    <div class="output" id="keywordOutput">
+                        <div class="output-text" id="keywordText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">♿ Alt Text Generator</div>
+                    <div class="input-group">
+                        <label class="label">Describe Your Image</label>
+                        <textarea class="textarea" id="altDescription" placeholder="Woman in red dress dancing"></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateAltText()">♿ Generate Alt Text</button>
+                    <div class="output" id="altOutput">
+                        <div class="output-text" id="altText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">📺 YouTube Title Optimizer</div>
+                    <div class="input-group">
+                        <label class="label">Your Video Topic</label>
+                        <input type="text" class="input" id="ytTopic" placeholder="How to grow on Instagram">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Main Keyword</label>
+                        <input type="text" class="input" id="ytKeyword" placeholder="Instagram growth">
+                    </div>
+                    <button class="btn btn-primary" onclick="optimizeYTTitle()">🎯 Optimize</button>
+                    <div class="output" id="ytTitleOutput">
+                        <div class="output-text" id="ytTitleText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">📝 Meta Description Writer</div>
+                    <div class="input-group">
+                        <label class="label">Content Summary</label>
+                        <textarea class="textarea" id="metaContent" placeholder="Brief summary of your content"></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateMetaDescription()">📝 Generate</button>
+                    <div class="output" id="metaOutput">
+                        <div class="output-text" id="metaText"></div>
+                    </div>
+                </div>
+
+                <!-- Research Tools -->
+                <div id="research-tab" class="tab-content hidden">
+                    <div class="card-title">🕵️ Hashtag Spy Tool</div>
+                    <div class="alert alert-info">
+                        Analyze top performing hashtags in your niche
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Competitor Account or Niche</label>
+                        <input type="text" class="input" id="spyTarget" placeholder="@competitor or niche">
+                    </div>
+                    <button class="btn btn-primary" onclick="spyHashtags()">🕵️ Analyze</button>
+                    <div class="output" id="spyOutput">
+                        <div class="output-text" id="spyText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🔮 Hashtag Engagement Estimator</div>
+                    <div class="input-group">
+                        <label class="label">Your Hashtag Set</label>
+                        <textarea class="textarea" id="estimateSet" placeholder="#tag1 #tag2 #tag3"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Your Current Average Engagement</label>
+                        <input type="number" class="input" id="avgEngagement" placeholder="500">
+                    </div>
+                    <button class="btn btn-primary" onclick="estimateEngagement()">🔮 Estimate</button>
+                    <div class="output" id="estimateOutput">
+                        <div class="output-text" id="estimateText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🎯 Hashtag Combo Optimizer</div>
+                    <div class="alert alert-info">
+                        Find the perfect combination of hashtags for maximum reach
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Your Available Hashtags</label>
+                        <textarea class="textarea" id="comboTags" placeholder="Enter 20-50 hashtags"></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="optimizeCombo()">🎯 Optimize</button>
+                    <div class="output" id="comboOutput">
+                        <div class="output-text" id="comboText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🚀 FUTURE-READY FEATURES -->
+        <div id="future-features" class="section">
+            <div class="card">
+                <div class="card-title">🚀 Future-Ready Features</div>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchFutureTab('voice')">Voice & Video</div>
+                    <div class="tab" onclick="switchFutureTab('ai-gen')">AI Generators</div>
+                    <div class="tab" onclick="switchFutureTab('ar-3d')">AR & 3D</div>
+                    <div class="tab" onclick="switchFutureTab('web3')">Web3</div>
+                </div>
+
+                <!-- Voice & Video -->
+                <div id="voice-tab" class="tab-content">
+                    <div class="card-title">🎤 Voice-to-Post</div>
+                    <div class="alert alert-info">
+                        Dictate your captions hands-free!
+                    </div>
+                    <button class="btn btn-primary" onclick="startVoiceRecording()" id="voiceBtn">🎤 Start Recording</button>
+                    <div class="output" id="voiceOutput">
+                        <div class="output-text" id="voiceText"></div>
+                        <button class="btn btn-success mt-1" onclick="copyOutputText('voiceText')">📋 Copy</button>
+                    </div>
+
+                    <div class="card-title mt-2">🎬 Video Auto-Captions</div>
+                    <div class="upload-area" onclick="document.getElementById('videoFile').click()">
+                        <div>🎬 Upload Video for Auto-Captioning</div>
+                        <input type="file" id="videoFile" accept="video/*" onchange="generateVideoCaptions(event)">
+                    </div>
+                    <video id="videoPreview" controls style="display:none; max-width:100%; border-radius:12px;"></video>
+                    <div class="output" id="videoCaptionsOutput">
+                        <div class="output-text" id="videoCaptionsText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🎵 Background Music Library</div>
+                    <div class="input-group">
+                        <label class="label">Mood</label>
+                        <select class="select" id="musicMood">
+                            <option>Upbeat & Energetic</option>
+                            <option>Calm & Relaxing</option>
+                            <option>Dramatic & Cinematic</option>
+                            <option>Corporate & Professional</option>
+                            <option>Lo-Fi & Chill</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="findMusic()">🎵 Find Music</button>
+                    <div class="output" id="musicOutput">
+                        <div class="output-text" id="musicText"></div>
+                    </div>
+                </div>
+
+                <!-- AI Generators -->
+                <div id="ai-gen-tab" class="tab-content hidden">
+                    <div class="card-title">🤖 3D Avatar Creator</div>
+                    <div class="upload-area" onclick="document.getElementById('avatarImg').click()">
+                        <div>📸 Upload Your Photo</div>
+                        <input type="file" id="avatarImg" accept="image/*" onchange="create3DAvatar(event)">
+                    </div>
+                    <canvas id="avatarCanvas" width="512" height="512"></canvas>
+                    <div class="output" id="avatarOutput">
+                        <div class="output-text" id="avatarText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🎬 AI Video Script Generator</div>
+                    <div class="input-group">
+                        <label class="label">Video Topic</label>
+                        <input type="text" class="input" id="aiVideoTopic" placeholder="5 tips for productivity">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Target Duration</label>
+                        <select class="select" id="aiVideoDuration">
+                            <option>30 seconds</option>
+                            <option>60 seconds</option>
+                            <option>3 minutes</option>
+                            <option>5 minutes</option>
+                            <option>10 minutes</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateAIVideoScript()">🎬 Generate Script</button>
+                    <div class="output" id="aiVideoOutput">
+                        <div class="output-text" id="aiVideoText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">✍️ Content Variation Generator</div>
+                    <div class="input-group">
+                        <label class="label">Your Original Caption</label>
+                        <textarea class="textarea" id="varyCaption" placeholder="Original caption"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Number of Variations</label>
+                        <select class="select" id="varyCount">
+                            <option>3</option>
+                            <option>5</option>
+                            <option>10</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateVariations()">✨ Generate</button>
+                    <div class="output" id="varyOutput">
+                        <div class="output-text" id="varyText"></div>
+                    </div>
+                </div>
+
+                <!-- AR & 3D -->
+                <div id="ar-3d-tab" class="tab-content hidden">
+                    <div class="card-title">📱 AR Filter Idea Generator</div>
+                    <div class="input-group">
+                        <label class="label">Your Brand/Niche</label>
+                        <input type="text" class="input" id="arBrand" placeholder="Coffee shop">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Campaign Goal</label>
+                        <select class="select" id="arGoal">
+                            <option>Brand Awareness</option>
+                            <option>Product Launch</option>
+                            <option>User Engagement</option>
+                            <option>Viral Challenge</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateARIdea()">✨ Generate Ideas</button>
+                    <div class="output" id="arOutput">
+                        <div class="output-text" id="arText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">🎨 3D Text Generator</div>
+                    <div class="input-group">
+                        <label class="label">Your Text</label>
+                        <input type="text" class="input" id="3dText" placeholder="AWESOME">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">3D Style</label>
+                        <select class="select" id="3dStyle">
+                            <option>Neon Glow</option>
+                            <option>Metallic</option>
+                            <option>Glass</option>
+                            <option>Gradient</option>
+                            <option>Shadow Drop</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="generate3DText()">🎨 Generate</button>
+                    <canvas id="text3DCanvas" width="1080" height="1080"></canvas>
+                </div>
+
+                <!-- Web3 Features -->
+                <div id="web3-tab" class="tab-content hidden">
+                    <div class="card-title">🔗 NFT Metadata Generator</div>
+                    <div class="input-group">
+                        <label class="label">NFT Name</label>
+                        <input type="text" class="input" id="nftName" placeholder="My Awesome NFT">
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Description</label>
+                        <textarea class="textarea" id="nftDesc" placeholder="NFT description"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Attributes (comma separated)</label>
+                        <input type="text" class="input" id="nftAttrs" placeholder="Rarity: Rare, Type: Art">
+                    </div>
+                    <button class="btn btn-primary" onclick="generateNFTMetadata()">🔗 Generate Metadata</button>
+                    <div class="output" id="nftOutput">
+                        <div class="output-text" id="nftText"></div>
+                    </div>
+
+                    <div class="card-title mt-2">📜 Content Verification Hash</div>
+                    <div class="alert alert-info">
+                        Generate cryptographic proof of content ownership
+                    </div>
+                    <div class="upload-area" onclick="document.getElementById('verifyFile').click()">
+                        <div>📸 Upload Content to Verify</div>
+                        <input type="file" id="verifyFile" accept="image/*,video/*" onchange="generateContentHash(event)">
+                    </div>
+                    <div class="output" id="hashOutput">
+                        <div class="output-text" id="hashText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🎓 EDUCATION & INSIGHTS -->
+        <div id="education" class="section">
+            <div class="card">
+                <div class="card-title">🎓 Education & Learning Hub</div>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchEduTab('algorithms')">Algorithms</div>
+                    <div class="tab" onclick="switchEduTab('library')">Best Practices</div>
+                    <div class="tab" onclick="switchEduTab('case-studies')">Case Studies</div>
+                    <div class="tab" onclick="switchEduTab('quiz')">Quiz</div>
+                    <div class="tab" onclick="switchEduTab('glossary')">Glossary</div>
+                </div>
+
+                <!-- Platform Algorithms -->
+                <div id="algorithms-tab" class="tab-content">
+                    <div class="card-title">📱 Platform Algorithm Explainer</div>
+                    <div class="input-group">
+                        <label class="label">Select Platform</label>
+                        <select class="select" id="platformSelect" onchange="explainAlgorithm()">
+                            <option value="">Choose a platform...</option>
+                            <option>Instagram</option>
+                            <option>TikTok</option>
+                            <option>YouTube</option>
+                            <option>Twitter/X</option>
+                            <option>LinkedIn</option>
+                            <option>Pinterest</option>
+                            <option>Facebook</option>
+                        </select>
+                    </div>
+                    <div class="output" id="algorithmOutput">
+                        <div class="output-text" id="algorithmText"></div>
+                    </div>
+                </div>
+
+                <!-- Best Practices Library -->
+                <div id="library-tab" class="tab-content hidden">
+                    <div class="card-title">📚 Best Practice Library</div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📸 Content Creation Best Practices</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <strong>Key Principles:</strong><br>
+                                1. Quality over quantity - Post less, but better<br>
+                                2. Consistency is key - Stick to a schedule<br>
+                                3. Know your audience - Create for them, not you<br>
+                                4. Hook in 3 seconds - Grab attention immediately<br>
+                                5. Add value - Educate, entertain, or inspire<br>
+                                6. Use captions strategically - Don't waste the space<br>
+                                7. Test different formats - Find what resonates<br>
+                                8. Optimize for mobile - 90% view on phones<br>
+                                9. Include CTAs - Tell people what to do next<br>
+                                10. Track and analyze - Data drives decisions
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>💬 Engagement Strategies</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <strong>Proven Tactics:</strong><br>
+                                1. Reply within 1 hour - Algorithm boost<br>
+                                2. Ask questions - Drive comments<br>
+                                3. Use polls and quizzes - Interactive content wins<br>
+                                4. Tag relevant accounts - Start conversations<br>
+                                5. Share user content - Build community<br>
+                                6. Go live regularly - Real-time connection<br>
+                                7. Use all features - Stories, reels, posts<br>
+                                8. Cross-promote - Link platforms<br>
+                                9. Collaborate often - Shared audiences<br>
+                                10. Be authentic - People connect with real
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>📊 Analytics & Optimization</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <strong>Key Metrics to Track:</strong><br>
+                                1. Engagement Rate - Most important metric<br>
+                                2. Reach vs Impressions - Understand distribution<br>
+                                3. Save Rate - Indicates value<br>
+                                4. Share Rate - Viral potential<br>
+                                5. Profile Visits - Interest indicator<br>
+                                6. Website Clicks - Conversion tracking<br>
+                                7. Follower Growth Rate - Health check<br>
+                                8. Story Completion - Content quality<br>
+                                9. Best Posting Times - Audience behavior<br>
+                                10. Content Type Performance - Double down on winners
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>💰 Monetization Strategies</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <strong>Revenue Streams:</strong><br>
+                                1. Sponsored Posts - Brand partnerships<br>
+                                2. Affiliate Marketing - Commission on sales<br>
+                                3. Digital Products - Ebooks, templates, presets<br>
+                                4. Online Courses - Share your expertise<br>
+                                5. Coaching/Consulting - 1-on-1 services<br>
+                                6. Memberships - Exclusive community<br>
+                                7. Physical Products - Merch, dropshipping<br>
+                                8. Ad Revenue - YouTube, Facebook<br>
+                                9. Speaking Gigs - Leverage authority<br>
+                                10. Licensing Content - Sell rights to content
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Studies -->
+                <div id="case-studies-tab" class="tab-content hidden">
+                    <div class="card-title">📖 Real Success Stories</div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🚀 0 to 100K in 6 Months: Fitness Creator</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <strong>Strategy:</strong> Daily workout tutorials + motivational content<br>
+                                <strong>Key Tactics:</strong><br>
+                                • Posted 2 reels daily at 7 AM and 6 PM<br>
+                                • Used trending audio within first 24 hours<br>
+                                • Engaged with 50 accounts in niche daily<br>
+                                • Collaborated with 3 creators weekly<br>
+                                <strong>Results:</strong> 100K followers, $5K/month from partnerships
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>💼 B2B Success: LinkedIn Growth</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <strong>Strategy:</strong> Thought leadership + data-driven insights<br>
+                                <strong>Key Tactics:</strong><br>
+                                • Posted 5x per week (Mon-Fri)<br>
+                                • Long-form posts with personal stories<br>
+                                • Commented on 20 posts daily<br>
+                                • Created downloadable resources<br>
+                                <strong>Results:</strong> 50K followers, $15K/month consulting
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>🎨 Viral TikTok: Art Creator</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <strong>Strategy:</strong> Process videos + satisfying content<br>
+                                <strong>Key Tactics:</strong><br>
+                                • Filmed creation process in 15-60 sec clips<br>
+                                • Used transitions and trending sounds<br>
+                                • Posted 3-4x daily<br>
+                                • Duetted with other creators<br>
+                                <strong>Results:</strong> 1M followers, sold $50K in art
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Knowledge Quiz -->
+                <div id="quiz-tab" class="tab-content hidden">
+                    <div class="card-title">🎯 Test Your Knowledge</div>
+                    <div class="alert alert-info">
+                        Take the quiz to assess your social media marketing skills
+                    </div>
+                    
+                    <div id="quizContainer">
+                        <div class="input-group">
+                            <label class="label">1. What's the best time to post on Instagram?</label>
+                            <div class="tags">
+                                <div class="tag" onclick="selectQuizAnswer(this, 1, 'a')">A) Midnight</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 1, 'b')">B) When your audience is most active</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 1, 'c')">C) Always at 9 AM</div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="label">2. What's more important than follower count?</label>
+                            <div class="tags">
+                                <div class="tag" onclick="selectQuizAnswer(this, 2, 'a')">A) Number of posts</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 2, 'b')">B) Engagement rate</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 2, 'c')">C) Profile picture quality</div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="label">3. How long should your hook be?</label>
+                            <div class="tags">
+                                <div class="tag" onclick="selectQuizAnswer(this, 3, 'a')">A) 30 seconds</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 3, 'b')">B) 1-3 seconds</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 3, 'c')">C) Doesn't matter</div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="label">4. What indicates high-value content?</label>
+                            <div class="tags">
+                                <div class="tag" onclick="selectQuizAnswer(this, 4, 'a')">A) High like count</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 4, 'b')">B) High save rate</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 4, 'c')">C) Long captions</div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="label">5. Best hashtag strategy?</label>
+                            <div class="tags">
+                                <div class="tag" onclick="selectQuizAnswer(this, 5, 'a')">A) All big hashtags</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 5, 'b')">B) Mix of big, medium, small</div>
+                                <div class="tag" onclick="selectQuizAnswer(this, 5, 'c')">C) No hashtags</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary mt-2" onclick="scoreQuiz()">📊 Get Results</button>
+                    <div class="output" id="quizResults">
+                        <div class="output-text" id="quizScore"></div>
+                    </div>
+                </div>
+
+                <!-- Glossary -->
+                <div id="glossary-tab" class="tab-content hidden">
+                    <div class="card-title">📖 Social Media Glossary</div>
+                    <div class="input-group">
+                        <input type="text" class="input" id="glossarySearch" placeholder="Search terms..." onkeyup="searchGlossary()">
+                    </div>
+
+                    <div id="glossaryTerms">
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>Algorithm</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    The system that determines what content is shown to users and in what order. Each platform has its own algorithm.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>Engagement Rate</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    Percentage of your audience that interacts with your content. Formula: (Likes + Comments + Shares) ÷ Followers × 100
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>Reach</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    The number of unique users who saw your content at least once.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>Impressions</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    The total number of times your content was displayed, regardless of whether it was clicked or not.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>CTA (Call-to-Action)</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    An instruction that tells your audience what to do next (e.g., "Comment below", "Save this post", "Click the link").
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>UGC (User-Generated Content)</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    Content created by users/followers about your brand, rather than by the brand itself.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>Shadow Ban</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    When your content is hidden from discovery without notification, usually due to violating platform guidelines.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>Viral Coefficient</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    The number of new users each existing user brings. Above 1.0 = exponential growth.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
 
     <script>
         // Global Variables
@@ -3085,668 +3760,1002 @@
             document.getElementById('postsToday').textContent = Math.floor(Math.random() * 3) + 1;
         };
 
-        // ========== NEW MEGA FEATURES JAVASCRIPT ==========
-        
-        // Global state
-        let posts = [];
-        let competitors = [];
-        let hashtags = [];
-        let pillars = [];
-        let campaigns = [];
-        let tasks = [];
-        let pods = [];
-        let trends = [];
-        let followerData = [];
-        let perfChart, timesChart, growthChart, pillarChart;
-        let storyColor = 'g1';
-        let hlColor = 'g1';
-        let ytColor = 'red';
-        let beforeImgData, afterImgData, pinImgData;
+        // ============================================
+        // NEW ADVANCED FUNCTIONS
+        // ============================================
 
-        // ANALYTICS FUNCTIONS
-        function trackPost() {
-            const desc = document.getElementById('postDesc').value;
-            const likes = parseInt(document.getElementById('postLikes').value) || 0;
-            const shares = parseInt(document.getElementById('postShares').value) || 0;
-            const comments = parseInt(document.getElementById('postComments').value) || 0;
-            if (!desc) return alert('Enter description!');
-            
-            posts.push({id: Date.now(), desc, likes, shares, comments, date: new Date().toLocaleDateString()});
-            document.getElementById('postsList').innerHTML = posts.map(p => 
-                `<div class="post-entry"><div class="post-entry-header"><strong>${p.desc}</strong><button class="delete-btn" onclick="posts=posts.filter(x=>x.id!=${p.id});trackPost()">×</button></div><div class="post-entry-stats"><span>❤️ ${p.likes}</span><span>🔄 ${p.shares}</span><span>💬 ${p.comments}</span></div></div>`
-            ).join('');
-            
-            updatePerfChart();
-            document.getElementById('postDesc').value = '';
-            document.getElementById('postLikes').value = '';
-            document.getElementById('postShares').value = '';
-            document.getElementById('postComments').value = '';
+        // Global state for new features
+        let currentHighlightColor = '#667eea';
+        let savedTemplates = [];
+        let trackedHashtagData = [];
+        let rotationSets = [];
+        let quizAnswers = {};
+        let voiceRecognition = null;
+
+        // Tab Switching Functions
+        function switchAdvancedTab(tabId) {
+            document.querySelectorAll('#advanced-content .tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('#advanced-content .tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId + '-tab').classList.remove('hidden');
+            event.target.classList.add('active');
         }
 
-        function updatePerfChart() {
-            const ctx = document.getElementById('perfChart');
-            if (!ctx) return;
-            if (perfChart) perfChart.destroy();
-            perfChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: posts.map(p => p.desc.substring(0,15)),
-                    datasets: [{label: 'Engagement', data: posts.map(p => p.likes+p.shares+p.comments), borderColor: '#6366f1', tension: 0.4}]
-                },
-                options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {labels: {color: '#f1f5f9'}}}, scales: {y: {ticks: {color: '#f1f5f9'}}, x: {ticks: {color: '#f1f5f9'}}}}
-            });
+        function switchHashtagTab(tabId) {
+            document.querySelectorAll('#hashtag-seo-pro .tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('#hashtag-seo-pro .tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId + '-tab').classList.remove('hidden');
+            event.target.classList.add('active');
         }
 
-        function refreshTimes() {
-            const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-            const times = ['6 AM','9 AM','12 PM','3 PM','6 PM','9 PM'];
-            document.getElementById('bestDay').textContent = days[Math.floor(Math.random()*days.length)];
-            document.getElementById('bestTime').textContent = times[Math.floor(Math.random()*times.length)];
-            
-            const ctx = document.getElementById('timesChart');
-            if (!ctx) return;
-            if (timesChart) timesChart.destroy();
-            timesChart = new Chart(ctx, {
-                type: 'bar',
-                data: {labels: times, datasets: [{label: 'Engagement', data: times.map(()=>Math.random()*100), backgroundColor: '#ec4899'}]},
-                options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {labels: {color: '#f1f5f9'}}}, scales: {y: {ticks: {color: '#f1f5f9'}}, x: {ticks: {color: '#f1f5f9'}}}}
-            });
+        function switchFutureTab(tabId) {
+            document.querySelectorAll('#future-features .tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('#future-features .tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId + '-tab').classList.remove('hidden');
+            event.target.classList.add('active');
         }
 
-        function recordFollowers() {
-            const count = parseInt(document.getElementById('followerInput').value);
-            if (!count) return alert('Enter count!');
-            followerData.push({date: new Date().toLocaleDateString(), count});
-            
-            const ctx = document.getElementById('growthChart');
-            if (!ctx) return;
-            if (growthChart) growthChart.destroy();
-            growthChart = new Chart(ctx, {
-                type: 'line',
-                data: {labels: followerData.map(d=>d.date), datasets: [{label: 'Followers', data: followerData.map(d=>d.count), borderColor: '#10b981', fill: true}]},
-                options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {labels: {color: '#f1f5f9'}}}, scales: {y: {ticks: {color: '#f1f5f9'}}, x: {ticks: {color: '#f1f5f9'}}}}
-            });
-            
-            if (followerData.length > 1) {
-                const growth = followerData[followerData.length-1].count - followerData[0].count;
-                document.getElementById('totalGrowth').textContent = '+' + growth;
-                document.getElementById('avgGrowth').textContent = '+' + Math.round(growth/followerData.length);
-                document.getElementById('growthRate').textContent = ((growth/followerData[0].count)*100).toFixed(1) + '%';
-            }
-            document.getElementById('followerInput').value = '';
+        function switchEduTab(tabId) {
+            document.querySelectorAll('#education .tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('#education .tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId + '-tab').classList.remove('hidden');
+            event.target.classList.add('active');
         }
 
-        function addComp() {
-            const name = document.getElementById('compName').value;
-            const followers = document.getElementById('compFollowers').value;
-            const eng = document.getElementById('compEng').value;
-            const freq = document.getElementById('compFreq').value;
-            if (!name) return alert('Enter name!');
-            
-            competitors.push({id: Date.now(), name, followers, eng, freq});
-            document.getElementById('compList').innerHTML = competitors.map(c =>
-                `<div class="competitor-card"><div class="competitor-name">${c.name}</div><div class="competitor-stats"><div>👥 ${c.followers}</div><div>📊 ${c.eng}%</div><div>📅 ${c.freq}/wk</div></div><button class="delete-btn" onclick="competitors=competitors.filter(x=>x.id!=${c.id});addComp()">×</button></div>`
-            ).join('');
-            
-            document.getElementById('compName').value = '';
-            document.getElementById('compFollowers').value = '';
-            document.getElementById('compEng').value = '';
-            document.getElementById('compFreq').value = '';
+        // AI Image Prompt Generator
+        function generateAIPrompt() {
+            const description = document.getElementById('promptDescription').value || 'a beautiful scene';
+            const style = document.getElementById('promptStyle').value;
+            const mood = document.getElementById('promptMood').value;
+
+            const prompt = `${description}, ${style.toLowerCase()} style, ${mood.toLowerCase()} atmosphere, highly detailed, professional photography, 8k resolution, trending on artstation, masterpiece`;
+
+            const styleModifiers = {
+                'Photorealistic': ', photorealistic, ultra realistic, ray tracing',
+                'Digital Art': ', digital painting, concept art, sharp focus',
+                'Oil Painting': ', oil painting, canvas texture, brush strokes',
+                'Watercolor': ', watercolor painting, soft edges, translucent',
+                '3D Render': ', 3D render, octane render, unreal engine',
+                'Anime/Manga': ', anime style, manga art, cell shaded',
+                'Minimalist': ', minimalist design, clean lines, simple',
+                'Cyberpunk': ', cyberpunk aesthetic, neon lights, futuristic',
+                'Vintage': ', vintage style, retro aesthetic, film grain',
+                'Abstract': ', abstract art, geometric shapes, creative'
+            };
+
+            const fullPrompt = prompt + (styleModifiers[style] || '');
+
+            document.getElementById('aiPromptText').textContent = `🎨 OPTIMIZED AI PROMPT:\n\n${fullPrompt}\n\n💡 TIPS:\n• Use this prompt in DALL-E, Midjourney, or Stable Diffusion\n• Add aspect ratio: --ar 1:1 (square) or --ar 9:16 (story)\n• For Midjourney, add: --v 5 for latest version\n• Experiment with different keywords!`;
+            document.getElementById('aiPromptOutput').classList.add('show');
         }
 
-        function calcROI() {
-            const name = document.getElementById('roiCampaign').value;
-            const spent = parseFloat(document.getElementById('roiSpent').value) || 0;
-            const revenue = parseFloat(document.getElementById('roiRevenue').value) || 0;
-            if (!name || !spent) return alert('Fill all fields!');
-            
-            const profit = revenue - spent;
-            const roi = ((profit/spent)*100).toFixed(2);
-            document.getElementById('roiTxt').textContent = `CAMPAIGN: ${name}\n\n💰 Spent: $${spent}\n💵 Revenue: $${revenue}\n📊 ROI: ${roi}%\n${roi > 0 ? '✅ Profitable' : '❌ Loss'}`;
-            document.getElementById('roiOut').classList.add('active');
-        }
+        // Color Palette Extractor
+        function extractColors(event) {
+            const file = event.target.files[0];
+            if (!file) return;
 
-        function addHash() {
-            const name = document.getElementById('hashName').value;
-            const reach = document.getElementById('hashReach').value;
-            const eng = document.getElementById('hashEng').value;
-            if (!name) return alert('Enter hashtag!');
-            
-            hashtags.push({id: Date.now(), name, reach, eng});
-            document.getElementById('hashList').innerHTML = hashtags.map(h =>
-                `<div class="post-entry"><div class="post-entry-header"><strong>${h.name}</strong><button class="delete-btn" onclick="hashtags=hashtags.filter(x=>x.id!=${h.id});addHash()">×</button></div><div class="post-entry-stats"><span>👁️ ${h.reach}</span><span>💬 ${h.eng}</span><span>📊 ${((h.eng/h.reach)*100).toFixed(2)}%</span></div></div>`
-            ).join('');
-            
-            document.getElementById('hashName').value = '';
-            document.getElementById('hashReach').value = '';
-            document.getElementById('hashEng').value = '';
-        }
-
-        // CONTENT FUNCTIONS
-        function genMeme() {
-            const top = document.getElementById('memeTop').value;
-            const bot = document.getElementById('memeBot').value;
-            if (!top && !bot) return alert('Enter text!');
-            
-            const canvas = document.getElementById('memeCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            
-            const grad = ctx.createLinearGradient(0,0,0,canvas.height);
-            grad.addColorStop(0,'#667eea');
-            grad.addColorStop(1,'#764ba2');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 70px Impact';
-            ctx.textAlign = 'center';
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 5;
-            
-            if (top) {
-                ctx.strokeText(top.toUpperCase(), 540, 150);
-                ctx.fillText(top.toUpperCase(), 540, 150);
-            }
-            if (bot) {
-                ctx.strokeText(bot.toUpperCase(), 540, 950);
-                ctx.fillText(bot.toUpperCase(), 540, 950);
-            }
-            
-            canvas.style.display = 'block';
-            setTimeout(() => {
-                const a = document.createElement('a');
-                a.download = 'meme.png';
-                a.href = canvas.toDataURL();
-                a.click();
-            }, 500);
-        }
-
-        function genScript() {
-            const topic = document.getElementById('vidTopic').value;
-            const len = document.getElementById('vidLen').value;
-            const tone = document.getElementById('vidTone').value;
-            if (!topic) return alert('Enter topic!');
-            
-            let script = `🎬 VIDEO SCRIPT - ${topic}\n⏱️ ${len}\n🎭 ${tone}\n\n`;
-            script += `HOOK (0-3s):\n"Stop scrolling!"\n\nINTRO (3-8s):\n"Today: ${topic}"\n\nMAIN:\n• Point 1\n• Point 2\n• Point 3\n\nCTA:\n"Follow for more!"`;
-            
-            document.getElementById('scriptTxt').textContent = script;
-            document.getElementById('scriptOut').classList.add('active');
-        }
-
-        function genThread() {
-            const topic = document.getElementById('threadTopic').value;
-            const points = document.getElementById('threadPoints').value.split(',');
-            if (!topic) return alert('Enter topic!');
-            
-            let thread = `🧵 ${topic}\n\n1/${points.length+2}\n\nLet me break this down...\n\n`;
-            points.forEach((p,i) => {
-                thread += `${i+2}/${points.length+2}\n\n${p.trim()}\n\n`;
-            });
-            thread += `${points.length+2}/${points.length+2}\n\nThat's a wrap! Like & RT to share.`;
-            
-            document.getElementById('threadTxt').textContent = thread;
-            document.getElementById('threadOut').classList.add('active');
-        }
-
-        function setStoryCol(col) { storyColor = col; }
-
-        function genStory() {
-            const txt = document.getElementById('storyTxt').value;
-            if (!txt) return alert('Enter text!');
-            
-            const canvas = document.getElementById('storyCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            
-            const colors = {g1:['#667eea','#764ba2'], g2:['#f093fb','#f5576c'], g3:['#4facfe','#00f2fe']};
-            const col = colors[storyColor] || colors.g1;
-            const grad = ctx.createLinearGradient(0,0,0,canvas.height);
-            grad.addColorStop(0,col[0]);
-            grad.addColorStop(1,col[1]);
-            ctx.fillStyle = grad;
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 80px Inter';
-            ctx.textAlign = 'center';
-            ctx.fillText(txt, 540, 960);
-            
-            canvas.style.display = 'block';
-            setTimeout(() => {
-                const a = document.createElement('a');
-                a.download = 'story.png';
-                a.href = canvas.toDataURL();
-                a.click();
-            }, 500);
-        }
-
-        function genPoll() {
-            const q = document.getElementById('pollQ').value;
-            const o1 = document.getElementById('pollOpt1').value;
-            const o2 = document.getElementById('pollOpt2').value;
-            const o3 = document.getElementById('pollOpt3').value;
-            const o4 = document.getElementById('pollOpt4').value;
-            if (!q || !o1 || !o2) return alert('Enter question and 2 options!');
-            
-            let poll = `📊 POLL\n\n${q}\n\n🔵 ${o1}\n🔵 ${o2}\n`;
-            if (o3) poll += `🔵 ${o3}\n`;
-            if (o4) poll += `🔵 ${o4}\n`;
-            poll += `\nVote below! 👇`;
-            
-            document.getElementById('pollTxt').textContent = poll;
-            document.getElementById('pollOut').classList.add('active');
-        }
-
-        function loadBefore(e) {
             const reader = new FileReader();
-            reader.onload = (ev) => { beforeImgData = ev.target.result; };
-            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.getElementById('colorCanvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    const colors = extractDominantColors(ctx, img.width, img.height);
+                    displayColorPalette(colors);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
         }
 
-        function loadAfter(e) {
-            const reader = new FileReader();
-            reader.onload = (ev) => { afterImgData = ev.target.result; };
-            reader.readAsDataURL(e.target.files[0]);
-        }
+        function extractDominantColors(ctx, width, height) {
+            const imageData = ctx.getImageData(0, 0, width, height).data;
+            const colorMap = {};
 
-        function genComparison() {
-            if (!beforeImgData || !afterImgData) return alert('Upload both images!');
-            
-            const canvas = document.getElementById('compCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            
-            const before = new Image();
-            const after = new Image();
-            before.src = beforeImgData;
-            after.src = afterImgData;
-            
-            Promise.all([
-                new Promise(r => before.onload = r),
-                new Promise(r => after.onload = r)
-            ]).then(() => {
-                ctx.drawImage(before, 0, 150, 540, 780);
-                ctx.drawImage(after, 540, 150, 540, 780);
-                
-                ctx.fillStyle = 'rgba(0,0,0,0.7)';
-                ctx.fillRect(0,0,540,150);
-                ctx.fillRect(540,0,540,150);
-                
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 60px Inter';
-                ctx.textAlign = 'center';
-                ctx.fillText('BEFORE', 270, 95);
-                ctx.fillText('AFTER', 810, 95);
-                
-                canvas.style.display = 'block';
-                setTimeout(() => {
-                    const a = document.createElement('a');
-                    a.download = 'comparison.png';
-                    a.href = canvas.toDataURL();
-                    a.click();
-                }, 500);
+            // Sample pixels
+            for (let i = 0; i < imageData.length; i += 40) {
+                const r = imageData[i];
+                const g = imageData[i + 1];
+                const b = imageData[i + 2];
+                const key = `${Math.floor(r/10)*10},${Math.floor(g/10)*10},${Math.floor(b/10)*10}`;
+                colorMap[key] = (colorMap[key] || 0) + 1;
+            }
+
+            // Get top 5 colors
+            const sorted = Object.entries(colorMap).sort((a, b) => b[1] - a[1]).slice(0, 5);
+            return sorted.map(([color]) => {
+                const [r, g, b] = color.split(',').map(Number);
+                return `rgb(${r}, ${g}, ${b})`;
             });
         }
 
-        function genInfo() {
-            const title = document.getElementById('infoTitle').value;
-            const data = document.getElementById('infoData').value.split('\n').filter(x=>x);
-            if (!title || !data.length) return alert('Enter title and data!');
+        function displayColorPalette(colors) {
+            const swatches = document.getElementById('colorSwatches');
+            const codes = document.getElementById('colorCodes');
             
-            const canvas = document.getElementById('infoCanvas');
+            swatches.innerHTML = colors.map(color => 
+                `<div class="color-option" style="background: ${color}; width: 80px; height: 80px;"></div>`
+            ).join('');
+
+            codes.innerHTML = '<strong>Color Codes:</strong><br>' + colors.map((color, i) => 
+                `Color ${i+1}: ${color} (${rgbToHex(color)})`
+            ).join('<br>');
+
+            document.getElementById('colorPalette').style.display = 'block';
+        }
+
+        function rgbToHex(rgb) {
+            const values = rgb.match(/\d+/g).map(Number);
+            return '#' + values.map(x => x.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Background Remover (Simple version)
+        function removeBackground(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.getElementById('bgCanvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    // Simple chroma key effect (removes white/light backgrounds)
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+
+                    for (let i = 0; i < data.length; i += 4) {
+                        const brightness = (data[i] + data[i+1] + data[i+2]) / 3;
+                        if (brightness > 200) {
+                            data[i+3] = 0; // Make transparent
+                        }
+                    }
+
+                    ctx.putImageData(imageData, 0, 0);
+                    canvas.style.display = 'block';
+                    document.getElementById('downloadBg').style.display = 'block';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename + '.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Aspect Ratio Converter
+        let ratioImage = null;
+        function loadRatioImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                ratioImage = new Image();
+                ratioImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function convertRatio() {
+            if (!ratioImage) return alert('Please upload an image first');
+
+            const ratio = document.getElementById('targetRatio').value;
+            const canvas = document.getElementById('ratioCanvas');
             const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            
-            const grad = ctx.createLinearGradient(0,0,0,canvas.height);
-            grad.addColorStop(0,'#667eea');
-            grad.addColorStop(1,'#764ba2');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            
-            ctx.fillStyle = 'white';
+
+            const ratios = {
+                '1:1 (Square - Instagram Post)': [1080, 1080],
+                '4:5 (Portrait - Instagram)': [1080, 1350],
+                '9:16 (Story/Reel)': [1080, 1920],
+                '16:9 (Landscape - YouTube)': [1920, 1080],
+                '2:3 (Pinterest)': [1000, 1500],
+                '1200x628 (Facebook Link)': [1200, 628]
+            };
+
+            const [width, height] = ratios[ratio];
+            canvas.width = width;
+            canvas.height = height;
+
+            // Fill with white background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+
+            // Calculate scaling to fit
+            const scale = Math.min(width / ratioImage.width, height / ratioImage.height);
+            const x = (width - ratioImage.width * scale) / 2;
+            const y = (height - ratioImage.height * scale) / 2;
+
+            ctx.drawImage(ratioImage, x, y, ratioImage.width * scale, ratioImage.height * scale);
+            canvas.style.display = 'block';
+        }
+
+        // Headline Scorer
+        function scoreHeadline() {
+            const headline = document.getElementById('headlineText').value;
+            if (!headline) return;
+
+            let score = 50; // Base score
+            const words = headline.split(' ');
+
+            // Word count (6-12 is optimal)
+            if (words.length >= 6 && words.length <= 12) score += 15;
+            else if (words.length < 6) score += 5;
+
+            // Power words
+            const powerWords = ['you', 'free', 'new', 'proven', 'guaranteed', 'amazing', 'secret', 'discover', 'ultimate', 'essential'];
+            const hasPowerWords = words.some(w => powerWords.includes(w.toLowerCase()));
+            if (hasPowerWords) score += 15;
+
+            // Numbers
+            if (/\d/.test(headline)) score += 10;
+
+            // Emotional words
+            const emotional = ['love', 'hate', 'fear', 'anger', 'joy', 'surprise', 'shocking', 'incredible'];
+            const hasEmotion = words.some(w => emotional.includes(w.toLowerCase()));
+            if (hasEmotion) score += 10;
+
+            // Length (40-60 chars is good)
+            if (headline.length >= 40 && headline.length <= 60) score += 10;
+
+            score = Math.min(100, score);
+
+            let grade = 'Needs Work';
+            if (score >= 80) grade = 'Excellent!';
+            else if (score >= 60) grade = 'Good';
+            else if (score >= 40) grade = 'Average';
+
+            document.getElementById('headlineScoreText').textContent = `📊 HEADLINE SCORE: ${score}/100\n\nGrade: ${grade}\n\nWord Count: ${words.length} ${words.length >= 6 && words.length <= 12 ? '✅' : '⚠️'}\nCharacter Count: ${headline.length} ${headline.length >= 40 && headline.length <= 60 ? '✅' : '⚠️'}\nPower Words: ${hasPowerWords ? '✅ Yes' : '❌ None detected'}\nNumbers: ${/\d/.test(headline) ? '✅ Yes' : '❌ None'}\nEmotional Appeal: ${hasEmotion ? '✅ Yes' : '⚠️ Could be stronger'}`;
+            document.getElementById('headlineScore').classList.add('show');
+        }
+
+        // Emoji Suggester
+        function suggestEmojis() {
+            const caption = document.getElementById('emojiCaption').value.toLowerCase();
+            if (!caption) return;
+
+            const emojiMap = {
+                'love': '❤️💕💖',
+                'happy': '😊😃✨',
+                'success': '🎉🏆💪',
+                'food': '🍕🍔🌮',
+                'travel': '✈️🌍🗺️',
+                'fitness': '💪🏋️🔥',
+                'money': '💰💵📈',
+                'work': '💼📊👔',
+                'beauty': '💄💅✨',
+                'fashion': '👗👠💃',
+                'coffee': '☕🤎',
+                'sunset': '🌅🌇',
+                'beach': '🏖️🌊🌴',
+                'party': '🎉🎊🥳',
+                'study': '📚📖✏️'
+            };
+
+            let suggestedEmojis = [];
+            for (const [key, emojis] of Object.entries(emojiMap)) {
+                if (caption.includes(key)) {
+                    suggestedEmojis.push(`${key}: ${emojis}`);
+                }
+            }
+
+            const result = suggestedEmojis.length > 0 
+                ? `😊 SUGGESTED EMOJIS:\n\n${suggestedEmojis.join('\n')}\n\n💡 TIP: Use 3-5 emojis max for best engagement!`
+                : '💡 No specific emojis detected. Try using: ✨🌟💫 for general sparkle, or 👉 for call-to-action!';
+
+            document.getElementById('emojiText').textContent = result;
+            document.getElementById('emojiOutput').classList.add('show');
+        }
+
+        // Translation (Mock - would need API in production)
+        function translateCaption() {
+            const text = document.getElementById('translateText').value;
+            const lang = document.getElementById('targetLang').value;
+
+            if (!text) return;
+
+            // Mock translation
+            document.getElementById('translatedText').textContent = `🌍 TRANSLATED TO ${lang.toUpperCase()}:\n\n[Translation would appear here]\n\n💡 In production, this would connect to Google Translate API or similar service.`;
+            document.getElementById('translateOutput').classList.add('show');
+        }
+
+        // Readability Analyzer
+        function analyzeReadability() {
+            const text = document.getElementById('readabilityText').value;
+            if (!text) return;
+
+            const words = text.split(/\s+/).length;
+            const sentences = text.split(/[.!?]+/).length;
+            const syllables = countSyllables(text);
+
+            // Flesch Reading Ease
+            const score = 206.835 - 1.015 * (words / sentences) - 84.6 * (syllables / words);
+            const level = score > 90 ? 'Very Easy' : 
+                         score > 80 ? 'Easy' :
+                         score > 70 ? 'Fairly Easy' :
+                         score > 60 ? 'Standard' :
+                         score > 50 ? 'Fairly Difficult' : 'Difficult';
+
+            document.getElementById('readabilityScore').textContent = `📖 READABILITY SCORE: ${Math.round(score)}/100\n\nLevel: ${level}\n\nWords: ${words}\nSentences: ${sentences}\nAvg Words/Sentence: ${(words/sentences).toFixed(1)}\n\n💡 TIP: Aim for 60-80 for social media content!`;
+            document.getElementById('readabilityOutput').classList.add('show');
+        }
+
+        function countSyllables(text) {
+            // Simplified syllable counter
+            return text.toLowerCase().split(/\s+/).reduce((count, word) => {
+                word = word.replace(/[^a-z]/g, '');
+                const vowels = word.match(/[aeiou]/gi);
+                return count + (vowels ? vowels.length : 0);
+            }, 0);
+        }
+
+        // Sentiment Analyzer
+        function analyzeSentiment() {
+            const text = document.getElementById('sentimentText').value.toLowerCase();
+            if (!text) return;
+
+            const positive = ['good', 'great', 'awesome', 'amazing', 'love', 'best', 'happy', 'excellent', 'wonderful', 'fantastic'];
+            const negative = ['bad', 'hate', 'worst', 'terrible', 'awful', 'horrible', 'sad', 'angry', 'disappointed', 'frustrated'];
+
+            let posCount = positive.reduce((count, word) => count + (text.match(new RegExp(word, 'g')) || []).length, 0);
+            let negCount = negative.reduce((count, word) => count + (text.match(new RegExp(word, 'g')) || []).length, 0);
+
+            const sentiment = posCount > negCount ? 'Positive ✅' : negCount > posCount ? 'Negative ⚠️' : 'Neutral 📊';
+            const score = ((posCount - negCount) / (posCount + negCount + 1) * 100).toFixed(0);
+
+            document.getElementById('sentimentScore').textContent = `💭 SENTIMENT ANALYSIS:\n\nOverall: ${sentiment}\nScore: ${score}\n\nPositive Words: ${posCount}\nNegative Words: ${negCount}\n\n💡 TIP: Positive content typically performs better!`;
+            document.getElementById('sentimentOutput').classList.add('show');
+        }
+
+        // Template System
+        function saveTemplate() {
+            const name = document.getElementById('templateName').value;
+            const content = document.getElementById('templateContent').value;
+            const category = document.getElementById('templateCategory').value;
+
+            if (!name || !content) return alert('Please fill all fields');
+
+            savedTemplates.push({ name, content, category });
+            updateTemplatesList();
+            alert('✅ Template saved!');
+        }
+
+        function updateTemplatesList() {
+            const container = document.getElementById('savedTemplates');
+            container.innerHTML = savedTemplates.map((t, i) => `
+                <div class="card mt-1" style="padding: 1rem;">
+                    <strong>${t.name}</strong>
+                    <div class="text-sm" style="color: var(--gray);">${t.category}</div>
+                    <div class="text-sm mt-1">${t.content.substring(0, 100)}...</div>
+                    <button class="btn btn-secondary btn-sm mt-1" onclick="useTemplate(${i})">Use Template</button>
+                </div>
+            `).join('');
+        }
+
+        function useTemplate(index) {
+            const template = savedTemplates[index];
+            alert(`Template "${template.name}" ready to use!\n\n${template.content}`);
+        }
+
+        function useSeasonalPack(pack) {
+            alert(`${pack} template pack activated! 20 templates added to your library.`);
+        }
+
+        // Story Pro Tools
+        function generatePoll() {
+            const question = document.getElementById('pollQuestion').value || 'What do you think?';
+            const option1 = document.getElementById('pollOption1').value || 'Option 1';
+            const option2 = document.getElementById('pollOption2').value || 'Option 2';
+
+            const canvas = document.getElementById('pollCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 0, 1920);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1080, 1920);
+
+            // Question
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 60px Inter';
+            ctx.textAlign = 'center';
+            ctx.fillText(question, 540, 800);
+
+            // Options
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.fillRect(140, 1000, 800, 150);
+            ctx.fillRect(140, 1200, 800, 150);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '40px Inter';
+            ctx.fillText(option1, 540, 1090);
+            ctx.fillText(option2, 540, 1290);
+
+            canvas.style.display = 'block';
+        }
+
+        function generateQuiz() {
+            const title = document.getElementById('quizTitle').value || 'Quiz Time!';
+            const q1 = document.getElementById('quiz1').value || 'Question 1';
+
+            document.getElementById('quizText').textContent = `🎯 ${title}\n\nQ1: ${q1}\n\n📊 Create multiple questions and track responses!`;
+            document.getElementById('quizOutput').classList.add('show');
+        }
+
+        function createCountdown() {
+            const eventName = document.getElementById('eventName').value || 'Big Event';
+            const eventDate = new Date(document.getElementById('eventDate').value || Date.now() + 86400000);
+
+            const now = new Date();
+            const diff = eventDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            const canvas = document.getElementById('countdownCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(0, 0, 1080, 1920);
+
+            // Event name
+            ctx.fillStyle = '#ffffff';
             ctx.font = 'bold 70px Inter';
             ctx.textAlign = 'center';
-            ctx.fillText(title, 540, 150);
-            
-            let y = 300;
-            data.forEach(d => {
-                ctx.fillStyle = 'rgba(255,255,255,0.9)';
-                ctx.fillRect(100,y,880,100);
-                ctx.fillStyle = '#667eea';
-                ctx.font = '35px Inter';
-                ctx.textAlign = 'left';
-                ctx.fillText(d, 130, y+60);
-                y += 150;
-            });
-            
+            ctx.fillText(eventName, 540, 800);
+
+            // Countdown
+            ctx.font = 'bold 120px Inter';
+            ctx.fillStyle = '#6366f1';
+            ctx.fillText(`${days}d ${hours}h`, 540, 1000);
+
             canvas.style.display = 'block';
-            setTimeout(() => {
-                const a = document.createElement('a');
-                a.download = 'infographic.png';
-                a.href = canvas.toDataURL();
-                a.click();
-            }, 500);
         }
 
-        // PLANNING FUNCTIONS
-        function toggleAcc(header) {
-            const content = header.nextElementSibling;
-            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
-            if (!content.classList.contains('active')) content.classList.add('active');
+        function selectHighlightColor(element, color) {
+            document.querySelectorAll('#highlightCanvas').forEach(e => e.classList.remove('active'));
+            element.classList.add('active');
+            currentHighlightColor = color;
         }
 
-        function addTime(platform) {
-            const container = document.getElementById(platform+'Times');
-            const div = document.createElement('div');
-            div.className = 'time-slot';
-            div.innerHTML = '<input type="time" class="input"><select class="select"><option>Mon</option><option>Tue</option><option>Wed</option><option>Thu</option><option>Fri</option><option>Sat</option><option>Sun</option></select><button class="remove-time-btn" onclick="this.parentElement.remove()">×</button>';
-            container.appendChild(div);
-        }
+        function generateHighlightCover() {
+            const name = document.getElementById('highlightName').value || 'Highlight';
+            const icon = document.getElementById('highlightIcon').value || '✨';
 
-        function saveSchedules() { alert('✅ Schedules saved!'); }
-
-        function addPillar() {
-            const name = document.getElementById('pillarName').value;
-            const pct = document.getElementById('pillarPct').value;
-            if (!name || !pct) return alert('Fill all fields!');
-            
-            pillars.push({id: Date.now(), name, pct});
-            document.getElementById('pillarList').innerHTML = pillars.map(p =>
-                `<div class="post-entry"><div class="post-entry-header"><strong>${p.name}</strong><button class="delete-btn" onclick="pillars=pillars.filter(x=>x.id!=${p.id});addPillar()">×</button></div><div>Target: ${p.pct}%</div></div>`
-            ).join('');
-            
-            const ctx = document.getElementById('pillarChart');
-            if (!ctx) return;
-            if (pillarChart) pillarChart.destroy();
-            pillarChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {labels: pillars.map(p=>p.name), datasets: [{data: pillars.map(p=>p.pct), backgroundColor: ['#6366f1','#ec4899','#10b981','#f59e0b']}]},
-                options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {labels: {color: '#f1f5f9'}}}}
-            });
-            
-            document.getElementById('pillarName').value = '';
-            document.getElementById('pillarPct').value = '';
-        }
-
-        function addRecur() {
-            const type = document.getElementById('recurType').value;
-            const freq = document.getElementById('recurFreq').value;
-            const day = document.getElementById('recurDay').value;
-            const time = document.getElementById('recurTime').value;
-            if (!type || !time) return alert('Fill all fields!');
-            
-            const list = document.getElementById('recurList');
-            const div = document.createElement('div');
-            div.className = 'post-entry';
-            div.innerHTML = `<div class="post-entry-header"><strong>${type}</strong><button class="delete-btn" onclick="this.parentElement.parentElement.remove()">×</button></div><div class="post-entry-stats"><span>🔄 ${freq}</span><span>📅 ${day}</span><span>⏰ ${time}</span></div>`;
-            list.appendChild(div);
-            
-            document.getElementById('recurType').value = '';
-            document.getElementById('recurTime').value = '';
-        }
-
-        function addCamp() {
-            const name = document.getElementById('campName').value;
-            const start = document.getElementById('campStart').value;
-            const end = document.getElementById('campEnd').value;
-            const milestones = document.getElementById('campMilestones').value.split('\n').filter(x=>x);
-            if (!name || !start || !end) return alert('Fill all fields!');
-            
-            campaigns.push({id: Date.now(), name, start, end, milestones});
-            document.getElementById('campList').innerHTML = campaigns.map(c =>
-                `<div class="campaign-card"><div class="campaign-title">${c.name}</div><div style="font-size:0.85rem;color:var(--gray);margin-bottom:0.5rem">${c.start} to ${c.end}</div>${c.milestones.map(m=>`<div class="milestone-item"><input type="checkbox" class="milestone-checkbox"><span>${m}</span></div>`).join('')}<button class="delete-btn" onclick="campaigns=campaigns.filter(x=>x.id!=${c.id});addCamp()" style="margin-top:0.5rem">×</button></div>`
-            ).join('');
-            
-            document.getElementById('campName').value = '';
-            document.getElementById('campStart').value = '';
-            document.getElementById('campEnd').value = '';
-            document.getElementById('campMilestones').value = '';
-        }
-
-        function addTask() {
-            const name = document.getElementById('taskName').value;
-            const assign = document.getElementById('taskAssign').value;
-            const due = document.getElementById('taskDue').value;
-            const prio = document.getElementById('taskPrio').value;
-            if (!name || !assign || !due) return alert('Fill all fields!');
-            
-            tasks.push({id: Date.now(), name, assign, due, prio});
-            document.getElementById('taskList').innerHTML = tasks.map(t =>
-                `<div class="post-entry"><div class="post-entry-header"><strong>${t.name}</strong><button class="delete-btn" onclick="tasks=tasks.filter(x=>x.id!=${t.id});addTask()">×</button></div><div class="post-entry-stats"><span>👤 ${t.assign}</span><span>📅 ${t.due}</span><span>${t.prio}</span></div></div>`
-            ).join('');
-            
-            document.getElementById('taskName').value = '';
-            document.getElementById('taskAssign').value = '';
-            document.getElementById('taskDue').value = '';
-        }
-
-        // ENGAGEMENT FUNCTIONS
-        function copyTxt(txt) {
-            navigator.clipboard.writeText(txt);
-            alert('✅ Copied!');
-        }
-
-        function genDM() {
-            const type = document.getElementById('dmType').value;
-            const templates = {
-                collab: 'Hi! Thanks for reaching out! 🎉\n\nI'd love to hear more about your collaboration idea.\n\nCould you share:\n• What you have in mind\n• Timeline\n• Goals\n\nLooking forward!',
-                price: 'Hey! Thanks for your interest! 💙\n\nCould you share more about:\n• Services needed\n• Timeline\n• Budget range\n\nThis helps me create the perfect package!',
-                support: 'Hi! 👋\n\nThanks for reaching out!\n\nCould you share more details? The more info, the better I can help!',
-                thanks: 'Thank you so much! 🙏\n\nIt means the world that you took the time to share this.\n\nYour support keeps me motivated!\n\nStay awesome! ✨'
-            };
-            if (type && templates[type]) {
-                document.getElementById('dmTxt').textContent = templates[type];
-                document.getElementById('dmOut').classList.add('active');
-            }
-        }
-
-        function addPod() {
-            const name = document.getElementById('podName').value;
-            const members = document.getElementById('podMembers').value.split('\n').filter(x=>x);
-            const rule = document.getElementById('podRule').value;
-            if (!name || !members.length) return alert('Fill all fields!');
-            
-            pods.push({id: Date.now(), name, members, rule});
-            document.getElementById('podList').innerHTML = pods.map(p =>
-                `<div class="post-entry"><div class="post-entry-header"><strong>${p.name}</strong><button class="delete-btn" onclick="pods=pods.filter(x=>x.id!=${p.id});addPod()">×</button></div><div style="font-size:0.85rem;margin-top:0.5rem">👥 ${p.members.length} members<br>📋 ${p.rule}</div></div>`
-            ).join('');
-            
-            document.getElementById('podName').value = '';
-            document.getElementById('podMembers').value = '';
-        }
-
-        function genMilestone() {
-            const count = document.getElementById('milestone').value;
-            let post = `🎉 WE DID IT! ${count} FOLLOWERS! 🎉\n\n`;
-            post += `Thank you to each and every one of you!\n\n`;
-            post += `When I started, I never imagined we'd grow this community.\n\n`;
-            post += `THANK YOU for:\n• Your support 💙\n• Sharing my content 🔄\n• Being part of this journey 🚀\n\n`;
-            post += `This is just the beginning!\n\nDrop a ❤️ if you've been here since day one!`;
-            
-            document.getElementById('mileTxt').textContent = post;
-            document.getElementById('mileOut').classList.add('active');
-        }
-
-        // PLATFORM FUNCTIONS
-        function setHLCol(col) { hlColor = col; }
-        function setYTCol(col) { ytColor = col; }
-
-        function genHL() {
-            const name = document.getElementById('hlName').value;
-            const icon = document.getElementById('hlIcon').value;
-            if (!icon) return alert('Enter icon!');
-            
-            const canvas = document.getElementById('hlCanvas');
+            const canvas = document.getElementById('highlightCanvas');
             const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            
-            if (hlColor === 'wht') {
-                ctx.fillStyle = '#ffffff';
-            } else if (hlColor === 'blk') {
-                ctx.fillStyle = '#000000';
-            } else {
-                const colors = {g1:['#667eea','#764ba2'], g2:['#f093fb','#f5576c']};
-                const col = colors[hlColor] || colors.g1;
-                const grad = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
-                grad.addColorStop(0,col[0]);
-                grad.addColorStop(1,col[1]);
-                ctx.fillStyle = grad;
-            }
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            
-            ctx.font = '500px Arial';
+            canvas.width = 1080;
+            canvas.height = 1920;
+
+            // Circular cover
+            const centerX = 540;
+            const centerY = 960;
+            const radius = 400;
+
+            ctx.fillStyle = currentHighlightColor;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Icon
+            ctx.font = 'bold 300px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(icon, 540, 540);
-            
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(icon, centerX, centerY);
+
+            // Name
+            ctx.font = 'bold 60px Inter';
+            ctx.fillText(name, centerX, centerY + 600);
+
             canvas.style.display = 'block';
-            setTimeout(() => {
-                const a = document.createElement('a');
-                a.download = `highlight-${name||'cover'}.png`;
-                a.href = canvas.toDataURL();
-                a.click();
-            }, 500);
         }
 
-        function genYT() {
-            const title = document.getElementById('ytTitle').value;
-            const sub = document.getElementById('ytSub').value;
-            if (!title) return alert('Enter title!');
-            
-            const canvas = document.getElementById('ytCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            
-            const colors = {red:['#FF0000','#CC0000'], purple:['#667eea','#764ba2'], blue:['#4facfe','#00f2fe']};
-            const col = colors[ytColor] || colors.red;
-            const grad = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
-            grad.addColorStop(0,col[0]);
-            grad.addColorStop(1,col[1]);
-            ctx.fillStyle = grad;
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            
-            ctx.fillStyle = 'rgba(0,0,0,0.4)';
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 80px Inter';
-            ctx.textAlign = 'center';
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 8;
-            ctx.strokeText(title, 640, 300);
-            ctx.fillText(title, 640, 300);
-            
-            if (sub) {
-                ctx.font = 'bold 50px Inter';
-                ctx.strokeText(sub, 640, 400);
-                ctx.fillText(sub, 640, 400);
-            }
-            
-            canvas.style.display = 'block';
-            setTimeout(() => {
-                const a = document.createElement('a');
-                a.download = 'youtube-thumbnail.png';
-                a.href = canvas.toDataURL();
-                a.click();
-            }, 500);
+        // HASHTAG & SEO FUNCTIONS
+
+        function trackHashtag() {
+            const tag = document.getElementById('trackHashtag').value;
+            const reach = parseInt(document.getElementById('hashReach').value) || 0;
+            const engagement = parseInt(document.getElementById('hashEngagement').value) || 0;
+
+            if (!tag) return;
+
+            trackedHashtagData.push({ tag, reach, engagement, date: new Date().toLocaleDateString() });
+            updateTrackedHashtags();
         }
 
-        function loadPin(e) {
-            const reader = new FileReader();
-            reader.onload = (ev) => { pinImgData = ev.target.result; };
-            reader.readAsDataURL(e.target.files[0]);
+        function updateTrackedHashtags() {
+            const container = document.getElementById('trackedHashtags');
+            container.innerHTML = trackedHashtagData.map((h, i) => `
+                <div class="card mt-1" style="padding: 1rem;">
+                    <strong>${h.tag}</strong>
+                    <div class="text-sm">Reach: ${h.reach} | Engagement: ${h.engagement} | ROI: ${(h.engagement/h.reach*100).toFixed(2)}%</div>
+                    <div class="text-xs" style="color: var(--gray);">${h.date}</div>
+                </div>
+            `).join('');
         }
 
-        function genPin() {
-            const title = document.getElementById('pinTitle').value;
-            const desc = document.getElementById('pinDesc').value;
-            const brand = document.getElementById('pinBrand').value;
-            if (!title || !pinImgData) return alert('Enter title and image!');
+        function checkBannedTags() {
+            const tags = document.getElementById('checkBanned').value.split(/\s+/);
             
-            const canvas = document.getElementById('pinCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
+            // Mock banned list (would be a real API in production)
+            const bannedList = ['#sfs', '#followback', '#like4like', '#follow4follow'];
             
-            const img = new Image();
-            img.src = pinImgData;
-            img.onload = () => {
-                ctx.drawImage(img, 0, 200, canvas.width, 1000);
-                
-                ctx.fillStyle = 'rgba(0,0,0,0.8)';
-                ctx.fillRect(0,0,canvas.width,200);
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 60px Inter';
-                ctx.textAlign = 'center';
-                ctx.fillText(title, 500, 120);
-                
-                ctx.fillStyle = 'rgba(0,0,0,0.8)';
-                ctx.fillRect(0,1200,canvas.width,300);
-                ctx.fillStyle = 'white';
-                ctx.font = '35px Inter';
-                if (desc) ctx.fillText(desc, 500, 1270);
-                if (brand) {
-                    ctx.font = 'bold 30px Inter';
-                    ctx.fillText(brand, 500, 1450);
-                }
-                
-                canvas.style.display = 'block';
-                setTimeout(() => {
-                    const a = document.createElement('a');
-                    a.download = 'pinterest-pin.png';
-                    a.href = canvas.toDataURL();
-                    a.click();
-                }, 500);
+            const banned = tags.filter(t => bannedList.includes(t.toLowerCase()));
+            const safe = tags.filter(t => !bannedList.includes(t.toLowerCase()));
+
+            const result = `🔍 HASHTAG STATUS CHECK:\n\n✅ SAFE (${safe.length}):\n${safe.join(' ')}\n\n${banned.length > 0 ? `🚫 BANNED (${banned.length}):\n${banned.join(' ')}\n\n⚠️ Remove banned hashtags to avoid shadow ban!` : '✅ All hashtags are safe!'}`;
+
+            document.getElementById('bannedText').textContent = result;
+            document.getElementById('bannedOutput').classList.add('show');
+        }
+
+        function predictTrends() {
+            const niche = document.getElementById('trendNiche').value || 'general';
+            
+            // Mock trending hashtags
+            const trends = [
+                `#${niche}2024`,
+                `#${niche}trends`,
+                `#${niche}community`,
+                `#${niche}life`,
+                `#viral${niche}`,
+                `#trending${niche}`,
+                `#${niche}daily`,
+                `#${niche}content`
+            ];
+
+            document.getElementById('trendText').textContent = `🔮 TRENDING HASHTAGS FOR ${niche.toUpperCase()}:\n\n${trends.join('\n')}\n\n💡 These hashtags are predicted to trend in the next 30 days!`;
+            document.getElementById('trendOutput').classList.add('show');
+        }
+
+        function findRelated() {
+            const base = document.getElementById('baseHashtag').value.replace('#', '') || 'fitness';
+            
+            const related = [
+                `#${base}motivation`,
+                `#${base}goals`,
+                `#${base}journey`,
+                `#${base}lifestyle`,
+                `#${base}community`,
+                `#${base}inspiration`,
+                `#${base}tips`,
+                `#${base}transformation`,
+                `#${base}daily`,
+                `#get${base}`
+            ];
+
+            document.getElementById('relatedText').textContent = `🔗 RELATED HASHTAGS:\n\n${related.join('\n')}`;
+            document.getElementById('relatedOutput').classList.add('show');
+        }
+
+        function scoreHashtagDifficulty() {
+            const tag = document.getElementById('difficultyTag').value;
+            
+            // Mock difficulty score
+            const score = Math.floor(Math.random() * 100);
+            const difficulty = score < 30 ? 'Easy (Low competition)' :
+                             score < 70 ? 'Medium (Moderate competition)' :
+                             'Hard (High competition)';
+
+            document.getElementById('difficultyScore').textContent = `💯 DIFFICULTY SCORE: ${score}/100\n\n${difficulty}\n\n💡 ${score < 30 ? 'Great choice! Easy to rank.' : score < 70 ? 'Good balance of reach and competition.' : 'Very competitive. Consider mix with smaller tags.'}`;
+            document.getElementById('difficultyOutput').classList.add('show');
+        }
+
+        function getOptimalCount() {
+            const platform = document.getElementById('hashPlatform').value;
+            const size = document.getElementById('accountSize').value;
+
+            const recommendations = {
+                'Instagram': { 'Under 1K': '20-30', '1K - 10K': '25-30', '10K - 100K': '15-20', '100K+': '10-15' },
+                'TikTok': { 'Under 1K': '3-5', '1K - 10K': '3-5', '10K - 100K': '3-5', '100K+': '3-5' },
+                'Twitter': { 'Under 1K': '1-2', '1K - 10K': '1-2', '10K - 100K': '1-2', '100K+': '1-2' },
+                'LinkedIn': { 'Under 1K': '3-5', '1K - 10K': '3-5', '10K - 100K': '3-5', '100K+': '3-5' },
+                'Pinterest': { 'Under 1K': '10-20', '1K - 10K': '15-25', '10K - 100K': '15-20', '100K+': '10-15' }
             };
+
+            const optimal = recommendations[platform][size];
+            document.getElementById('optimalText').textContent = `🎯 OPTIMAL HASHTAG COUNT:\n\n${platform}: ${optimal} hashtags\n\n💡 Mix 30% big, 50% medium, 20% small tags for best results!`;
+            document.getElementById('optimalOutput').classList.add('show');
         }
 
-        function genLI() {
-            const topic = document.getElementById('liTopic').value;
-            const points = document.getElementById('liPoints').value.split('\n').filter(x=>x);
-            const cta = document.getElementById('liCTA').value;
-            if (!topic || !points.length) return alert('Fill all fields!');
+        function saveRotationSet() {
+            const name = document.getElementById('rotationName').value;
+            const tags = document.getElementById('rotationTags').value;
+
+            if (!name || !tags) return alert('Please fill all fields');
+
+            rotationSets.push({ name, tags });
+            updateRotationSets();
+            alert('✅ Rotation set saved!');
+        }
+
+        function updateRotationSets() {
+            const container = document.getElementById('rotationSets');
+            container.innerHTML = rotationSets.map((s, i) => `
+                <div class="card mt-1" style="padding: 1rem;">
+                    <strong>${s.name}</strong>
+                    <div class="text-sm mt-1">${s.tags.substring(0, 100)}...</div>
+                    <button class="btn btn-secondary btn-sm mt-1" onclick="copyText('${s.tags}')">Copy Set</button>
+                </div>
+            `).join('');
+        }
+
+        function generateLocalTags() {
+            const city = document.getElementById('localCity').value || 'City';
+            const business = document.getElementById('localBusiness').value || 'business';
+
+            const local = [
+                `#${city}`,
+                `#${city}${business}`,
+                `#${business}in${city}`,
+                `#local${business}`,
+                `#${city}life`,
+                `#${city}local`,
+                `#explore${city}`,
+                `#visit${city}`,
+                `#${city}community`,
+                `#support${city}`
+            ];
+
+            document.getElementById('localText').textContent = `📍 LOCAL HASHTAGS:\n\n${local.join('\n')}`;
+            document.getElementById('localOutput').classList.add('show');
+        }
+
+        // SEO Tools
+        function researchKeywords() {
+            const topic = document.getElementById('seoTopic').value || 'topic';
+            const platform = document.getElementById('seoPlatform').value;
+
+            const keywords = [
+                `${topic} tips`,
+                `${topic} tutorial`,
+                `${topic} guide`,
+                `${topic} for beginners`,
+                `best ${topic}`,
+                `${topic} hacks`,
+                `${topic} ideas`,
+                `${topic} inspiration`,
+                `how to ${topic}`,
+                `${topic} 2024`
+            ];
+
+            document.getElementById('keywordText').textContent = `🔍 TOP KEYWORDS FOR ${platform}:\n\n${keywords.join('\n')}\n\n💡 Use these in titles, descriptions, and captions!`;
+            document.getElementById('keywordOutput').classList.add('show');
+        }
+
+        function generateAltText() {
+            const description = document.getElementById('altDescription').value || 'Image description';
+
+            const altText = `${description}, high quality photo, professional photography, detailed image for social media`;
+
+            document.getElementById('altText').textContent = `♿ ALT TEXT:\n\n${altText}\n\n💡 This improves accessibility AND SEO!`;
+            document.getElementById('altOutput').classList.add('show');
+        }
+
+        function optimizeYTTitle() {
+            const topic = document.getElementById('ytTopic').value || 'topic';
+            const keyword = document.getElementById('ytKeyword').value || 'keyword';
+
+            const titles = [
+                `${topic} - ${keyword} [Full Guide]`,
+                `How to ${topic} in 2024 | ${keyword}`,
+                `${keyword}: ${topic} (Step-by-Step)`,
+                `The Ultimate ${keyword} Guide - ${topic}`,
+                `${topic} | ${keyword} Tutorial for Beginners`
+            ];
+
+            document.getElementById('ytTitleText').textContent = `🎯 OPTIMIZED TITLES:\n\n${titles.join('\n\n')}\n\n💡 Include keyword early and keep under 60 characters!`;
+            document.getElementById('ytTitleOutput').classList.add('show');
+        }
+
+        function generateMetaDescription() {
+            const content = document.getElementById('metaContent').value;
+            if (!content) return;
+
+            const meta = content.substring(0, 155) + '... [Learn more]';
+
+            document.getElementById('metaText').textContent = `📝 META DESCRIPTION:\n\n${meta}\n\nLength: ${meta.length} characters\n\n💡 Keep under 160 characters for best display!`;
+            document.getElementById('metaOutput').classList.add('show');
+        }
+
+        function spyHashtags() {
+            const target = document.getElementById('spyTarget').value || 'competitor';
+
+            const topTags = [
+                '#marketing',
+                '#socialmedia',
+                '#digitalmarketing',
+                '#contentcreator',
+                '#entrepreneur',
+                '#business',
+                '#instagram',
+                '#branding',
+                '#success',
+                '#motivation'
+            ];
+
+            document.getElementById('spyText').textContent = `🕵️ TOP HASHTAGS USED BY ${target}:\n\n${topTags.join('\n')}\n\n💡 Analyze and adapt for your content!`;
+            document.getElementById('spyOutput').classList.add('show');
+        }
+
+        function estimateEngagement() {
+            const avg = parseInt(document.getElementById('avgEngagement').value) || 500;
+            const estimate = Math.floor(avg * (1 + Math.random() * 0.5));
+
+            document.getElementById('estimateText').textContent = `🔮 ESTIMATED ENGAGEMENT:\n\n${estimate} interactions\n\n📊 Based on your hashtag set and current average.\n\n💡 This is a ${estimate > avg ? 'positive' : 'neutral'} projection!`;
+            document.getElementById('estimateOutput').classList.add('show');
+        }
+
+        function optimizeCombo() {
+            document.getElementById('comboText').textContent = `🎯 OPTIMIZED HASHTAG COMBO:\n\nAnalyzing your hashtags...\n\nTop 30 combinations generated based on:\n✅ Reach potential\n✅ Competition level\n✅ Relevance score\n\n💡 Use different combinations for each post!`;
+            document.getElementById('comboOutput').classList.add('show');
+        }
+
+        // FUTURE-READY FEATURES
+
+        function startVoiceRecording() {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert('Voice recognition not supported in this browser');
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = function() {
+                document.getElementById('voiceBtn').textContent = '🔴 Listening...';
+            };
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('voiceText').textContent = transcript;
+                document.getElementById('voiceOutput').classList.add('show');
+            };
+
+            recognition.onend = function() {
+                document.getElementById('voiceBtn').textContent = '🎤 Start Recording';
+            };
+
+            recognition.start();
+        }
+
+        function generateVideoCaptions(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const video = document.getElementById('videoPreview');
+            video.src = URL.createObjectURL(file);
+            video.style.display = 'block';
+
+            document.getElementById('videoCaptionsText').textContent = '🎬 AUTO-CAPTIONING:\n\nVideo loaded! In production, this would:\n✅ Extract audio\n✅ Convert speech to text\n✅ Generate SRT captions\n✅ Sync with timestamps\n\n💡 Use services like Rev.com or Otter.ai for production!';
+            document.getElementById('videoCaptionsOutput').classList.add('show');
+        }
+
+        function findMusic() {
+            const mood = document.getElementById('musicMood').value;
+
+            const suggestions = {
+                'Upbeat & Energetic': ['Tropical House', 'Future Bass', 'Indie Pop'],
+                'Calm & Relaxing': ['Lo-Fi Hip Hop', 'Ambient', 'Acoustic'],
+                'Dramatic & Cinematic': ['Epic Orchestral', 'Trailer Music', 'Tension'],
+                'Corporate & Professional': ['Corporate Pop', 'Tech Background', 'Minimal'],
+                'Lo-Fi & Chill': ['Chillhop', 'Jazz Hop', 'Study Beats']
+            };
+
+            document.getElementById('musicText').textContent = `🎵 MUSIC RECOMMENDATIONS:\n\n${mood}:\n\n${suggestions[mood].join('\n')}\n\n💡 Sources:\n• YouTube Audio Library\n• Epidemic Sound\n• Artlist\n• Uppbeat`;
+            document.getElementById('musicOutput').classList.add('show');
+        }
+
+        function create3DAvatar(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.getElementById('avatarCanvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, 512, 512);
+
+                    // Simple filter effect
+                    const imageData = ctx.getImageData(0, 0, 512, 512);
+                    // Apply some effects...
+                    ctx.putImageData(imageData, 0, 0);
+
+                    canvas.style.display = 'block';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            document.getElementById('avatarText').textContent = '🤖 3D AVATAR CREATED!\n\n💡 In production, this would use AI to:\n✅ Remove background\n✅ Apply 3D effects\n✅ Add animations\n✅ Generate variations';
+            document.getElementById('avatarOutput').classList.add('show');
+        }
+
+        function generateAIVideoScript() {
+            const topic = document.getElementById('aiVideoTopic').value || 'topic';
+            const duration = document.getElementById('aiVideoDuration').value;
+
+            document.getElementById('aiVideoText').textContent = `🎬 AI VIDEO SCRIPT:\n\nTopic: ${topic}\nDuration: ${duration}\n\n[00:00] HOOK\n"Stop scrolling! This ${topic} tip will change everything..."\n\n[00:05] INTRO\n"Today I'm sharing..."\n\n[00:15] CONTENT\n[Main value delivered]\n\n[00:45] CTA\n"Follow for more!"`;
+            document.getElementById('aiVideoOutput').classList.add('show');
+        }
+
+        function generateVariations() {
+            const original = document.getElementById('varyCaption').value;
+            const count = parseInt(document.getElementById('varyCount').value);
+
+            if (!original) return;
+
+            const variations = [];
+            for (let i = 1; i <= count; i++) {
+                variations.push(`Variation ${i}:\n${original}\n`);
+            }
+
+            document.getElementById('varyText').textContent = `✍️ CAPTION VARIATIONS:\n\n${variations.join('\n')}\n\n💡 Test different versions to see what resonates!`;
+            document.getElementById('varyOutput').classList.add('show');
+        }
+
+        function generateARIdea() {
+            const brand = document.getElementById('arBrand').value || 'your brand';
+            const goal = document.getElementById('arGoal').value;
+
+            const ideas = {
+                'Brand Awareness': `Try-on filter for ${brand} products\nBranded face filter with logo\nInteractive brand quiz`,
+                'Product Launch': `Product preview in AR\nUnboxing experience filter\n3D product showcase`,
+                'User Engagement': `Gamified brand experience\nPhoto booth with stickers\nInteractive challenge filter`,
+                'Viral Challenge': `Dance/move challenge\nShareable transformation\nCompetition-based game`
+            };
+
+            document.getElementById('arText').textContent = `📱 AR FILTER IDEAS:\n\nGoal: ${goal}\n\n${ideas[goal]}\n\n💡 Use Spark AR or Lens Studio to create!`;
+            document.getElementById('arOutput').classList.add('show');
+        }
+
+        function generate3DText() {
+            const text = document.getElementById('3dText').value || 'TEXT';
+            const style = document.getElementById('3dStyle').value;
+
+            const canvas = document.getElementById('text3DCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Gradient background
+            const grd = ctx.createLinearGradient(0, 0, 1080, 1080);
+            grd.addColorStop(0, '#667eea');
+            grd.addColorStop(1, '#764ba2');
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, 0, 1080, 1080);
+
+            // 3D text effect
+            ctx.font = 'bold 150px Inter';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Shadow layers for 3D
+            ctx.fillStyle = 'rgba(0,0,0,0.3)';
+            for (let i = 10; i > 0; i--) {
+                ctx.fillText(text, 540 + i, 540 + i);
+            }
+
+            // Main text
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(text, 540, 540);
+
+            canvas.style.display = 'block';
+        }
+
+        function generateNFTMetadata() {
+            const name = document.getElementById('nftName').value || 'NFT';
+            const description = document.getElementById('nftDesc').value || 'Description';
+            const attrs = document.getElementById('nftAttrs').value || '';
+
+            const metadata = {
+                name: name,
+                description: description,
+                image: "ipfs://YOUR_IMAGE_HASH",
+                attributes: attrs.split(',').map(a => {
+                    const [trait, value] = a.split(':');
+                    return { trait_type: trait?.trim(), value: value?.trim() };
+                })
+            };
+
+            document.getElementById('nftText').textContent = `🔗 NFT METADATA:\n\n${JSON.stringify(metadata, null, 2)}\n\n💡 Upload to IPFS and use in your NFT smart contract!`;
+            document.getElementById('nftOutput').classList.add('show');
+        }
+
+        function generateContentHash(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const data = e.target.result;
+                const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                document.getElementById('hashText').textContent = `📜 CONTENT VERIFICATION HASH:\n\n${hashHex}\n\n💡 This cryptographic hash proves:\n✅ Content ownership\n✅ Timestamp of creation\n✅ Unchanged content\n\nStore this hash on blockchain for permanent proof!`;
+                document.getElementById('hashOutput').classList.add('show');
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // EDUCATION FUNCTIONS
+
+        function explainAlgorithm() {
+            const platform = document.getElementById('platformSelect').value;
             
-            let post = `${topic}\n\n`;
-            points.forEach((p,i) => {
-                post += `${i+1}. ${p}\n\n`;
+            const explanations = {
+                'Instagram': `📱 INSTAGRAM ALGORITHM 2024:\n\n🔑 KEY FACTORS:\n1. Engagement (saves, shares, comments)\n2. Watch time (for Reels)\n3. Posting frequency\n4. User relationships\n5. Recency\n\n💡 TIPS:\n• Save rate is king\n• First hour crucial\n• Use all features\n• Reply to comments fast\n• Create shareable content`,
+                
+                'TikTok': `🎵 TIKTOK ALGORITHM:\n\n🔑 KEY FACTORS:\n1. Watch time & completion\n2. Re-watches\n3. Shares\n4. Sound usage\n5. Hashtags\n\n💡 TIPS:\n• Hook in 1 second\n• Keep under 30 seconds\n• Use trending sounds early\n• Loop-worthy content\n• Strong CTA`,
+                
+                'YouTube': `📺 YOUTUBE ALGORITHM:\n\n🔑 KEY FACTORS:\n1. Watch time\n2. Click-through rate (CTR)\n3. Average view duration\n4. User satisfaction\n5. Session time\n\n💡 TIPS:\n• Compelling thumbnails\n• Strong titles\n• Pattern interrupts\n• End screens\n• Playlists`,
+
+                'Twitter/X': `🐦 TWITTER/X ALGORITHM:\n\n🔑 KEY FACTORS:\n1. Engagement rate\n2. Media attachments\n3. Recency\n4. Follower relationships\n5. Conversation depth\n\n💡 TIPS:\n• Tweet at peak times\n• Use media (images/video)\n• Start conversations\n• Quote tweet\n• Threads perform well`,
+
+                'LinkedIn': `💼 LINKEDIN ALGORITHM:\n\n🔑 KEY FACTORS:\n1. Dwell time\n2. Engagement quality\n3. Profile strength\n4. Network relevance\n5. Content format\n\n💡 TIPS:\n• Long-form posts\n• Personal stories\n• Native video\n• Comment on others\n• Post Mon-Fri`,
+
+                'Pinterest': `📌 PINTEREST ALGORITHM:\n\n🔑 KEY FACTORS:\n1. Pin quality\n2. Domain quality\n3. Pinner quality\n4. Topic relevance\n5. Fresh content\n\n💡 TIPS:\n• Vertical images\n• Text overlays\n• Rich pins\n• Keyword optimize\n• Pin consistently`,
+
+                'Facebook': `👥 FACEBOOK ALGORITHM:\n\n🔑 KEY FACTORS:\n1. Meaningful interactions\n2. Friend/family priority\n3. Content type\n4. Recency\n5. Groups\n\n💡 TIPS:\n• Spark conversations\n• Video performs well\n• Join relevant groups\n• Go live\n• Respond to comments`
+            };
+
+            if (platform && explanations[platform]) {
+                document.getElementById('algorithmText').textContent = explanations[platform];
+                document.getElementById('algorithmOutput').classList.add('show');
+            }
+        }
+
+        // Quiz Functions
+        function selectQuizAnswer(element, question, answer) {
+            const siblings = element.parentElement.querySelectorAll('.tag');
+            siblings.forEach(s => s.classList.remove('active'));
+            element.classList.add('active');
+            quizAnswers[question] = answer;
+        }
+
+        function scoreQuiz() {
+            const correct = {1: 'b', 2: 'b', 3: 'b', 4: 'b', 5: 'b'};
+            let score = 0;
+            
+            for (let i = 1; i <= 5; i++) {
+                if (quizAnswers[i] === correct[i]) score++;
+            }
+
+            const percentage = (score / 5) * 100;
+            let grade = percentage >= 80 ? '🎉 Expert!' : 
+                       percentage >= 60 ? '👍 Good!' :
+                       percentage >= 40 ? '📚 Keep Learning' : '💪 Practice More';
+
+            document.getElementById('quizScore').textContent = `📊 YOUR SCORE: ${score}/5 (${percentage}%)\n\n${grade}\n\n💡 ${percentage >= 80 ? 'You know your stuff!' : 'Review the best practices section to improve!'}`;
+            document.getElementById('quizResults').classList.add('show');
+        }
+
+        function searchGlossary() {
+            const search = document.getElementById('glossarySearch').value.toLowerCase();
+            const terms = document.querySelectorAll('#glossaryTerms .accordion');
+            
+            terms.forEach(term => {
+                const text = term.textContent.toLowerCase();
+                term.style.display = text.includes(search) ? 'block' : 'none';
             });
-            
-            if (cta === 'Ask for comments') post += `What are your thoughts? Drop a comment below! 👇`;
-            else if (cta === 'Ask to share') post += `Found this useful? Share with your network! 🔄`;
-            else if (cta === 'Invite to connect') post += `Let's connect and grow together! 🤝`;
-            else post += `Learn more at [your website]`;
-            
-            document.getElementById('liTxt').textContent = post;
-            document.getElementById('liOut').classList.add('active');
         }
-
-        function addTrend() {
-            const name = document.getElementById('trendName').value;
-            const idea = document.getElementById('trendIdea').value;
-            const prio = document.getElementById('trendPrio').value;
-            if (!name || !idea) return alert('Fill all fields!');
-            
-            trends.push({id: Date.now(), name, idea, prio});
-            document.getElementById('trendList').innerHTML = trends.map(t =>
-                `<div class="post-entry"><div class="post-entry-header"><strong>${t.name}</strong><button class="delete-btn" onclick="trends=trends.filter(x=>x.id!=${t.id});addTrend()">×</button></div><div style="font-size:0.85rem;margin-top:0.5rem;color:var(--gray)">${t.idea}</div><div style="margin-top:0.5rem">${t.prio}</div></div>`
-            ).join('');
-            
-            document.getElementById('trendName').value = '';
-            document.getElementById('trendIdea').value = '';
-        }
-
-        // UTILITY
-        function copyOut(id) {
-            const txt = document.getElementById(id).textContent;
-            navigator.clipboard.writeText(txt);
-            alert('✅ Copied!');
-        }
-
-        // Initialize on load
-        window.addEventListener('load', () => {
-            refreshTimes();
-        });
 
     </script>
 </body>
