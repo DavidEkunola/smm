@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aegis Open Health | Free Medical Oracle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .medical-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .result-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .loading-pulse { animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+
+    <nav class="p-6 bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 font-black text-2xl text-blue-600 tracking-tighter">
+                <i class="fa-solid fa-staff-snake"></i> AEGIS <span class="text-slate-400 font-light text-sm ml-2 tracking-normal">OPEN SOURCE</span>
+            </div>
+            <div class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 uppercase">
+                <i class="fa-solid fa-check-circle"></i> Direct Medical Link Active
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">The Universal Health Map</h1>
+            <p class="text-slate-500 text-lg">Instant clinical wisdom powered by the world's largest open medical database.</p>
+        </div>
+
+        <div class="relative group mb-12">
+            <input id="healthSearch" type="text" 
+                placeholder="Search an illness, symptom, or medication (e.g., Type 2 Diabetes)..." 
+                class="w-full p-6 pl-14 rounded-3xl border-2 border-slate-200 shadow-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-xl outline-none">
+            <i class="fa-solid fa-magnifying-glass absolute left-6 top-7 text-slate-400 text-xl"></i>
+            <button onclick="fetchWisdom()" class="absolute right-3 top-3 bottom-3 bg-blue-600 text-white px-8 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg active:scale-95">
+                CONSULT
+            </button>
+        </div>
+
+        <div id="loader" class="hidden text-center py-10">
+            <i class="fa-solid fa-dna fa-spin text-4xl text-blue-500"></i>
+            <p class="mt-4 text-slate-500 font-medium loading-pulse">Accessing Global Medical Repository...</p>
+        </div>
+
+        <div id="outputArea" class="space-y-8">
+            </div>
+
+        <div id="welcomeGrid" class="grid md:grid-cols-2 gap-6 mt-12">
+            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm border-b-4 border-b-blue-500">
+                <h3 class="font-bold text-lg mb-2"><i class="fa-solid fa-user-doctor text-blue-500 mr-2"></i> Symptom Guidance</h3>
+                <p class="text-slate-500 text-sm italic leading-relaxed">Describe a physical feeling to find clinical patterns and triage categories.</p>
+            </div>
+            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm border-b-4 border-b-emerald-500">
+                <h3 class="font-bold text-lg mb-2"><i class="fa-solid fa-pills text-emerald-500 mr-2"></i> Medication Library</h3>
+                <p class="text-slate-500 text-sm italic leading-relaxed">Understand how drugs work, side effects, and standard dosage warnings.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function fetchWisdom() {
+            const query = document.getElementById('healthSearch').value.trim();
+            const output = document.getElementById('outputArea');
+            const loader = document.getElementById('loader');
+            const welcome = document.getElementById('welcomeGrid');
+
+            if (!query) return;
+
+            // UI Setup
+            welcome.classList.add('hidden');
+            output.innerHTML = '';
+            loader.classList.remove('hidden');
+
+            try {
+                // Wikipedia API - Open Search to get the most relevant medical title
+                const searchRes = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&format=json&origin=*`);
+                const searchData = await searchRes.json();
+
+                if (searchData.query.search.length === 0) {
+                    throw new Error("Condition not found in current medical maps.");
+                }
+
+                const bestMatch = searchData.query.search[0].title;
+
+                // Fetch the actual clinical summary
+                const contentRes = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encode
