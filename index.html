@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2172,6 +2171,7 @@
                         <option value="pst">PST (Los Angeles)</option>
                         <option value="gmt">GMT (London)</option>
                         <option value="cet">CET (Paris)</option>
+                        <option value="wat">WAT (Lagos)</option>
                     </select>
                 </div>
 
@@ -2271,26 +2271,30 @@
                 <div class="card-title">🔥 Trending Content Formats</div>
                 
                 <div class="grid">
-                    <div class="tool-card">
+                    <div class="tool-card" onclick="showFormatTip('grwm')" style="cursor: pointer;">
                         <div class="tool-card-icon">🎯</div>
                         <div class="tool-card-title">Get Ready With Me</div>
                         <div class="tool-card-desc">Behind-scenes + tips</div>
                     </div>
-                    <div class="tool-card">
+                    <div class="tool-card" onclick="showFormatTip('storytime')" style="cursor: pointer;">
                         <div class="tool-card-icon">📖</div>
                         <div class="tool-card-title">Storytime + Lesson</div>
                         <div class="tool-card-desc">Drama + insight</div>
                     </div>
-                    <div class="tool-card">
+                    <div class="tool-card" onclick="showFormatTip('beforeafter')" style="cursor: pointer;">
                         <div class="tool-card-icon">🔄</div>
                         <div class="tool-card-title">Before & After</div>
                         <div class="tool-card-desc">Transformation content</div>
                     </div>
-                    <div class="tool-card">
+                    <div class="tool-card" onclick="showFormatTip('stopdoing')" style="cursor: pointer;">
                         <div class="tool-card-icon">❌</div>
                         <div class="tool-card-title">Stop Doing This</div>
                         <div class="tool-card-desc">Call out mistakes</div>
                     </div>
+                </div>
+
+                <div class="output" id="formatTipOutput">
+                    <div class="output-text" id="formatTipText"></div>
                 </div>
             </div>
         </div>
@@ -2423,36 +2427,57 @@
                 <div class="card-title">🛠️ Essential Free Tools</div>
 
                 <div class="grid">
-                    <div class="tool-card">
-                        <div class="tool-card-icon">📸</div>
-                        <div class="tool-card-title">Canva</div>
-                        <div class="tool-card-desc">Design everything</div>
+                    <div class="tool-card" onclick="openTool('quoteCard')" style="cursor: pointer;">
+                        <div class="tool-card-icon">💬</div>
+                        <div class="tool-card-title">Quote Card Maker</div>
+                        <div class="tool-card-desc">Beautiful quote graphics</div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-card-icon">✂️</div>
-                        <div class="tool-card-title">CapCut</div>
-                        <div class="tool-card-desc">Video editing</div>
+                    <div class="tool-card" onclick="openTool('invoice')" style="cursor: pointer;">
+                        <div class="tool-card-icon">🧾</div>
+                        <div class="tool-card-title">Invoice Generator</div>
+                        <div class="tool-card-desc">Professional invoices</div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-card-icon">📊</div>
-                        <div class="tool-card-title">Notion</div>
-                        <div class="tool-card-desc">Content planning</div>
-                    </div>
-                    <div class="tool-card">
+                    <div class="tool-card" onclick="openTool('logo')" style="cursor: pointer;">
                         <div class="tool-card-icon">🎨</div>
-                        <div class="tool-card-title">Unsplash</div>
-                        <div class="tool-card-desc">Free photos</div>
+                        <div class="tool-card-title">Logo Maker</div>
+                        <div class="tool-card-desc">Create brand logos</div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-card-icon">🔗</div>
-                        <div class="tool-card-title">Linktree</div>
-                        <div class="tool-card-desc">Bio links</div>
+                    <div class="tool-card" onclick="openTool('meme')" style="cursor: pointer;">
+                        <div class="tool-card-icon">😂</div>
+                        <div class="tool-card-title">Meme Generator</div>
+                        <div class="tool-card-desc">Viral meme creation</div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-card-icon">📈</div>
-                        <div class="tool-card-title">Metricool</div>
-                        <div class="tool-card-desc">Analytics</div>
+                    <div class="tool-card" onclick="openTool('watermark')" style="cursor: pointer;">
+                        <div class="tool-card-icon">©️</div>
+                        <div class="tool-card-title">Watermark Tool</div>
+                        <div class="tool-card-desc">Protect your content</div>
                     </div>
+                    <div class="tool-card" onclick="openTool('cv')" style="cursor: pointer;">
+                        <div class="tool-card-icon">📄</div>
+                        <div class="tool-card-title">CV Builder</div>
+                        <div class="tool-card-desc">Professional resumes</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('countdown')" style="cursor: pointer;">
+                        <div class="tool-card-icon">⏰</div>
+                        <div class="tool-card-title">Event Countdown</div>
+                        <div class="tool-card-desc">Launch countdowns</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('confetti')" style="cursor: pointer;">
+                        <div class="tool-card-icon">🎉</div>
+                        <div class="tool-card-title">Confetti Animation</div>
+                        <div class="tool-card-desc">Celebration graphics</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('scratch')" style="cursor: pointer;">
+                        <div class="tool-card-icon">🎫</div>
+                        <div class="tool-card-title">Scratch Card</div>
+                        <div class="tool-card-desc">Interactive reveals</div>
+                    </div>
+                </div>
+
+                <!-- Tool Modal -->
+                <div id="toolModal" class="output" style="display: none;">
+                    <div class="output-text" id="toolContent"></div>
+                    <button class="btn btn-secondary mt-1" onclick="closeTool()">Close Tool</button>
                 </div>
             </div>
 
@@ -3818,10 +3843,15 @@
             const niche = document.getElementById('hashtagNiche').value;
             const platform = document.getElementById('hashtagPlatform').value;
 
-            if (!niche || selectedHashtagCategories.length === 0) {
-                alert('Please enter a niche and select categories!');
+            if (!niche) {
+                alert('⚠️ Please enter your niche first!');
                 return;
             }
+
+            // If no categories selected, use all categories by default
+            const categoriesToUse = selectedHashtagCategories.length > 0 
+                ? selectedHashtagCategories 
+                : ['trending', 'niche', 'community'];
 
             const platformTags = {
                 instagram: '#Instagram #Insta #InstaDaily #IGDaily',
@@ -3832,18 +3862,19 @@
 
             const categoryTags = {
                 trending: '#Trending #Viral #ForYou #Explore #ExplorePage',
-                niche: `#${niche} #${niche}Life #${niche}Community #${niche}Lover #${niche}Daily`,
-                branded: `#YourBrand #${niche}Expert #${niche}Coach`,
+                niche: `#${niche.replace(/\s/g, '')} #${niche.replace(/\s/g, '')}Life #${niche.replace(/\s/g, '')}Community #${niche.replace(/\s/g, '')}Lover #${niche.replace(/\s/g, '')}Daily`,
+                branded: `#YourBrand #${niche.replace(/\s/g, '')}Expert #${niche.replace(/\s/g, '')}Coach`,
                 location: '#YourCity #Local #YourCountry',
                 community: '#Community #Support #SmallBusiness #Creator'
             };
 
             let tags = [platformTags[platform]];
-            selectedHashtagCategories.forEach(cat => {
+            categoriesToUse.forEach(cat => {
                 if (categoryTags[cat]) tags.push(categoryTags[cat]);
             });
 
-            const output = `🔥 YOUR HASHTAG SET:\n\n${tags.join(' ')}\n\n💡 TIP: Rotate these! Don't use the exact same set every time.`;
+            const totalCount = tags.join(' ').split('#').length - 1;
+            const output = `🔥 YOUR HASHTAG SET FOR ${niche.toUpperCase()}:\n\n${tags.join(' ')}\n\n💡 TIP: Rotate these! Don't use the exact same set every time.\n\n✅ ${totalCount} hashtags generated for ${platform}!`;
             
             document.getElementById('hashtagText').textContent = output;
             document.getElementById('hashtagOutput').classList.add('active');
@@ -3873,27 +3904,6 @@
         }
 
         // Reel Script Generator
-        function generateReelScript() {
-            const topic = document.getElementById('reelTopic').value;
-            const type = document.getElementById('reelType').value;
-
-            if (!topic) {
-                alert('Please enter a topic!');
-                return;
-            }
-
-            const scripts = {
-                hook: `[SCENE 1 - 1 sec]\nStop scrolling! 🛑\n\n[SCENE 2 - 3 sec]\n${topic} isn't what you think...\n\n[SCENE 3 - 5 sec]\nHere's what actually works:\n[Show tip visually]\n\n[SCENE 4 - 3 sec]\nTry this and thank me later! 💙\n\nCALL TO ACTION:\nSave + follow for more!`,
-                tutorial: `[INTRO - 2 sec]\nHow to ${topic} in 3 steps:\n\n[STEP 1 - 5 sec]\n1️⃣ [First step]\n[Show action]\n\n[STEP 2 - 5 sec]\n2️⃣ [Second step]\n[Show action]\n\n[STEP 3 - 5 sec]\n3️⃣ [Third step]\n[Show action]\n\n[OUTRO - 2 sec]\nThat's it! Save this for later 💾`,
-                story: `[HOOK - 2 sec]\nStory time about ${topic}...\n\n[SETUP - 5 sec]\nSo last week, [situation]...\n\n[CONFLICT - 5 sec]\nThen this happened: [problem]\n\n[RESOLUTION - 5 sec]\nBut here's what I did: [solution]\n\n[LESSON - 2 sec]\nLesson learned: [takeaway]\n\nHas this happened to you? Comment! 👇`,
-                list: `[HOOK - 1 sec]\n3 ${topic} tips you NEED to know:\n\n[TIP 1 - 4 sec]\n1️⃣ [First tip]\n\n[TIP 2 - 4 sec]\n2️⃣ [Second tip]\n\n[TIP 3 - 4 sec]\n3️⃣ [Third tip]\n\n[CTA - 2 sec]\nWhich will you try? Comment 1, 2, or 3! 👇`,
-                transformation: `[BEFORE - 3 sec]\nThis was me before ${topic}:\n[Show before state]\n\n[JOURNEY - 6 sec]\nThen I started:\n• [Change 1]\n• [Change 2]\n• [Change 3]\n\n[AFTER - 4 sec]\nNow look:\n[Show after state]\n\n[CTA - 2 sec]\nYour turn! Start today 💪`
-            };
-
-            document.getElementById('reelScript').textContent = scripts[type];
-            document.getElementById('reelOutput').classList.add('active');
-        }
-
         // CTA Generator
         function generateCTA() {
             const ctas = {
@@ -4101,12 +4111,30 @@
                 '0-1k': {
                     followers: "🌱 0-1K GROWTH PLAN:\n\n✓ Follow 50 accounts daily in your niche\n✓ Comment on 30 posts authentically\n✓ Post 1x daily consistently\n✓ Use Stories with engagement stickers 3x daily\n✓ Join 3 engagement pods\n✓ DM 10 people daily (genuine compliments)\n✓ Optimize bio with clear value prop\n\nTimeline: 60-90 days to 1K",
                     engagement: "💬 ENGAGEMENT BOOST (0-1K):\n\n✓ Reply to ALL comments within 1 hour\n✓ Ask questions in every caption\n✓ Use polls in Stories daily\n✓ Create shareable carousel content\n✓ End posts with strong CTAs\n✓ Use 3-5 hashtags max (high engagement, not big)\n\nGoal: 5-10% engagement rate",
-                    viral: "🔥 VIRAL STRATEGY (0-1K):\n\n✓ Jump on trending sounds EARLY\n✓ Use controversial/polarizing takes\n✓ Create relatable memes in your niche\n✓ Hook in first 1 second is CRITICAL\n✓ Study top performers, recreate with twist\n✓ Post at peak times (11 AM, 7 PM)\n\nPost 2-3 Reels daily for best odds"
+                    viral: "🔥 VIRAL STRATEGY (0-1K):\n\n✓ Jump on trending sounds EARLY\n✓ Use controversial/polarizing takes\n✓ Create relatable memes in your niche\n✓ Hook in first 1 second is CRITICAL\n✓ Study top performers, recreate with twist\n✓ Post at peak times (11 AM, 7 PM)\n\nPost 2-3 Reels daily for best odds",
+                    sales: "💰 SALES STRATEGY (0-1K):\n\n✓ Build trust first - 80% value, 20% sales\n✓ Create a simple lead magnet (free guide/template)\n✓ Use link in bio for opt-ins\n✓ Share customer results/testimonials in Stories\n✓ Launch with limited-time offers\n✓ Price low initially ($7-27) for quick wins\n✓ Use scarcity (limited spots/time)\n\nGoal: First 5-10 sales to validate offer",
+                    community: "🤝 COMMUNITY BUILDING (0-1K):\n\n✓ Create a private Facebook/Discord group\n✓ Host weekly Q&A sessions in Stories\n✓ Feature community members in content\n✓ Create inside jokes and shared language\n✓ Respond to EVERY DM personally\n✓ Ask for input on content decisions\n✓ Celebrate member wins publicly\n\nGoal: Turn followers into super fans"
                 },
                 '1k-10k': {
                     followers: "🚀 1K-10K SCALE PLAN:\n\n✓ Post 2-3 Reels daily minimum\n✓ Collaborate with 2-3 creators weekly\n✓ Do Instagram Lives 2x weekly\n✓ Focus 80% educational content\n✓ Engage 60 minutes daily\n✓ Create content series (binge-worthy)\n✓ Every piece needs strong hook\n\nTimeline: 3-6 months",
                     engagement: "💎 ENGAGEMENT SCALE (1K-10K):\n\n✓ Carousel posts for max saves\n✓ Create 'save-worthy' content\n✓ Build engagement pod of 10-20 people\n✓ Use Stories to drive feed engagement\n✓ Create challenges your audience joins\n✓ Respond to DMs within hours\n\nGoal: Maintain 4-6% rate",
-                    viral: "⚡ VIRAL ACCELERATION (1K-10K):\n\n✓ 1 viral attempt per week minimum\n✓ Pattern interrupt hooks\n✓ Emotional triggers (inspire/anger/joy)\n✓ Trending formats adapted to niche\n✓ Collab with bigger accounts\n✓ Cross-post to TikTok, YT Shorts\n\nOne viral hit = 5-10K new followers"
+                    viral: "⚡ VIRAL ACCELERATION (1K-10K):\n\n✓ 1 viral attempt per week minimum\n✓ Pattern interrupt hooks\n✓ Emotional triggers (inspire/anger/joy)\n✓ Trending formats adapted to niche\n✓ Collab with bigger accounts\n✓ Cross-post to TikTok, YT Shorts\n\nOne viral hit = 5-10K new followers",
+                    sales: "💸 SALES SCALING (1K-10K):\n\n✓ Build email list aggressively (lead magnets)\n✓ Launch signature offer ($97-297)\n✓ Use carousel posts to educate + sell\n✓ Run flash sales monthly\n✓ Create tripwire offers ($17-47)\n✓ Upsell existing customers\n✓ Share income reports for social proof\n\nGoal: $2K-10K/month revenue",
+                    community: "👥 COMMUNITY SCALING (1K-10K):\n\n✓ Launch membership/subscription ($9-29/mo)\n✓ Host monthly virtual meetups\n✓ Create exclusive content for members\n✓ Build ambassador program (top fans)\n✓ Use member-generated content\n✓ Run community challenges with prizes\n✓ Feature 'Member of the Month'\n\nGoal: 100-500 paying community members"
+                },
+                '10k-50k': {
+                    followers: "📈 10K-50K EXPANSION PLAN:\n\n✓ Post 3-5 Reels daily\n✓ Launch YouTube/TikTok simultaneously\n✓ Collaborate with accounts 50K-500K\n✓ Run giveaways monthly (with partners)\n✓ Attend/speak at events in your niche\n✓ Hire content creator/VA for volume\n✓ Build automated funnel systems\n\nTimeline: 6-12 months",
+                    engagement: "💫 ENGAGEMENT OPTIMIZATION (10K-50K):\n\n✓ Focus on saves > likes (algorithm weight)\n✓ Create content hubs (organize highlights)\n✓ Use close friends list for VIPs\n✓ Host AMA sessions weekly\n✓ Create controversy (respectful debates)\n✓ Build email list from engaged followers\n✓ Survey audience monthly\n\nGoal: Maintain 3-5% (harder at scale)",
+                    viral: "🌟 VIRAL MASTERY (10K-50K):\n\n✓ Analyze viral posts - reverse engineer\n✓ Create shareable infographics/data\n✓ Use trending topics + your unique spin\n✓ Collaborate on viral challenges\n✓ Cross-promote across all platforms\n✓ Leverage current events (newsjacking)\n✓ Post during global trending moments\n\nAim for 1-2 viral hits monthly",
+                    sales: "💎 SALES OPTIMIZATION (10K-50K):\n\n✓ Launch premium offer ($497-1997)\n✓ Create automated sales funnel\n✓ Use testimonials in every post\n✓ Build affiliate/referral program\n✓ Launch mastermind/group program\n✓ Create recurring revenue streams\n✓ Split test all sales content\n\nGoal: $10K-50K/month revenue",
+                    community: "🏆 COMMUNITY EXCELLENCE (10K-50K):\n\n✓ Build exclusive high-ticket community ($97-297/mo)\n✓ Host quarterly in-person meetups\n✓ Create tiered membership levels\n✓ Develop community leaders/moderators\n✓ Launch community courses/workshops\n✓ Build proprietary platform/app\n✓ Create community-driven product line\n\nGoal: 500-2000 active community members"
+                },
+                '50k+': {
+                    followers: "🚀 50K+ DOMINATION PLAN:\n\n✓ Build team (editor, manager, strategist)\n✓ Launch products/courses at scale\n✓ Focus on brand deals ($5K-50K+)\n✓ Create multiple content pillars\n✓ Build media company mindset\n✓ Expand to all platforms strategically\n✓ Consider agency/consulting offers\n\nTimeline: Sustain and monetize",
+                    engagement: "⚡ ENGAGEMENT EMPIRE (50K+):\n\n✓ Build sub-communities (segments)\n✓ Use data analytics tools (Later, Hootsuite)\n✓ A/B test everything religiously\n✓ Create engagement pods with big accounts\n✓ Host virtual summits/conferences\n✓ Build strategic partnerships\n✓ Leverage UGC (user-generated content)\n\nGoal: Maintain 2-4% (great at this scale)",
+                    viral: "💥 VIRAL SYSTEMATIZATION (50K+):\n\n✓ Hire viral content strategist\n✓ Create content lab (test variations)\n✓ Use predictive analytics tools\n✓ Build relationships with media outlets\n✓ Create newsworthy content/stunts\n✓ Leverage data visualization\n✓ Partner with trending platforms early\n\nAim for consistent viral moments",
+                    sales: "🏅 SALES EMPIRE (50K+):\n\n✓ Build 7-figure product suite\n✓ Launch certification programs\n✓ Create licensing opportunities\n✓ Build SaaS product if applicable\n✓ Develop corporate training programs\n✓ Create high-ticket mastermind ($10K+)\n✓ Build acquisition-worthy business\n\nGoal: $100K-1M+/month revenue",
+                    community: "👑 COMMUNITY MOVEMENT (50K+):\n\n✓ Build multi-tiered empire (free → $10K+)\n✓ Host annual conference/retreat\n✓ Create certification/licensing program\n✓ Build global chapter system\n✓ Launch foundation/scholarship program\n✓ Create jobs within community\n✓ Build legacy brand\n\nGoal: 5K-50K+ community members"
                 }
             };
 
@@ -4216,11 +4244,17 @@
                 if (value) {
                     document.getElementById('totalFollowers').textContent = value.toLocaleString();
                     updateProgress(value);
+                    alert('✅ Followers updated to ' + value.toLocaleString() + '!');
+                } else {
+                    alert('⚠️ Please enter a follower count');
                 }
             } else if (type === 'engagement') {
                 const value = parseFloat(document.getElementById('engagementInput').value);
                 if (value) {
                     document.getElementById('engagementRate').textContent = value + '%';
+                    alert('✅ Engagement rate updated to ' + value + '%!');
+                } else {
+                    alert('⚠️ Please enter an engagement rate');
                 }
             }
         }
@@ -4240,13 +4274,21 @@
         function saveCalendar() {
             const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
             let calendar = {};
+            let hasContent = false;
             
             days.forEach(day => {
-                calendar[day] = document.getElementById(day).value;
+                const value = document.getElementById(day).value;
+                calendar[day] = value;
+                if (value) hasContent = true;
             });
             
+            if (!hasContent) {
+                alert('⚠️ Please add at least one post idea before saving!');
+                return;
+            }
+            
             localStorage.setItem('contentCalendar', JSON.stringify(calendar));
-            alert('✅ Calendar saved!');
+            alert('✅ Content calendar saved successfully!');
         }
 
         // Load Calendar
@@ -6467,9 +6509,14 @@ TIMING (peak hours)
 
         // REEL SCRIPT GENERATOR
         function generateReelScript() {
-            const topic = document.getElementById('reelTopic').value || 'your topic';
+            const topic = document.getElementById('reelTopic').value;
             const duration = document.getElementById('reelDuration').value;
             const style = document.getElementById('reelStyle').value;
+
+            if (!topic) {
+                alert('⚠️ Please enter a reel topic first!');
+                return;
+            }
 
             let output = `🎬 REEL SCRIPT - ${duration} SECONDS\n`;
             output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
@@ -6510,6 +6557,14 @@ TIMING (peak hours)
                 output += `[00:${duration-5}-00:${duration}] POWER CLOSE\n`;
                 output += `TEXT: "Your time is NOW. Go get it! 💪"\n`;
                 output += `VISUAL: Inspirational final shot\n\n`;
+            } else {
+                // Additional styles
+                output += `[00:00-00:05] HOOK\n`;
+                output += `Opening line about ${topic}\n\n`;
+                output += `[00:05-00:${duration-5}] CONTENT\n`;
+                output += `Main message delivery\n\n`;
+                output += `[00:${duration-5}-00:${duration}] CTA\n`;
+                output += `Call to action\n\n`;
             }
 
             output += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
@@ -6524,7 +6579,8 @@ TIMING (peak hours)
             output += `• Use 3-5 relevant hashtags\n`;
             output += `• Reply to comments in first 60min\n`;
             output += `• Pin best comment to top\n`;
-            output += `• Share to story immediately\n`;
+            output += `• Share to story immediately\n\n`;
+            output += `✅ Script generated successfully!`;
 
             document.getElementById('reelText').textContent = output;
             document.getElementById('reelOutput').classList.add('active');
@@ -7000,6 +7056,687 @@ TIMING (peak hours)
             
             document.getElementById('customPromptText').textContent = `${generatedContent}\n━━━━━━━━━━━━━━━━━━━━━━\n\n✅ CONTENT IDEAS GENERATED!\n💡 Use these as inspiration and customize for your brand!\n🚀 Start creating and dominating ${selectedCustomPlatform}!`;
             document.getElementById('customPromptOutput').classList.add('active');
+        }
+
+        // Show Format Tips
+        function showFormatTip(format) {
+            const tips = {
+                'grwm': `🎯 GET READY WITH ME (GRWM) FORMAT
+
+WHY IT WORKS:
+• Shows your authentic personality
+• Multi-tasking content (entertainment + value)
+• Easy to film - just record your routine
+• High engagement from relatability
+
+HOW TO CREATE:
+1. Hook: "GRWM while I tell you about [topic]"
+2. Film yourself getting ready (makeup, outfit, coffee)
+3. Overlay with valuable tips or storytelling
+4. Keep it natural and conversational
+5. Length: 30-90 seconds
+
+PRO TIPS:
+✓ Use trending audio in background
+✓ Add text overlays for key points
+✓ Mix close-ups with wide shots
+✓ Natural lighting is your friend
+✓ Don't overedit - authenticity wins
+
+BEST FOR:
+• Lifestyle creators
+• Beauty/fashion niches
+• Personal brand building
+• Building connection with audience
+
+EXAMPLE HOOKS:
+"GRWM while I explain why I quit my 9-5..."
+"GRWM to go absolutely nowhere (let's talk about...)"
+"GRWM for a day I've been dreading..."`,
+
+                'storytime': `📖 STORYTIME + LESSON FORMAT
+
+WHY IT WORKS:
+• Humans are wired for stories
+• Creates emotional connection
+• Memorable and shareable
+• Positions you as relatable expert
+
+HOW TO CREATE:
+1. Hook: "Storytime about [situation]..."
+2. Setup: Set the scene, build context
+3. Conflict: The problem/challenge
+4. Resolution: What happened/what you learned
+5. Lesson: The key takeaway
+
+PRO TIPS:
+✓ Start with the dramatic moment
+✓ Use "I" statements (personal)
+✓ Show vulnerability
+✓ End with actionable lesson
+✓ Ask "Has this happened to you?"
+
+BEST FOR:
+• Building trust
+• Teaching through experience
+• Controversial/polarizing topics
+• Establishing authority
+
+EXAMPLE HOOKS:
+"I got fired for posting on social media..."
+"A client tried to pay me in exposure..."
+"I lost $10K because I ignored this advice..."
+"Someone called me out in front of 500 people..."
+
+ENGAGEMENT BOOST:
+Always end with: "What would you have done?"`,
+
+                'beforeafter': `🔄 BEFORE & AFTER FORMAT
+
+WHY IT WORKS:
+• Visual proof sells itself
+• Instant credibility
+• Aspirational content
+• Shows your expertise
+
+HOW TO CREATE:
+1. Show dramatic before state
+2. Tease the transformation
+3. Reveal the after
+4. Break down the process
+5. Offer to help others
+
+PRO TIPS:
+✓ Make the contrast obvious
+✓ Use same angle/lighting for both
+✓ Add dates/timeline
+✓ Show the struggle, not just results
+✓ Include numbers if possible
+
+BEST FOR:
+• Fitness transformations
+• Business growth
+• Skill development
+• Home/design improvements
+• Financial progress
+
+EXAMPLE FORMATS:
+"0 followers → 100K in 6 months"
+"$0 → $10K/month timeline"
+"Before learning [skill] vs After"
+"My first post vs now"
+
+VARIATION IDEAS:
+• Side-by-side comparison
+• Swipe through timeline
+• Video transformation reveal
+• Year-by-year progress
+
+CTA EXAMPLES:
+"Want to know how I did it?"
+"Comment 'HOW' for the strategy"
+"Drop a 🔥 if this motivated you"`,
+
+                'stopdoing': `❌ STOP DOING THIS FORMAT
+
+WHY IT WORKS:
+• Creates pattern interrupt
+• Positions you as expert
+• Controversial = engagement
+• People love being "in the know"
+
+HOW TO CREATE:
+1. Call out the common mistake
+2. Explain why it's wrong
+3. Show the consequences
+4. Offer the right way
+5. Challenge viewers to change
+
+PRO TIPS:
+✓ Be direct and confident
+✓ Use data/evidence
+✓ Don't be condescending
+✓ Offer solution, not just criticism
+✓ Expect debate in comments
+
+BEST FOR:
+• Educational content
+• Industry expertise
+• Myth-busting
+• Establishing authority
+• Sparking discussion
+
+EXAMPLE HOOKS:
+"Stop posting at these times..."
+"If you're doing this, you're wasting money..."
+"Stop making this caption mistake..."
+"Nobody will tell you this, but..."
+
+VARIATIONS:
+"3 things to STOP doing in [niche]"
+"You're doing this wrong (here's why)"
+"Stop following this advice"
+"This 'expert' is lying to you"
+
+ENGAGEMENT STRATEGY:
+Pin a comment asking: "Which one surprised you most?"
+Reply to disagreements professionally
+Share success stories from those who listened
+
+WARNING:
+Will attract haters - be ready to back up claims!`
+            };
+
+            document.getElementById('formatTipText').textContent = tips[format];
+            document.getElementById('formatTipOutput').classList.add('active');
+        }
+
+        // Essential Free Tools Functions
+        function openTool(toolType) {
+            const tools = {
+                'quoteCard': `💬 QUOTE CARD MAKER
+
+Enter your quote below and customize:
+
+Quote Text: <textarea id="quoteText" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:80px;" placeholder="Enter your inspirational quote..."></textarea>
+
+Author: <input type="text" id="quoteAuthor" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;" placeholder="- Your Name">
+
+Background Color:
+<select id="quoteBg" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <option value="#6366f1">Purple Gradient</option>
+    <option value="#ec4899">Pink Gradient</option>
+    <option value="#10b981">Green Gradient</option>
+    <option value="#f59e0b">Orange Gradient</option>
+    <option value="#0f172a">Dark Blue</option>
+</select>
+
+<button onclick="generateQuoteCard()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;">Generate Quote Card</button>
+
+<div id="quotePreview" style="margin-top:20px;"></div>
+
+📌 TIP: Right-click the preview and "Save Image As" to download!`,
+
+                'invoice': `🧾 INVOICE GENERATOR
+
+<div style="margin-top:10px;">
+    <input type="text" id="invCompany" placeholder="Your Company Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="invClient" placeholder="Client Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="invService" placeholder="Service/Product Description" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="number" id="invAmount" placeholder="Amount ($)" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="date" id="invDate" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <button onclick="generateInvoice()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Invoice</button>
+    
+    <div id="invoicePreview" style="margin-top:20px;background:white;padding:20px;border-radius:8px;color:#0f172a;"></div>
+</div>`,
+
+                'logo': `🎨 LOGO MAKER
+
+<div style="margin-top:10px;">
+    <input type="text" id="logoText" placeholder="Your Brand Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="logoTagline" placeholder="Tagline (optional)" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="logoStyle" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="modern">Modern & Minimal</option>
+        <option value="bold">Bold & Strong</option>
+        <option value="elegant">Elegant & Classy</option>
+        <option value="playful">Playful & Fun</option>
+    </select>
+    
+    <button onclick="generateLogo()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Logo</button>
+    
+    <div id="logoPreview" style="margin-top:20px;text-align:center;"></div>
+</div>`,
+
+                'meme': `😂 MEME GENERATOR
+
+<div style="margin-top:10px;">
+    <textarea id="memeTop" placeholder="Top text..." style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:60px;"></textarea>
+    <textarea id="memeBottom" placeholder="Bottom text..." style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:60px;"></textarea>
+    
+    <select id="memeTemplate" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="drakeNo">Drake Meme</option>
+        <option value="distracted">Distracted Boyfriend</option>
+        <option value="galaxy">Expanding Brain</option>
+        <option value="success">Success Kid</option>
+    </select>
+    
+    <button onclick="generateMeme()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Meme</button>
+    
+    <div id="memePreview" style="margin-top:20px;"></div>
+</div>`,
+
+                'watermark': `©️ WATERMARK TOOL
+
+<div style="margin-top:10px;">
+    <input type="file" id="watermarkImage" accept="image/*" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="watermarkText" placeholder="Your watermark text (e.g., @yourhandle)" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="watermarkPosition" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="bottomRight">Bottom Right</option>
+        <option value="bottomLeft">Bottom Left</option>
+        <option value="topRight">Top Right</option>
+        <option value="topLeft">Top Left</option>
+        <option value="center">Center</option>
+    </select>
+    
+    <button onclick="applyWatermark()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Apply Watermark</button>
+    
+    <canvas id="watermarkCanvas" style="margin-top:20px;max-width:100%;border-radius:8px;display:none;"></canvas>
+</div>`,
+
+                'cv': `📄 CV BUILDER
+
+<div style="margin-top:10px;">
+    <input type="text" id="cvName" placeholder="Full Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="cvTitle" placeholder="Professional Title" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="email" id="cvEmail" placeholder="Email" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="tel" id="cvPhone" placeholder="Phone" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <textarea id="cvSummary" placeholder="Professional Summary..." style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:80px;"></textarea>
+    <textarea id="cvExperience" placeholder="Work Experience (separate with line breaks)..." style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:100px;"></textarea>
+    
+    <button onclick="generateCV()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate CV</button>
+    
+    <div id="cvPreview" style="margin-top:20px;background:white;padding:30px;border-radius:8px;color:#0f172a;"></div>
+</div>`,
+
+                'countdown': `⏰ EVENT COUNTDOWN
+
+<div style="margin-top:10px;">
+    <input type="text" id="countdownEvent" placeholder="Event Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="datetime-local" id="countdownDate" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <button onclick="startCountdown()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Start Countdown</button>
+    
+    <div id="countdownDisplay" style="margin-top:30px;text-align:center;font-size:2rem;font-weight:bold;"></div>
+</div>`,
+
+                'confetti': `🎉 CONFETTI ANIMATION
+
+<div style="margin-top:10px;text-align:center;">
+    <select id="confettiStyle" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="default">Default Celebration</option>
+        <option value="gold">Golden Rain</option>
+        <option value="rainbow">Rainbow Burst</option>
+        <option value="hearts">Heart Explosion</option>
+    </select>
+    
+    <button onclick="triggerConfetti()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">🎊 Trigger Confetti!</button>
+    
+    <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
+    
+    <p style="margin-top:20px;color:var(--gray);">Click the button to see celebration animation!</p>
+</div>`,
+
+                'scratch': `🎫 SCRATCH CARD MAKER
+
+<div style="margin-top:10px;">
+    <input type="text" id="scratchPrize" placeholder="Hidden message/prize" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <button onclick="createScratchCard()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Create Scratch Card</button>
+    
+    <div style="margin-top:30px;text-align:center;">
+        <canvas id="scratchCanvas" width="400" height="300" style="max-width:100%;border-radius:12px;cursor:pointer;background:white;display:none;"></canvas>
+        <p id="scratchHint" style="margin-top:10px;color:var(--gray);display:none;">👆 Click and drag to scratch!</p>
+    </div>
+</div>`
+            };
+
+            document.getElementById('toolContent').innerHTML = tools[toolType];
+            document.getElementById('toolModal').style.display = 'block';
+            document.getElementById('toolModal').classList.add('active');
+        }
+
+        function closeTool() {
+            document.getElementById('toolModal').style.display = 'none';
+            document.getElementById('toolModal').classList.remove('active');
+        }
+
+        // Tool Generator Functions
+        function generateQuoteCard() {
+            const quote = document.getElementById('quoteText').value || 'Your inspirational quote here';
+            const author = document.getElementById('quoteAuthor').value || '- Anonymous';
+            const bg = document.getElementById('quoteBg').value;
+            
+            const preview = document.getElementById('quotePreview');
+            preview.innerHTML = `
+                <div style="background:${bg};padding:60px 40px;border-radius:12px;text-align:center;color:white;max-width:600px;margin:0 auto;">
+                    <div style="font-size:1.8rem;font-weight:600;line-height:1.4;margin-bottom:20px;">"${quote}"</div>
+                    <div style="font-size:1.2rem;opacity:0.9;font-style:italic;">${author}</div>
+                </div>
+            `;
+        }
+
+        function generateInvoice() {
+            const company = document.getElementById('invCompany').value || 'Your Company';
+            const client = document.getElementById('invClient').value || 'Client Name';
+            const service = document.getElementById('invService').value || 'Service Description';
+            const amount = document.getElementById('invAmount').value || '0';
+            const date = document.getElementById('invDate').value || new Date().toISOString().split('T')[0];
+            
+            const preview = document.getElementById('invoicePreview');
+            preview.innerHTML = `
+                <div style="max-width:600px;margin:0 auto;">
+                    <h2 style="color:#6366f1;margin-bottom:5px;">INVOICE</h2>
+                    <p style="color:#64748b;margin-bottom:30px;">Invoice #${Math.floor(Math.random()*10000)}</p>
+                    
+                    <div style="margin-bottom:30px;">
+                        <strong>From:</strong><br>
+                        ${company}
+                    </div>
+                    
+                    <div style="margin-bottom:30px;">
+                        <strong>Bill To:</strong><br>
+                        ${client}
+                    </div>
+                    
+                    <div style="margin-bottom:30px;">
+                        <strong>Date:</strong> ${date}
+                    </div>
+                    
+                    <table style="width:100%;border-collapse:collapse;margin-bottom:30px;">
+                        <tr style="background:#f1f5f9;">
+                            <th style="padding:12px;text-align:left;border:1px solid #e2e8f0;">Description</th>
+                            <th style="padding:12px;text-align:right;border:1px solid #e2e8f0;">Amount</th>
+                        </tr>
+                        <tr>
+                            <td style="padding:12px;border:1px solid #e2e8f0;">${service}</td>
+                            <td style="padding:12px;text-align:right;border:1px solid #e2e8f0;">$${amount}</td>
+                        </tr>
+                        <tr style="background:#f1f5f9;font-weight:bold;">
+                            <td style="padding:12px;border:1px solid #e2e8f0;">TOTAL</td>
+                            <td style="padding:12px;text-align:right;border:1px solid #e2e8f0;">$${amount}</td>
+                        </tr>
+                    </table>
+                    
+                    <p style="color:#64748b;font-size:0.9rem;">Thank you for your business!</p>
+                </div>
+            `;
+            preview.style.display = 'block';
+        }
+
+        function generateLogo() {
+            const text = document.getElementById('logoText').value || 'YOUR BRAND';
+            const tagline = document.getElementById('logoTagline').value;
+            const style = document.getElementById('logoStyle').value;
+            
+            let logoStyle = {};
+            if (style === 'modern') {
+                logoStyle = {bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', font: 'Space Grotesk'};
+            } else if (style === 'bold') {
+                logoStyle = {bg: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', font: 'Impact'};
+            } else if (style === 'elegant') {
+                logoStyle = {bg: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', font: 'serif'};
+            } else {
+                logoStyle = {bg: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)', font: 'Comic Sans MS'};
+            }
+            
+            const preview = document.getElementById('logoPreview');
+            preview.innerHTML = `
+                <div style="background:${logoStyle.bg};padding:80px 60px;border-radius:50%;width:300px;height:300px;margin:0 auto;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+                    <div style="font-family:${logoStyle.font};font-size:2.5rem;font-weight:900;color:white;text-align:center;letter-spacing:2px;">${text}</div>
+                    ${tagline ? `<div style="font-size:0.9rem;color:white;opacity:0.9;margin-top:10px;text-align:center;">${tagline}</div>` : ''}
+                </div>
+            `;
+        }
+
+        function generateMeme() {
+            const top = document.getElementById('memeTop').value || 'TOP TEXT';
+            const bottom = document.getElementById('memeBottom').value || 'BOTTOM TEXT';
+            
+            const preview = document.getElementById('memePreview');
+            preview.innerHTML = `
+                <div style="position:relative;background:#1e293b;padding:20px;border-radius:12px;max-width:500px;margin:0 auto;">
+                    <div style="background:#64748b;height:300px;display:flex;align-items:center;justify-content:center;border-radius:8px;position:relative;">
+                        <div style="position:absolute;top:20px;width:100%;text-align:center;font-size:2rem;font-weight:900;color:white;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;text-transform:uppercase;padding:0 20px;">${top}</div>
+                        <div style="font-size:3rem;">🖼️</div>
+                        <div style="position:absolute;bottom:20px;width:100%;text-align:center;font-size:2rem;font-weight:900;color:white;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;text-transform:uppercase;padding:0 20px;">${bottom}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function applyWatermark() {
+            const file = document.getElementById('watermarkImage').files[0];
+            const text = document.getElementById('watermarkText').value || '@yourhandle';
+            const position = document.getElementById('watermarkPosition').value;
+            
+            if (!file) {
+                alert('Please upload an image first!');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.getElementById('watermarkCanvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    ctx.drawImage(img, 0, 0);
+                    
+                    ctx.font = 'bold ' + Math.floor(img.width / 20) + 'px Arial';
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                    ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
+                    ctx.lineWidth = 2;
+                    
+                    const textWidth = ctx.measureText(text).width;
+                    let x, y;
+                    
+                    if (position === 'bottomRight') {
+                        x = img.width - textWidth - 20;
+                        y = img.height - 20;
+                    } else if (position === 'bottomLeft') {
+                        x = 20;
+                        y = img.height - 20;
+                    } else if (position === 'topRight') {
+                        x = img.width - textWidth - 20;
+                        y = 40;
+                    } else if (position === 'topLeft') {
+                        x = 20;
+                        y = 40;
+                    } else {
+                        x = (img.width - textWidth) / 2;
+                        y = img.height / 2;
+                    }
+                    
+                    ctx.strokeText(text, x, y);
+                    ctx.fillText(text, x, y);
+                    
+                    canvas.style.display = 'block';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function generateCV() {
+            const name = document.getElementById('cvName').value || 'Your Name';
+            const title = document.getElementById('cvTitle').value || 'Professional Title';
+            const email = document.getElementById('cvEmail').value || 'email@example.com';
+            const phone = document.getElementById('cvPhone').value || '(123) 456-7890';
+            const summary = document.getElementById('cvSummary').value || 'Professional summary goes here...';
+            const experience = document.getElementById('cvExperience').value || 'Work experience goes here...';
+            
+            const preview = document.getElementById('cvPreview');
+            preview.innerHTML = `
+                <div style="max-width:700px;margin:0 auto;">
+                    <div style="text-align:center;margin-bottom:30px;border-bottom:3px solid #6366f1;padding-bottom:20px;">
+                        <h1 style="color:#6366f1;margin-bottom:5px;font-size:2.5rem;">${name}</h1>
+                        <h3 style="color:#64748b;margin-bottom:15px;">${title}</h3>
+                        <p style="color:#64748b;">${email} | ${phone}</p>
+                    </div>
+                    
+                    <div style="margin-bottom:30px;">
+                        <h3 style="color:#6366f1;margin-bottom:10px;border-bottom:2px solid #e2e8f0;padding-bottom:5px;">PROFESSIONAL SUMMARY</h3>
+                        <p style="color:#0f172a;line-height:1.6;">${summary}</p>
+                    </div>
+                    
+                    <div style="margin-bottom:30px;">
+                        <h3 style="color:#6366f1;margin-bottom:10px;border-bottom:2px solid #e2e8f0;padding-bottom:5px;">WORK EXPERIENCE</h3>
+                        <p style="color:#0f172a;line-height:1.6;white-space:pre-line;">${experience}</p>
+                    </div>
+                </div>
+            `;
+            preview.style.display = 'block';
+        }
+
+        let countdownInterval;
+        function startCountdown() {
+            const eventName = document.getElementById('countdownEvent').value || 'Your Event';
+            const eventDate = new Date(document.getElementById('countdownDate').value);
+            
+            if (isNaN(eventDate.getTime())) {
+                alert('Please select a valid date and time!');
+                return;
+            }
+            
+            if (countdownInterval) clearInterval(countdownInterval);
+            
+            countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+                
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdownDisplay').innerHTML = `
+                        <div style="color:var(--success);">🎉 ${eventName} has started!</div>
+                    `;
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdownDisplay').innerHTML = `
+                    <div style="color:var(--light);margin-bottom:20px;font-size:1.2rem;">${eventName}</div>
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:500px;margin:0 auto;">
+                        <div style="background:var(--gradient);padding:20px;border-radius:12px;">
+                            <div style="font-size:2.5rem;font-weight:900;">${days}</div>
+                            <div style="font-size:0.9rem;opacity:0.8;">DAYS</div>
+                        </div>
+                        <div style="background:var(--gradient-2);padding:20px;border-radius:12px;">
+                            <div style="font-size:2.5rem;font-weight:900;">${hours}</div>
+                            <div style="font-size:0.9rem;opacity:0.8;">HOURS</div>
+                        </div>
+                        <div style="background:var(--gradient-3);padding:20px;border-radius:12px;">
+                            <div style="font-size:2.5rem;font-weight:900;">${minutes}</div>
+                            <div style="font-size:0.9rem;opacity:0.8;">MINS</div>
+                        </div>
+                        <div style="background:var(--gradient);padding:20px;border-radius:12px;">
+                            <div style="font-size:2.5rem;font-weight:900;">${seconds}</div>
+                            <div style="font-size:0.9rem;opacity:0.8;">SECS</div>
+                        </div>
+                    </div>
+                `;
+            }, 1000);
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById('confettiCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.display = 'block';
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const particles = [];
+            const colors = ['#6366f1', '#ec4899', '#10b981', '#f59e0b', '#ef4444'];
+            
+            for (let i = 0; i < 150; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: -20,
+                    size: Math.random() * 8 + 4,
+                    speedY: Math.random() * 3 + 2,
+                    speedX: Math.random() * 4 - 2,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach((p, index) => {
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(p.x, p.y, p.size, p.size);
+                    
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.speedY += 0.1;
+                    
+                    if (p.y > canvas.height) {
+                        particles.splice(index, 1);
+                    }
+                });
+                
+                if (particles.length > 0) {
+                    requestAnimationFrame(animate);
+                } else {
+                    setTimeout(() => {
+                        canvas.style.display = 'none';
+                    }, 500);
+                }
+            }
+            
+            animate();
+        }
+
+        function createScratchCard() {
+            const prize = document.getElementById('scratchPrize').value || 'YOU WON!';
+            const canvas = document.getElementById('scratchCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.style.display = 'block';
+            document.getElementById('scratchHint').style.display = 'block';
+            
+            ctx.fillStyle = '#6366f1';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = 'bold 40px Arial';
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.fillText('SCRATCH HERE', canvas.width/2, canvas.height/2 - 20);
+            ctx.fillText('👇', canvas.width/2, canvas.height/2 + 40);
+            
+            canvas.style.background = `linear-gradient(135deg, #10b981 0%, #064e3b 100%)`;
+            
+            const revealCtx = document.createElement('canvas').getContext('2d');
+            revealCtx.canvas.width = canvas.width;
+            revealCtx.canvas.height = canvas.height;
+            revealCtx.font = 'bold 60px Arial';
+            revealCtx.fillStyle = 'white';
+            revealCtx.textAlign = 'center';
+            revealCtx.textBaseline = 'middle';
+            revealCtx.fillText(prize, canvas.width/2, canvas.height/2);
+            
+            let isDrawing = false;
+            
+            function scratch(e) {
+                if (!isDrawing) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left || e.touches[0].clientX - rect.left;
+                const y = e.clientY - rect.top || e.touches[0].clientY - rect.top;
+                
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(x, y, 30, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            canvas.addEventListener('mousedown', () => isDrawing = true);
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+            canvas.addEventListener('mousemove', scratch);
+            canvas.addEventListener('touchstart', () => isDrawing = true);
+            canvas.addEventListener('touchend', () => isDrawing = false);
+            canvas.addEventListener('touchmove', scratch);
         }
 
     </script>
