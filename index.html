@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2606,6 +2607,51 @@
                         <div class="tool-card-icon">🎫</div>
                         <div class="tool-card-title">Scratch Card</div>
                         <div class="tool-card-desc">Interactive reveals</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('poster')" style="cursor: pointer;">
+                        <div class="tool-card-icon">📋</div>
+                        <div class="tool-card-title">Poster Creator</div>
+                        <div class="tool-card-desc">Event & promo posters</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('businessCard')" style="cursor: pointer;">
+                        <div class="tool-card-icon">💳</div>
+                        <div class="tool-card-title">Business Card</div>
+                        <div class="tool-card-desc">Professional cards</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('certificate')" style="cursor: pointer;">
+                        <div class="tool-card-icon">🏆</div>
+                        <div class="tool-card-title">Certificate Maker</div>
+                        <div class="tool-card-desc">Awards & certificates</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('collage')" style="cursor: pointer;">
+                        <div class="tool-card-icon">🖼️</div>
+                        <div class="tool-card-title">Photo Collage</div>
+                        <div class="tool-card-desc">Multi-image layouts</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('poll')" style="cursor: pointer;">
+                        <div class="tool-card-icon">📊</div>
+                        <div class="tool-card-title">Poll Creator</div>
+                        <div class="tool-card-desc">Interactive polls</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('quiz')" style="cursor: pointer;">
+                        <div class="tool-card-icon">🎯</div>
+                        <div class="tool-card-title">Quiz Builder</div>
+                        <div class="tool-card-desc">Engagement quizzes</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('gridLayout')" style="cursor: pointer;">
+                        <div class="tool-card-icon">⚡</div>
+                        <div class="tool-card-title">Grid Layout</div>
+                        <div class="tool-card-desc">Instagram grid planner</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('mockup')" style="cursor: pointer;">
+                        <div class="tool-card-icon">📱</div>
+                        <div class="tool-card-title">Screenshot Mockup</div>
+                        <div class="tool-card-desc">Device frames</div>
+                    </div>
+                    <div class="tool-card" onclick="openTool('beforeAfter')" style="cursor: pointer;">
+                        <div class="tool-card-icon">↔️</div>
+                        <div class="tool-card-title">Before/After Slider</div>
+                        <div class="tool-card-desc">Comparison sliders</div>
                     </div>
                 </div>
 
@@ -8072,28 +8118,45 @@ Will attract haters - be ready to back up claims!`
         // Essential Free Tools Functions
         function openTool(toolType) {
             const tools = {
-                'quoteCard': `💬 QUOTE CARD MAKER
+                'quoteCard': `💬 QUOTE CARD MAKER - Pro Social Media Design
 
-Enter your quote below and customize:
+<div style="margin-top:10px;">
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">✍️ Your Quote</label>
+    <textarea id="quoteText" style="width:100%;padding:15px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;min-height:100px;font-size:16px;" placeholder="The only way to do great work is to love what you do..."></textarea>
 
-Quote Text: <textarea id="quoteText" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:80px;" placeholder="Enter your inspirational quote..."></textarea>
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">👤 Author Name</label>
+    <input type="text" id="quoteAuthor" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;" placeholder="Steve Jobs">
 
-Author: <input type="text" id="quoteAuthor" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;" placeholder="- Your Name">
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">📸 Background Image (Optional)</label>
+    <input type="file" id="quoteBackgroundImage" accept="image/*" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
 
-Background Color:
-<select id="quoteBg" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
-    <option value="#6366f1">Purple Gradient</option>
-    <option value="#ec4899">Pink Gradient</option>
-    <option value="#10b981">Green Gradient</option>
-    <option value="#f59e0b">Orange Gradient</option>
-    <option value="#0f172a">Dark Blue</option>
-</select>
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🎨 Design Style</label>
+    <select id="quoteStyle" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;font-size:15px;">
+        <option value="gradient1">Purple Dream Gradient</option>
+        <option value="gradient2">Ocean Waves Gradient</option>
+        <option value="gradient3">Sunset Vibes Gradient</option>
+        <option value="gradient4">Forest Green Gradient</option>
+        <option value="gradient5">Fire & Ice Gradient</option>
+        <option value="minimal">Minimal White</option>
+        <option value="dark">Dark Elegance</option>
+        <option value="neon">Neon Glow</option>
+        <option value="pastel">Soft Pastel</option>
+    </select>
 
-<button onclick="generateQuoteCard()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;">Generate Quote Card</button>
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🔤 Font Style</label>
+    <select id="quoteFontStyle" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+        <option value="modern">Modern Sans</option>
+        <option value="elegant">Elegant Serif</option>
+        <option value="bold">Bold Impact</option>
+        <option value="handwritten">Handwritten Style</option>
+    </select>
 
-<div id="quotePreview" style="margin-top:20px;"></div>
+    <button onclick="generateQuoteCard()" style="padding:15px 30px;background:var(--gradient);border:none;border-radius:12px;color:white;font-weight:700;cursor:pointer;margin-top:15px;width:100%;font-size:16px;box-shadow:0 4px 15px rgba(99,102,241,0.4);transition:all 0.3s;">✨ Generate Quote Card</button>
 
-📌 TIP: Right-click the preview and "Save Image As" to download!`,
+    <canvas id="quoteCanvas" style="margin-top:30px;max-width:100%;border-radius:16px;display:none;box-shadow:0 20px 60px rgba(0,0,0,0.3);"></canvas>
+    
+    <p style="margin-top:15px;color:var(--gray);font-size:14px;text-align:center;">📌 Right-click canvas and "Save Image As" to download</p>
+</div>`,
 
                 'invoice': `🧾 INVOICE GENERATOR
 
@@ -8127,22 +8190,43 @@ Background Color:
     <div id="logoPreview" style="margin-top:20px;text-align:center;"></div>
 </div>`,
 
-                'meme': `😂 MEME GENERATOR
+                'meme': `😂 MEME GENERATOR - Viral Content Creator
 
 <div style="margin-top:10px;">
-    <textarea id="memeTop" placeholder="Top text..." style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:60px;"></textarea>
-    <textarea id="memeBottom" placeholder="Bottom text..." style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:60px;"></textarea>
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🖼️ Upload Your Image (or use templates)</label>
+    <input type="file" id="memeCustomImage" accept="image/*" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
     
-    <select id="memeTemplate" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
-        <option value="drakeNo">Drake Meme</option>
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">📝 Top Text</label>
+    <textarea id="memeTop" placeholder="WHEN YOU REALIZE..." style="width:100%;padding:12px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;min-height:70px;font-size:15px;"></textarea>
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">📝 Bottom Text</label>
+    <textarea id="memeBottom" placeholder="IT'S ALREADY FRIDAY!" style="width:100%;padding:12px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;min-height:70px;font-size:15px;"></textarea>
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🎭 Meme Template (if no custom image)</label>
+    <select id="memeTemplate" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;font-size:15px;">
+        <option value="custom">Use My Image</option>
+        <option value="drake">Drake Hotline Bling</option>
         <option value="distracted">Distracted Boyfriend</option>
-        <option value="galaxy">Expanding Brain</option>
+        <option value="brain">Expanding Brain</option>
         <option value="success">Success Kid</option>
+        <option value="doge">Doge</option>
+        <option value="stonks">Stonks</option>
+        <option value="think">Think About It</option>
+    </select>
+
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🎨 Text Style</label>
+    <select id="memeTextStyle" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+        <option value="classic">Classic Meme (White/Black Outline)</option>
+        <option value="modern">Modern Clean</option>
+        <option value="bold">Extra Bold</option>
+        <option value="shadow">Drop Shadow</option>
     </select>
     
-    <button onclick="generateMeme()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Meme</button>
+    <button onclick="generateMeme()" style="padding:15px 30px;background:var(--gradient);border:none;border-radius:12px;color:white;font-weight:700;cursor:pointer;margin-top:15px;width:100%;font-size:16px;box-shadow:0 4px 15px rgba(99,102,241,0.4);">🔥 Generate Meme</button>
     
-    <div id="memePreview" style="margin-top:20px;"></div>
+    <canvas id="memeCanvas" style="margin-top:30px;max-width:100%;border-radius:16px;display:none;box-shadow:0 20px 60px rgba(0,0,0,0.3);"></canvas>
+    
+    <p style="margin-top:15px;color:var(--gray);font-size:14px;text-align:center;">💡 Upload your own image or use classic templates</p>
 </div>`,
 
                 'watermark': `©️ WATERMARK TOOL
@@ -8218,6 +8302,227 @@ Background Color:
         <canvas id="scratchCanvas" width="400" height="300" style="max-width:100%;border-radius:12px;cursor:pointer;background:white;display:none;"></canvas>
         <p id="scratchHint" style="margin-top:10px;color:var(--gray);display:none;">👆 Click and drag to scratch!</p>
     </div>
+</div>`,
+
+                'poster': `📋 POSTER CREATOR
+
+<div style="margin-top:10px;">
+    <input type="text" id="posterTitle" placeholder="Event Title" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="posterDate" placeholder="Date & Time" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="posterLocation" placeholder="Location/Venue" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <textarea id="posterDescription" placeholder="Brief description..." style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:80px;"></textarea>
+    
+    <select id="posterTheme" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="party">Party Vibes</option>
+        <option value="professional">Professional Event</option>
+        <option value="concert">Concert/Music</option>
+        <option value="sports">Sports Event</option>
+    </select>
+    
+    <button onclick="generatePoster()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Poster</button>
+    
+    <canvas id="posterCanvas" style="margin-top:20px;max-width:100%;border-radius:8px;display:none;"></canvas>
+</div>`,
+
+                'businessCard': `💳 BUSINESS CARD DESIGNER - Pro Edition
+
+<div style="margin-top:10px;">
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🎨 Upload Logo (Optional)</label>
+    <input type="file" id="bcLogo" accept="image/*" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🖼️ Upload Banner/Background (Optional)</label>
+    <input type="file" id="bcBanner" accept="image/*" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">👤 Full Name</label>
+    <input type="text" id="bcName" placeholder="John Smith" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">💼 Job Title</label>
+    <input type="text" id="bcTitle" placeholder="Creative Director" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🏢 Company Name</label>
+    <input type="text" id="bcCompany" placeholder="Your Company Inc." style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">📧 Email</label>
+    <input type="email" id="bcEmail" placeholder="john@company.com" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">📱 Phone</label>
+    <input type="tel" id="bcPhone" placeholder="+1 (555) 123-4567" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🌐 Website</label>
+    <input type="text" id="bcWebsite" placeholder="www.yourcompany.com" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;">
+    
+    <label style="color:white;display:block;margin-bottom:5px;font-weight:600;">🎨 Design Style</label>
+    <select id="bcStyle" style="width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:12px;font-size:15px;">
+        <option value="modern">Modern Minimal White</option>
+        <option value="corporate">Corporate Professional Blue</option>
+        <option value="creative">Creative Gradient</option>
+        <option value="elegant">Elegant Black & Gold</option>
+        <option value="vibrant">Vibrant Colors</option>
+        <option value="tech">Tech Futuristic</option>
+    </select>
+    
+    <button onclick="generateBusinessCard()" style="padding:15px 30px;background:var(--gradient);border:none;border-radius:12px;color:white;font-weight:700;cursor:pointer;margin-top:15px;width:100%;font-size:16px;box-shadow:0 4px 15px rgba(99,102,241,0.4);">✨ Generate Business Card</button>
+    
+    <canvas id="businessCardCanvas" style="margin-top:30px;max-width:100%;border-radius:16px;display:none;box-shadow:0 20px 60px rgba(0,0,0,0.3);"></canvas>
+    
+    <p style="margin-top:15px;color:var(--gray);font-size:14px;text-align:center;">💡 Add your logo and banner for a professional look</p>
+</div>`,
+
+                'certificate': `🏆 CERTIFICATE GENERATOR
+
+<div style="margin-top:10px;">
+    <input type="text" id="certRecipient" placeholder="Recipient Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="certAchievement" placeholder="Achievement/Course Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="certOrg" placeholder="Organization Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="date" id="certDate" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="certSignature" placeholder="Signature Name" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="certStyle" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="classic">Classic Gold</option>
+        <option value="modern">Modern Blue</option>
+        <option value="elegant">Elegant Purple</option>
+        <option value="simple">Simple Clean</option>
+    </select>
+    
+    <button onclick="generateCertificate()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Certificate</button>
+    
+    <canvas id="certificateCanvas" style="margin-top:20px;max-width:100%;border-radius:8px;display:none;"></canvas>
+</div>`,
+
+                'collage': `🖼️ PHOTO COLLAGE MAKER
+
+<div style="margin-top:10px;">
+    <input type="file" id="collageImages" accept="image/*" multiple style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="collageLayout" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="grid2">2 Images Grid</option>
+        <option value="grid3">3 Images Grid</option>
+        <option value="grid4">4 Images Grid</option>
+        <option value="grid6">6 Images Grid</option>
+        <option value="vertical">Vertical Stack</option>
+        <option value="horizontal">Horizontal Strip</option>
+    </select>
+    
+    <label style="display:block;margin:10px 0;color:white;">
+        <input type="checkbox" id="collageRounded" style="margin-right:10px;">
+        Rounded corners
+    </label>
+    
+    <button onclick="generateCollage()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Collage</button>
+    
+    <canvas id="collageCanvas" style="margin-top:20px;max-width:100%;border-radius:8px;display:none;"></canvas>
+    <p style="margin-top:10px;color:var(--gray);font-size:0.85rem;">Upload 2-6 images for best results</p>
+</div>`,
+
+                'poll': `📊 POLL CREATOR
+
+<div style="margin-top:10px;">
+    <input type="text" id="pollQuestion" placeholder="Poll Question" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="pollOption1" placeholder="Option 1" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="pollOption2" placeholder="Option 2" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="pollOption3" placeholder="Option 3 (optional)" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <input type="text" id="pollOption4" placeholder="Option 4 (optional)" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="pollStyle" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="instagram">Instagram Style</option>
+        <option value="twitter">Twitter/X Style</option>
+        <option value="modern">Modern Gradient</option>
+        <option value="minimal">Minimal Clean</option>
+    </select>
+    
+    <button onclick="generatePollGraphic()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Poll Graphic</button>
+    
+    <canvas id="pollCanvas" style="margin-top:20px;max-width:100%;border-radius:8px;display:none;"></canvas>
+</div>`,
+
+                'quiz': `🎯 QUIZ BUILDER
+
+<div style="margin-top:10px;">
+    <input type="text" id="quizTitle" placeholder="Quiz Title" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <textarea id="quizQuestion1" placeholder="Question 1" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:60px;"></textarea>
+    <input type="text" id="quizAnswer1" placeholder="Answer 1" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <textarea id="quizQuestion2" placeholder="Question 2" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:60px;"></textarea>
+    <input type="text" id="quizAnswer2" placeholder="Answer 2" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    <textarea id="quizQuestion3" placeholder="Question 3" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;min-height:60px;"></textarea>
+    <input type="text" id="quizAnswer3" placeholder="Answer 3" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <button onclick="generateQuizGraphic()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Quiz Cards</button>
+    
+    <div id="quizOutput" style="margin-top:20px;"></div>
+</div>`,
+
+                'gridLayout': `⚡ INSTAGRAM GRID PLANNER
+
+<div style="margin-top:10px;">
+    <input type="file" id="gridImages" accept="image/*" multiple style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="gridSize" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="3">3x3 Grid (9 posts)</option>
+        <option value="4">4x4 Grid (16 posts)</option>
+        <option value="5">5x5 Grid (25 posts)</option>
+    </select>
+    
+    <select id="gridTheme" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="standard">Standard Layout</option>
+        <option value="checkerboard">Checkerboard Pattern</option>
+        <option value="diagonal">Diagonal Flow</option>
+        <option value="border">Border Frame</option>
+    </select>
+    
+    <button onclick="generateGridLayout()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Preview Grid Layout</button>
+    
+    <div id="gridPreview" style="margin-top:20px;"></div>
+    <p style="margin-top:10px;color:var(--gray);font-size:0.85rem;">Upload images to see how they'll look on your Instagram feed</p>
+</div>`,
+
+                'mockup': `📱 SCREENSHOT MOCKUP FRAMES
+
+<div style="margin-top:10px;">
+    <input type="file" id="mockupImage" accept="image/*" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="mockupDevice" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="iphone">iPhone Frame</option>
+        <option value="android">Android Frame</option>
+        <option value="macbook">MacBook Frame</option>
+        <option value="ipad">iPad Frame</option>
+        <option value="desktop">Desktop Monitor</option>
+    </select>
+    
+    <select id="mockupBg" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="gradient1">Purple Gradient</option>
+        <option value="gradient2">Blue Gradient</option>
+        <option value="gradient3">Pink Gradient</option>
+        <option value="solid">Solid Color</option>
+        <option value="transparent">Transparent</option>
+    </select>
+    
+    <button onclick="generateMockup()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Mockup</button>
+    
+    <canvas id="mockupCanvas" style="margin-top:20px;max-width:100%;border-radius:8px;display:none;"></canvas>
+</div>`,
+
+                'beforeAfter': `↔️ BEFORE/AFTER SLIDER
+
+<div style="margin-top:10px;">
+    <label style="display:block;color:white;margin-bottom:5px;">Before Image:</label>
+    <input type="file" id="beforeImage" accept="image/*" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <label style="display:block;color:white;margin-bottom:5px;margin-top:15px;">After Image:</label>
+    <input type="file" id="afterImage" accept="image/*" style="width:100%;padding:10px;margin:5px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+    
+    <select id="sliderStyle" style="width:100%;padding:10px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:8px;">
+        <option value="vertical">Vertical Split</option>
+        <option value="horizontal">Horizontal Split</option>
+        <option value="sideBySide">Side by Side</option>
+    </select>
+    
+    <button onclick="generateBeforeAfter()" style="padding:12px 24px;background:var(--gradient);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:10px;width:100%;">Generate Comparison</button>
+    
+    <div id="beforeAfterContainer" style="margin-top:20px;position:relative;display:none;">
+        <canvas id="beforeAfterCanvas" style="max-width:100%;border-radius:8px;"></canvas>
+        <input type="range" id="sliderControl" min="0" max="100" value="50" style="width:100%;margin-top:10px;" oninput="updateSlider(this.value)">
+        <p style="text-align:center;color:var(--gray);margin-top:10px;">Drag slider to compare</p>
+    </div>
 </div>`
             };
 
@@ -8233,17 +8538,132 @@ Background Color:
 
         // Tool Generator Functions
         function generateQuoteCard() {
-            const quote = document.getElementById('quoteText').value || 'Your inspirational quote here';
-            const author = document.getElementById('quoteAuthor').value || '- Anonymous';
-            const bg = document.getElementById('quoteBg').value;
+            const quote = document.getElementById('quoteText').value || 'The only way to do great work is to love what you do.';
+            const author = document.getElementById('quoteAuthor').value || 'Steve Jobs';
+            const style = document.getElementById('quoteStyle').value;
+            const fontStyle = document.getElementById('quoteFontStyle').value;
+            const bgImageFile = document.getElementById('quoteBackgroundImage').files[0];
             
-            const preview = document.getElementById('quotePreview');
-            preview.innerHTML = `
-                <div style="background:${bg};padding:60px 40px;border-radius:12px;text-align:center;color:white;max-width:600px;margin:0 auto;">
-                    <div style="font-size:1.8rem;font-weight:600;line-height:1.4;margin-bottom:20px;">"${quote}"</div>
-                    <div style="font-size:1.2rem;opacity:0.9;font-style:italic;">${author}</div>
-                </div>
-            `;
+            const canvas = document.getElementById('quoteCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1080;
+            canvas.height = 1080;
+            canvas.style.display = 'block';
+            
+            const drawQuote = (bgImage = null) => {
+                // Background
+                if (bgImage) {
+                    ctx.globalAlpha = 0.4;
+                    const scale = Math.max(canvas.width / bgImage.width, canvas.height / bgImage.height);
+                    const x = (canvas.width - bgImage.width * scale) / 2;
+                    const y = (canvas.height - bgImage.height * scale) / 2;
+                    ctx.drawImage(bgImage, x, y, bgImage.width * scale, bgImage.height * scale);
+                    ctx.globalAlpha = 1;
+                    
+                    // Overlay
+                    const overlayGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    overlayGradient.addColorStop(0, 'rgba(0,0,0,0.6)');
+                    overlayGradient.addColorStop(1, 'rgba(0,0,0,0.8)');
+                    ctx.fillStyle = overlayGradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                } else {
+                    // Gradient backgrounds
+                    const gradients = {
+                        gradient1: ['#667eea', '#764ba2'],
+                        gradient2: ['#4facfe', '#00f2fe'],
+                        gradient3: ['#fa709a', '#fee140'],
+                        gradient4: ['#30cfd0', '#330867'],
+                        gradient5: ['#a8edea', '#fed6e3'],
+                        minimal: ['#ffffff', '#ffffff'],
+                        dark: ['#0f172a', '#1e293b'],
+                        neon: ['#ff006e', '#8338ec'],
+                        pastel: ['#ffeaa7', '#74b9ff']
+                    };
+                    
+                    const colors = gradients[style] || gradients.gradient1;
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, colors[0]);
+                    gradient.addColorStop(1, colors[1]);
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                
+                // Decorative elements
+                ctx.fillStyle = 'rgba(255,255,255,0.05)';
+                ctx.beginPath();
+                ctx.arc(150, 150, 200, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(canvas.width - 150, canvas.height - 150, 250, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Quote marks
+                const textColor = style === 'minimal' ? '#0f172a' : '#ffffff';
+                ctx.fillStyle = style === 'minimal' ? 'rgba(99,102,241,0.2)' : 'rgba(255,255,255,0.15)';
+                ctx.font = 'bold 200px Georgia';
+                ctx.fillText('"', 80, 280);
+                ctx.fillText('"', canvas.width - 220, canvas.height - 150);
+                
+                // Quote text
+                ctx.fillStyle = textColor;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                // Font selection
+                let fontFamily = 'Arial';
+                if (fontStyle === 'elegant') fontFamily = 'Georgia';
+                else if (fontStyle === 'handwritten') fontFamily = 'Brush Script MT, cursive';
+                else if (fontStyle === 'bold') fontFamily = 'Impact';
+                
+                ctx.font = `600 ${fontStyle === 'bold' ? '70' : '60'}px ${fontFamily}`;
+                
+                // Wrap text
+                const maxWidth = canvas.width - 200;
+                const lines = wrapText(ctx, quote, maxWidth);
+                const lineHeight = 85;
+                const totalHeight = lines.length * lineHeight;
+                let startY = (canvas.height - totalHeight) / 2 + 20;
+                
+                // Text shadow for readability
+                ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                ctx.shadowBlur = 20;
+                ctx.shadowOffsetY = 4;
+                
+                lines.forEach(line => {
+                    ctx.fillText(line, canvas.width / 2, startY);
+                    startY += lineHeight;
+                });
+                
+                ctx.shadowColor = 'transparent';
+                
+                // Decorative line
+                ctx.strokeStyle = style === 'minimal' ? '#6366f1' : 'rgba(255,255,255,0.5)';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(canvas.width / 2 - 100, startY + 30);
+                ctx.lineTo(canvas.width / 2 + 100, startY + 30);
+                ctx.stroke();
+                
+                // Author
+                ctx.fillStyle = style === 'minimal' ? '#64748b' : 'rgba(255,255,255,0.9)';
+                ctx.font = `italic 40px ${fontFamily}`;
+                ctx.fillText('— ' + author, canvas.width / 2, startY + 90);
+            };
+            
+            if (bgImageFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        drawQuote(img);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(bgImageFile);
+            } else {
+                drawQuote();
+            }
         }
 
         function generateInvoice() {
@@ -8320,19 +8740,127 @@ Background Color:
         }
 
         function generateMeme() {
-            const top = document.getElementById('memeTop').value || 'TOP TEXT';
-            const bottom = document.getElementById('memeBottom').value || 'BOTTOM TEXT';
+            const top = document.getElementById('memeTop').value || '';
+            const bottom = document.getElementById('memeBottom').value || '';
+            const template = document.getElementById('memeTemplate').value;
+            const textStyle = document.getElementById('memeTextStyle').value;
+            const customFile = document.getElementById('memeCustomImage').files[0];
             
-            const preview = document.getElementById('memePreview');
-            preview.innerHTML = `
-                <div style="position:relative;background:#1e293b;padding:20px;border-radius:12px;max-width:500px;margin:0 auto;">
-                    <div style="background:#64748b;height:300px;display:flex;align-items:center;justify-content:center;border-radius:8px;position:relative;">
-                        <div style="position:absolute;top:20px;width:100%;text-align:center;font-size:2rem;font-weight:900;color:white;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;text-transform:uppercase;padding:0 20px;">${top}</div>
-                        <div style="font-size:3rem;">🖼️</div>
-                        <div style="position:absolute;bottom:20px;width:100%;text-align:center;font-size:2rem;font-weight:900;color:white;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;text-transform:uppercase;padding:0 20px;">${bottom}</div>
-                    </div>
-                </div>
-            `;
+            const canvas = document.getElementById('memeCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1000;
+            canvas.height = 1000;
+            canvas.style.display = 'block';
+            
+            const drawMemeText = (baseImage) => {
+                canvas.width = baseImage ? baseImage.width : 1000;
+                canvas.height = baseImage ? baseImage.height : 1000;
+                
+                // Draw base image
+                if (baseImage) {
+                    ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+                } else {
+                    // Template backgrounds
+                    const templates = {
+                        drake: '#2c3e50',
+                        distracted: '#3498db',
+                        brain: '#9b59b6',
+                        success: '#27ae60',
+                        doge: '#f39c12',
+                        stonks: '#1abc9c',
+                        think: '#e74c3c'
+                    };
+                    ctx.fillStyle = templates[template] || '#34495e';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Template placeholder text
+                    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                    ctx.font = 'bold 60px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(template.toUpperCase() + ' TEMPLATE', canvas.width/2, canvas.height/2);
+                    ctx.font = '30px Arial';
+                    ctx.fillText('(Upload your image for custom meme)', canvas.width/2, canvas.height/2 + 50);
+                }
+                
+                // Text styling
+                const fontSize = Math.floor(canvas.width / 15);
+                ctx.font = `900 ${fontSize}px Impact, Arial Black`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+                
+                // Apply text style
+                if (textStyle === 'classic') {
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = Math.floor(fontSize / 12);
+                    ctx.fillStyle = '#FFFFFF';
+                } else if (textStyle === 'modern') {
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.shadowColor = 'rgba(0,0,0,0.8)';
+                    ctx.shadowBlur = 15;
+                    ctx.shadowOffsetY = 5;
+                } else if (textStyle === 'bold') {
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = Math.floor(fontSize / 8);
+                    ctx.fillStyle = '#FFFF00';
+                } else if (textStyle === 'shadow') {
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.shadowColor = 'rgba(0,0,0,0.9)';
+                    ctx.shadowBlur = 20;
+                    ctx.shadowOffsetX = 5;
+                    ctx.shadowOffsetY = 5;
+                }
+                
+                // Draw top text
+                if (top) {
+                    const topLines = wrapText(ctx, top.toUpperCase(), canvas.width - 40);
+                    let topY = 40;
+                    
+                    topLines.forEach(line => {
+                        if (textStyle === 'classic' || textStyle === 'bold') {
+                            ctx.strokeText(line, canvas.width / 2, topY);
+                        }
+                        ctx.fillText(line, canvas.width / 2, topY);
+                        topY += fontSize + 10;
+                    });
+                }
+                
+                // Draw bottom text
+                if (bottom) {
+                    const bottomLines = wrapText(ctx, bottom.toUpperCase(), canvas.width - 40);
+                    ctx.textBaseline = 'bottom';
+                    let bottomY = canvas.height - 40;
+                    
+                    for (let i = bottomLines.length - 1; i >= 0; i--) {
+                        if (textStyle === 'classic' || textStyle === 'bold') {
+                            ctx.strokeText(bottomLines[i], canvas.width / 2, bottomY);
+                        }
+                        ctx.fillText(bottomLines[i], canvas.width / 2, bottomY);
+                        bottomY -= fontSize + 10;
+                    }
+                }
+                
+                // Reset shadow
+                ctx.shadowColor = 'transparent';
+            };
+            
+            if (customFile || template === 'custom') {
+                if (customFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            drawMemeText(img);
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(customFile);
+                } else {
+                    alert('Please upload an image or select a template!');
+                }
+            } else {
+                drawMemeText(null);
+            }
         }
 
         function applyWatermark() {
@@ -8575,6 +9103,919 @@ Background Color:
             canvas.addEventListener('touchstart', () => isDrawing = true);
             canvas.addEventListener('touchend', () => isDrawing = false);
             canvas.addEventListener('touchmove', scratch);
+        }
+
+        // NEW TOOL FUNCTIONS
+        
+        function generatePoster() {
+            const title = document.getElementById('posterTitle').value || 'Event Title';
+            const date = document.getElementById('posterDate').value || 'Date & Time';
+            const location = document.getElementById('posterLocation').value || 'Location';
+            const description = document.getElementById('posterDescription').value || 'Event description';
+            const theme = document.getElementById('posterTheme').value;
+            
+            const canvas = document.getElementById('posterCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 800;
+            canvas.height = 1200;
+            canvas.style.display = 'block';
+            
+            // Theme colors
+            const themes = {
+                party: {bg: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', accent: '#fff'},
+                professional: {bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', accent: '#fff'},
+                concert: {bg: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)', accent: '#000'},
+                sports: {bg: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)', accent: '#fff'}
+            };
+            
+            const selectedTheme = themes[theme];
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, theme === 'party' ? '#f093fb' : theme === 'professional' ? '#667eea' : theme === 'concert' ? '#fa709a' : '#30cfd0');
+            gradient.addColorStop(1, theme === 'party' ? '#f5576c' : theme === 'professional' ? '#764ba2' : theme === 'concert' ? '#fee140' : '#330867');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Title
+            ctx.fillStyle = selectedTheme.accent;
+            ctx.font = 'bold 80px Arial';
+            ctx.textAlign = 'center';
+            const titleLines = wrapText(ctx, title.toUpperCase(), canvas.width - 100);
+            let yPos = 300;
+            titleLines.forEach(line => {
+                ctx.fillText(line, canvas.width/2, yPos);
+                yPos += 90;
+            });
+            
+            // Date
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText(date, canvas.width/2, yPos + 60);
+            
+            // Location
+            ctx.font = '35px Arial';
+            ctx.fillText(location, canvas.width/2, yPos + 120);
+            
+            // Description
+            ctx.font = '28px Arial';
+            const descLines = wrapText(ctx, description, canvas.width - 120);
+            let descY = yPos + 200;
+            descLines.forEach(line => {
+                ctx.fillText(line, canvas.width/2, descY);
+                descY += 40;
+            });
+            
+            // Decorative elements
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.beginPath();
+            ctx.arc(100, 100, 150, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(canvas.width - 100, canvas.height - 100, 120, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function generateBusinessCard() {
+            const name = document.getElementById('bcName').value || 'John Smith';
+            const title = document.getElementById('bcTitle').value || 'Creative Director';
+            const company = document.getElementById('bcCompany').value || 'Your Company Inc.';
+            const email = document.getElementById('bcEmail').value || 'john@company.com';
+            const phone = document.getElementById('bcPhone').value || '+1 (555) 123-4567';
+            const website = document.getElementById('bcWebsite').value || 'www.company.com';
+            const style = document.getElementById('bcStyle').value;
+            const logoFile = document.getElementById('bcLogo').files[0];
+            const bannerFile = document.getElementById('bcBanner').files[0];
+            
+            const canvas = document.getElementById('businessCardCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1050;
+            canvas.height = 600;
+            canvas.style.display = 'block';
+            
+            let logoImg = null;
+            let bannerImg = null;
+            let loadedCount = 0;
+            const totalToLoad = (logoFile ? 1 : 0) + (bannerFile ? 1 : 0);
+            
+            const drawCard = () => {
+                // Style themes
+                const styles = {
+                    modern: {bg: '#ffffff', accent: '#6366f1', text: '#0f172a', secondary: '#64748b'},
+                    corporate: {bg: '#1e40af', accent: '#60a5fa', text: '#ffffff', secondary: '#93c5fd'},
+                    creative: {bg: 'gradient', accent: '#ffffff', text: '#ffffff', secondary: 'rgba(255,255,255,0.8)'},
+                    elegant: {bg: '#0f172a', accent: '#d4af37', text: '#ffffff', secondary: '#a78948'},
+                    vibrant: {bg: '#ec4899', accent: '#fbbf24', text: '#ffffff', secondary: '#fcd34d'},
+                    tech: {bg: '#0ea5e9', accent: '#22d3ee', text: '#ffffff', secondary: '#a5f3fc'}
+                };
+                
+                const theme = styles[style] || styles.modern;
+                
+                // Background
+                if (bannerImg) {
+                    const scale = Math.max(canvas.width / bannerImg.width, canvas.height / bannerImg.height);
+                    const x = (canvas.width - bannerImg.width * scale) / 2;
+                    const y = (canvas.height - bannerImg.height * scale) / 2;
+                    ctx.drawImage(bannerImg, x, y, bannerImg.width * scale, bannerImg.height * scale);
+                    
+                    // Overlay for readability
+                    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                } else if (theme.bg === 'gradient') {
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, '#667eea');
+                    gradient.addColorStop(1, '#764ba2');
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                } else {
+                    ctx.fillStyle = theme.bg;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                
+                // Decorative elements
+                ctx.fillStyle = theme.accent;
+                ctx.fillRect(0, 0, 10, canvas.height);
+                
+                // Accent shapes
+                ctx.globalAlpha = 0.1;
+                ctx.beginPath();
+                ctx.arc(canvas.width - 100, 100, 150, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                
+                // Logo
+                if (logoImg) {
+                    const logoSize = 100;
+                    const logoX = 50;
+                    const logoY = 50;
+                    
+                    // Logo background circle
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.arc(logoX + logoSize/2, logoY + logoSize/2, logoSize/2 + 5, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.arc(logoX + logoSize/2, logoY + logoSize/2, logoSize/2, 0, Math.PI * 2);
+                    ctx.clip();
+                    
+                    const logoScale = logoSize / Math.max(logoImg.width, logoImg.height);
+                    const scaledLogoW = logoImg.width * logoScale;
+                    const scaledLogoH = logoImg.height * logoScale;
+                    const logoDrawX = logoX + (logoSize - scaledLogoW) / 2;
+                    const logoDrawY = logoY + (logoSize - scaledLogoH) / 2;
+                    
+                    ctx.drawImage(logoImg, logoDrawX, logoDrawY, scaledLogoW, scaledLogoH);
+                    ctx.restore();
+                }
+                
+                // Name
+                const startY = logoImg ? 180 : 150;
+                ctx.fillStyle = theme.text;
+                ctx.font = 'bold 58px Arial';
+                ctx.fillText(name, 50, startY);
+                
+                // Title
+                ctx.font = '32px Arial';
+                ctx.fillStyle = theme.secondary;
+                ctx.fillText(title, 50, startY + 50);
+                
+                // Company with accent
+                ctx.font = 'bold 36px Arial';
+                ctx.fillStyle = theme.accent;
+                ctx.fillText(company, 50, startY + 100);
+                
+                // Divider line
+                ctx.strokeStyle = theme.accent;
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(50, startY + 130);
+                ctx.lineTo(250, startY + 130);
+                ctx.stroke();
+                
+                // Contact info with icons
+                ctx.fillStyle = theme.text;
+                ctx.font = '24px Arial';
+                const contactY = startY + 170;
+                
+                ctx.fillText('✉ ' + email, 50, contactY);
+                ctx.fillText('☎ ' + phone, 50, contactY + 40);
+                if (website) {
+                    ctx.fillText('🌐 ' + website, 50, contactY + 80);
+                }
+                
+                // Right side decorative text (vertical)
+                ctx.save();
+                ctx.translate(canvas.width - 40, canvas.height / 2);
+                ctx.rotate(-Math.PI / 2);
+                ctx.font = 'bold 20px Arial';
+                ctx.fillStyle = theme.accent;
+                ctx.textAlign = 'center';
+                ctx.fillText(company.toUpperCase(), 0, 0);
+                ctx.restore();
+            };
+            
+            // Load images if provided
+            if (logoFile) {
+                const logoReader = new FileReader();
+                logoReader.onload = function(e) {
+                    logoImg = new Image();
+                    logoImg.onload = function() {
+                        loadedCount++;
+                        if (loadedCount === totalToLoad || totalToLoad === 0) drawCard();
+                    };
+                    logoImg.src = e.target.result;
+                };
+                logoReader.readAsDataURL(logoFile);
+            }
+            
+            if (bannerFile) {
+                const bannerReader = new FileReader();
+                bannerReader.onload = function(e) {
+                    bannerImg = new Image();
+                    bannerImg.onload = function() {
+                        loadedCount++;
+                        if (loadedCount === totalToLoad) drawCard();
+                    };
+                    bannerImg.src = e.target.result;
+                };
+                bannerReader.readAsDataURL(bannerFile);
+            }
+            
+            if (totalToLoad === 0) {
+                drawCard();
+            }
+        }
+        
+        function generateCertificate() {
+            const recipient = document.getElementById('certRecipient').value || 'Recipient Name';
+            const achievement = document.getElementById('certAchievement').value || 'Achievement';
+            const org = document.getElementById('certOrg').value || 'Organization';
+            const date = document.getElementById('certDate').value || new Date().toLocaleDateString();
+            const signature = document.getElementById('certSignature').value || 'Authorized Signature';
+            const style = document.getElementById('certStyle').value;
+            
+            const canvas = document.getElementById('certificateCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1200;
+            canvas.height = 900;
+            canvas.style.display = 'block';
+            
+            // Style themes
+            const styles = {
+                classic: {bg: '#fff8dc', border: '#d4af37', accent: '#d4af37'},
+                modern: {bg: '#f0f9ff', border: '#3b82f6', accent: '#1e40af'},
+                elegant: {bg: '#f5f3ff', border: '#8b5cf6', accent: '#6d28d9'},
+                simple: {bg: '#ffffff', border: '#64748b', accent: '#0f172a'}
+            };
+            
+            const theme = styles[style];
+            
+            // Background
+            ctx.fillStyle = theme.bg;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Border
+            ctx.strokeStyle = theme.border;
+            ctx.lineWidth = 20;
+            ctx.strokeRect(40, 40, canvas.width - 80, canvas.height - 80);
+            
+            ctx.lineWidth = 5;
+            ctx.strokeRect(60, 60, canvas.width - 120, canvas.height - 120);
+            
+            // Title
+            ctx.fillStyle = theme.accent;
+            ctx.font = 'bold 70px Serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('CERTIFICATE', canvas.width/2, 150);
+            
+            ctx.font = '35px Serif';
+            ctx.fillText('OF ' + achievement.toUpperCase(), canvas.width/2, 200);
+            
+            // Decorative line
+            ctx.strokeStyle = theme.accent;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(300, 230);
+            ctx.lineTo(900, 230);
+            ctx.stroke();
+            
+            // Body text
+            ctx.fillStyle = '#0f172a';
+            ctx.font = '32px Serif';
+            ctx.fillText('This is to certify that', canvas.width/2, 310);
+            
+            // Recipient name
+            ctx.fillStyle = theme.accent;
+            ctx.font = 'bold 65px Serif';
+            ctx.fillText(recipient, canvas.width/2, 410);
+            
+            // Achievement text
+            ctx.fillStyle = '#0f172a';
+            ctx.font = '30px Serif';
+            const achLines = wrapText(ctx, 'has successfully completed ' + achievement, canvas.width - 300);
+            let achY = 490;
+            achLines.forEach(line => {
+                ctx.fillText(line, canvas.width/2, achY);
+                achY += 40;
+            });
+            
+            // Organization
+            ctx.font = 'italic 28px Serif';
+            ctx.fillText('at ' + org, canvas.width/2, achY + 30);
+            
+            // Date and signature
+            ctx.font = '26px Serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Date: ' + date, 150, canvas.height - 150);
+            
+            ctx.textAlign = 'right';
+            ctx.fillText('Authorized by:', canvas.width - 150, canvas.height - 180);
+            ctx.font = 'italic bold 30px Serif';
+            ctx.fillText(signature, canvas.width - 150, canvas.height - 140);
+            
+            // Signature line
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width - 400, canvas.height - 130);
+            ctx.lineTo(canvas.width - 130, canvas.height - 130);
+            ctx.stroke();
+        }
+        
+        function generateCollage() {
+            const files = document.getElementById('collageImages').files;
+            const layout = document.getElementById('collageLayout').value;
+            const rounded = document.getElementById('collageRounded').checked;
+            
+            if (files.length === 0) {
+                alert('Please upload at least 2 images!');
+                return;
+            }
+            
+            const canvas = document.getElementById('collageCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1200;
+            canvas.height = 1200;
+            canvas.style.display = 'block';
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const images = [];
+            let loadedCount = 0;
+            
+            for (let i = 0; i < Math.min(files.length, 6); i++) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        images.push(img);
+                        loadedCount++;
+                        
+                        if (loadedCount === Math.min(files.length, 6)) {
+                            drawCollage(ctx, images, layout, canvas.width, canvas.height, rounded);
+                        }
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(files[i]);
+            }
+        }
+        
+        function drawCollage(ctx, images, layout, width, height, rounded) {
+            const gap = 10;
+            const radius = rounded ? 20 : 0;
+            
+            ctx.fillStyle = '#f1f5f9';
+            ctx.fillRect(0, 0, width, height);
+            
+            switch(layout) {
+                case 'grid2':
+                    drawRoundedImage(ctx, images[0], 0, 0, width/2 - gap/2, height, radius);
+                    if (images[1]) drawRoundedImage(ctx, images[1], width/2 + gap/2, 0, width/2 - gap/2, height, radius);
+                    break;
+                case 'grid3':
+                    drawRoundedImage(ctx, images[0], 0, 0, width/2 - gap/2, height/2 - gap/2, radius);
+                    if (images[1]) drawRoundedImage(ctx, images[1], width/2 + gap/2, 0, width/2 - gap/2, height/2 - gap/2, radius);
+                    if (images[2]) drawRoundedImage(ctx, images[2], 0, height/2 + gap/2, width, height/2 - gap/2, radius);
+                    break;
+                case 'grid4':
+                    const cellWidth = width/2 - gap/2;
+                    const cellHeight = height/2 - gap/2;
+                    drawRoundedImage(ctx, images[0], 0, 0, cellWidth, cellHeight, radius);
+                    if (images[1]) drawRoundedImage(ctx, images[1], width/2 + gap/2, 0, cellWidth, cellHeight, radius);
+                    if (images[2]) drawRoundedImage(ctx, images[2], 0, height/2 + gap/2, cellWidth, cellHeight, radius);
+                    if (images[3]) drawRoundedImage(ctx, images[3], width/2 + gap/2, height/2 + gap/2, cellWidth, cellHeight, radius);
+                    break;
+                case 'grid6':
+                    const w = width/3 - gap;
+                    const h = height/2 - gap/2;
+                    for (let i = 0; i < Math.min(images.length, 6); i++) {
+                        const x = (i % 3) * (w + gap);
+                        const y = Math.floor(i / 3) * (h + gap);
+                        drawRoundedImage(ctx, images[i], x, y, w, h, radius);
+                    }
+                    break;
+                case 'vertical':
+                    const vHeight = height / images.length;
+                    images.forEach((img, i) => {
+                        drawRoundedImage(ctx, img, 0, i * vHeight, width, vHeight - gap, radius);
+                    });
+                    break;
+                case 'horizontal':
+                    const hWidth = width / images.length;
+                    images.forEach((img, i) => {
+                        drawRoundedImage(ctx, img, i * hWidth, 0, hWidth - gap, height, radius);
+                    });
+                    break;
+            }
+        }
+        
+        function drawRoundedImage(ctx, img, x, y, w, h, radius) {
+            ctx.save();
+            ctx.beginPath();
+            if (radius > 0) {
+                ctx.moveTo(x + radius, y);
+                ctx.lineTo(x + w - radius, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+                ctx.lineTo(x + w, y + h - radius);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+                ctx.lineTo(x + radius, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+                ctx.lineTo(x, y + radius);
+                ctx.quadraticCurveTo(x, y, x + radius, y);
+            } else {
+                ctx.rect(x, y, w, h);
+            }
+            ctx.closePath();
+            ctx.clip();
+            
+            const scale = Math.max(w / img.width, h / img.height);
+            const scaledWidth = img.width * scale;
+            const scaledHeight = img.height * scale;
+            const offsetX = x + (w - scaledWidth) / 2;
+            const offsetY = y + (h - scaledHeight) / 2;
+            
+            ctx.drawImage(img, offsetX, offsetY, scaledWidth, scaledHeight);
+            ctx.restore();
+        }
+        
+        function generatePollGraphic() {
+            const question = document.getElementById('pollQuestion').value || 'Your Poll Question?';
+            const opt1 = document.getElementById('pollOption1').value || 'Option 1';
+            const opt2 = document.getElementById('pollOption2').value || 'Option 2';
+            const opt3 = document.getElementById('pollOption3').value || '';
+            const opt4 = document.getElementById('pollOption4').value || '';
+            const style = document.getElementById('pollStyle').value;
+            
+            const canvas = document.getElementById('pollCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1080;
+            canvas.height = 1350;
+            canvas.style.display = 'block';
+            
+            // Backgrounds
+            if (style === 'instagram') {
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, '#833ab4');
+                gradient.addColorStop(0.5, '#fd1d1d');
+                gradient.addColorStop(1, '#fcb045');
+                ctx.fillStyle = gradient;
+            } else if (style === 'twitter') {
+                ctx.fillStyle = '#1da1f2';
+            } else if (style === 'modern') {
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#667eea');
+                gradient.addColorStop(1, '#764ba2');
+                ctx.fillStyle = gradient;
+            } else {
+                ctx.fillStyle = '#ffffff';
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Question
+            ctx.fillStyle = style === 'minimal' ? '#0f172a' : '#ffffff';
+            ctx.font = 'bold 55px Arial';
+            ctx.textAlign = 'center';
+            const qLines = wrapText(ctx, question, canvas.width - 100);
+            let yPos = 200;
+            qLines.forEach(line => {
+                ctx.fillText(line, canvas.width/2, yPos);
+                yPos += 70;
+            });
+            
+            // Options
+            const options = [opt1, opt2, opt3, opt4].filter(o => o);
+            const optStartY = yPos + 100;
+            const optHeight = 100;
+            const optGap = 30;
+            
+            options.forEach((opt, i) => {
+                const y = optStartY + i * (optHeight + optGap);
+                
+                // Option box
+                ctx.fillStyle = style === 'minimal' ? '#f1f5f9' : 'rgba(255,255,255,0.2)';
+                ctx.fillRect(100, y, canvas.width - 200, optHeight);
+                
+                ctx.strokeStyle = style === 'minimal' ? '#cbd5e1' : 'rgba(255,255,255,0.4)';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(100, y, canvas.width - 200, optHeight);
+                
+                // Option text
+                ctx.fillStyle = style === 'minimal' ? '#0f172a' : '#ffffff';
+                ctx.font = '40px Arial';
+                ctx.textAlign = 'left';
+                ctx.fillText(opt, 140, y + 62);
+            });
+            
+            // CTA
+            ctx.font = 'italic 30px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = style === 'minimal' ? '#64748b' : 'rgba(255,255,255,0.8)';
+            ctx.fillText('Vote in comments! 👇', canvas.width/2, canvas.height - 100);
+        }
+        
+        function generateQuizGraphic() {
+            const title = document.getElementById('quizTitle').value || 'Quiz Title';
+            const q1 = document.getElementById('quizQuestion1').value || '';
+            const a1 = document.getElementById('quizAnswer1').value || '';
+            const q2 = document.getElementById('quizQuestion2').value || '';
+            const a2 = document.getElementById('quizAnswer2').value || '';
+            const q3 = document.getElementById('quizQuestion3').value || '';
+            const a3 = document.getElementById('quizAnswer3').value || '';
+            
+            const output = document.getElementById('quizOutput');
+            output.innerHTML = '';
+            
+            const questions = [
+                {q: q1, a: a1},
+                {q: q2, a: a2},
+                {q: q3, a: a3}
+            ].filter(item => item.q);
+            
+            questions.forEach((item, i) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 1080;
+                canvas.height = 1080;
+                canvas.style.maxWidth = '100%';
+                canvas.style.marginBottom = '20px';
+                canvas.style.borderRadius = '12px';
+                
+                const ctx = canvas.getContext('2d');
+                
+                // Gradient background
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                const colors = [
+                    ['#667eea', '#764ba2'],
+                    ['#f093fb', '#f5576c'],
+                    ['#4facfe', '#00f2fe']
+                ];
+                gradient.addColorStop(0, colors[i % 3][0]);
+                gradient.addColorStop(1, colors[i % 3][1]);
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Question number
+                ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                ctx.font = 'bold 200px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText((i + 1).toString(), canvas.width/2, 250);
+                
+                // Title
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 45px Arial';
+                ctx.fillText(title.toUpperCase(), canvas.width/2, 350);
+                
+                // Question
+                ctx.font = 'bold 50px Arial';
+                const qLines = wrapText(ctx, item.q, canvas.width - 150);
+                let qY = 480;
+                qLines.forEach(line => {
+                    ctx.fillText(line, canvas.width/2, qY);
+                    qY += 65;
+                });
+                
+                // Answer hint
+                ctx.font = 'italic 35px Arial';
+                ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                ctx.fillText('Answer: ' + item.a, canvas.width/2, canvas.height - 150);
+                
+                output.appendChild(canvas);
+            });
+            
+            if (questions.length === 0) {
+                output.innerHTML = '<p style="color:var(--gray);">Please fill in at least one question!</p>';
+            }
+        }
+        
+        function generateGridLayout() {
+            const files = document.getElementById('gridImages').files;
+            const size = parseInt(document.getElementById('gridSize').value);
+            const theme = document.getElementById('gridTheme').value;
+            
+            if (files.length === 0) {
+                alert('Please upload images first!');
+                return;
+            }
+            
+            const preview = document.getElementById('gridPreview');
+            preview.innerHTML = '';
+            
+            const container = document.createElement('div');
+            container.style.display = 'grid';
+            container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+            container.style.gap = '10px';
+            container.style.maxWidth = '800px';
+            container.style.margin = '0 auto';
+            container.style.background = '#1e293b';
+            container.style.padding = '20px';
+            container.style.borderRadius = '16px';
+            
+            const totalSlots = size * size;
+            
+            for (let i = 0; i < totalSlots; i++) {
+                const cell = document.createElement('div');
+                cell.style.aspectRatio = '1';
+                cell.style.background = '#334155';
+                cell.style.borderRadius = '4px';
+                cell.style.display = 'flex';
+                cell.style.alignItems = 'center';
+                cell.style.justifyContent = 'center';
+                cell.style.fontSize = '2rem';
+                cell.style.color = '#64748b';
+                
+                if (files[i]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        cell.style.background = `url(${e.target.result})`;
+                        cell.style.backgroundSize = 'cover';
+                        cell.style.backgroundPosition = 'center';
+                        cell.innerHTML = '';
+                    };
+                    reader.readAsDataURL(files[i]);
+                } else {
+                    cell.innerHTML = (i + 1).toString();
+                }
+                
+                container.appendChild(cell);
+            }
+            
+            preview.appendChild(container);
+            
+            const hint = document.createElement('p');
+            hint.style.textAlign = 'center';
+            hint.style.color = 'var(--gray)';
+            hint.style.marginTop = '20px';
+            hint.innerHTML = `Showing ${size}x${size} grid layout. Upload ${totalSlots} images for complete grid.`;
+            preview.appendChild(hint);
+        }
+        
+        function generateMockup() {
+            const file = document.getElementById('mockupImage').files[0];
+            const device = document.getElementById('mockupDevice').value;
+            const bg = document.getElementById('mockupBg').value;
+            
+            if (!file) {
+                alert('Please upload an image first!');
+                return;
+            }
+            
+            const canvas = document.getElementById('mockupCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1200;
+            canvas.height = 1200;
+            canvas.style.display = 'block';
+            
+            // Background
+            if (bg === 'gradient1') {
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#667eea');
+                gradient.addColorStop(1, '#764ba2');
+                ctx.fillStyle = gradient;
+            } else if (bg === 'gradient2') {
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#4facfe');
+                gradient.addColorStop(1, '#00f2fe');
+                ctx.fillStyle = gradient;
+            } else if (bg === 'gradient3') {
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#f093fb');
+                gradient.addColorStop(1, '#f5576c');
+                ctx.fillStyle = gradient;
+            } else if (bg === 'solid') {
+                ctx.fillStyle = '#0f172a';
+            } else {
+                ctx.fillStyle = '#ffffff';
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    // Device frame
+                    const frameConfigs = {
+                        iphone: {width: 400, height: 800, radius: 40, x: 400, y: 200},
+                        android: {width: 380, height: 760, radius: 30, x: 410, y: 220},
+                        macbook: {width: 900, height: 600, radius: 20, x: 150, y: 300},
+                        ipad: {width: 700, height: 900, radius: 30, x: 250, y: 150},
+                        desktop: {width: 1000, height: 650, radius: 10, x: 100, y: 275}
+                    };
+                    
+                    const config = frameConfigs[device];
+                    
+                    // Device shadow
+                    ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                    ctx.shadowBlur = 40;
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 20;
+                    
+                    // Device body
+                    ctx.fillStyle = '#1e293b';
+                    roundRect(ctx, config.x - 20, config.y - 20, config.width + 40, config.height + 40, config.radius + 10, true);
+                    
+                    ctx.shadowColor = 'transparent';
+                    
+                    // Screen
+                    ctx.save();
+                    ctx.beginPath();
+                    roundRect(ctx, config.x, config.y, config.width, config.height, config.radius, false);
+                    ctx.clip();
+                    
+                    const scale = Math.max(config.width / img.width, config.height / img.height);
+                    const scaledWidth = img.width * scale;
+                    const scaledHeight = img.height * scale;
+                    const offsetX = config.x + (config.width - scaledWidth) / 2;
+                    const offsetY = config.y + (config.height - scaledHeight) / 2;
+                    
+                    ctx.drawImage(img, offsetX, offsetY, scaledWidth, scaledHeight);
+                    ctx.restore();
+                    
+                    // Screen bezel
+                    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                    ctx.lineWidth = 2;
+                    roundRect(ctx, config.x, config.y, config.width, config.height, config.radius, false);
+                    ctx.stroke();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function generateBeforeAfter() {
+            const beforeFile = document.getElementById('beforeImage').files[0];
+            const afterFile = document.getElementById('afterImage').files[0];
+            const style = document.getElementById('sliderStyle').value;
+            
+            if (!beforeFile || !afterFile) {
+                alert('Please upload both before and after images!');
+                return;
+            }
+            
+            const canvas = document.getElementById('beforeAfterCanvas');
+            const ctx = canvas.getContext('2d');
+            const container = document.getElementById('beforeAfterContainer');
+            
+            canvas.width = 1200;
+            canvas.height = 800;
+            container.style.display = 'block';
+            
+            const beforeImg = new Image();
+            const afterImg = new Image();
+            let loadedCount = 0;
+            
+            const readerBefore = new FileReader();
+            readerBefore.onload = function(e) {
+                beforeImg.onload = function() {
+                    loadedCount++;
+                    if (loadedCount === 2) drawComparison(50);
+                };
+                beforeImg.src = e.target.result;
+            };
+            readerBefore.readAsDataURL(beforeFile);
+            
+            const readerAfter = new FileReader();
+            readerAfter.onload = function(e) {
+                afterImg.onload = function() {
+                    loadedCount++;
+                    if (loadedCount === 2) drawComparison(50);
+                };
+                afterImg.src = e.target.result;
+            };
+            readerAfter.readAsDataURL(afterFile);
+            
+            window.beforeAfterImages = {before: beforeImg, after: afterImg, style: style, canvas: canvas, ctx: ctx};
+        }
+        
+        function updateSlider(value) {
+            if (window.beforeAfterImages) {
+                drawComparison(value);
+            }
+        }
+        
+        function drawComparison(sliderValue) {
+            const {before, after, style, canvas, ctx} = window.beforeAfterImages;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (style === 'sideBySide') {
+                ctx.drawImage(before, 0, 0, canvas.width/2, canvas.height);
+                ctx.drawImage(after, canvas.width/2, 0, canvas.width/2, canvas.height);
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 40px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('BEFORE', canvas.width/4, 60);
+                ctx.fillText('AFTER', 3*canvas.width/4, 60);
+            } else if (style === 'vertical') {
+                const splitX = (sliderValue / 100) * canvas.width;
+                
+                ctx.drawImage(after, 0, 0, canvas.width, canvas.height);
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(0, 0, splitX, canvas.height);
+                ctx.clip();
+                ctx.drawImage(before, 0, 0, canvas.width, canvas.height);
+                ctx.restore();
+                
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(splitX, 0);
+                ctx.lineTo(splitX, canvas.height);
+                ctx.stroke();
+                
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(splitX, canvas.height/2, 30, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = '#000';
+                ctx.font = 'bold 20px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('◄►', splitX, canvas.height/2 + 7);
+            } else {
+                const splitY = (sliderValue / 100) * canvas.height;
+                
+                ctx.drawImage(after, 0, 0, canvas.width, canvas.height);
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(0, 0, canvas.width, splitY);
+                ctx.clip();
+                ctx.drawImage(before, 0, 0, canvas.width, canvas.height);
+                ctx.restore();
+                
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(0, splitY);
+                ctx.lineTo(canvas.width, splitY);
+                ctx.stroke();
+            }
+        }
+        
+        // Helper functions
+        function wrapText(ctx, text, maxWidth) {
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            
+            for (let word of words) {
+                const testLine = currentLine + word + ' ';
+                const metrics = ctx.measureText(testLine);
+                
+                if (metrics.width > maxWidth && currentLine !== '') {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine = testLine;
+                }
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+        
+        function roundRect(ctx, x, y, width, height, radius, fill) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            if (fill) ctx.fill();
         }
 
     </script>
