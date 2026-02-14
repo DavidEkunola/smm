@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -40,6 +40,225 @@
             color: var(--light);
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* Login Screen Styles */
+        #loginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #loginScreen.hidden {
+            display: none;
+        }
+
+        .login-container {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .login-subtitle {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.5rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            color: white;
+            letter-spacing: 0.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .pin-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .login-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .timer-display {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .timer-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .timer-time {
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .expired-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--danger);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .expired-message h3 {
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-options {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-option {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .payment-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .payment-duration {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .admin-link {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-link a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .admin-link a:hover {
+            color: var(--primary);
+        }
+
+        .admin-tab {
+            padding: 0.6rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .admin-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .admin-tab-content {
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Animated Gradient Background */
@@ -844,6 +1063,110 @@
     </style>
 </head>
 <body>
+
+    <!-- Login/Payment Screen -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <div class="login-logo">SMM Pro</div>
+            <div class="login-subtitle">Social Media Command Center</div>
+
+            <!-- Login State -->
+            <div id="loginState">
+                <div class="login-error" id="loginError"></div>
+                
+                <input 
+                    type="password" 
+                    class="pin-input" 
+                    id="pinInput" 
+                    placeholder="Enter PIN Code"
+                    maxlength="6"
+                    inputmode="numeric"
+                >
+                
+                <button class="login-btn" onclick="verifyPin()">🔓 Unlock Access</button>
+
+                <div class="admin-link">
+                    <a href="#" onclick="showAdminPanel(); return false;">🔐 Admin Access</a>
+                </div>
+            </div>
+
+            <!-- Timer State (shown when logged in) -->
+            <div id="timerState" style="display: none;">
+                <div class="timer-display">
+                    <div class="timer-label">⏰ Session Time Remaining</div>
+                    <div class="timer-time" id="timerDisplay">30:00</div>
+                </div>
+                <button class="login-btn" onclick="continueToApp()">Continue to App →</button>
+            </div>
+
+            <!-- Expired State -->
+            <div id="expiredState" style="display: none;">
+                <div class="expired-message">
+                    <h3>⏰ Session Expired</h3>
+                    <p>Your access time has ended. Purchase a new PIN to continue.</p>
+                </div>
+
+                <div class="payment-options">
+                    <div class="payment-option" onclick="selectPlan('week')">
+                        <div class="payment-price">₦15,000</div>
+                        <div class="payment-duration">7 Days Access</div>
+                    </div>
+                    <div class="payment-option" onclick="selectPlan('month')">
+                        <div class="payment-price">₦50,000</div>
+                        <div class="payment-duration">30 Days Access</div>
+                    </div>
+                </div>
+
+                <button class="login-btn" onclick="proceedToPayment()">💳 Proceed to Payment</button>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary);">🔐 Admin Control Center</h3>
+                
+                <input type="password" class="pin-input" id="adminPassword" placeholder="Admin Password" style="margin-bottom: 1rem;">
+                <button class="login-btn" onclick="unlockAdminMode()" id="unlockBtn">🔓 Unlock Admin Mode</button>
+
+                <div id="adminContent" style="display: none;">
+                    <div style="display: flex; gap: 0.5rem; margin: 1.5rem 0; overflow-x: auto;">
+                        <button class="admin-tab active" onclick="switchAdminTab('dashboard')">Dashboard</button>
+                        <button class="admin-tab" onclick="switchAdminTab('pins')">PIN Manager</button>
+                        <button class="admin-tab" onclick="switchAdminTab('users')">Users</button>
+                        <button class="admin-tab" onclick="switchAdminTab('stats')">Statistics</button>
+                        <button class="admin-tab" onclick="switchAdminTab('settings')">Settings</button>
+                    </div>
+
+                    <div id="admin-dashboard" class="admin-tab-content">
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); padding: 1rem; border-radius: 8px;"><div style="font-size: 0.8rem; color: var(--gray);">Total PINs</div><div style="font-size: 2rem; font-weight: 900; color: var(--primary);" id="totalPins">0</div></div>
+                            <div style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); padding: 1rem; border-radius: 8px;"><div style="font-size: 0.8rem; color: var(--gray);">Active Users</div><div style="font-size: 2rem; font-weight: 900; color: var(--success);" id="activeUsers">0</div></div>
+                            <div style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); padding: 1rem; border-radius: 8px;"><div style="font-size: 0.8rem; color: var(--gray);">Unused PINs</div><div style="font-size: 2rem; font-weight: 900; color: var(--warning);" id="unusedPins">0</div></div>
+                            <div style="background: rgba(236,72,153,0.1); border: 1px solid rgba(236,72,153,0.3); padding: 1rem; border-radius: 8px;"><div style="font-size: 0.8rem; color: var(--gray);">Revenue</div><div style="font-size: 2rem; font-weight: 900; color: var(--secondary);" id="totalRevenue">₦0</div></div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 8px;"><h4 style="margin-bottom: 1rem; color: var(--primary);">⚡ Quick Actions</h4><div style="display: grid; gap: 0.75rem;"><button onclick="switchAdminTab('pins')" style="padding: 0.75rem; background: var(--gradient); border: none; border-radius: 8px; color: white; cursor: pointer; font-weight: 600;">Generate New PIN</button><button onclick="viewAllUsers()" style="padding: 0.75rem; background: rgba(16,185,129,0.2); border: 1px solid var(--success); border-radius: 8px; color: var(--success); cursor: pointer; font-weight: 600;">View All Users</button><button onclick="exportData()" style="padding: 0.75rem; background: rgba(245,158,11,0.2); border: 1px solid var(--warning); border-radius: 8px; color: var(--warning); cursor: pointer; font-weight: 600;">Export Data</button></div></div>
+                    </div>
+
+                    <div id="admin-pins" class="admin-tab-content" style="display: none;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;"><h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 0.95rem;">📌 Generate Single PIN</h4><div style="text-align: left; background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;"><label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Duration:</label><select id="adminDuration" style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 8px; color: white; font-size: 1rem;"><option value="30min">30 Minutes</option><option value="week">1 Week (7 days)</option><option value="month">1 Month (30 days)</option></select></div><button class="login-btn" onclick="generateAdminPin()">Generate Single PIN</button><div id="generatedPin" style="display: none; background: rgba(16,185,129,0.1); border: 1px solid var(--success); padding: 1rem; border-radius: 8px; margin-top: 1rem;"><div style="font-size: 0.85rem; color: var(--success); margin-bottom: 0.5rem;">New PIN Generated:</div><div style="font-size: 1.8rem; font-weight: 900; color: var(--success); letter-spacing: 0.3rem;" id="newPinDisplay"></div><div style="font-size: 0.8rem; color: var(--gray); margin-top: 0.5rem;">Share this PIN with the user</div></div></div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;"><h4 style="color: var(--secondary); margin-bottom: 1rem; font-size: 0.95rem;">📦 Generate Bulk PINs</h4><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;"><div style="text-align: left;"><label style="display: block; margin-bottom: 0.5rem; font-size: 0.85rem;">Quantity:</label><input type="number" id="bulkQuantity" value="10" min="1" max="100" style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(236,72,153,0.3); border-radius: 8px; color: white; font-size: 1rem;"></div><div style="text-align: left;"><label style="display: block; margin-bottom: 0.5rem; font-size: 0.85rem;">Duration:</label><select id="bulkDuration" style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(236,72,153,0.3); border-radius: 8px; color: white; font-size: 1rem;"><option value="30min">30 Min</option><option value="week">1 Week</option><option value="month">1 Month</option></select></div></div><button class="login-btn" onclick="generateBulkPins()" style="background: var(--gradient-2);">Generate Bulk PINs</button><div id="bulkPinsList" style="display: none; margin-top: 1rem; max-height: 300px; overflow-y: auto;"><div style="background: rgba(236,72,153,0.1); border: 1px solid var(--secondary); padding: 1rem; border-radius: 8px;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;"><div style="font-size: 0.85rem; color: var(--secondary);">Generated PINs:</div><button onclick="copyAllPins()" style="padding: 0.4rem 0.8rem; background: var(--secondary); border: none; border-radius: 6px; color: white; cursor: pointer; font-size: 0.8rem;">📋 Copy All</button></div><div id="bulkPinsContent" style="font-family: monospace; font-size: 0.9rem; line-height: 1.8; color: white;"></div></div></div></div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;"><h4 style="color: var(--warning); font-size: 0.95rem;">📋 Unused PINs</h4><button onclick="refreshUnusedPins()" style="padding: 0.4rem 0.8rem; background: rgba(245,158,11,0.2); border: 1px solid var(--warning); border-radius: 6px; color: var(--warning); cursor: pointer; font-size: 0.75rem;">🔄 Refresh</button></div><div id="unusedPinsList" style="max-height: 250px; overflow-y: auto;"><div style="text-align: center; padding: 2rem; color: var(--gray); font-size: 0.85rem;">No unused PINs yet. Generate some above.</div></div></div>
+                        <div style="background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.3); padding: 1rem; border-radius: 8px;"><h4 style="color: var(--danger); margin-bottom: 0.75rem; font-size: 0.9rem;">🗑️ Delete PIN</h4><div style="display: flex; gap: 0.5rem;"><input type="text" id="deletePinInput" placeholder="Enter PIN to delete" style="flex: 1; padding: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; color: white;"><button onclick="deletePin()" style="padding: 0.75rem 1.5rem; background: var(--danger); border: none; border-radius: 8px; color: white; cursor: pointer; font-weight: 700;">Delete</button></div></div>
+                    </div>
+
+                    <div id="admin-users" class="admin-tab-content" style="display: none;"><div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;"><h4 style="color: var(--primary); font-size: 0.95rem;">👥 Active Users</h4><button onclick="refreshUserList()" style="padding: 0.4rem 0.8rem; background: rgba(99,102,241,0.2); border: 1px solid var(--primary); border-radius: 6px; color: var(--primary); cursor: pointer; font-size: 0.75rem;">🔄 Refresh</button></div><div id="usersList" style="max-height: 400px; overflow-y: auto;"><div style="text-align: center; padding: 2rem; color: var(--gray); font-size: 0.85rem;">Loading users...</div></div></div></div>
+
+                    <div id="admin-stats" class="admin-tab-content" style="display: none;"><div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;"><h4 style="color: var(--primary); margin-bottom: 1rem;">📊 Usage Statistics</h4><div style="display: grid; gap: 1rem;"><div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;"><div style="font-size: 0.85rem; color: var(--gray); margin-bottom: 0.5rem;">PINs by Duration</div><div id="pinsByDuration" style="font-size: 0.9rem;"><div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;"><span>30 Minutes:</span><span id="count30min">0</span></div><div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;"><span>1 Week:</span><span id="countWeek">0</span></div><div style="display: flex; justify-content: space-between;"><span>1 Month:</span><span id="countMonth">0</span></div></div></div><div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;"><div style="font-size: 0.85rem; color: var(--gray); margin-bottom: 0.5rem;">Revenue Breakdown</div><div id="revenueBreakdown" style="font-size: 0.9rem;"><div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;"><span>30 Min (Free):</span><span>₦0</span></div><div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;"><span>1 Week (₦15k):</span><span id="revenueWeek">₦0</span></div><div style="display: flex; justify-content: space-between;"><span>1 Month (₦50k):</span><span id="revenueMonth">₦0</span></div></div></div><div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;"><div style="font-size: 0.85rem; color: var(--gray); margin-bottom: 0.5rem;">PIN Status</div><div id="pinStatus" style="font-size: 0.9rem;"><div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;"><span>Total Generated:</span><span id="totalGenerated">0</span></div><div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;"><span>Currently Active:</span><span id="currentlyActive">0</span></div><div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;"><span>Used:</span><span id="usedCount">0</span></div><div style="display: flex; justify-content: space-between;"><span>Expired:</span><span id="expiredCount">0</span></div></div></div></div></div><button onclick="updateStatistics()" class="login-btn">🔄 Refresh Statistics</button></div>
+
+                    <div id="admin-settings" class="admin-tab-content" style="display: none;"><div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;"><h4 style="color: var(--primary); margin-bottom: 1rem;">⚙️ System Settings</h4><div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;"><label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Change Admin Password:</label><input type="password" id="newAdminPassword" placeholder="New Password" style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 8px; color: white; margin-bottom: 0.5rem;"><button onclick="changeAdminPassword()" style="width: 100%; padding: 0.75rem; background: var(--primary); border: none; border-radius: 8px; color: white; cursor: pointer; font-weight: 600;">Update Password</button></div><div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;"><label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Pricing (Naira):</label><div style="display: grid; gap: 0.5rem;"><div style="display: flex; gap: 0.5rem; align-items: center;"><span style="flex: 1; font-size: 0.85rem;">1 Week:</span><input type="number" id="priceWeek" value="15000" style="flex: 2; padding: 0.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; color: white;"></div><div style="display: flex; gap: 0.5rem; align-items: center;"><span style="flex: 1; font-size: 0.85rem;">1 Month:</span><input type="number" id="priceMonth" value="50000" style="flex: 2; padding: 0.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; color: white;"></div></div><button onclick="updatePricing()" style="width: 100%; padding: 0.75rem; background: var(--primary); border: none; border-radius: 8px; color: white; cursor: pointer; font-weight: 600; margin-top: 0.75rem;">Save Pricing</button></div><div style="background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.3); padding: 1rem; border-radius: 8px;"><h4 style="color: var(--danger); margin-bottom: 0.75rem; font-size: 0.9rem;">⚠️ Danger Zone</h4><button onclick="clearAllData()" style="width: 100%; padding: 0.75rem; background: var(--danger); border: none; border-radius: 8px; color: white; cursor: pointer; font-weight: 700;">Clear All Data</button><div style="font-size: 0.75rem; color: var(--gray); margin-top: 0.5rem; text-align: center;">This will delete all PINs and users</div></div></div></div>
+                </div>
+
+                <button class="btn btn-secondary" onclick="showLoginState()" style="width: 100%; margin-top: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.1); border: none; border-radius: 8px; color: white; cursor: pointer;">← Back to Login</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main App Content -->
     <!-- Header -->
     <div class="header">
         <div class="header-content">
@@ -869,6 +1192,7 @@
                     <button class="header-nav-btn" onclick="showSection('monetize')">💰 Monetize</button>
                     <button class="header-nav-btn" onclick="showSection('education')">🎓 Learn</button>
                     <button class="header-nav-btn" onclick="showSection('future-features')">🚀 Coming</button>
+                    <button class="header-nav-btn" onclick="openAdminPanel()" style="background: rgba(236,72,153,0.2); border-color: var(--secondary);">🔐 Admin</button>
                 </div>
             </div>
             <div class="header-stats">
@@ -1134,6 +1458,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
 
         <!-- AI PROMPTS SECTION -->
@@ -1804,6 +2130,8 @@
                     <button class="btn btn-success mt-1" onclick="copyOutputText('customPromptText')">📋 Copy Prompt</button>
                 </div>
             </div>
+
+
         </div>
 
         <!-- CONTENT STUDIO SECTION -->
@@ -2060,6 +2388,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
 
         <!-- HASHTAGS SECTION -->
@@ -2135,71 +2465,7 @@
                 </table>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- BIO GENERATOR SECTION -->
@@ -2257,71 +2523,7 @@
                 </ul>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- ANALYTICS SECTION -->
@@ -2716,71 +2918,7 @@
                 </div>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- ENGAGEMENT SECTION -->
@@ -2897,71 +3035,7 @@
                 </div>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- SCHEDULER SECTION -->
@@ -3049,71 +3123,7 @@
                 <button class="btn btn-success" onclick="saveCalendar()">💾 Save Calendar</button>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- IDEAS SECTION -->
@@ -3183,71 +3193,7 @@
                 </div>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- MONETIZATION SECTION -->
@@ -3518,71 +3464,7 @@
                 </table>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- PSYCHOLOGY & PERSUASION SECTION -->
@@ -3703,71 +3585,7 @@
                 </div>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- TOOLS SECTION -->
@@ -3886,68 +3704,8 @@
             </div>
 
             <div class="card">
-                <div class="card-title">⚡ Productivity Hacks</div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
             </div>
         </div>
 
@@ -4329,6 +4087,8 @@
                     <canvas id="highlightCanvas" width="1080" height="1920"></canvas>
                 </div>
             </div>
+
+
         </div>
 
         <!-- 🎯 HASHTAG & SEO MASTERY -->
@@ -4564,71 +4324,7 @@
                 </div>
             </div>
 
-            <!-- Productivity Footer -->
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-title">⚡ Productivity Hacks</div>
 
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Batch Content Creation</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="mb-1"><strong>The Sunday Power Hour:</strong></p>
-                            <ul class="list">
-                                <li class="list-item">Pick 7 content ideas</li>
-                                <li class="list-item">Write all captions</li>
-                                <li class="list-item">Film all videos</li>
-                                <li class="list-item">Edit everything</li>
-                                <li class="list-item">Schedule for the week</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>15-Minute Daily Routine</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1"><strong>Min 1-5:</strong> Reply to all comments</p>
-                            <p class="text-sm mb-1"><strong>Min 6-10:</strong> Engage with big accounts (10 posts)</p>
-                            <p class="text-sm mb-1"><strong>Min 11-15:</strong> Engage with target audience (10 posts)</p>
-                            <p class="mt-1 text-sm">Do 2x daily = massive growth!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Content Swipe File</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            <p class="text-sm mb-1">1. Create Collections by topic</p>
-                            <p class="text-sm mb-1">2. Save high-performing posts</p>
-                            <p class="text-sm mb-1">3. Screenshot hooks & CTAs</p>
-                            <p class="text-sm mb-1">4. Keep Google Doc of templates</p>
-                            <p class="text-sm mb-1">5. Note what works for YOUR audience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🚀 Quick Wins Checklist</div>
-                <ul class="list">
-                    <li class="list-item">Optimize bio with clear CTA</li>
-                    <li class="list-item">Create 3 highlight covers</li>
-                    <li class="list-item">Plan tomorrow's post</li>
-                    <li class="list-item">Engage 15 minutes today</li>
-                    <li class="list-item">Save 10 content ideas</li>
-                </ul>
-            </div>
         </div>
 
         <!-- 🚀 FUTURE-READY FEATURES -->
@@ -4806,6 +4502,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
 
         <!-- 🎓 EDUCATION & INSIGHTS -->
@@ -5160,11 +4858,759 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
 
 </div>
 
     <script>
+        // ============================================
+        // SECURITY LAYER - ANTI-THEFT PROTECTION
+        // ============================================
+        
+        // Domain Lock - Only works on authorized domains
+        (function() {
+            const authorizedDomains = [
+                'localhost',
+                '127.0.0.1',
+                'socialmarkertertool.netlify.app',  // REPLACE WITH YOUR ACTUAL DOMAIN
+                'www.socialmarkertertool.netlify.app'  // REPLACE WITH YOUR ACTUAL DOMAIN
+            ];
+            
+            const currentDomain = window.location.hostname;
+            
+            if (!authorizedDomains.includes(currentDomain)) {
+                document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-size:2rem;color:red;">⛔ UNAUTHORIZED ACCESS - This software is licensed</div>';
+                throw new Error('Unauthorized domain');
+            }
+        })();
+
+        // Disable Right-Click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Disable Developer Tools Shortcuts
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+S (Save)
+            if (e.ctrlKey && e.keyCode === 83) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // DevTools Detection
+        (function() {
+            const devtools = { open: false };
+            const threshold = 160;
+            
+            setInterval(function() {
+                if (window.outerWidth - window.innerWidth > threshold || 
+                    window.outerHeight - window.innerHeight > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        alert('⚠️ Developer Tools Detected! Access will be terminated.');
+                        window.location.href = 'about:blank';
+                    }
+                }
+            }, 500);
+        })();
+
+        // Console Protection
+        (function() {
+            const originalLog = console.log;
+            console.log = function() {
+                // Silently do nothing
+            };
+            console.clear();
+        })();
+
+        // ============================================
+        // AUTHENTICATION & PAYMENT SYSTEM
+        // ============================================
+        
+        const ADMIN_PASSWORD = 'SMM2026ADMIN'; // Change this to your secure password
+        const ENCRYPTED_ADMIN_KEY = btoa('SMM2026ADMIN'); // Base64 encrypted
+        const OPAY_ACCOUNT = '8129737275';
+        let selectedPaymentPlan = 'week';
+        let sessionTimer = null;
+        let remainingSeconds = 0;
+
+        // Verify admin password with encryption
+        function checkAdminPassword(input) {
+            return btoa(input) === ENCRYPTED_ADMIN_KEY || input === ADMIN_PASSWORD;
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+        });
+
+        function checkAuthentication() {
+            const authData = getAuthData();
+            
+            if (!authData) {
+                showLoginState();
+                return;
+            }
+
+            const now = Date.now();
+            const expiryTime = authData.expiryTime;
+
+            if (now >= expiryTime) {
+                showExpiredState();
+                return;
+            }
+
+            // Calculate remaining time in seconds
+            remainingSeconds = Math.floor((expiryTime - now) / 1000);
+            showTimerState();
+        }
+
+        function verifyPin() {
+            const pin = document.getElementById('pinInput').value.trim();
+            
+            if (!pin) {
+                showError('Please enter your PIN code');
+                return;
+            }
+
+            // First check current auth data
+            let authData = getAuthData();
+            
+            // If no auth data or expired, check unused PINs
+            if (!authData || authData.pin !== pin) {
+                const unusedPins = getUnusedPins();
+                const matchingPin = unusedPins.find(p => p.pin === pin && !p.used);
+                
+                if (matchingPin) {
+                    const now = Date.now();
+                    
+                    if (now >= matchingPin.expiryTime) {
+                        showError('This PIN has expired. Please contact admin.');
+                        return;
+                    }
+                    
+                    // Activate this PIN
+                    authData = {
+                        pin: matchingPin.pin,
+                        expiryTime: matchingPin.expiryTime,
+                        createdAt: matchingPin.createdAt
+                    };
+                    
+                    localStorage.setItem('smm_auth', JSON.stringify(authData));
+                    markPinAsUsed(pin);
+                    
+                    remainingSeconds = Math.floor((authData.expiryTime - now) / 1000);
+                    showTimerState();
+                    return;
+                } else {
+                    showError('Invalid PIN code. Please try again.');
+                    return;
+                }
+            }
+
+            const now = Date.now();
+            if (now >= authData.expiryTime) {
+                showExpiredState();
+                return;
+            }
+
+            // Valid PIN and not expired
+            remainingSeconds = Math.floor((authData.expiryTime - now) / 1000);
+            showTimerState();
+        }
+
+        function showError(message) {
+            const errorEl = document.getElementById('loginError');
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+            setTimeout(() => errorEl.classList.remove('show'), 3000);
+        }
+
+        function showLoginState() {
+            document.getElementById('loginState').style.display = 'block';
+            document.getElementById('timerState').style.display = 'none';
+            document.getElementById('expiredState').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function showTimerState() {
+            document.getElementById('loginState').style.display = 'none';
+            document.getElementById('timerState').style.display = 'block';
+            document.getElementById('expiredState').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            
+            startTimer();
+        }
+
+        function showExpiredState() {
+            document.getElementById('loginState').style.display = 'none';
+            document.getElementById('timerState').style.display = 'none';
+            document.getElementById('expiredState').style.display = 'block';
+            document.getElementById('adminPanel').style.display = 'none';
+            
+            clearInterval(sessionTimer);
+        }
+
+        function showAdminPanel() {
+            document.getElementById('loginState').style.display = 'none';
+            document.getElementById('timerState').style.display = 'none';
+            document.getElementById('expiredState').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        function startTimer() {
+            clearInterval(sessionTimer);
+            
+            updateTimerDisplay();
+            
+            sessionTimer = setInterval(() => {
+                remainingSeconds--;
+                
+                if (remainingSeconds <= 0) {
+                    clearInterval(sessionTimer);
+                    showExpiredState();
+                    return;
+                }
+                
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(remainingSeconds / 60);
+            const seconds = remainingSeconds % 60;
+            const display = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('timerDisplay').textContent = display;
+        }
+
+        function continueToApp() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            // Timer continues running in background
+        }
+
+        function selectPlan(plan) {
+            selectedPaymentPlan = plan;
+            document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
+            event.target.closest('.payment-option').classList.add('selected');
+        }
+
+        function proceedToPayment() {
+            const amount = selectedPaymentPlan === 'week' ? 15000 : 50000;
+            const duration = selectedPaymentPlan === 'week' ? '1 Week' : '1 Month';
+            
+            // Paystack payment integration (most popular in Nigeria)
+            const paystackKey = 'pk_test_xxxxxxxxxxxx'; // Replace with your Paystack public key
+            
+            const handler = PaystackPop.setup({
+                key: paystackKey,
+                email: 'user@example.com',
+                amount: amount * 100, // Amount in kobo
+                currency: 'NGN',
+                ref: 'SMM_' + Math.floor((Math.random() * 1000000000) + 1),
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "Duration",
+                            variable_name: "duration",
+                            value: duration
+                        }
+                    ]
+                },
+                callback: function(response) {
+                    // Payment successful
+                    verifyPaymentAndGeneratePin(response.reference, selectedPaymentPlan);
+                },
+                onClose: function() {
+                    alert('Payment cancelled');
+                }
+            });
+            
+            handler.openIframe();
+        }
+
+        function verifyPaymentAndGeneratePin(reference, duration) {
+            // In production, verify payment on backend
+            // For now, generate PIN immediately
+            const pin = generateRandomPin();
+            const days = duration === 'week' ? 7 : 30;
+            
+            saveAuthData(pin, days);
+            
+            // Show success message with PIN
+            alert(`Payment Successful!\\n\\nYour PIN: ${pin}\\n\\nValid for ${days} days\\n\\nPlease save this PIN to access the app.`);
+            
+            // Reload to use new PIN
+            location.reload();
+        }
+
+        function generateRandomPin() {
+            return Math.floor(100000 + Math.random() * 900000).toString();
+        }
+
+        // Admin Functions
+        function generateAdminPin() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (!checkAdminPassword(password)) {
+                alert('Invalid admin password!');
+                return;
+            }
+
+            const duration = document.getElementById('adminDuration').value;
+            const pin = generateRandomPin();
+            let days;
+            
+            if (duration === '30min') {
+                days = 30 / (24 * 60);
+            } else if (duration === 'week') {
+                days = 7;
+            } else {
+                days = 30;
+            }
+            
+            saveAuthData(pin, days);
+            
+            const durationText = duration === '30min' ? '30 minutes' : duration === 'week' ? '7 days' : '30 days';
+            document.getElementById('newPinDisplay').textContent = pin;
+            document.getElementById('generatedPin').style.display = 'block';
+            
+            const durationInfo = document.querySelector('#generatedPin .text-sm.color-gray');
+            if (durationInfo) {
+                durationInfo.textContent = `Valid for ${durationText} - Share this PIN with the user`;
+            }
+            
+            navigator.clipboard.writeText(pin).then(() => {
+                console.log('PIN copied to clipboard');
+            });
+        }
+
+        function generateBulkPins() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (!checkAdminPassword(password)) {
+                alert('Please enter admin password first!');
+                return;
+            }
+
+            const quantity = parseInt(document.getElementById('bulkQuantity').value);
+            const duration = document.getElementById('bulkDuration').value;
+            
+            if (quantity < 1 || quantity > 100) {
+                alert('Quantity must be between 1 and 100');
+                return;
+            }
+
+            let days;
+            let durationText;
+            
+            if (duration === '30min') {
+                days = 30 / (24 * 60);
+                durationText = '30min';
+            } else if (duration === 'week') {
+                days = 7;
+                durationText = '1week';
+            } else {
+                days = 30;
+                durationText = '1month';
+            }
+
+            const pins = [];
+            const now = Date.now();
+            const expiryTime = now + (days * 24 * 60 * 60 * 1000);
+
+            for (let i = 0; i < quantity; i++) {
+                const pin = generateRandomPin();
+                pins.push({
+                    pin: pin,
+                    duration: durationText,
+                    expiryTime: expiryTime,
+                    createdAt: now,
+                    used: false
+                });
+            }
+
+            // Save to localStorage
+            saveUnusedPins(pins);
+
+            // Display the PINs
+            let html = '<div style="display: grid; gap: 0.5rem;">';
+            pins.forEach((p, i) => {
+                html += `<div style="display: flex; justify-content: space-between; padding: 0.5rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                    <span>${i + 1}. <strong>${p.pin}</strong></span>
+                    <span style="color: var(--secondary); font-size: 0.85rem;">${durationText}</span>
+                </div>`;
+            });
+            html += '</div>';
+
+            document.getElementById('bulkPinsContent').innerHTML = html;
+            document.getElementById('bulkPinsList').style.display = 'block';
+
+            // Refresh unused PINs list
+            refreshUnusedPins();
+        }
+
+        function copyAllPins() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (!checkAdminPassword(password)) {
+                alert('Please enter admin password first!');
+                return;
+            }
+
+            const content = document.getElementById('bulkPinsContent').textContent;
+            const pins = content.match(/\d{6}/g);
+            
+            if (pins) {
+                const pinList = pins.join('\n');
+                navigator.clipboard.writeText(pinList).then(() => {
+                    alert('All PINs copied to clipboard!');
+                });
+            }
+        }
+
+        function saveUnusedPins(newPins) {
+            const existing = getUnusedPins();
+            const combined = [...existing, ...newPins];
+            localStorage.setItem('smm_unused_pins', JSON.stringify(combined));
+        }
+
+        function getUnusedPins() {
+            const data = localStorage.getItem('smm_unused_pins');
+            return data ? JSON.parse(data) : [];
+        }
+
+        function markPinAsUsed(pin) {
+            const pins = getUnusedPins();
+            const updated = pins.map(p => {
+                if (p.pin === pin) {
+                    return { ...p, used: true };
+                }
+                return p;
+            });
+            localStorage.setItem('smm_unused_pins', JSON.stringify(updated));
+        }
+
+        function refreshUnusedPins() {
+            const pins = getUnusedPins();
+            const unused = pins.filter(p => !p.used);
+            const now = Date.now();
+            
+            // Filter out expired PINs
+            const valid = unused.filter(p => p.expiryTime > now);
+
+            const container = document.getElementById('unusedPinsList');
+            
+            if (valid.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--gray); font-size: 0.85rem;">No unused PINs yet. Generate some above.</div>';
+                return;
+            }
+
+            let html = '<div style="display: grid; gap: 0.5rem;">';
+            valid.forEach((p, i) => {
+                const timeLeft = Math.floor((p.expiryTime - now) / (1000 * 60 * 60 * 24));
+                html += `<div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); border-radius: 8px;">
+                    <div>
+                        <div style="font-size: 1.2rem; font-weight: 900; color: var(--warning); letter-spacing: 0.2rem;">${p.pin}</div>
+                        <div style="font-size: 0.75rem; color: var(--gray); margin-top: 0.25rem;">${p.duration} • ${timeLeft}d left</div>
+                    </div>
+                    <button onclick="copyPin('${p.pin}')" style="padding: 0.4rem 0.8rem; background: var(--warning); border: none; border-radius: 6px; color: var(--dark); cursor: pointer; font-size: 0.75rem; font-weight: 700;">Copy</button>
+                </div>`;
+            });
+            html += '</div>';
+
+            container.innerHTML = html;
+        }
+
+        function copyPin(pin) {
+            navigator.clipboard.writeText(pin).then(() => {
+                alert(`PIN ${pin} copied!`);
+            });
+        }
+
+        let adminUnlocked = false;
+
+        function unlockAdminMode() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (!checkAdminPassword(password)) {
+                alert('Invalid admin password!');
+                return;
+            }
+
+            adminUnlocked = true;
+            document.getElementById('unlockBtn').style.display = 'none';
+            document.getElementById('adminPassword').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+            
+            updateDashboard();
+            updateStatistics();
+            refreshUserList();
+        }
+
+        function switchAdminTab(tab) {
+            document.querySelectorAll('.admin-tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.admin-tab').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('admin-' + tab).style.display = 'block';
+            event.target.classList.add('active');
+            
+            if (tab === 'dashboard') updateDashboard();
+            if (tab === 'stats') updateStatistics();
+            if (tab === 'users') refreshUserList();
+            if (tab === 'pins') refreshUnusedPins();
+        }
+
+        function updateDashboard() {
+            const pins = getUnusedPins();
+            const unused = pins.filter(p => !p.used);
+            const now = Date.now();
+            const valid = unused.filter(p => p.expiryTime > now);
+            
+            const authData = getAuthData();
+            const activeUsers = authData && authData.expiryTime > now ? 1 : 0;
+            
+            const usedPins = pins.filter(p => p.used);
+            let revenue = 0;
+            usedPins.forEach(p => {
+                if (p.duration === '1week') revenue += 15000;
+                if (p.duration === '1month') revenue += 50000;
+            });
+            
+            document.getElementById('totalPins').textContent = pins.length;
+            document.getElementById('activeUsers').textContent = activeUsers;
+            document.getElementById('unusedPins').textContent = valid.length;
+            document.getElementById('totalRevenue').textContent = '₦' + revenue.toLocaleString();
+        }
+
+        function updateStatistics() {
+            const pins = getUnusedPins();
+            const now = Date.now();
+            
+            const count30min = pins.filter(p => p.duration === '30min').length;
+            const countWeek = pins.filter(p => p.duration === '1week').length;
+            const countMonth = pins.filter(p => p.duration === '1month').length;
+            
+            document.getElementById('count30min').textContent = count30min;
+            document.getElementById('countWeek').textContent = countWeek;
+            document.getElementById('countMonth').textContent = countMonth;
+            
+            const usedWeek = pins.filter(p => p.used && p.duration === '1week').length;
+            const usedMonth = pins.filter(p => p.used && p.duration === '1month').length;
+            
+            document.getElementById('revenueWeek').textContent = '₦' + (usedWeek * 15000).toLocaleString();
+            document.getElementById('revenueMonth').textContent = '₦' + (usedMonth * 50000).toLocaleString();
+            
+            const used = pins.filter(p => p.used).length;
+            const expired = pins.filter(p => p.expiryTime < now).length;
+            const active = pins.filter(p => !p.used && p.expiryTime > now).length;
+            
+            document.getElementById('totalGenerated').textContent = pins.length;
+            document.getElementById('currentlyActive').textContent = active;
+            document.getElementById('usedCount').textContent = used;
+            document.getElementById('expiredCount').textContent = expired;
+        }
+
+        function refreshUserList() {
+            const pins = getUnusedPins();
+            const now = Date.now();
+            const usedPins = pins.filter(p => p.used && p.expiryTime > now);
+            
+            const container = document.getElementById('usersList');
+            
+            if (usedPins.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--gray); font-size: 0.85rem;">No active users at the moment.</div>';
+                return;
+            }
+            
+            let html = '<div style="display: grid; gap: 0.75rem;">';
+            usedPins.forEach((p, i) => {
+                const timeLeft = Math.floor((p.expiryTime - now) / (1000 * 60 * 60 * 24));
+                const createdDate = new Date(p.createdAt).toLocaleDateString();
+                
+                html += `<div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); padding: 1rem; border-radius: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary);">User ${i + 1}</div>
+                            <div style="font-size: 0.85rem; color: var(--gray);">PIN: ${p.pin}</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.75rem; color: var(--success); background: rgba(16,185,129,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Active</div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.8rem;">
+                        <div><span style="color: var(--gray);">Duration:</span> ${p.duration}</div>
+                        <div><span style="color: var(--gray);">Time Left:</span> ${timeLeft}d</div>
+                        <div><span style="color: var(--gray);">Created:</span> ${createdDate}</div>
+                    </div>
+                </div>`;
+            });
+            html += '</div>';
+            
+            container.innerHTML = html;
+        }
+
+        function viewAllUsers() {
+            switchAdminTab('users');
+        }
+
+        function exportData() {
+            const pins = getUnusedPins();
+            const authData = getAuthData();
+            
+            const data = {
+                pins: pins,
+                currentAuth: authData,
+                exportDate: new Date().toISOString(),
+                stats: {
+                    total: pins.length,
+                    used: pins.filter(p => p.used).length,
+                    unused: pins.filter(p => !p.used).length,
+                    expired: pins.filter(p => p.expiryTime < Date.now()).length
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `smm-pro-data-${Date.now()}.json`;
+            a.click();
+            
+            alert('Data exported successfully!');
+        }
+
+        function deletePin() {
+            const pinToDelete = document.getElementById('deletePinInput').value.trim();
+            
+            if (!pinToDelete) {
+                alert('Please enter a PIN to delete');
+                return;
+            }
+            
+            if (!confirm(`Are you sure you want to delete PIN: ${pinToDelete}?`)) {
+                return;
+            }
+            
+            let pins = getUnusedPins();
+            const originalLength = pins.length;
+            pins = pins.filter(p => p.pin !== pinToDelete);
+            
+            if (pins.length === originalLength) {
+                alert('PIN not found');
+                return;
+            }
+            
+            localStorage.setItem('smm_unused_pins', JSON.stringify(pins));
+            
+            const authData = getAuthData();
+            if (authData && authData.pin === pinToDelete) {
+                localStorage.removeItem('smm_auth');
+            }
+            
+            document.getElementById('deletePinInput').value = '';
+            alert('PIN deleted successfully!');
+            refreshUnusedPins();
+            updateDashboard();
+        }
+
+        function changeAdminPassword() {
+            const newPassword = document.getElementById('newAdminPassword').value;
+            
+            if (!newPassword || newPassword.length < 6) {
+                alert('Password must be at least 6 characters');
+                return;
+            }
+            
+            if (!confirm('Change admin password? You will need to update it in the code.')) {
+                return;
+            }
+            
+            alert(`New password: ${newPassword}\n\nIMPORTANT: Update this in the code:\nconst ADMIN_PASSWORD = '${newPassword}';`);
+            
+            document.getElementById('newAdminPassword').value = '';
+        }
+
+        function updatePricing() {
+            const weekPrice = document.getElementById('priceWeek').value;
+            const monthPrice = document.getElementById('priceMonth').value;
+            
+            localStorage.setItem('smm_pricing', JSON.stringify({
+                week: parseInt(weekPrice),
+                month: parseInt(monthPrice)
+            }));
+            
+            alert('Pricing updated! This will apply to new purchases.');
+        }
+
+        function getPricing() {
+            const data = localStorage.getItem('smm_pricing');
+            return data ? JSON.parse(data) : { week: 15000, month: 50000 };
+        }
+
+        function clearAllData() {
+            if (!confirm('⚠️ WARNING: This will delete ALL data including PINs and users. Are you ABSOLUTELY sure?')) {
+                return;
+            }
+            
+            if (!confirm('This action cannot be undone. Continue?')) {
+                return;
+            }
+            
+            localStorage.removeItem('smm_unused_pins');
+            localStorage.removeItem('smm_auth');
+            localStorage.removeItem('smm_pricing');
+            
+            alert('All data cleared!');
+            location.reload();
+        }
+
+        function openAdminPanel() {
+            document.getElementById('loginScreen').classList.remove('hidden');
+            showAdminPanel();
+        }
+
+        function saveAuthData(pin, days) {
+            const now = Date.now();
+            const expiryTime = now + (days * 24 * 60 * 60 * 1000);
+            
+            const authData = {
+                pin: pin,
+                expiryTime: expiryTime,
+                createdAt: now
+            };
+            
+            localStorage.setItem('smm_auth', JSON.stringify(authData));
+        }
+
+        function getAuthData() {
+            const data = localStorage.getItem('smm_auth');
+            return data ? JSON.parse(data) : null;
+        }
+
         // Global Variables
         let selectedCaptionStyle = 'hook';
         let selectedCaptionLength = 'short';
@@ -12484,5 +12930,312 @@ Will attract haters - be ready to back up claims!`
 
     </script>
 </body>
+
+<!-- 
+═══════════════════════════════════════════════════════════════════════════════
+SMM PRO - SOCIAL MEDIA COMMAND CENTER
+COPYRIGHT © 2026 ALL RIGHTS RESERVED
+
+PROPRIETARY AND CONFIDENTIAL SOFTWARE
+This source code is the exclusive property of the license holder.
+
+UNAUTHORIZED USE STRICTLY PROHIBITED:
+• Copying, modification, or distribution without written permission is illegal
+• Reverse engineering or decompilation is prohibited
+• Use is restricted to authorized domains only
+• Violators will be prosecuted under copyright law
+
+For licensing inquiries or to report unauthorized use:
+Contact: [Your Email/Contact]
+
+PROTECTED BY: Domain Lock • DevTools Detection • Encryption • License Agreement
+═══════════════════════════════════════════════════════════════════════════════
+-->
+
 </html>
 
+// ============================================
+// COMPREHENSIVE ADMIN MODE - ADD TO MAIN FILE
+// ============================================
+
+// Add these CSS styles to the <style> section:
+/*
+.admin-tab {
+    padding: 0.6rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.admin-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.admin-tab-content {
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+*/
+
+// Add these JavaScript functions after existing admin functions:
+
+let adminUnlocked = false;
+
+function unlockAdminMode() {
+    const password = document.getElementById('adminPassword').value;
+    
+    if (password !== ADMIN_PASSWORD) {
+        alert('Invalid admin password!');
+        return;
+    }
+
+    adminUnlocked = true;
+    document.getElementById('unlockBtn').style.display = 'none';
+    document.getElementById('adminPassword').style.display = 'none';
+    document.getElementById('adminContent').style.display = 'block';
+    
+    // Load dashboard data
+    updateDashboard();
+    updateStatistics();
+    refreshUserList();
+}
+
+function switchAdminTab(tab) {
+    // Hide all tabs
+    document.querySelectorAll('.admin-tab-content').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.admin-tab').forEach(el => el.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById('admin-' + tab).style.display = 'block';
+    event.target.classList.add('active');
+    
+    // Refresh data for specific tabs
+    if (tab === 'dashboard') updateDashboard();
+    if (tab === 'stats') updateStatistics();
+    if (tab === 'users') refreshUserList();
+    if (tab === 'pins') refreshUnusedPins();
+}
+
+function updateDashboard() {
+    const pins = getUnusedPins();
+    const unused = pins.filter(p => !p.used);
+    const now = Date.now();
+    const valid = unused.filter(p => p.expiryTime > now);
+    
+    // Count active users (those with valid auth)
+    const authData = getAuthData();
+    const activeUsers = authData && authData.expiryTime > now ? 1 : 0;
+    
+    // Calculate revenue
+    const usedPins = pins.filter(p => p.used);
+    let revenue = 0;
+    usedPins.forEach(p => {
+        if (p.duration === '1week') revenue += 15000;
+        if (p.duration === '1month') revenue += 50000;
+    });
+    
+    document.getElementById('totalPins').textContent = pins.length;
+    document.getElementById('activeUsers').textContent = activeUsers;
+    document.getElementById('unusedPins').textContent = valid.length;
+    document.getElementById('totalRevenue').textContent = '₦' + revenue.toLocaleString();
+}
+
+function updateStatistics() {
+    const pins = getUnusedPins();
+    const now = Date.now();
+    
+    // Count by duration
+    const count30min = pins.filter(p => p.duration === '30min').length;
+    const countWeek = pins.filter(p => p.duration === '1week').length;
+    const countMonth = pins.filter(p => p.duration === '1month').length;
+    
+    document.getElementById('count30min').textContent = count30min;
+    document.getElementById('countWeek').textContent = countWeek;
+    document.getElementById('countMonth').textContent = countMonth;
+    
+    // Revenue breakdown
+    const usedWeek = pins.filter(p => p.used && p.duration === '1week').length;
+    const usedMonth = pins.filter(p => p.used && p.duration === '1month').length;
+    
+    document.getElementById('revenueWeek').textContent = '₦' + (usedWeek * 15000).toLocaleString();
+    document.getElementById('revenueMonth').textContent = '₦' + (usedMonth * 50000).toLocaleString();
+    
+    // PIN status
+    const used = pins.filter(p => p.used).length;
+    const expired = pins.filter(p => p.expiryTime < now).length;
+    const active = pins.filter(p => !p.used && p.expiryTime > now).length;
+    
+    document.getElementById('totalGenerated').textContent = pins.length;
+    document.getElementById('currentlyActive').textContent = active;
+    document.getElementById('usedCount').textContent = used;
+    document.getElementById('expiredCount').textContent = expired;
+}
+
+function refreshUserList() {
+    const pins = getUnusedPins();
+    const now = Date.now();
+    const usedPins = pins.filter(p => p.used && p.expiryTime > now);
+    
+    const container = document.getElementById('usersList');
+    
+    if (usedPins.length === 0) {
+        container.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--gray); font-size: 0.85rem;">No active users at the moment.</div>';
+        return;
+    }
+    
+    let html = '<div style="display: grid; gap: 0.75rem;">';
+    usedPins.forEach((p, i) => {
+        const timeLeft = Math.floor((p.expiryTime - now) / (1000 * 60 * 60 * 24));
+        const createdDate = new Date(p.createdAt).toLocaleDateString();
+        
+        html += `<div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); padding: 1rem; border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                <div>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary);">User ${i + 1}</div>
+                    <div style="font-size: 0.85rem; color: var(--gray);">PIN: ${p.pin}</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.75rem; color: var(--success); background: rgba(16,185,129,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Active</div>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; font-size: 0.8rem;">
+                <div><span style="color: var(--gray);">Duration:</span> ${p.duration}</div>
+                <div><span style="color: var(--gray);">Time Left:</span> ${timeLeft}d</div>
+                <div><span style="color: var(--gray);">Created:</span> ${createdDate}</div>
+            </div>
+        </div>`;
+    });
+    html += '</div>';
+    
+    container.innerHTML = html;
+}
+
+function viewAllUsers() {
+    switchAdminTab('users');
+    const tabButton = document.querySelector('.admin-tab[onclick*="users"]');
+    if (tabButton) tabButton.click();
+}
+
+function exportData() {
+    const pins = getUnusedPins();
+    const authData = getAuthData();
+    
+    const data = {
+        pins: pins,
+        currentAuth: authData,
+        exportDate: new Date().toISOString(),
+        stats: {
+            total: pins.length,
+            used: pins.filter(p => p.used).length,
+            unused: pins.filter(p => !p.used).length,
+            expired: pins.filter(p => p.expiryTime < Date.now()).length
+        }
+    };
+    
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `smm-pro-data-${Date.now()}.json`;
+    a.click();
+    
+    alert('Data exported successfully!');
+}
+
+function deletePin() {
+    const pinToDelete = document.getElementById('deletePinInput').value.trim();
+    
+    if (!pinToDelete) {
+        alert('Please enter a PIN to delete');
+        return;
+    }
+    
+    if (!confirm(`Are you sure you want to delete PIN: ${pinToDelete}?`)) {
+        return;
+    }
+    
+    let pins = getUnusedPins();
+    const originalLength = pins.length;
+    pins = pins.filter(p => p.pin !== pinToDelete);
+    
+    if (pins.length === originalLength) {
+        alert('PIN not found');
+        return;
+    }
+    
+    localStorage.setItem('smm_unused_pins', JSON.stringify(pins));
+    
+    // Also check and delete from current auth
+    const authData = getAuthData();
+    if (authData && authData.pin === pinToDelete) {
+        localStorage.removeItem('smm_auth');
+    }
+    
+    document.getElementById('deletePinInput').value = '';
+    alert('PIN deleted successfully!');
+    refreshUnusedPins();
+    updateDashboard();
+}
+
+function changeAdminPassword() {
+    const newPassword = document.getElementById('newAdminPassword').value;
+    
+    if (!newPassword || newPassword.length < 6) {
+        alert('Password must be at least 6 characters');
+        return;
+    }
+    
+    if (!confirm('Change admin password? You will need to update it in the code.')) {
+        return;
+    }
+    
+    alert(`New password: ${newPassword}\n\nIMPORTANT: Update this in the code:\nconst ADMIN_PASSWORD = '${newPassword}';`);
+    
+    document.getElementById('newAdminPassword').value = '';
+}
+
+function updatePricing() {
+    const weekPrice = document.getElementById('priceWeek').value;
+    const monthPrice = document.getElementById('priceMonth').value;
+    
+    localStorage.setItem('smm_pricing', JSON.stringify({
+        week: parseInt(weekPrice),
+        month: parseInt(monthPrice)
+    }));
+    
+    alert('Pricing updated! This will apply to new purchases.');
+}
+
+function getPricing() {
+    const data = localStorage.getItem('smm_pricing');
+    return data ? JSON.parse(data) : { week: 15000, month: 50000 };
+}
+
+function clearAllData() {
+    if (!confirm('⚠️ WARNING: This will delete ALL data including PINs and users. Are you ABSOLUTELY sure?')) {
+        return;
+    }
+    
+    if (!confirm('This action cannot be undone. Continue?')) {
+        return;
+    }
+    
+    localStorage.removeItem('smm_unused_pins');
+    localStorage.removeItem('smm_auth');
+    localStorage.removeItem('smm_pricing');
+    
+    alert('All data cleared!');
+    location.reload();
+}
